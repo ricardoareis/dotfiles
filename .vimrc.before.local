@@ -1,0 +1,3 @@
+let g:spf13_no_autochdir = 1
+let g:spf13_bundle_groups = ['general', 'programming', 'misc', 'golang', 'python', 'ruby',  'javascript', 'youcompleteme']
+let g:airline_powerline_fonts = 1
