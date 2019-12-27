@@ -1,0 +1,45 @@
+"set pythonthreedll=/usr/local/opt/pyenv/versions/3.7.5/Python.framework/Versions/3.7/lib/libpython3.7.dylib
+"set pythonthreehome=/usr/local/opt/pyenv/versions/3.7.5/Python.framework/Versions/3.7
+"set pythondll=/usr/local/opt/pyenv/versions/3.7.5/Python.framework/Versions/3.7/lib/libpython3.7.dylib
+"set pythonhome=/usr/local/opt/pyenv/versions/3.7.5/Python.framework/Versions/3.7
+"set pythondll=/usr/local/opt/pyenv/versions/2.7.17/Python.framework/Versions/2.7/lib/libpython2.7.dylib
+"set pythonhome=/usr/local/opt/pyenv/versions/2.7.17/Python.framework/Versions/2.7
+set background=dark
+color solarized
+let g:solarized_termcolors = 256
+syntax on
+filetype plugin indent on
+let g:ycm_use_clangd = 0
+let mapleader = ","
+" Go to tab by number
+noremap <leader>1 1gt
+noremap <leader>2 2gt
+noremap <leader>3 3gt
+noremap <leader>4 4gt
+noremap <leader>5 5gt
+noremap <leader>6 6gt
+noremap <leader>7 7gt
+noremap <leader>8 8gt
+noremap <leader>9 9gt
+noremap <leader>0 :tablast<cr>
+nnoremap <C-Left> :tabprevious<CR>
+nnoremap <C-Right> :tabnext<CR>
+"let g:airline"extensions"tabline"enabled = 1
+"let g:airline"extensions"tabline"show_buffers = 0
+"let g:airline"extensions"tabline"show_splits = 0
+"let g:airline"extensions"tabline"show_tabs = 1
+"let g:airline"extensions"tabline"show_tab_nr = 0
+"let g:airline"extensions"tabline"show_tab_type = 0
+"let g:airline"extensions"tabline"close_symbol = '×'
+"let g:airline"extensions"tabline"show_close_button = 0
+
+let g:ctrlp_working_path_mode = '~/repo'
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+
+" format with goimports instead of gofmt
+let g:go_fmt_command = "goimports"
+" disable fmt on save
+let g:go_fmt_autosave = 0
+
+set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 9
+set laststatus=2
