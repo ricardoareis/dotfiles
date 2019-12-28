@@ -50,7 +50,7 @@ HIST_STAMPS="yyyy-mm-dd"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 #plugins=(git python aws docker docker-compose brew golang go osx pip pyenv)
-plugins=(git python pyenv pip osx sudo git zsh-syntax-highlighting zsh-autosuggestions tmux)
+plugins=(git python go golang pyenv pip osx sudo docker jsontools git zsh-syntax-highlighting zsh-autosuggestions tmux)
 
 # User configuration
 
@@ -135,3 +135,8 @@ ZSH_TMUX_AUTOCONNECT=false
 #########################################################################################
 export LC_ALL=en_US.UTF-8
 source $ZSH/oh-my-zsh.sh
+echo ""
+
+Fortune | cowsay -f vader | lolcat
+
+echo ""
