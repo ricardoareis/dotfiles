@@ -93,7 +93,8 @@ export DISABLE_UPDATE_PROMPT=true
 export LDFLAGS=-L/usr/local/opt/openssl@1.1/lib
 export CPPFLAGS=-I/usr/local/opt/openssl@1.1/include
 ## Powerlevel9k Settings
-ZSH_THEME="powerlevel9k/powerlevel9k"
+#ZSH_THEME="powerlevel9k/powerlevel9k"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 DEFAULT_USER="cabelo"
 POWERLEVEL9K_HISTORY_BACKGROUND='green'
 POWERLEVEL9K_SHORTEN_STRATEGY="truncate_middle"
