@@ -50,7 +50,7 @@ HIST_STAMPS="yyyy-mm-dd"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 #plugins=(git python aws docker docker-compose brew golang go osx pip pyenv)
-plugins=(git python pyenv pip osx sudo git tmux)
+plugins=(git python pyenv pip osx sudo git zsh-syntax-highlighting zsh-autosuggestions tmux)
 
 # User configuration
 
