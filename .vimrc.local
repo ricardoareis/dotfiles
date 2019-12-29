@@ -4,11 +4,11 @@
 "set pythonhome=/usr/local/opt/pyenv/versions/3.7.5/Python.framework/Versions/3.7
 "set pythondll=/usr/local/opt/pyenv/versions/2.7.17/Python.framework/Versions/2.7/lib/libpython2.7.dylib
 "set pythonhome=/usr/local/opt/pyenv/versions/2.7.17/Python.framework/Versions/2.7
-set background=dark
-color solarized
-let g:solarized_termcolors = 256
 syntax on
 filetype plugin indent on
+color solarized
+set background=dark
+let g:solarized_termcolors = 256
 let g:ycm_use_clangd = 0
 let g:ycm_global_ycm_extra_conf = '~/repos/dotfiles/.ycm_extra_conf.py'
 let mapleader = ","
@@ -25,6 +25,7 @@ noremap <leader>9 9gt
 noremap <leader>0 :tablast<cr>
 nnoremap <C-Left> :tabprevious<CR>
 nnoremap <C-Right> :tabnext<CR>
+nnoremap <leader>jd :YcmCompleter GoTo<CR>
 "let g:airline"extensions"tabline"enabled = 1
 "let g:airline"extensions"tabline"show_buffers = 0
 "let g:airline"extensions"tabline"show_splits = 0
