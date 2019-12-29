@@ -81,6 +81,7 @@ export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 #
 alias vim=/Users/cabelo/repos/macvim/src/MacVim/build/Release/MacVim.app/Contents/bin/vim
 alias updatedb=/usr/libexec/locate.updatedb
+alias ctags="/usr/local/bin/ctags"
 export PYENV_ROOT=/usr/local/opt/pyenv
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 export GOPATH=/Users/cabelo/Go 
@@ -92,6 +93,7 @@ export DISABLE_UPDATE_PROMPT=true
 #export LDFLAGS=-L$(brew --prefix openssl)/lib
 export LDFLAGS=-L/usr/local/opt/openssl@1.1/lib
 export CPPFLAGS=-I/usr/local/opt/openssl@1.1/include
+export C_INCLUDE_PATH="/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include/libxml2:$C_INCLUDE_PATH"
 ## Powerlevel9k Settings
 #ZSH_THEME="powerlevel9k/powerlevel9k"
 ZSH_THEME="powerlevel10k/powerlevel10k"
