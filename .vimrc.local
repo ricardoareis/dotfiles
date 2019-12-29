@@ -10,6 +10,7 @@ let g:solarized_termcolors = 256
 syntax on
 filetype plugin indent on
 let g:ycm_use_clangd = 0
+let g:ycm_global_ycm_extra_conf = '~/repos/dotfiles/.ycm_extra_conf.py'
 let mapleader = ","
 " Go to tab by number
 noremap <leader>1 1gt
@@ -33,7 +34,7 @@ nnoremap <C-Right> :tabnext<CR>
 "let g:airline"extensions"tabline"close_symbol = '×'
 "let g:airline"extensions"tabline"show_close_button = 0
 
-let g:ctrlp_working_path_mode = '~/repo'
+let g:ctrlp_working_path_mode = '~/repos'
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 
 " format with goimports instead of gofmt
