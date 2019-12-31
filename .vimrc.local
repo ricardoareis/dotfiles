@@ -1,21 +1,50 @@
 syntax on
 color solarized
 set background=dark
+set cursorline
+hi CursorLine   cterm=NONE ctermbg=darkgray ctermfg=white guibg=darkgray guifg=white
+hi CursorColumn cterm=NONE ctermbg=darkgray ctermfg=white guibg=darkgray guifg=white
+set cursorline! "cursorcolumn!
 let g:solarized_termcolors = 256
 let g:ycm_use_clangd = 0
 let g:ycm_global_ycm_extra_conf = '~/repos/dotfiles/.ycm_extra_conf.py'
 let mapleader = ","
+let g:indent_guides_enable_on_vim_startup = 1
+
+set shiftwidth=4      " use indents of 4 spaces
+set expandtab         " tabs are spaces, not tabs
+set tabstop=4         " an indentation every four columns
+set softtabstop=4     " let backspace delete indent
+
+" Yank from the cursor to the end of the line, to be consistent with C and D.
+nnoremap Y y$
+
+""" Code folding options
+set foldenable
+set foldmethod=syntax
+set foldlevel=9
+nmap <leader><leader>0 :set foldlevel=0<CR>
+nmap <leader><leader>1 :set foldlevel=1<CR>
+nmap <leader><leader>2 :set foldlevel=2<CR>
+nmap <leader><leader>3 :set foldlevel=3<CR>
+nmap <leader><leader>4 :set foldlevel=4<CR>
+nmap <leader><leader>5 :set foldlevel=5<CR>
+nmap <leader><leader>6 :set foldlevel=6<CR>
+nmap <leader><leader>7 :set foldlevel=7<CR>
+nmap <leader><leader>8 :set foldlevel=8<CR>
+nmap <leader><leader>9 :set foldlevel=9<CR>
+
 " Go to tab by number
-noremap <leader>1 1gt
-noremap <leader>2 2gt
-noremap <leader>3 3gt
-noremap <leader>4 4gt
-noremap <leader>5 5gt
-noremap <leader>6 6gt
-noremap <leader>7 7gt
-noremap <leader>8 8gt
-noremap <leader>9 9gt
-noremap <leader>0 :tablast<cr>
+noremap <leader>t1 1gt
+noremap <leader>t2 2gt
+noremap <leader>t3 3gt
+noremap <leader>t4 4gt
+noremap <leader>t5 5gt
+noremap <leader>t6 6gt
+noremap <leader>t7 7gt
+noremap <leader>t8 8gt
+noremap <leader>t9 9gt
+noremap <leader>t0 :tablast<cr>
 nnoremap <C-Left> :tabprevious<CR>
 nnoremap <C-Right> :tabnext<CR>
 nnoremap <leader>jd :YcmCompleter GoTo<CR>
@@ -37,5 +66,4 @@ let g:go_fmt_command = "goimports"
 let g:go_fmt_autosave = 0
 
 filetype plugin indent on
-set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 9
 set laststatus=2
