@@ -1,0 +1,20 @@
+[user]
+    name = Ricardo Reis
+    email = ricardo.areis@gmail.com
+[core]
+    editor = vim
+    excludesfile = ~/repos/dotfiles/.gitignore_global
+[alias]
+    st = status
+    ci = commit
+    co = checkout
+    br = branch -vv
+    sl = log --graph --pretty=format:'%C(yellow)%h %Cred%ad %Cblue%an%Cgreen%d %Creset%s' --abbrev-commit --decorate --date=short
+    up = pull --rebase
+[color]
+    branch = auto
+    diff = auto
+    interactive = auto
+    status = auto
+[push]
+    default = simple
