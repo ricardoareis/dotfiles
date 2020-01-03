@@ -1,3 +1,6 @@
+[credential]
+    helper = !aws codecommit credential-helper $@
+    UseHttpPath = true
 [user]
     name = Ricardo Reis
     email = ricardo.areis@gmail.com
