@@ -30,7 +30,7 @@ export ZSH=$HOME/.oh-my-zsh
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
- COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -49,7 +49,7 @@ HIST_STAMPS="yyyy-mm-dd"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git python go golang pyenv pip osx sudo docker jsontools git zsh-syntax-highlighting zsh-autosuggestions tmux)
+plugins=(git golang pip osx sudo docker jsontools zsh-syntax-highlighting zsh-autosuggestions tmux)
 
 # User configuration
 
@@ -65,6 +65,7 @@ plugins=(git python go golang pyenv pip osx sudo docker jsontools git zsh-syntax
 #else
 #   export EDITOR='vim'
 #fi
+
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
