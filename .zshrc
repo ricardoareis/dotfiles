@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/cabelo/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -49,12 +49,10 @@ HIST_STAMPS="yyyy-mm-dd"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-#plugins=(git python aws docker docker-compose brew golang go osx pip pyenv)
 plugins=(git python go golang pyenv pip osx sudo docker jsontools git zsh-syntax-highlighting zsh-autosuggestions tmux)
 
 # User configuration
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 
@@ -86,17 +84,14 @@ export PYENV_ROOT=/usr/local/opt/pyenv
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 export GOPATH=/Users/cabelo/Go 
 export GOROOT=/usr/local/opt/go/libexec
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 export PATH=$PATH:/usr/local/sbin:/usr/local/opt/go/libexec/bin:$GOPATH/bin:$GOROOT/bin
-export PATH="$PYENV_ROOT/bin:$PATH"
+export PATH=$PYENV_ROOT/bin:$PATH
 export DISABLE_UPDATE_PROMPT=true
-#export CPPFLAGS=-I$(brew --prefix openssl)/include
-#export LDFLAGS=-L$(brew --prefix openssl)/lib
 export LDFLAGS=-L/usr/local/opt/openssl@1.1/lib
 export CPPFLAGS=-I/usr/local/opt/openssl@1.1/include
 export C_INCLUDE_PATH="/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include/libxml2:$C_INCLUDE_PATH"
 ## Powerlevel9k Settings
-#ZSH_THEME="powerlevel9k/powerlevel9k"
-ZSH_THEME="powerlevel10k/powerlevel10k"
 DEFAULT_USER="cabelo"
 POWERLEVEL9K_HISTORY_BACKGROUND='green'
 POWERLEVEL9K_SHORTEN_STRATEGY="truncate_middle"
@@ -109,7 +104,8 @@ POWERLEVEL9K_CONTEXT_DEFAULT_FOREGROUND=249 # white
 POWERLEVEL9K_DIR_HOME_FOREGROUND=249
 POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND=249
 POWERLEVEL9K_DIR_ETC_FOREGROUND=249
-POWERLEVEL9K_DIR_DEFAULT_FOREGROUND=249POWERLEVEL9K_DIR_HOME_BACKGROUND=024 #deepskyblue4a
+POWERLEVEL9K_DIR_DEFAULT_FOREGROUND=249
+POWERLEVEL9K_DIR_HOME_BACKGROUND=024 #deepskyblue4a
 POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND=024 #deepskyblue4a
 POWERLEVEL9K_DIR_ETC_BACKGROUND=024 #deepskyblue4a
 POWERLEVEL9K_DIR_DEFAULT_BACKGROUND=024 #deepskyblue4a
@@ -121,7 +117,7 @@ POWERLEVEL9K_STATUS_VERBOSE=true
 POWERLEVEL9K_STATUS_CROSS=true
 POWERLEVEL9K_STATUS_OK_BACKGROUND=017
 POWERLEVEL9K_STATUS_ERROR_BACKGROUND=017
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status history)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(command_execution_time status history)
 POWERLEVEL9K_VCS_CLEAN_FOREGROUND=017 # navyblue
 POWERLEVEL9K_VCS_CLEAN_BACKGROUND=040 # green3a
 POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND=017 # navyblue
@@ -129,6 +125,10 @@ POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND=220 # gold1
 POWERLEVEL9K_VCS_MODIFIED_FOREGROUND=236 #grey19
 POWERLEVEL9K_VCS_MODIFIED_BACKGROUND=160 #red3a
 POWERLEVEL9K_SHOW_CHANGESET=true
+POWERLEVEL9K_CHANGESET_HASH_LENGTH=7
+POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=2
+POWERLEVEL9K_COMMAND_EXECUTION_TIME_PRECISION=3
+ZSH_THEME="powerlevel10k/powerlevel10k"
 ## TmuxSettings
 ZSH_TMUX_AUTOSTART=true
 ZSH_TMUX_AUTOSTART_ONCE=true
@@ -138,6 +138,6 @@ export LC_ALL=en_US.UTF-8
 source $ZSH/oh-my-zsh.sh
 echo ""
 
-Fortune | cowsay -f vader | lolcat
+fortune | cowsay -f vader | lolcat
 
 echo ""
