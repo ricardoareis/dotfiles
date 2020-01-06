@@ -49,7 +49,7 @@ HIST_STAMPS="yyyy-mm-dd"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git python go golang pyenv pip osx sudo docker jsontools git zsh-syntax-highlighting zsh-autosuggestions tmux)
+plugins=(git golang pip osx sudo docker jsontools zsh-syntax-highlighting zsh-autosuggestions tmux dotenv)
 
 # User configuration
 
@@ -88,7 +88,6 @@ export DISABLE_UPDATE_PROMPT=true
 export DOCKER_HOST=tcp://0.0.0.0:2375
 
 ## Powerlevel9k Settings
-ZSH_THEME="powerlevel10k/powerlevel10k"
 DEFAULT_USER="cabelo"
 POWERLEVEL9K_HISTORY_BACKGROUND='green'
 POWERLEVEL9K_SHORTEN_STRATEGY="truncate_middle"
@@ -121,9 +120,11 @@ POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND=017 # navyblue
 POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND=220 # gold1
 POWERLEVEL9K_VCS_MODIFIED_FOREGROUND=236 #grey19
 POWERLEVEL9K_VCS_MODIFIED_BACKGROUND=160 #red3a
-POWERLEVEL9K_SHOW_CHANGESET=false
-POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=0
+POWERLEVEL9K_SHOW_CHANGESET=true
+POWERLEVEL9K_CHANGESET_HASH_LENGTH=7
+POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=2
 POWERLEVEL9K_COMMAND_EXECUTION_TIME_PRECISION=3
+ZSH_THEME="powerlevel10k/powerlevel10k"
 ## TmuxSettings
 ZSH_TMUX_AUTOSTART=true
 ZSH_TMUX_AUTOSTART_ONCE=true
@@ -137,3 +138,4 @@ fortune | cowsay -f vader | lolcat
 
 echo ""
 cd /home/mtzcpd1731
+# Example format: plugins=(rails git textmate ruby lighthouse)
