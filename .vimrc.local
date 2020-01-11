@@ -6,6 +6,8 @@ hi CursorLine   cterm=NONE ctermbg=darkgray ctermfg=white guibg=darkgray guifg=w
 hi CursorColumn cterm=NONE ctermbg=darkgray ctermfg=white guibg=darkgray guifg=white
 set cursorline! "cursorcolumn!
 let g:solarized_termcolors = 256
+
+" YCM properties
 let g:ycm_use_clangd = 0
 let g:ycm_global_ycm_extra_conf = '~/repos/dotfiles/.ycm_extra_conf.py'
 let mapleader = ","
@@ -49,22 +51,35 @@ nnoremap <C-Left> :tabprevious<CR>
 nnoremap <C-Right> :tabnext<CR>
 nnoremap <leader>jd :YcmCompleter GoTo<CR>
 nnoremap <leader>ls :ls<cr>:b<space>
+
 " Prompt for a command to run
 map <Leader><Leader>c :VimuxPromptCommand<CR>
+
 " Run last command executed by VimuxRunCommand
 map <Leader><Leader>cl :VimuxRunLastCommand<CR>
+
 " hidden buffers
 set hidden
-let g:airline#extensions#keymap#enabled = 1
 
+" airline properties
+let g:airline#extensions#keymap#enabled = 1
 let g:airline_extensions = ['branch', 'bufferline', 'ctrlp', 'hunks', 'keymap', 'netrw', 'quickfix', 'syntastic', 'tagbar', 'term', 'undotree', 'whitespace', 'wordcount', 'ycm']
+
+" C-p properties
 let g:ctrlp_working_path_mode = '~/repos'
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 
 " format with goimports instead of gofmt
 let g:go_fmt_command = "goimports"
+
 " disable fmt on save
 let g:go_fmt_autosave = 0
+
+" GitGutter Properties 
+let g:gitgutter_enabled = 1
+let g:gitgutter_highlight_lines = 1
+let g:gitgutter_highlight_linenrs = 1
+set updatetime=100
 
 filetype plugin indent on
 set laststatus=2
