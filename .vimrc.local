@@ -62,6 +62,7 @@ map <Leader><Leader>cl :VimuxRunLastCommand<CR>
 set hidden
 
 " airline properties
+let g:ailine_theme='wombat'
 let g:airline#extensions#keymap#enabled = 1
 let g:airline_extensions = ['branch', 'bufferline', 'ctrlp', 'hunks', 'keymap', 'netrw', 'quickfix', 'syntastic', 'tagbar', 'term', 'undotree', 'whitespace', 'wordcount', 'ycm']
 
