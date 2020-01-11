@@ -55,6 +55,7 @@ map <Leader><Leader>c :VimuxPromptCommand<CR>
 map <Leader><Leader>cl :VimuxRunLastCommand<CR>
 " hidden buffers
 set hidden
+let g:airline#extensions#keymap#enabled = 1
 
 let g:airline_extensions = ['branch', 'bufferline', 'ctrlp', 'hunks', 'keymap', 'netrw', 'quickfix', 'syntastic', 'tagbar', 'term', 'undotree', 'whitespace', 'wordcount', 'ycm']
 let g:ctrlp_working_path_mode = '~/repos'
