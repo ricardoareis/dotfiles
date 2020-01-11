@@ -82,5 +82,8 @@ let g:gitgutter_highlight_lines = 1
 let g:gitgutter_highlight_linenrs = 1
 set updatetime=100
 
+" EditorConfig Properties
+let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
+
 filetype plugin indent on
 set laststatus=2
