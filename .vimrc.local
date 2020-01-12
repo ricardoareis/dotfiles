@@ -11,7 +11,7 @@ let g:solarized_termcolors = 256
 let g:ycm_use_clangd = 0
 let g:ycm_global_ycm_extra_conf = '~/repos/dotfiles/.ycm_extra_conf.py'
 let mapleader = ","
-let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_enable_on_vim_startup = 0
 
 set shiftwidth=4      " use indents of 4 spaces
 set expandtab         " tabs are spaces, not tabs
@@ -80,7 +80,7 @@ let g:go_fmt_autosave = 0
 let g:gitgutter_enabled = 1
 let g:gitgutter_highlight_lines = 1
 let g:gitgutter_highlight_linenrs = 1
-set updatetime=100
+set updatetime=500
 
 " EditorConfig Properties
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
