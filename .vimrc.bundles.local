@@ -1,3 +1,5 @@
 Bundle 'kshenoy/vim-signature'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'editorconfig/editorconfig'
+Bundle 'liuchengxu/vim-which-key'
+Bundle 'benmills/vimux'
