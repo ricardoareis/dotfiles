@@ -62,7 +62,7 @@ map <Leader><Leader>cl :VimuxRunLastCommand<CR>
 set hidden
 
 " airline properties
-let g:ailine_theme='wombat'
+let g:airline_theme='wombat'
 let g:airline#extensions#keymap#enabled = 1
 let g:airline_extensions = ['branch', 'bufferline', 'ctrlp', 'hunks', 'keymap', 'netrw', 'quickfix', 'syntastic', 'tagbar', 'term', 'undotree', 'whitespace', 'wordcount', 'ycm']
 
@@ -80,6 +80,15 @@ let g:go_fmt_autosave = 0
 let g:gitgutter_enabled = 1
 let g:gitgutter_highlight_lines = 1
 let g:gitgutter_highlight_linenrs = 1
+let g:gitgutter_sign_added = 'ad'
+let g:gitgutter_sign_modified = 'md'
+let g:gitgutter_sign_removed = 'rd'
+let g:gitgutter_sign_removed_first_line = 'rf'
+let g:gitgutter_sign_modified_removed = 'mr'
+set foldtext=gitgutter#fold#foldtext()
+map ghs :GitGutterStageHunk<CR>
+map ghu :GitGutterUndoHunk<CR>
+map ghf :GitGutterFold<CR>
 set updatetime=100
 
 " EditorConfig Properties
