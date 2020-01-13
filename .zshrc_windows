@@ -79,7 +79,7 @@ plugins=(git golang pip osx sudo docker jsontools zsh-syntax-highlighting zsh-au
 export PYENV_ROOT="$HOME/.pyenv"
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 
-export PATH="$HOME/.local/bin:$PYENV_ROOT/bin:$PATH"
+export PATH="$PYENV_ROOT/bin:$PYENV_ROOT/shims:$PATH"
 export PATH="$GOPATH/bin:$GOROOT/bin:$PATH"
 export GOROOT=/opt/go
 export GOPATH=$HOME/repos/Go
@@ -138,4 +138,3 @@ fortune | cowsay -f vader | lolcat
 
 echo ""
 cd /home/mtzcpd1731
-# Example format: plugins=(rails git textmate ruby lighthouse)
