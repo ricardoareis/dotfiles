@@ -6,10 +6,12 @@ hi CursorLine   cterm=NONE ctermbg=darkgray ctermfg=white guibg=darkgray guifg=w
 hi CursorColumn cterm=NONE ctermbg=darkgray ctermfg=white guibg=darkgray guifg=white
 set cursorline! "cursorcolumn!
 let g:solarized_termcolors = 256
+
+" YCM properties
 let g:ycm_use_clangd = 0
 let g:ycm_global_ycm_extra_conf = '~/repos/dotfiles/.ycm_extra_conf.py'
 let mapleader = ","
-let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_enable_on_vim_startup = 0
 
 set shiftwidth=4      " use indents of 4 spaces
 set expandtab         " tabs are spaces, not tabs
@@ -23,16 +25,6 @@ nnoremap Y y$
 set foldenable
 set foldmethod=syntax
 set foldlevel=9
-nmap <leader><leader>0 :set foldlevel=0<CR>
-nmap <leader><leader>1 :set foldlevel=1<CR>
-nmap <leader><leader>2 :set foldlevel=2<CR>
-nmap <leader><leader>3 :set foldlevel=3<CR>
-nmap <leader><leader>4 :set foldlevel=4<CR>
-nmap <leader><leader>5 :set foldlevel=5<CR>
-nmap <leader><leader>6 :set foldlevel=6<CR>
-nmap <leader><leader>7 :set foldlevel=7<CR>
-nmap <leader><leader>8 :set foldlevel=8<CR>
-nmap <leader><leader>9 :set foldlevel=9<CR>
 
 " Go to tab by number
 noremap <leader>t1 1gt
@@ -49,21 +41,69 @@ nnoremap <C-Left> :tabprevious<CR>
 nnoremap <C-Right> :tabnext<CR>
 nnoremap <leader>jd :YcmCompleter GoTo<CR>
 nnoremap <leader>ls :ls<cr>:b<space>
+
 " Prompt for a command to run
 map <Leader><Leader>c :VimuxPromptCommand<CR>
+
 " Run last command executed by VimuxRunCommand
 map <Leader><Leader>cl :VimuxRunLastCommand<CR>
+
 " hidden buffers
 set hidden
 
+" airline properties
+let g:airline_theme='wombat'
+let g:airline#extensions#keymap#enabled = 1
 let g:airline_extensions = ['branch', 'bufferline', 'ctrlp', 'hunks', 'keymap', 'netrw', 'quickfix', 'syntastic', 'tagbar', 'term', 'undotree', 'whitespace', 'wordcount', 'ycm']
+
+" C-p properties
 let g:ctrlp_working_path_mode = '~/repos'
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 
 " format with goimports instead of gofmt
 let g:go_fmt_command = "goimports"
+
 " disable fmt on save
 let g:go_fmt_autosave = 0
 
+" GitGutter Properties 
+let g:gitgutter_enabled = 1
+let g:gitgutter_map_keys = 0
+let g:gitgutter_sign_allow_clobber = 1
+let g:gitgutter_highlight_lines = 1
+let g:gitgutter_highlight_linenrs = 1
+let g:gitgutter_sign_added = 'ad'
+let g:gitgutter_sign_modified = 'md'
+let g:gitgutter_sign_removed = 'rd'
+let g:gitgutter_sign_removed_first_line = 'rf'
+let g:gitgutter_sign_modified_removed = 'mr'
+set foldtext=gitgutter#fold#foldtext()
+map ghs :GitGutterStageHunk<CR>
+map ghu :GitGutterUndoHunk<CR>
+map ghf :GitGutterFold<CR>
+set updatetime=100
+
+" EditorConfig Properties
+let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
+
 filetype plugin indent on
 set laststatus=2
+
+" Disable some vim-go properties to better cursorline performance
+let g:go_highlight_space_tab_error = 0
+let g:go_highlight_array_whitespace_error = 0
+let g:go_highlight_trailing_whitespace_error = 0
+set re=1
+set ttyfast
+set lazyredraw
+
+" VimWichKey Properties
+" By default timeoutlen is 1000 ms
+set timeoutlen=500
+let g:maplocalleader = ','
+nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
+
+if filereadable(expand("~/.vimrc.wkdesc"))
+    source ~/.vimrc.wkdesc
+endif
+" }
