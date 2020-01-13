@@ -25,16 +25,6 @@ nnoremap Y y$
 set foldenable
 set foldmethod=syntax
 set foldlevel=9
-nmap <leader><leader>0 :set foldlevel=0<CR>
-nmap <leader><leader>1 :set foldlevel=1<CR>
-nmap <leader><leader>2 :set foldlevel=2<CR>
-nmap <leader><leader>3 :set foldlevel=3<CR>
-nmap <leader><leader>4 :set foldlevel=4<CR>
-nmap <leader><leader>5 :set foldlevel=5<CR>
-nmap <leader><leader>6 :set foldlevel=6<CR>
-nmap <leader><leader>7 :set foldlevel=7<CR>
-nmap <leader><leader>8 :set foldlevel=8<CR>
-nmap <leader><leader>9 :set foldlevel=9<CR>
 
 " Go to tab by number
 noremap <leader>t1 1gt
@@ -78,6 +68,8 @@ let g:go_fmt_autosave = 0
 
 " GitGutter Properties 
 let g:gitgutter_enabled = 1
+let g:gitgutter_map_keys = 0
+let g:gitgutter_sign_allow_clobber = 1
 let g:gitgutter_highlight_lines = 1
 let g:gitgutter_highlight_linenrs = 1
 let g:gitgutter_sign_added = 'ad'
@@ -108,3 +100,10 @@ set lazyredraw
 " VimWichKey Properties
 " By default timeoutlen is 1000 ms
 set timeoutlen=500
+let g:maplocalleader = ','
+nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
+
+if filereadable(expand("~/.vimrc.wkdesc"))
+    source ~/.vimrc.wkdesc
+endif
+" }
