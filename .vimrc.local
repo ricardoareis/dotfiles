@@ -106,4 +106,9 @@ nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
 if filereadable(expand("~/.vimrc.wkdesc"))
     source ~/.vimrc.wkdesc
 endif
-" }
+
+set wrap
+set textwidth=120
+set colorcolumn=120
+autocmd VimResized * | set columns=120
+set showbreak=...
