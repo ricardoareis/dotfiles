@@ -81,6 +81,7 @@ set foldtext=gitgutter#fold#foldtext()
 map ghs :GitGutterStageHunk<CR>
 map ghu :GitGutterUndoHunk<CR>
 map ghf :GitGutterFold<CR>
+let g:gitgutter_max_signs = 50
 set updatetime=100
 
 " EditorConfig Properties
