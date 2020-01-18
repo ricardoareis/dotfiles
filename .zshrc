@@ -60,18 +60,15 @@ function fj() {
 zle -N fj
 
 # v - recent files with fasd
-function v() {
+function lv() {
   local file
-  file="$(fasd -Rfl "$1" | fzf -1 -0 --no-sort +m)"
-  # prompt_pure_preprompt_render
-  # zle reset-prompt
-  vim "${file}"
+  zle reset-prompt
+  file="$(fasd -Rfl "$1" | fzf -1 -0 --no-sort +m)" && vim "${file}"
 }
+zle -N lv
 
 # fs [FUZZY PATTERN] - Select selected tmux session
-#   - Bypass fuzzy finder if there's only one match (--select-1)
-#   - Exit if there's no match (--exit-0)
-fs() {
+function fs() {
   local session
   session=$(tmux list-sessions -F "#{session_name}" | \
     fzf --query="$1" --select-1 --exit-0) &&
@@ -79,11 +76,13 @@ fs() {
 }
 zle -N fs
 
+# Loading Bindings 
+[[ -f ~/.zsh_bindings ]] && source ~/.zsh_bindings
+
 # Plugins
 plugins=(git golang pip osx sudo docker jsontools zsh-syntax-highlighting zsh-autosuggestions tmux dotenv fzf)
 
 # User configuration
-
 export EDITOR=vim
 export VISUAL=vim
 export KEYTIMEOUT=1
