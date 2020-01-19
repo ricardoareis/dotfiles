@@ -51,11 +51,13 @@ alias ssh='TERM=xterm-256color ssh'
 alias vim=/Users/cabelo/repos/macvim/src/MacVim/build/Release/MacVim.app/Contents/bin/vim
 alias vimdiff=/Users/cabelo/repos/macvim/src/MacVim/build/Release/MacVim.app/Contents/bin/vimdiff
 
+#ZSH_CUSTOM=$HOME/repos/dotfiles/zsh_customizations
+
 # Loading Functions
-[[ -f $HOME/.zsh_functions ]] && source $HOME/.zsh_functions
+[[ -r ~/.zsh_functions ]] && source ~/.zsh_functions
 
 # Loading Bindings 
-[[ -f $HOME/.zsh_bindings ]] && source $HOME/.zsh_bindings
+[[ -r ~/.zsh_bindings  ]] && source ~/.zsh_bindings
 
 # Plugins
 plugins=(git golang pip osx sudo docker jsontools zsh-syntax-highlighting zsh-autosuggestions tmux dotenv fzf)
@@ -64,6 +66,9 @@ plugins=(git golang pip osx sudo docker jsontools zsh-syntax-highlighting zsh-au
 export EDITOR=vim
 export VISUAL=vim
 export KEYTIMEOUT=1
+export FZF_DEFAULT_COMMAND="fd . $HOME"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="fd -t d . $HOME"
 
 alias q='tmux kill-pane'
 alias updatedb="sudo /usr/libexec/locate.updatedb"
