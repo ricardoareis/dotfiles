@@ -71,7 +71,7 @@ alias ctags="/usr/local/bin/ctags"
 
 export PYENV_ROOT=/usr/local/opt/pyenv
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
-export GOPATH=/Users/cabelo/Go 
+export GOPATH=$HOME/Go 
 export GOROOT=/usr/local/opt/go/libexec
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 export PATH=$PATH:/usr/local/sbin:/usr/local/opt/go/libexec/bin:$GOPATH/bin:$GOROOT/bin
