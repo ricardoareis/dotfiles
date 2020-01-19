@@ -51,13 +51,8 @@ alias ssh='TERM=xterm-256color ssh'
 alias vim=/Users/cabelo/repos/macvim/src/MacVim/build/Release/MacVim.app/Contents/bin/vim
 alias vimdiff=/Users/cabelo/repos/macvim/src/MacVim/build/Release/MacVim.app/Contents/bin/vimdiff
 
-#ZSH_CUSTOM=$HOME/repos/dotfiles/zsh_customizations
-
-# Loading Functions
-[[ -r ~/.zsh_functions ]] && source ~/.zsh_functions
-
-# Loading Bindings 
-[[ -r ~/.zsh_bindings  ]] && source ~/.zsh_bindings
+# Customization 
+export ZSH_CUSTOM=$HOME/repos/dotfiles/zsh_custom
 
 # Plugins
 plugins=(git golang pip osx sudo docker jsontools zsh-syntax-highlighting zsh-autosuggestions tmux dotenv fzf)
