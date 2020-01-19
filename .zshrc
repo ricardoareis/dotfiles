@@ -51,33 +51,11 @@ alias ssh='TERM=xterm-256color ssh'
 alias vim=/Users/cabelo/repos/macvim/src/MacVim/build/Release/MacVim.app/Contents/bin/vim
 alias vimdiff=/Users/cabelo/repos/macvim/src/MacVim/build/Release/MacVim.app/Contents/bin/vimdiff
 
-# Functions
-# fj - changing directory with fasd
-function fj() {
-  local dir
-  dir=$(fasd -Rdl | fzf --no-sort +m) && cd "$dir"
-}
-zle -N fj
-
-# v - recent files with fasd
-function lv() {
-  local file
-  zle reset-prompt
-  file="$(fasd -Rfl "$1" | fzf -1 -0 --no-sort +m)" && vim "${file}"
-}
-zle -N lv
-
-# fs [FUZZY PATTERN] - Select selected tmux session
-function fs() {
-  local session
-  session=$(tmux list-sessions -F "#{session_name}" | \
-    fzf --query="$1" --select-1 --exit-0) &&
-    tmux switch-client -t "$session"
-}
-zle -N fs
+# Loading Functions
+[[ -f $HOME/.zsh_functions ]] && source $HOME/.zsh_functions
 
 # Loading Bindings 
-[[ -f ~/.zsh_bindings ]] && source ~/.zsh_bindings
+[[ -f $HOME/.zsh_bindings ]] && source $HOME/.zsh_bindings
 
 # Plugins
 plugins=(git golang pip osx sudo docker jsontools zsh-syntax-highlighting zsh-autosuggestions tmux dotenv fzf)
@@ -104,43 +82,7 @@ export CPPFLAGS=-I/usr/local/opt/openssl@1.1/include
 export C_INCLUDE_PATH="/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include/libxml2:$C_INCLUDE_PATH"
 
 ## Powerlevel9k Settings
-DEFAULT_USER="cabelo"
-POWERLEVEL9K_HISTORY_BACKGROUND='green'
-POWERLEVEL9K_SHORTEN_STRATEGY="truncate_middle"
-POWERLEVEL9K_SHORTEN_DIR_LENGTH=4
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon context dir dir_writable newline vcs go_version pyenv)
-POWERLEVEL9K_OS_ICON_BACKGROUND=024 #navyblue
-POWERLEVEL9K_OS_ICON_FOREGROUND=202 #orangered1
-POWERLEVEL9K_CONTEXT_TEMPLATE='%n'
-POWERLEVEL9K_CONTEXT_DEFAULT_FOREGROUND=249 # white
-POWERLEVEL9K_DIR_HOME_FOREGROUND=249
-POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND=249
-POWERLEVEL9K_DIR_ETC_FOREGROUND=249
-POWERLEVEL9K_DIR_DEFAULT_FOREGROUND=249
-POWERLEVEL9K_DIR_HOME_BACKGROUND=024 #deepskyblue4a
-POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND=024 #deepskyblue4a
-POWERLEVEL9K_DIR_ETC_BACKGROUND=024 #deepskyblue4a
-POWERLEVEL9K_DIR_DEFAULT_BACKGROUND=024 #deepskyblue4a
-POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
-POWERLEVEL9K_HOME_ICON=''
-POWERLEVEL9K_HOME_SUB_ICON=''
-POWERLEVEL9K_FOLDER_ICON=''
-POWERLEVEL9K_STATUS_VERBOSE=true
-POWERLEVEL9K_STATUS_CROSS=true
-POWERLEVEL9K_STATUS_OK_BACKGROUND=017
-POWERLEVEL9K_STATUS_ERROR_BACKGROUND=017
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(command_execution_time status history)
-POWERLEVEL9K_VCS_CLEAN_FOREGROUND=017 # navyblue
-POWERLEVEL9K_VCS_CLEAN_BACKGROUND=040 # green3a
-POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND=017 # navyblue
-POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND=220 # gold1
-POWERLEVEL9K_VCS_MODIFIED_FOREGROUND=236 #grey19
-POWERLEVEL9K_VCS_MODIFIED_BACKGROUND=160 #red3a
-POWERLEVEL9K_SHOW_CHANGESET=true
-POWERLEVEL9K_CHANGESET_HASH_LENGTH=7
-POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=2
-POWERLEVEL9K_COMMAND_EXECUTION_TIME_PRECISION=3
-ZSH_THEME="powerlevel10k/powerlevel10k"
+[[ -f $HOME/.zsh_powerlevel ]] && source $HOME/.zsh_powerlevel
 
 ## TmuxSettings
 ZSH_TMUX_AUTOSTART=true
