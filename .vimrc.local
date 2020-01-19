@@ -54,11 +54,11 @@ set hidden
 " airline properties
 let g:airline_theme='wombat'
 let g:airline#extensions#keymap#enabled = 1
-let g:airline_extensions = ['branch', 'bufferline', 'ctrlp', 'hunks', 'keymap', 'netrw', 'quickfix', 'syntastic', 'tagbar', 'term', 'undotree', 'whitespace', 'wordcount', 'ycm']
+let g:airline_extensions = ['branch', 'bufferline', 'hunks', 'keymap', 'netrw', 'quickfix', 'syntastic', 'tagbar', 'term', 'undotree', 'whitespace', 'wordcount', 'ycm']
 
-" C-p properties
-let g:ctrlp_working_path_mode = '~/repos'
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+" Make fzf performs more like CtrlP
+nnoremap <C-p> :Files<CR>
+let g:fzf_layout = { 'window': 'bot'.float2nr(&lines * 0.4).'new'  }
 
 " format with goimports instead of gofmt
 let g:go_fmt_command = "goimports"
