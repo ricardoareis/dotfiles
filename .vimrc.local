@@ -108,6 +108,9 @@ if filereadable(expand("~/.vimrc.wkdesc"))
     source ~/.vimrc.wkdesc
 endif
 
+" UndoTree Properties
+nnoremap <leader>u :UndotreeToggle<cr>
+
 set wrap
 set textwidth=120
 set colorcolumn=120
