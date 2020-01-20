@@ -5,6 +5,7 @@
     name = Ricardo Reis
     email = ricardo.areis@gmail.com
 [core]
+    pager = less
     editor = vim
     excludesfile = ~/repos/dotfiles/.gitignore_global
 [alias]
@@ -21,3 +22,5 @@
     status = auto
 [push]
     default = simple
+[diff]
+      tool = vimdiff
