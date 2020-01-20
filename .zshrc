@@ -46,10 +46,27 @@ fi
 source "$fasd_cache"
 unset fasd_cache
 
+if [[ "$(uname)" == "Linux" ]]; then
+    export PYENV_ROOT="$HOME/.pyenv"
+    export PATH="$HOME/.local/bin:$PYENV_ROOT/bin:$PATH"
+    export PATH="$GOPATH/bin:$GOROOT/bin:$PATH"
+    export GOROOT=/opt/go
+    export GOPATH=$HOME/repos/Go
+    export DOCKER_HOST=tcp://0.0.0.0:2375
+elif [[ "$(uname)" == "Darwin" ]] ; then
+    alias vim=/Users/cabelo/repos/macvim/src/MacVim/build/Release/MacVim.app/Contents/bin/vim
+    alias vimdiff=/Users/cabelo/repos/macvim/src/MacVim/build/Release/MacVim.app/Contents/bin/vimdiff
+    alias updatedb="sudo /usr/libexec/locate.updatedb"
+    alias ctags="/usr/local/bin/ctags"
+    export PYENV_ROOT=/usr/local/opt/pyenv
+    export LDFLAGS=-L/usr/local/opt/openssl@1.1/lib
+    export CPPFLAGS=-I/usr/local/opt/openssl@1.1/include
+    export C_INCLUDE_PATH="/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include/libxml2:$C_INCLUDE_PATH"
+fi
+
 # ssh
 alias ssh='TERM=xterm-256color ssh'
-alias vim=/Users/cabelo/repos/macvim/src/MacVim/build/Release/MacVim.app/Contents/bin/vim
-alias vimdiff=/Users/cabelo/repos/macvim/src/MacVim/build/Release/MacVim.app/Contents/bin/vimdiff
+alias q='tmux kill-pane'
 
 # Customization 
 export ZSH_CUSTOM=$HOME/repos/dotfiles/zsh_custom
@@ -58,6 +75,7 @@ export ZSH_CUSTOM=$HOME/repos/dotfiles/zsh_custom
 plugins=(git golang pip osx sudo docker jsontools zsh-syntax-highlighting zsh-autosuggestions tmux dotenv fzf)
 
 # User configuration
+export DISABLE_UPDATE_PROMPT=true
 export EDITOR=vim
 export VISUAL=vim
 export KEYTIMEOUT=1
@@ -65,21 +83,12 @@ export FZF_DEFAULT_COMMAND="fd . $HOME"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd -t d . $HOME"
 
-alias q='tmux kill-pane'
-alias updatedb="sudo /usr/libexec/locate.updatedb"
-alias ctags="/usr/local/bin/ctags"
-
-export PYENV_ROOT=/usr/local/opt/pyenv
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 export GOPATH=$HOME/Go 
 export GOROOT=/usr/local/opt/go/libexec
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 export PATH=$PATH:/usr/local/sbin:/usr/local/opt/go/libexec/bin:$GOPATH/bin:$GOROOT/bin
 export PATH=$PYENV_ROOT/bin:$(pyenv root)/shims:$PATH
-export DISABLE_UPDATE_PROMPT=true
-export LDFLAGS=-L/usr/local/opt/openssl@1.1/lib
-export CPPFLAGS=-I/usr/local/opt/openssl@1.1/include
-export C_INCLUDE_PATH="/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include/libxml2:$C_INCLUDE_PATH"
 
 ## Powerlevel9k Settings
 [[ -f $HOME/.zsh_powerlevel ]] && source $HOME/.zsh_powerlevel
