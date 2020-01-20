@@ -6,10 +6,10 @@ zle -N fzf-cd-widget
 case "$TERM" in
   *xterm*|screen-256color)
     # Ctrl-p: Recent directory with fzf
-    bindkey '^p' fj
+    bindkey '^p' rdf
     # Ctrl-\: FZF cd
     bindkey '^\' fzf-cd-widget
-    # Ctrl-v: Last edited file
-    bindkey '^v' lv
+    # Ctrl-v: Lastest vim file
+    bindkey '^v' ltv
   ;;
 esac
