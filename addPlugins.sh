@@ -1,1 +1,1 @@
- brew install fd fzf gawk bash
+ brew install fd fzf gawk bash fasd
