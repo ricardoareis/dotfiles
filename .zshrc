@@ -47,6 +47,7 @@ source "$fasd_cache"
 unset fasd_cache
 
 if [[ "$(uname)" == "Linux" ]]; then
+    alias fd="fdfind"
     export PYENV_ROOT="$HOME/.pyenv"
     export PATH="$HOME/.local/bin:$PYENV_ROOT/bin:$PATH"
     export PATH="$GOPATH/bin:$GOROOT/bin:$PATH"
@@ -83,15 +84,15 @@ export FZF_DEFAULT_COMMAND="fd . $HOME"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd -t d . $HOME"
 
-if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
-export GOPATH=$HOME/Go 
-export GOROOT=/usr/local/opt/go/libexec
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
-export PATH=$PATH:/usr/local/sbin:/usr/local/opt/go/libexec/bin:$GOPATH/bin:$GOROOT/bin
-export PATH=$PYENV_ROOT/bin:$(pyenv root)/shims:$PATH
+#if which pyenv > /dev/null; then eval #$(pyenv init -)#; fi
+#export GOPATH=$HOME/Go 
+#export GOROOT=/usr/local/opt/go/libexec
+#export PATH=#/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin#
+#export PATH=$PATH:/usr/local/sbin:/usr/local/opt/go/libexec/bin:$GOPATH/bin:$GOROOT/bin
+#export PATH=$PYENV_ROOT/bin:$PYENV_ROOT/shims:$PATH
 
 ## Powerlevel9k Settings
-[[ -f $HOME/.zsh_powerlevel ]] && source $HOME/.zsh_powerlevel
+#[[ -f $HOME/.zsh_powerlevel ]] && source $HOME/.zsh_powerlevel
 
 ## TmuxSettings
 ZSH_TMUX_AUTOSTART=true
