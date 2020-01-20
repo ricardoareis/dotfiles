@@ -1,17 +1,17 @@
-# fj - changing directory with fasd
-function fj() {
+# recent directory with fasd
+function rdf() {
   local dir
   dir=$(fasd -Rdl | fzf --no-sort +m) && cd "$dir"
 }
-zle -N fj
+zle -N rdf
 
-# v - recent files with fasd
-function lv() {
+# lastest vim - recent files with fasd
+function ltv() {
   local file
   zle reset-prompt
   file="$(fasd -Rfl "$1" | fzf -1 -0 --no-sort +m)" && vim "${file}"
 }
-zle -N lv
+zle -N ltv
 
 # fs [FUZZY PATTERN] - Select selected tmux session
 function fs() {
