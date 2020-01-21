@@ -63,6 +63,12 @@ elif [[ "$(uname)" == "Darwin" ]] ; then
     export LDFLAGS=-L/usr/local/opt/openssl@1.1/lib
     export CPPFLAGS=-I/usr/local/opt/openssl@1.1/include
     export C_INCLUDE_PATH="/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include/libxml2:$C_INCLUDE_PATH"
+    if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+    export GOPATH=$HOME/Go 
+    export GOROOT=/usr/local/opt/go/libexec
+    export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+    export PATH=$PATH:/usr/local/sbin:/usr/local/opt/go/libexec/bin:$GOPATH/bin:$GOROOT/bin
+    export PATH=$PYENV_ROOT/bin:$PYENV_ROOT/shims:$PATH
 fi
 
 # ssh
@@ -83,13 +89,6 @@ export KEYTIMEOUT=1
 export FZF_DEFAULT_COMMAND="fd . $HOME"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd -t d . $HOME"
-
-#if which pyenv > /dev/null; then eval #$(pyenv init -)#; fi
-#export GOPATH=$HOME/Go 
-#export GOROOT=/usr/local/opt/go/libexec
-#export PATH=#/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin#
-#export PATH=$PATH:/usr/local/sbin:/usr/local/opt/go/libexec/bin:$GOPATH/bin:$GOROOT/bin
-#export PATH=$PYENV_ROOT/bin:$PYENV_ROOT/shims:$PATH
 
 ## Powerlevel9k Settings
 #[[ -f $HOME/.zsh_powerlevel ]] && source $HOME/.zsh_powerlevel
