@@ -92,6 +92,13 @@ set updatetime=100
 set listchars=eol:⏎,tab:␉·,trail:␠,nbsp:⎵
 nmap <leader>l :set invlist<cr>
 
+" Match Noises
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+match ExtraWhitespace /\s\+$\| \+\ze\t/
+match ExtraWhitespace /[^\t]\zs\t\+/
+autocmd BufWinLeave * call clearmatches()
+
 " EditorConfig Properties
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 
