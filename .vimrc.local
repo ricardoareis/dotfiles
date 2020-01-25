@@ -1,17 +1,21 @@
 syntax on
 color solarized
 set background=dark
-set cursorline
-hi CursorLine   cterm=NONE ctermbg=darkgray ctermfg=white guibg=darkgray guifg=white
-hi CursorColumn cterm=NONE ctermbg=darkgray ctermfg=white guibg=darkgray guifg=white
-set cursorline! "cursorcolumn!
 let g:solarized_termcolors = 256
+
+" Cursor Properties
+hi CursorLine   cterm=underline ctermbg=none ctermfg=none guibg=darkgray guifg=white
+hi CursorColumn cterm=none ctermbg=none ctermfg=gray guibg=darkgray guifg=white
+set cursorline! cursorcolumn!
 
 " YCM properties
 let g:ycm_use_clangd = 0
 let g:ycm_global_ycm_extra_conf = '~/repos/dotfiles/.ycm_extra_conf.py'
 let mapleader = ","
-let g:indent_guides_enable_on_vim_startup = 0
+
+" Identlines
+let g:indentLine_enabled = 1
+"let g:indent_guides_enable_on_vim_startup = 1
 
 set shiftwidth=4      " use indents of 4 spaces
 set expandtab         " tabs are spaces, not tabs
@@ -111,6 +115,7 @@ endif
 " UndoTree Properties
 nnoremap <leader>u :UndotreeToggle<cr>
 
+" Long lines properties
 set wrap
 set textwidth=120
 set colorcolumn=120
