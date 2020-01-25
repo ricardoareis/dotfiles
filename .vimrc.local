@@ -88,6 +88,10 @@ map ghf :GitGutterFold<CR>
 let g:gitgutter_max_signs = 50
 set updatetime=100
 
+" Show Invisible Chars
+set listchars=eol:⏎,tab:␉·,trail:␠,nbsp:⎵
+nmap <leader>l :set invlist<cr>
+
 " EditorConfig Properties
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 
