@@ -1,4 +1,4 @@
-" vim: set expandtab sts=2 ts=2 sw=2 tw=78 ft=help norl:
+" vim: set expandtab sts=2 ts=2 sw=2 tw=78 ft=vim norl:
 
 set encoding=utf-8
 syntax on
@@ -129,10 +129,8 @@ set timeoutlen=500
 let g:maplocalleader=','
 nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
 
-set conceallevel=1
-
 " Conceal properties
-nnoremap <leader>c :set conceallevel=1<cr>
+nnoremap coe :set <C-R>=&conceallevel ? 'conceallevel=0' : 'conceallevel=1'<CR><CR>
 
 " UndoTree properties
 nnoremap <leader>u :UndotreeToggle<cr>
