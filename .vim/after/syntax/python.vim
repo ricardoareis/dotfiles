@@ -66,7 +66,6 @@ syntax match Normal '\v[^_]\zs_\ze>' conceal cchar=′
 " Underscore by itself is not concealed
 syntax match Normal '\v<\zs_\ze>' conceal cchar=_
 
-
 " Need to be handled specially for `not in` to work. Order doesn't matter.
 syntax match Normal '\v<not in>' conceal cchar=∉
 syntax match Normal '\v<in>' conceal cchar=∈
@@ -82,10 +81,8 @@ syntax match Normal '\s\*\s'ms=s+1,me=e-1 conceal cchar=∙
 syntax match Normal '\v[^-=+*/]\zs\=\ze[^=]' conceal cchar=←
 syntax match Normal '\v\=@<!\=\=\=@!' conceal cchar=≝
 
-
 " only conceal `==` if alone, to avoid concealing merge conflict markers
 syntax match Normal '!=' conceal cchar=≠
-
 
 syntax match Normal '\<\%(math\.\)\?sqrt\>' conceal cchar=√")"
 syntax match Normal '\v<((math|torch|np|tf|scipy|sp)\.)?ceil>' conceal cchar=⌈
@@ -182,17 +179,17 @@ syntax keyword Normal while conceal cchar=⥁
 
 syntax keyword Normal def conceal cchar=λ
 syntax keyword Normal class conceal cchar=※
-" syntax keyword Keyword assert conceal cchar=‽
-syntax match Keyword 'yield from' conceal cchar=⇄
+syntax keyword Keyword assert conceal cchar=‽
 syntax keyword Keyword yield conceal cchar=⇇
 syntax match Normal '\v<self>' conceal cchar=⚕
 syntax match Normal '\v<self>\.' conceal cchar=“
+syntax match Keyword 'yield from' conceal cchar=⇄
 
 syntax keyword Type Vector conceal cchar=V
+syntax keyword Type tensor Tensor conceal cchar=𝕋
 syntax match Type '(np|scipy|sp)\.ndarray' conceal cchar=V
 syntax match Type '\vtf\.Tensor' conceal cchar=𝕋
 syntax match Type '\vtorch\.[tT]ensor' conceal cchar=𝕋
-syntax keyword Type tensor Tensor conceal cchar=𝕋
 syntax match Type '\v(torch|np|tf|scipy|sp)\.float(32|64)?' conceal cchar=ℝ
 syntax match Type '\v(torch|np|tf|scipy|sp)\.int(32|64)?' conceal cchar=ℤ
 
@@ -210,7 +207,6 @@ syntax match Type '\v<bool(\(|[^\s)\],:])@!' conceal cchar=𝔹
 
 syntax match Normal '\v((np|scipy|sp|torch)\.)?arange' conceal cchar=⍳
 
-"syntax keyword Builtin all
 syntax keyword Builtin all conceal cchar=∀
 syntax keyword Builtin any conceal cchar=∃
 syntax keyword pyOperator sum conceal cchar=∑
