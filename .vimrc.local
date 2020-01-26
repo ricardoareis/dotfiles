@@ -1,22 +1,33 @@
-syntax on
-color solarized
-set background=dark
-let g:solarized_termcolors = 256
+" vim: set expandtab sts=2 ts=2 sw=2 tw=78 ft=help norl:
 
-" Cursor Properties
+set encoding=utf-8
+syntax on
+
+" Color properties
+color gruvbox
+colorscheme gruvbox
+let g:gruvbox_termcolors=256
+set background=dark
+
+" Cursor properties
 hi CursorLine   cterm=underline ctermbg=none ctermfg=none guibg=darkgray guifg=white
 hi CursorColumn cterm=none ctermbg=none ctermfg=gray guibg=darkgray guifg=white
 set cursorline! cursorcolumn!
 
 " YCM properties
-let g:ycm_use_clangd = 0
-let g:ycm_global_ycm_extra_conf = '~/repos/dotfiles/.ycm_extra_conf.py'
-let mapleader = ","
+let g:ycm_use_clangd=0
+let g:ycm_global_ycm_extra_conf='~/repos/dotfiles/.ycm_extra_conf.py'
+let g:ycm_autoclose_preview_window_after_completion=1
+map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <leader>jd :YcmCompleter GoTo<CR>
+let mapleader=","
 
-" Identlines
-let g:indentLine_enabled = 1
-let g:indent_guides_enable_on_vim_startup = 0
+" Identlines (this plugin change conceal properties)
+let g:indentLine_enabled=0
+let g:indentLine_setConceal=1
+let g:indent_guides_enable_on_vim_startup=1
 
+" Tabs/Spaces properties
 set shiftwidth=4      " use indents of 4 spaces
 set expandtab         " tabs are spaces, not tabs
 set tabstop=4         " an indentation every four columns
@@ -25,7 +36,7 @@ set softtabstop=4     " let backspace delete indent
 " Yank from the cursor to the end of the line, to be consistent with C and D.
 nnoremap Y y$
 
-""" Code folding options
+" Code folding options - TODO
 set foldenable
 set foldmethod=syntax
 set foldlevel=9
@@ -43,7 +54,6 @@ noremap <leader>t9 9gt
 noremap <leader>t0 :tablast<cr>
 nnoremap <C-Left> :tabprevious<CR>
 nnoremap <C-Right> :tabnext<CR>
-nnoremap <leader>jd :YcmCompleter GoTo<CR>
 nnoremap <leader>ls :ls<cr>:b<space>
 
 " Prompt for a command to run
@@ -56,36 +66,36 @@ map <Leader><Leader>cl :VimuxRunLastCommand<CR>
 set hidden
 
 " airline properties
-let g:airline_theme='wombat'
-let g:airline#extensions#keymap#enabled = 1
-let g:airline_extensions = ['branch', 'bufferline', 'hunks', 'keymap', 'netrw', 'quickfix', 'syntastic', 'tagbar', 'term', 'undotree', 'whitespace', 'wordcount', 'ycm']
+let g:airline_theme='gruvbox'
+let g:airline#extensions#keymap#enabled=1
+let g:airline_extensions=['branch', 'bufferline', 'hunks', 'keymap', 'netrw', 'quickfix', 'syntastic', 'tagbar', 'term', 'undotree', 'whitespace', 'wordcount', 'ycm']
 
-" Make fzf performs more like CtrlP
+" Make fzf performs like CtrlP
 nnoremap <C-p> :Files<CR>
-let g:fzf_layout = { 'window': 'bot'.float2nr(&lines * 0.4).'new'  }
+let g:fzf_layout={ 'window': 'bot'.float2nr(&lines * 0.4).'new'  }
 
 " format with goimports instead of gofmt
-let g:go_fmt_command = "goimports"
+let g:go_fmt_command="goimports"
 
 " disable fmt on save
-let g:go_fmt_autosave = 0
+let g:go_fmt_autosave=1
 
-" GitGutter Properties 
-let g:gitgutter_enabled = 1
-let g:gitgutter_map_keys = 0
-let g:gitgutter_sign_allow_clobber = 1
-let g:gitgutter_highlight_lines = 1
-let g:gitgutter_highlight_linenrs = 1
-let g:gitgutter_sign_added = 'ad'
-let g:gitgutter_sign_modified = 'md'
-let g:gitgutter_sign_removed = 'rd'
-let g:gitgutter_sign_removed_first_line = 'rf'
-let g:gitgutter_sign_modified_removed = 'mr'
+" GitGutter properties 
+let g:gitgutter_enabled=1
+let g:gitgutter_map_keys=0
+let g:gitgutter_sign_allow_clobber=1
+let g:gitgutter_highlight_lines=0
+let g:gitgutter_highlight_linenrs=1
+let g:gitgutter_sign_added='ad'
+let g:gitgutter_sign_modified='md'
+let g:gitgutter_sign_removed='rd'
+let g:gitgutter_sign_removed_first_line='rf'
+let g:gitgutter_sign_modified_removed='mr'
 set foldtext=gitgutter#fold#foldtext()
 map ghs :GitGutterStageHunk<CR>
 map ghu :GitGutterUndoHunk<CR>
 map ghf :GitGutterFold<CR>
-let g:gitgutter_max_signs = 50
+let g:gitgutter_max_signs=50
 set updatetime=100
 
 " Show Invisible Chars
@@ -93,37 +103,38 @@ set listchars=eol:⏎,tab:␉·,trail:␠,nbsp:⎵
 nmap <leader>l :set invlist<cr>
 
 " Match Noises
-highlight ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace /\s\+$/
-match ExtraWhitespace /\s\+$\| \+\ze\t/
-match ExtraWhitespace /[^\t]\zs\t\+/
-autocmd BufWinLeave * call clearmatches()
+"highlight ExtraWhitespace ctermbg=red guibg=red
+"match ExtraWhitespace /\s\+$/
+"match ExtraWhitespace /\s\+$\| \+\ze\t/
+"match ExtraWhitespace /[^\t]\zs\t\+/
+"autocmd BufWinLeave * call clearmatches()
 
-" EditorConfig Properties
+" EditorConfig properties
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 
 filetype plugin indent on
 set laststatus=2
 
 " Disable some vim-go properties to better cursorline performance
-let g:go_highlight_space_tab_error = 0
-let g:go_highlight_array_whitespace_error = 0
-let g:go_highlight_trailing_whitespace_error = 0
+let g:go_highlight_space_tab_error=0
+let g:go_highlight_array_whitespace_error=0
+let g:go_highlight_trailing_whitespace_error=0
 set re=1
 set ttyfast
 set lazyredraw
 
-" VimWichKey Properties
+" VimWichKey properties
 " By default timeoutlen is 1000 ms
 set timeoutlen=500
-let g:maplocalleader = ','
+let g:maplocalleader=','
 nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
 
-if filereadable(expand("~/.vimrc.wkdesc"))
-    source ~/.vimrc.wkdesc
-endif
+set conceallevel=1
 
-" UndoTree Properties
+" Conceal properties
+nnoremap <leader>c :set conceallevel=1<cr>
+
+" UndoTree properties
 nnoremap <leader>u :UndotreeToggle<cr>
 
 " Long lines properties
@@ -132,3 +143,8 @@ set textwidth=120
 set colorcolumn=120
 autocmd VimResized * | set columns=120
 set showbreak=...
+
+" Function to source all .vim files in directory
+for fpath in split(globpath('~/.vim/plugins.d/', '*.vim'), '\n')
+  exe 'source' fpath
+endfor
