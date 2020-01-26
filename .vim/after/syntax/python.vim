@@ -87,18 +87,15 @@ syntax match Normal '\v\=@<!\=\=\=@!' conceal cchar=≝
 syntax match Normal '!=' conceal cchar=≠
 
 
+syntax match Normal '\<\%(math\.\)\?sqrt\>' conceal cchar=√")"
 syntax match Normal '\v<((math|torch|np|tf|scipy|sp)\.)?ceil>' conceal cchar=⌈
 syntax match Normal '\v<((math|torch|np|tf|scipy|sp)\.)?floor>' conceal cchar=⌊
 syntax match Normal '\v<((torch|np|tf|scipy|sp)\.)?(eye|identity)>' conceal cchar=𝕀
 syntax match Normal '\v<((math|np|scipy|sp)\.)e>' conceal cchar=ℯ
 syntax match Normal '\v<((math|np|scipy|sp)\.)?inf>' conceal cchar=∞
-syntax match Normal "\v<float('inf')>" conceal cchar=∞
 syntax match Normal '\v<float("inf")>' conceal cchar=∞
-
 syntax match Normal '\v<((math|torch|np|tf|scipy|sp)\.)?pi>' conceal cchar=π
 syntax match Normal '\v<((torch|np|scipy|sp)\.mean)|(tf\.reduce_mean)>' conceal cchar=𝔼
-
-
 syntax match Normal '\v\zs ?\*\* ?2\ze>([^.]|$)' conceal cchar=²
 syntax match Normal '\v\zs ?\*\* ?n\ze>([^.]|$)' conceal cchar=ⁿ
 syntax match Normal '\v\zs ?\*\* ?i\ze>([^.]|$)' conceal cchar=ⁱ	
@@ -141,6 +138,7 @@ syntax keyword Normal Theta conceal cchar=ϴ
 syntax keyword Normal theta THETA conceal cchar=θ
 syntax keyword Normal kappa KAPPA conceal cchar=κ
 syntax keyword Normal lambda LAMBDA lambda_ _lambda conceal cchar=λ
+syntax keyword Normal None conceal cchar=∅
 syntax keyword Normal mu MU conceal cchar=μ
 syntax keyword Normal nu NU conceal cchar=ν
 syntax keyword Normal Xi conceal cchar=Ξ
@@ -212,8 +210,10 @@ syntax match Type '\v<bool(\(|[^\s)\],:])@!' conceal cchar=𝔹
 
 syntax match Normal '\v((np|scipy|sp|torch)\.)?arange' conceal cchar=⍳
 
-syntax keyword Builtin all
+"syntax keyword Builtin all
+syntax keyword Builtin all conceal cchar=∀
 syntax keyword Builtin any conceal cchar=∃
+syntax keyword pyOperator sum conceal cchar=∑
 
 highlight! link pyBuiltin pyOperator
 highlight! link pyOperator Operator
