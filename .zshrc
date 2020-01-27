@@ -48,10 +48,10 @@ unset fasd_cache
 
 if [[ "$(uname)" == "Linux" ]]; then
     alias fd="fdfind"
+    export GOROOT=/opt/go
     export PYENV_ROOT="$HOME/.pyenv"
     export PATH="$HOME/.local/bin:$PYENV_ROOT/bin:$PATH"
     export PATH="$GOPATH/bin:$GOROOT/bin:$PATH"
-    export GOROOT=/opt/go
     export GOPATH=$HOME/repos/Go
     export DOCKER_HOST=tcp://0.0.0.0:2375
 elif [[ "$(uname)" == "Darwin" ]] ; then
