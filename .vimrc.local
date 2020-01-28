@@ -12,7 +12,10 @@ set background=dark
 " Cursor properties
 hi CursorLine   cterm=underline ctermbg=none ctermfg=none guibg=darkgray guifg=white
 hi CursorColumn cterm=none ctermbg=none ctermfg=gray guibg=darkgray guifg=white
-set cursorline cursorcolumn
+set cursorline! cursorcolumn!
+
+" Spell properties
+set spelllang=en_us,pt
 
 " YCM properties
 let g:ycm_use_clangd=0
