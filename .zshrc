@@ -46,10 +46,13 @@ fi
 source "$fasd_cache"
 unset fasd_cache
 
+export PYTHON_CONFIGURE_OPTS="--enable-shared"
+
 if [[ "$(uname)" == "Linux" ]]; then
     alias fd="fdfind"
     export GOROOT=/opt/go
     export PYENV_ROOT="$HOME/.pyenv"
+    if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
     export PATH="$HOME/.local/bin:$PYENV_ROOT/bin:$PATH"
     export PATH="$GOPATH/bin:$GOROOT/bin:$PATH"
     export GOPATH=$HOME/repos/Go
