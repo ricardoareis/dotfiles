@@ -12,7 +12,7 @@ set background=dark
 " Cursor properties
 hi CursorLine   cterm=underline ctermbg=none ctermfg=none guibg=darkgray guifg=white
 hi CursorColumn cterm=none ctermbg=none ctermfg=gray guibg=darkgray guifg=white
-set cursorline! cursorcolumn!
+set cursorline cursorcolumn
 
 " YCM properties
 let g:ycm_use_clangd=0
@@ -27,6 +27,14 @@ let g:indentLine_enabled=0
 let g:indentLine_setConceal=1
 let g:indent_guides_enable_on_vim_startup=1
 
+" Number
+set number relativenumber
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
+
 " Tabs/Spaces properties
 set shiftwidth=4      " use indents of 4 spaces
 set expandtab         " tabs are spaces, not tabs
@@ -38,8 +46,7 @@ nnoremap Y y$
 
 " Code folding options - TODO
 set foldenable
-set foldmethod=syntax
-set foldlevel=9
+set foldmethod=indent
 
 " Go to tab by number
 noremap <leader>t1 1gt
@@ -103,11 +110,11 @@ set listchars=eol:⏎,tab:␉·,trail:␠,nbsp:⎵
 nmap <leader>l :set invlist<cr>
 
 " Match Noises
-"highlight ExtraWhitespace ctermbg=red guibg=red
-"match ExtraWhitespace /\s\+$/
-"match ExtraWhitespace /\s\+$\| \+\ze\t/
-"match ExtraWhitespace /[^\t]\zs\t\+/
-"autocmd BufWinLeave * call clearmatches()
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+match ExtraWhitespace /\s\+$\| \+\ze\t/
+match ExtraWhitespace /[^\t]\zs\t\+/
+autocmd BufWinLeave * call clearmatches()
 
 " EditorConfig properties
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
