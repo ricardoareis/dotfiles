@@ -1,3 +1,11 @@
+" Cursor properties
+hi CursorLine   cterm=underline ctermbg=none ctermfg=none guibg=darkgray guifg=white
+hi CursorColumn cterm=none      ctermbg=none ctermfg=gray guibg=darkgray guifg=white
+
+autocmd InsertLeave,WinEnter * set cursorline
+autocmd InsertEnter,WinLeave * set nocursorline
+set cursorcolumn
+
 " changed the cursor behavior, in a edit, replace and append mode 
 if empty($TMUX)
   let &t_SI = "\<Esc>]50;CursorShape=1\x7"
