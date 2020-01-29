@@ -12,7 +12,13 @@ set background=dark
 " Cursor properties
 hi CursorLine   cterm=underline ctermbg=none ctermfg=none guibg=darkgray guifg=white
 hi CursorColumn cterm=none ctermbg=none ctermfg=gray guibg=darkgray guifg=white
-set cursorline! cursorcolumn!
+autocmd InsertLeave,WinEnter * set cursorline
+autocmd InsertEnter,WinLeave * set nocursorline
+set cursorcolumn
+
+" Disable complete
+set complete-=i   " disable scanning included files
+set complete-=t   " disable searching tags
 
 " Spell properties
 set spelllang=en_us,pt
@@ -30,13 +36,18 @@ let g:indentLine_enabled=0
 let g:indentLine_setConceal=1
 let g:indent_guides_enable_on_vim_startup=1
 
-" Number
+" Numbers
 set number relativenumber
 augroup numbertoggle
   autocmd!
   autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
   autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 augroup END
+
+" Disable audibles and visual feedbacks
+set noerrorbells
+set novisualbell
+set t_vb=
 
 " Tabs/Spaces properties
 set shiftwidth=4      " use indents of 4 spaces
