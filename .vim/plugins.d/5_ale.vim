@@ -10,3 +10,6 @@ let g:ale_lint_on_enter = 0
 
 " keep the sign gutter open
 let g:ale_sign_column_always = 1
+
+" Set this in your vimrc file to disabling highlighting
+let g:ale_set_highlights = 0
