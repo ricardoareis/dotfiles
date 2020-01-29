@@ -1,3 +1,4 @@
+# vim: set expandtab sts=2 ts=2 sw=2 tw=78 ft=zsh norl:
 # recent directory with fasd
 function rdf() {
   local dir
@@ -16,7 +17,7 @@ zle -N ltv
 # fs [FUZZY PATTERN] - Select selected tmux session
 function fs() {
   local session
-  session=$(tmux list-sessions -F "#{session_name}" | \
+  session=$(tmux list-sessions -F "#{session_name}" |\
     fzf --query="$1" --select-1 --exit-0) &&
     tmux switch-client -t "$session"
 }
