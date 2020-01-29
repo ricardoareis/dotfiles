@@ -1,20 +1,17 @@
 " vim: set expandtab sts=2 ts=2 sw=2 tw=78 ft=vim norl:
 
-set encoding=utf-8
 syntax on
+set encoding=utf-8
+let mapleader=","
+
+" hidden buffers
+set hidden
 
 " Color properties
 color gruvbox
 colorscheme gruvbox
 let g:gruvbox_termcolors=256
 set background=dark
-
-" Cursor properties
-hi CursorLine   cterm=underline ctermbg=none ctermfg=none guibg=darkgray guifg=white
-hi CursorColumn cterm=none ctermbg=none ctermfg=gray guibg=darkgray guifg=white
-autocmd InsertLeave,WinEnter * set cursorline
-autocmd InsertEnter,WinLeave * set nocursorline
-set cursorcolumn
 
 " Disable complete
 set complete-=i   " disable scanning included files
@@ -28,21 +25,11 @@ let g:ycm_use_clangd=0
 let g:ycm_global_ycm_extra_conf='~/repos/dotfiles/.ycm_extra_conf.py'
 let g:ycm_autoclose_preview_window_after_completion=1
 map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
-nnoremap <leader>jd :YcmCompleter GoTo<CR>
-let mapleader=","
 
 " Identlines (this plugin change conceal properties)
 let g:indentLine_enabled=0
 let g:indentLine_setConceal=1
 let g:indent_guides_enable_on_vim_startup=1
-
-" Numbers
-set number relativenumber
-augroup numbertoggle
-  autocmd!
-  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
-augroup END
 
 " Disable audibles and visual feedbacks
 set noerrorbells
@@ -83,9 +70,6 @@ map <Leader><Leader>c :VimuxPromptCommand<CR>
 " Run last command executed by VimuxRunCommand
 map <Leader><Leader>cl :VimuxRunLastCommand<CR>
 
-" hidden buffers
-set hidden
-
 " airline properties
 let g:airline_theme='gruvbox'
 let g:airline#extensions#keymap#enabled=1
@@ -112,12 +96,12 @@ let g:gitgutter_sign_modified='md'
 let g:gitgutter_sign_removed='rd'
 let g:gitgutter_sign_removed_first_line='rf'
 let g:gitgutter_sign_modified_removed='mr'
+let g:gitgutter_max_signs=50
+set updatetime=100
 set foldtext=gitgutter#fold#foldtext()
 map ghs :GitGutterStageHunk<CR>
 map ghu :GitGutterUndoHunk<CR>
 map ghf :GitGutterFold<CR>
-let g:gitgutter_max_signs=50
-set updatetime=100
 
 " Show Invisible Chars
 set listchars=eol:⏎,tab:␉·,trail:␠,nbsp:⎵
@@ -143,12 +127,6 @@ let g:go_highlight_trailing_whitespace_error=0
 set re=1
 set ttyfast
 set lazyredraw
-
-" VimWichKey properties
-" By default timeoutlen is 1000 ms
-set timeoutlen=500
-let g:maplocalleader=','
-nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
 
 " Conceal properties
 nnoremap coe :set <C-R>=&conceallevel ? 'conceallevel=0' : 'conceallevel=1'<CR><CR>
