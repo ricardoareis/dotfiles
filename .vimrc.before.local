@@ -1,3 +1,6 @@
+" To specify a different directory in which to place the vimbackup,
+" vimviews, vimundo, and vimswap files/directories
+let g:spf13_consolidated_directory = $HOME . '/.vim/'
 let g:spf13_no_autochdir = 1
-let g:spf13_bundle_groups = ['general', 'programming', 'misc', 'golang', 'python', 'ruby',  'javascript', 'youcompleteme']
+let g:spf13_bundle_groups = ['general', 'programming', 'misc', 'golang', 'python', 'ruby', 'javascript', 'youcompleteme']
 let g:airline_powerline_fonts = 1
