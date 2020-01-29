@@ -1,3 +1,5 @@
+" vim: set expandtab sts=2 ts=2 sw=2 tw=78 ft=vim norl:
+
 Bundle 'kshenoy/vim-signature'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'editorconfig/editorconfig'
@@ -14,6 +16,7 @@ Bundle 'liuchengxu/vista.vim'
 Bundle 'Yggdroot/indentLine'
 Bundle 'morhetz/gruvbox'
 Bundle 'ConradIrwin/vim-bracketed-paste'
+Bundle 'dense-analysis/ale'
 UnBundle 'ntpeters/vim-better-whitespace'
 UnBundle 'ctrlpvim/ctrlp.vim'
 UnBundle 'tacahiroy/ctrlp-funky'
@@ -23,3 +26,4 @@ UnBundle 'vim-scripts/pythoncomplete'
 UnBundle 'briancollins/vim-jst'
 UnBundle 'diraol/snowball_py'
 UnBundle 'tsanaelkane/vim-indent-guides'
+UnBundle 'scrooloose/syntastic'

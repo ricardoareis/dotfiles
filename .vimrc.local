@@ -73,7 +73,7 @@ map <Leader><Leader>cl :VimuxRunLastCommand<CR>
 " airline properties
 let g:airline_theme='gruvbox'
 let g:airline#extensions#keymap#enabled=1
-let g:airline_extensions=['branch', 'bufferline', 'hunks', 'keymap', 'netrw', 'quickfix', 'syntastic', 'tagbar', 'term', 'undotree', 'whitespace', 'wordcount', 'ycm']
+let g:airline_extensions=['branch', 'bufferline', 'hunks', 'keymap', 'netrw', 'quickfix', 'ale', 'tagbar', 'term', 'undotree', 'whitespace', 'wordcount', 'ycm']
 
 " Make fzf performs like CtrlP
 nnoremap <C-p> :Files<CR>
@@ -97,7 +97,7 @@ let g:gitgutter_sign_removed='rd'
 let g:gitgutter_sign_removed_first_line='rf'
 let g:gitgutter_sign_modified_removed='mr'
 let g:gitgutter_max_signs=50
-set updatetime=100
+set updatetime=2000
 set foldtext=gitgutter#fold#foldtext()
 map ghs :GitGutterStageHunk<CR>
 map ghu :GitGutterUndoHunk<CR>
