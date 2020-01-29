@@ -82,7 +82,7 @@ alias q='tmux kill-pane'
 export ZSH_CUSTOM=$HOME/repos/dotfiles/zsh_custom
 
 # Plugins
-plugins=(git golang pip osx sudo docker jsontools zsh-syntax-highlighting zsh-autosuggestions tmux dotenv fzf)
+plugins=(safe-paste git golang pip osx sudo docker jsontools zsh-syntax-highlighting zsh-autosuggestions tmux dotenv fzf)
 
 # User configuration
 export DISABLE_UPDATE_PROMPT=true
