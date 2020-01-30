@@ -6,6 +6,7 @@ set encoding=utf-8
 let mapleader=","
 filetype plugin indent on
 set laststatus=2
+set signcolumn=yes
 
 " hidden buffers
 set hidden
