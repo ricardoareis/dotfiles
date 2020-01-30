@@ -30,4 +30,5 @@ UnBundle 'briancollins/vim-jst'
 UnBundle 'diraol/snowball_py'
 UnBundle 'tsanaelkane/vim-indent-guides'
 UnBundle 'scrooloose/syntastic'
+UnBundle 'klen/python-mode'
 "}
