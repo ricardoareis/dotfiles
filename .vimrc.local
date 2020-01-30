@@ -1,54 +1,56 @@
-" vim: set expandtab sts=2 ts=2 sw=2 tw=78 ft=vim norl:
+" Basic properties {
+" vim: set expandtab sw=4 ts=4 sts=4 et tw=78 ft=vim foldmarker={,} foldlevel=0 foldmethod=marker spell:
 
 syntax on
 set encoding=utf-8
 let mapleader=","
+filetype plugin indent on
+set laststatus=2
 
 " hidden buffers
 set hidden
+"}
 
-" Color properties
+" Color properties {
 color gruvbox
 colorscheme gruvbox
 let g:gruvbox_termcolors=256
 set background=dark
+"}
 
-" Disable complete
+" Complete properties {
 set complete-=i   " disable scanning included files
 set complete-=t   " disable searching tags
+"}
 
-" Spell properties
+" Spell properties {
 set spelllang=en_us,pt
+" }
 
-" YCM properties
-let g:ycm_use_clangd=0
-let g:ycm_global_ycm_extra_conf='~/repos/dotfiles/.ycm_extra_conf.py'
-let g:ycm_autoclose_preview_window_after_completion=1
-map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
-
-" Identlines (this plugin change conceal properties)
-let g:indentLine_enabled=0
-let g:indentLine_setConceal=1
-let g:indent_guides_enable_on_vim_startup=1
-
-" Disable audibles and visual feedbacks
+" Alerts and feedback properties{
 set noerrorbells
 set novisualbell
 set t_vb=
+"}
 
-" Tabs/Spaces properties
+" Tabs/Spaces properties {
 set shiftwidth=4      " use indents of 4 spaces
 set expandtab         " tabs are spaces, not tabs
 set tabstop=4         " an indentation every four columns
 set softtabstop=4     " let backspace delete indent
+"}
 
+" Inconsistency: Fix {
 " Yank from the cursor to the end of the line, to be consistent with C and D.
 nnoremap Y y$
+"}
 
-" Code folding options - TODO
+" Code folding properties - TODO {
 set foldenable
 set foldmethod=indent
+"}
 
+" Bindings properties {
 " Go to tab by number
 noremap <leader>t1 1gt
 noremap <leader>t2 2gt
@@ -63,29 +65,74 @@ noremap <leader>t0 :tablast<cr>
 nnoremap <C-Left> :tabprevious<CR>
 nnoremap <C-Right> :tabnext<CR>
 nnoremap <leader>ls :ls<cr>:b<space>
+"}
 
+" Show Invisible Chars {
+set listchars=eol:⏎,tab:␉·,trail:␠,nbsp:⎵
+nmap <leader>l :set invlist<cr>
+"}
+
+" Highlight - Matching Noises { 
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+match ExtraWhitespace /\s\+$\| \+\ze\t/
+match ExtraWhitespace /[^\t]\zs\t\+/
+autocmd BufWinLeave * call clearmatches()
+"}
+
+" Conceal properties {
+nnoremap coe :set <C-R>=&conceallevel ? 'conceallevel=0' : 'conceallevel=1'<CR><CR>
+"}
+
+" Dealing with a long lines properties {
+set wrap
+set textwidth=120
+set colorcolumn=120
+autocmd VimResized * | set columns=120
+set showbreak=...
+"}
+
+" Plugin: YCM properties {
+let g:ycm_use_clangd=0
+let g:ycm_global_ycm_extra_conf='~/repos/dotfiles/.ycm_extra_conf.py'
+let g:ycm_autoclose_preview_window_after_completion=1
+map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+"}
+
+" Plugin: Identlines properties (this plugin change conceal properties) {
+let g:indentLine_enabled=0
+let g:indentLine_setConceal=1
+let g:indent_guides_enable_on_vim_startup=1
+"}
+
+" Plugin: Vimux Properties {
 " Prompt for a command to run
 map <Leader><Leader>c :VimuxPromptCommand<CR>
 
 " Run last command executed by VimuxRunCommand
 map <Leader><Leader>cl :VimuxRunLastCommand<CR>
+"}
 
-" airline properties
+" Plugin: Airline properties {
 let g:airline_theme='gruvbox'
 let g:airline#extensions#keymap#enabled=1
 let g:airline_extensions=['branch', 'bufferline', 'hunks', 'keymap', 'netrw', 'quickfix', 'ale', 'tagbar', 'term', 'undotree', 'whitespace', 'wordcount', 'ycm']
+"}
 
-" Make fzf performs like CtrlP
+" Plugin: FZF (performs like CtrlP) {
 nnoremap <C-p> :Files<CR>
 let g:fzf_layout={ 'window': 'bot'.float2nr(&lines * 0.4).'new'  }
+"}
 
+" Plugin: Golang properties {
 " format with goimports instead of gofmt
 let g:go_fmt_command="goimports"
 
 " disable fmt on save
 let g:go_fmt_autosave=1
+"} 
 
-" GitGutter properties 
+" Plugin: GitGutter properties {
 let g:gitgutter_enabled=1
 let g:gitgutter_map_keys=0
 let g:gitgutter_sign_allow_clobber=1
@@ -102,24 +149,13 @@ set foldtext=gitgutter#fold#foldtext()
 map ghs :GitGutterStageHunk<CR>
 map ghu :GitGutterUndoHunk<CR>
 map ghf :GitGutterFold<CR>
+"}
 
-" Show Invisible Chars
-set listchars=eol:⏎,tab:␉·,trail:␠,nbsp:⎵
-nmap <leader>l :set invlist<cr>
-
-" Match Noises
-highlight ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace /\s\+$/
-match ExtraWhitespace /\s\+$\| \+\ze\t/
-match ExtraWhitespace /[^\t]\zs\t\+/
-autocmd BufWinLeave * call clearmatches()
-
-" EditorConfig properties
+" Plugin: EditorConfig properties {
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
+"}
 
-filetype plugin indent on
-set laststatus=2
-
+" Plugin: Vim-GO {
 " Disable some vim-go properties to better cursorline performance
 let g:go_highlight_space_tab_error=0
 let g:go_highlight_array_whitespace_error=0
@@ -127,21 +163,15 @@ let g:go_highlight_trailing_whitespace_error=0
 set re=1
 set ttyfast
 set lazyredraw
+"}
 
-" Conceal properties
-nnoremap coe :set <C-R>=&conceallevel ? 'conceallevel=0' : 'conceallevel=1'<CR><CR>
-
-" UndoTree properties
+" Plugin: UndoTree properties {
 nnoremap <leader>u :UndotreeToggle<cr>
+"}
 
-" Long lines properties
-set wrap
-set textwidth=120
-set colorcolumn=120
-autocmd VimResized * | set columns=120
-set showbreak=...
-
-" Function to source all .vim files in directory
+" Loading others .vim {
+" function to source in directory
 for fpath in split(globpath('~/.vim/plugins.d/', '*.vim'), '\n')
-  exe 'source' fpath
+    exe 'source' fpath
 endfor
+"}

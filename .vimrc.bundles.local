@@ -1,5 +1,5 @@
-" vim: set expandtab sts=2 ts=2 sw=2 tw=78 ft=vim norl:
-
+" Install Plugins {
+" vim: set expandtab sw=4 ts=4 sts=4 et tw=78 ft=vim foldmarker={,} foldlevel=0 foldmethod=marker spell:
 Bundle 'kshenoy/vim-signature'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'editorconfig/editorconfig'
@@ -17,6 +17,9 @@ Bundle 'Yggdroot/indentLine'
 Bundle 'morhetz/gruvbox'
 Bundle 'ConradIrwin/vim-bracketed-paste'
 Bundle 'dense-analysis/ale'
+"}
+
+" Unistall Plugins {
 UnBundle 'ntpeters/vim-better-whitespace'
 UnBundle 'ctrlpvim/ctrlp.vim'
 UnBundle 'tacahiroy/ctrlp-funky'
@@ -27,3 +30,4 @@ UnBundle 'briancollins/vim-jst'
 UnBundle 'diraol/snowball_py'
 UnBundle 'tsanaelkane/vim-indent-guides'
 UnBundle 'scrooloose/syntastic'
+"}
