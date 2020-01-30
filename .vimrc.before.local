@@ -1,6 +1,20 @@
+" Organazing vim directories  {
+" vim: set expandtab sw=4 ts=4 sts=4 et tw=78 ft=vim foldmarker={,} foldlevel=0 foldmethod=marker spell:
+"
 " To specify a different directory in which to place the vimbackup,
 " vimviews, vimundo, and vimswap files/directories
 let g:spf13_consolidated_directory = $HOME . '/.vim/'
-let g:spf13_no_autochdir = 1
+"}
+
+" spf13: Configure bundle groups {
 let g:spf13_bundle_groups = ['general', 'programming', 'misc', 'golang', 'python', 'ruby', 'javascript', 'youcompleteme']
+"}
+
+" spf13: Disable automatic change dir {
+let g:spf13_no_autochdir = 1
+"}
+
+" Plugin: Configure Airline {
 let g:airline_powerline_fonts = 1
+"}
+
