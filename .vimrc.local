@@ -2,14 +2,17 @@
 " vim: set expandtab sw=4 ts=4 sts=4 et tw=78 ft=vim foldmarker={,} foldlevel=0 foldmethod=marker spell:
 
 syntax on
+filetype plugin indent on
+
+set synmaxcol=5000                          " Don't try to highlight lines longer than 5000 characters"
 set encoding=utf-8
 let mapleader=","
-filetype plugin indent on
 set laststatus=2
 set signcolumn=yes
-
-" hidden buffers
-set hidden
+set notimeout ttimeout ttimeoutlen=10       "Quckly time out on keycodes, but never timeout on mappings"
+" set virtualedit=all                         " Allow the cursor to go in to 'invalid' places"
+set switchbuf=useopen,usetab                "Attempt to edit currently open files instead of opening multiple buf"
+set hidden                                  " hidden buffers
 "}
 
 " Color properties {
@@ -26,7 +29,8 @@ set complete-=t   " disable searching tags
 
 " Spell properties {
 set spelllang=en_us,pt
-" }
+hi SpellBad cterm=underline ctermfg=white
+"}
 
 " Alerts and feedback properties{
 set noerrorbells
@@ -162,12 +166,34 @@ let g:go_highlight_space_tab_error=0
 let g:go_highlight_array_whitespace_error=0
 let g:go_highlight_trailing_whitespace_error=0
 set re=1
-set ttyfast
-set lazyredraw
+set ttyfast " Improves screen redraw"
+set lazyredraw " Avoid redrawing the screen mid-command."
 "}
 
 " Plugin: UndoTree properties {
+
 nnoremap <leader>u :UndotreeToggle<cr>
+"}
+
+" Plugin: Workspace Properties {
+nnoremap <leader>s :ToggleWorkspace<CR>
+let g:workspace_session_directory = $HOME . '/.vim/sessions/'
+let g:workspace_autosave_always = 0
+let g:workspace_autosave_ignore = ['gitcommit', 'gitrebase', 'nerdtree']
+let g:workspace_persist_undo_history = 0  " enabled = 1 (default), disabled = 0
+"}
+
+" Maps {
+" Better split management, kept in sync with tmux' mappings
+noremap <leader>h :sp<CR><C-w>j
+noremap <leader>v :vsp<CR><C-w>l
+"}
+
+" Unmaps {
+" STOP the help from being so... HELPFULL ;)
+inoremap <F1> <ESC>
+nnoremap <F1> <ESC>
+vnoremap <F1> <ESC>"
 "}
 
 " Loading others .vim {
