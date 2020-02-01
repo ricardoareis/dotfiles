@@ -17,6 +17,7 @@ Bundle 'Yggdroot/indentLine'
 Bundle 'morhetz/gruvbox'
 Bundle 'ConradIrwin/vim-bracketed-paste'
 Bundle 'dense-analysis/ale'
+Plugin 'thaerkh/vim-workspace'
 "}
 
 " Unistall Plugins {
