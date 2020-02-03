@@ -9,7 +9,7 @@ set encoding=utf-8
 let mapleader=","
 set laststatus=2
 set signcolumn=yes
-set notimeout ttimeout ttimeoutlen=10       "Quckly time out on keycodes, but never timeout on mappings"
+" set notimeout ttimeout ttimeoutlen=10       "Quckly time out on keycodes, but never timeout on mappings"
 " set virtualedit=all                         " Allow the cursor to go in to 'invalid' places"
 set switchbuf=useopen,usetab                "Attempt to edit currently open files instead of opening multiple buf"
 set hidden                                  " hidden buffers
@@ -74,7 +74,7 @@ nnoremap <leader>ls :ls<cr>:b<space>
 
 " Show Invisible Chars {
 set listchars=eol:⏎,tab:␉·,trail:␠,nbsp:⎵
-nmap <leader>l :set invlist<cr>
+nmap <leader>l :set list!<cr>
 "}
 
 " Highlight - Matching Noises { 
@@ -83,6 +83,10 @@ match ExtraWhitespace /\s\+$/
 match ExtraWhitespace /\s\+$\| \+\ze\t/
 match ExtraWhitespace /[^\t]\zs\t\+/
 autocmd BufWinLeave * call clearmatches()
+"}
+
+" Highlight - Clear after search {
+noremap <space> :set hlsearch! hlsearch?<cr>
 "}
 
 " Conceal properties {
@@ -174,6 +178,7 @@ set lazyredraw " Avoid redrawing the screen mid-command."
 let g:gundo_right = 0
 let g:gundo_preview_bottom=1
 let g:gundo_preview_height = 50
+nunmap   <leader>u
 nnoremap <leader>uu :UndotreeToggle<cr>
 "}
 
@@ -208,7 +213,7 @@ noremap <leader>v :vsp<CR><C-w>l
 " STOP the help from being so... HELPFULL ;)
 inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
-vnoremap <F1> <ESC>"
+vnoremap <F1> <ESC>
 "}
 
 " Loading others .vim {
