@@ -2,12 +2,15 @@
 "
 " VimWichKey properties
 " By default timeoutlen is 1000 ms
+"
 set timeoutlen=500
 let g:maplocalleader=','
+
 nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
 
 "Define prefix dictionary
 call which_key#register(',', "g:which_key_map")
+
 let g:which_key_map =  {}
 
 let g:which_key_map['t'] = {
