@@ -2,9 +2,8 @@
 " vim: set expandtab sw=4 ts=4 sts=4 et tw=78 ft=vim foldmarker={,} foldlevel=0 foldmethod=marker spell:
 
 syntax on
-filetype plugin indent on
-
-set synmaxcol=5000                          " Don't try to highlight lines longer than 5000 characters"
+filetype plugin indent on " Enable file type detection and do language dependent indenting
+set synmaxcol=5000        " Don't try to highlight lines longer than 5000 characters"
 set encoding=utf-8
 let mapleader=","
 set laststatus=2
@@ -13,6 +12,21 @@ set signcolumn=yes
 " set virtualedit=all                         " Allow the cursor to go in to 'invalid' places"
 set switchbuf=useopen,usetab                "Attempt to edit currently open files instead of opening multiple buf"
 set hidden                                  " hidden buffers
+set wildmenu                                " enhanced command line completion
+set wildmode=list:longest                   " complete files like a shell
+set scrolloff=10                            " lines of text around cursor
+set shell=/bin/zsh
+set ruler                                   " show postiion in file
+set cmdheight=1                             " command bar height
+
+" Searching
+set ignorecase                              " case insensitive searching
+set smartcase                               " case-sensitive if expresson contains a capital letter
+set hlsearch
+set incsearch                               " set incremental search, like modern browsers
+set nolazyredraw                            " don't redraw while executing macros
+set magic                                   " Set magic on, for regex
+
 "}
 
 " Color properties {
@@ -53,6 +67,7 @@ nnoremap Y y$
 " Code folding properties - TODO {
 set foldenable
 set foldmethod=indent
+set foldnestmax=10          " deepest fold is 10 levels
 "}
 
 " Bindings properties {
@@ -105,7 +120,7 @@ set showbreak=...
 let g:ycm_use_clangd=0
 let g:ycm_global_ycm_extra_conf='~/repos/dotfiles/.ycm_extra_conf.py'
 let g:ycm_autoclose_preview_window_after_completion=1
-map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+map <leader>gg  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 "}
 
 " Plugin: Identlines properties (this plugin change conceal properties) {
@@ -170,8 +185,8 @@ let g:go_highlight_space_tab_error=0
 let g:go_highlight_array_whitespace_error=0
 let g:go_highlight_trailing_whitespace_error=0
 set re=1
-set ttyfast " Improves screen redraw"
-set lazyredraw " Avoid redrawing the screen mid-command."
+set ttyfast     " Improves screen redraw"
+set lazyredraw  " Avoid redrawing the screen mid-command."
 "}
 
 " Plugin: UndoTree properties {
@@ -192,8 +207,11 @@ let g:workspace_persist_undo_history = 0  " enabled = 1 (default), disabled = 0
 
 " Plugin: NerdTree properties{
 let NERDTreeShowLineNumbers=1
-let NERDTreeMinimalUI=1
-let NERDTreeDirArrows=1
+let NERDTreeMinimalUI=0
+let NERDTreeDirArrows=0
+let g:NERDTreeQuitOnOpen=1                  " close NERDTree after a file is opened
+nnoremap <silent> <leader>ff :NERDTreeFind<cr>   " expand to the path of the file in the current buffer
+
 "}
 
 " Plugin: Ctags properties {
@@ -207,6 +225,18 @@ let g:tagbar_autoclose=1
 " Better split management, kept in sync with tmux' mappings
 noremap <leader>h :sp<CR><C-w>j
 noremap <leader>v :vsp<CR><C-w>l
+
+" toggle cursor line
+nnoremap <leader>i :set cursorline!<cr>
+
+" scroll the viewport faster
+nnoremap <C-e> 3<C-e>
+nnoremap <C-y> 3<C-y>
+
+" buffer shortcuts
+nmap <leader>n :bn<cr> " go to next buffer
+nmap <leader>p :bp<cr> " go to prev buffers
+nmap <leader>q :bd<cr> " close the current buffer
 "}
 
 " Unmaps {
