@@ -22,3 +22,24 @@ function fs() {
     tmux switch-client -t "$session"
 }
 zle -N fs
+
+function getUniqueFolder() {
+  local trunc_path directory test_dir test_dir_length
+  local -a matching
+  local -a paths
+  local cur_path='/'
+  paths=(${(s:/:)1})
+  for directory in ${paths[@]}; do
+    test_dir=''
+    for (( i=0; i < ${#directory}; i++ )); do
+      test_dir+="${directory:$i:1}"
+      matching=("$cur_path"/"$test_dir"*/)
+      if [[ ${#matching[@]} -eq 1 ]]; then
+        break
+      fi
+    done
+    trunc_path+="$test_dir/"
+    cur_path+="$directory/"
+  done
+  echo "${trunc_path: : -1}"
+}
