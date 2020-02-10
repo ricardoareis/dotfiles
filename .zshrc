@@ -1,6 +1,6 @@
 # Basic properties {
 # vim: set expandtab sw=4 ts=4 sts=4 et tw=78 ft=zsh foldmarker={,} foldlevel=0 foldmethod=marker spell:
-export ZSH=$HOME/.oh-my-zsh
+#export ZSH=$HOME/.oh-my-zsh
 
 COMPLETION_WAITING_DOTS="true" # Uncomment the following line to display red dots whilst waiting for completion.
 
@@ -127,9 +127,13 @@ autoload -Uz _zinit
 # } 
 
 # Loading OH-MY-ZSH at the end {
+ZSH="${ZINIT[HOME_DIR]}/plugins/robbyrussell---oh-my-zsh/"
 source $ZSH/oh-my-zsh.sh
 # }
 
+#zmodload zsh/zprof
+#zprof # #Debugging Technique
+#
 # Fortune with the Cow Vader :P {
 echo ""
 
