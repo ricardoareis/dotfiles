@@ -95,7 +95,7 @@ alias q='tmux kill-pane'
 # }
 
 # OH-MY-ZSH: Plugins (put where to enable) { 
-plugins=(safe-paste git golang pip osx sudo docker jsontools tmux dotenv fzf)
+#plugins=(safe-paste git golang pip osx sudo docker jsontools tmux dotenv fzf)
 #}
 
 # Plugin: FZF properties {
