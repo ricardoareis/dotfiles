@@ -20,6 +20,7 @@ local _ZSHRC_OMZ_SOURCES=(
   lib/functions.zsh
   lib/diagnostics.zsh
   lib/grep.zsh
+  lib/git.zsh
   lib/key-bindings.zsh
   lib/misc.zsh
   lib/spectrum.zsh
@@ -47,10 +48,16 @@ local _ZSHRC_OMZ_SOURCES=(
   plugins/safe-paste/safe-paste.plugin.zsh
 )
 
-zplugin ice wait"0" from"gh" pick"lib/git.zsh" nocompletions blockf \
-    atload'!local f; for f in ${_ZSHRC_OMZ_SOURCES}; do source $f; done' \
-    compile"(${(j.|.)_ZSHRC_OMZ_SOURCES})" lucid
-    zplugin light robbyrussell/oh-my-zsh
+#zplugin ice wait"0" from"gh" pick"lib/git.zsh" nocompletions blockf \
+#    atload'!local f; for f in ${_ZSHRC_OMZ_SOURCES}; do source $f; done' \
+#    compile"(${(j.|.)_ZSHRC_OMZ_SOURCES})" lucid
+#    zplugin light robbyrussell/oh-my-zsh
+
+zplugin ice depth"1" wait"0" multisrc"${_ZSHRC_OMZ_LIB_SRCS}" pick"/dev/null" blockf lucid
+zplugin snippet OMZ::lib
+
+zplugin ice depth"1" wait"0" multisrc"${_ZSHRC_OMZ_PLUGINS_SRCS}" pick"/dev/null" blockf lucid
+zplugin snippet OMZ::plugins
 
 zplugin ice wait"1" as"completion" lucid
 zplugin snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
