@@ -39,8 +39,8 @@ export LC_ALL="en_US.UTF-8"
 [[ $TERM == "xterm"  ]] && export TERM=xterm-256color
 
 export DISABLE_UPDATE_PROMPT=true
-export EDITOR=vim
-export VISUAL=vim
+export EDITOR="/Users/cabelo/repos/macvim/src/MacVim/build/Release/MacVim.app/Contents/bin/vim"
+export VISUAL="/Users/cabelo/repos/macvim/src/MacVim/build/Release/MacVim.app/Contents/bin/vim"
 export KEYTIMEOUT=1
 
 #}
