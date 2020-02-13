@@ -1,4 +1,8 @@
 # Two regular plugins loaded without tracking.
+#
+# Load within zshrc – for the instant prompt
+zinit atload'!source $ZSH_CUSTOM/powerlevel.zsh' lucid nocd
+zinit load romkatv/powerlevel10k
 
 zinit ice wait atload"unalias grv" lucid
 zinit snippet OMZ::plugins/git/git.plugin.zsh
@@ -69,4 +73,4 @@ zplugin light zdharma/history-search-multi-word
 zplugin ice wait"1" lucid
 zplugin light zsh-users/zsh-history-substring-search
 
-zplugin light romkatv/powerlevel10k
+#zplugin light romkatv/powerlevel10k
