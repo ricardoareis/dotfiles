@@ -132,9 +132,6 @@ ZSH="${ZINIT[HOME_DIR]}/plugins/robbyrussell---oh-my-zsh/"
 source $ZSH/oh-my-zsh.sh
 # }
 
-#zmodload zsh/zprof
-#zprof # #Debugging Technique
-#
 # Fortune with the Cow Vader :P {
 echo ""
 
