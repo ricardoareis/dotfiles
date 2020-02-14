@@ -2,17 +2,18 @@
 zinit atload'!source $ZSH_CUSTOM/powerlevel.cfg' lucid nocd
 zinit load romkatv/powerlevel10k
 
-zinit ice wait atload"unalias grv" lucid
+zinit ice wait"0a" atload"unalias grv" lucid
 zinit snippet OMZ::plugins/git/git.plugin.zsh
 
-zinit ice silent wait"2" blockf atpull'zinit creinstall -q .'
+zinit ice silent wait"2b" blockf atpull'zinit creinstall -q .'
 zinit light zsh-users/zsh-completions
 
-zinit ice silent wait"2" atinit"zpcompinit; zpcdreplay"
+zinit ice silent wait"2c" atload"_zsh_autosuggest_start"
+zinit light zsh-users/zsh-autosuggestions
+
+zinit ice silent wait"2d" atinit"zpcompinit; zpcdreplay"
 zinit light zdharma/fast-syntax-highlighting
 
-zinit ice silent wait"2" atload"_zsh_autosuggest_start"
-zinit light zsh-users/zsh-autosuggestions
 
 # OMZ things to source
 local _ZSHRC_OMZ_SOURCES=(
@@ -56,10 +57,10 @@ zinit lucid as=program pick="$ZPFX/bin/(fzf|fzf-tmux)" \
     make="PREFIX=$ZPFX install" for \
         junegunn/fzf
 
-zplugin ice depth"1" wait"0" multisrc"${_ZSHRC_OMZ_LIB_SRCS}" pick"/dev/null" blockf lucid
+zplugin ice depth"1" wait"0a" multisrc"${_ZSHRC_OMZ_LIB_SRCS}" pick"/dev/null" blockf lucid
 zplugin snippet OMZ::lib
 
-zplugin ice depth"1" wait"0" multisrc"${_ZSHRC_OMZ_PLUGINS_SRCS}" pick"/dev/null" blockf lucid
+zplugin ice depth"1" wait"0b" multisrc"${_ZSHRC_OMZ_PLUGINS_SRCS}" pick"/dev/null" blockf lucid
 zplugin snippet OMZ::plugins
 
 zplugin ice wait"1" as"completion" lucid
