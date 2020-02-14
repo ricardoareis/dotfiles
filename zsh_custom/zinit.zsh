@@ -1,5 +1,3 @@
-# Two regular plugins loaded without tracking.
-#
 # Load within zshrc – for the instant prompt
 zinit atload'!source $ZSH_CUSTOM/powerlevel.cfg' lucid nocd
 zinit load romkatv/powerlevel10k
@@ -52,10 +50,11 @@ local _ZSHRC_OMZ_SOURCES=(
   plugins/safe-paste/safe-paste.plugin.zsh
 )
 
-#zplugin ice wait"0" from"gh" pick"lib/git.zsh" nocompletions blockf \
-#    atload'!local f; for f in ${_ZSHRC_OMZ_SOURCES}; do source $f; done' \
-#    compile"(${(j.|.)_ZSHRC_OMZ_SOURCES})" lucid
-#    zplugin light robbyrussell/oh-my-zsh
+zinit lucid as=program pick="$ZPFX/bin/(fzf|fzf-tmux)" \
+    atclone="cp shell/completion.zsh _fzf_completion; \
+      cp bin/(fzf|fzf-tmux) $ZPFX/bin" \
+    make="PREFIX=$ZPFX install" for \
+        junegunn/fzf
 
 zplugin ice depth"1" wait"0" multisrc"${_ZSHRC_OMZ_LIB_SRCS}" pick"/dev/null" blockf lucid
 zplugin snippet OMZ::lib
@@ -65,7 +64,6 @@ zplugin snippet OMZ::plugins
 
 zplugin ice wait"1" as"completion" lucid
 zplugin snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
-
 
 zplugin ice wait"1" lucid
 zplugin light zdharma/history-search-multi-word
