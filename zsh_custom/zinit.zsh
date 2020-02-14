@@ -74,52 +74,51 @@ zinit light zdharma/fast-syntax-highlighting
 # OMZ things to source
 local _ZSHRC_OMZ_LIB_SRCS=(
   # Libs
-  lib/compfix.zsh
-  lib/completion.zsh
-  lib/functions.zsh
-  lib/diagnostics.zsh
-  lib/grep.zsh
-  lib/git.zsh
-  lib/key-bindings.zsh
-  lib/misc.zsh
-  lib/spectrum.zsh
-  lib/termsupport.zsh
+  compfix.zsh
+  completion.zsh
+  functions.zsh
+  diagnostics.zsh
+  grep.zsh
+  git.zsh
+  key-bindings.zsh
+  misc.zsh
+  spectrum.zsh
+  termsupport.zsh
 )
 
 local _ZSHRC_OMZ_PLUGINS_SRCS=(
   # Plugins
-  plugins/aws/aws.plugin.zsh
-  plugins/bundler/bundler.plugin.zsh
-  plugins/colored-man-pages/colored-man-pages.plugin.zsh
-  plugins/command-not-found/command-not-found.plugin.zsh
-  plugins/composer/composer.plugin.zsh
-  plugins/docker-compose/docker-compose.plugin.zsh
-  plugins/docker-machine/docker-machine.plugin.zsh
-  plugins/dotenv/dotenv.plugin.zsh
-  plugins/git-auto-fetch/git-auto-fetch.plugin.zsh
-  plugins/git/git.plugin.zsh
-  plugins/golang/golang.plugin.zsh
-  plugins/npm/npm.plugin.zsh
-  plugins/tmux/tmux.plugin.zsh
-  plugins/pip/pip.plugin.zsh
-  plugins/osx/osx.plugin.zsh
-  plugins/sudo/sudo.plugin.zsh
-  plugins/jsontools/jsontools.plugin.zsh
-  plugins/fzf/fzf.plugin.zsh
-  plugins/safe-paste/safe-paste.plugin.zsh
+  aws/aws.plugin.zsh
+  bundler/bundler.plugin.zsh
+  colored-man-pages/colored-man-pages.plugin.zsh
+  command-not-found/command-not-found.plugin.zsh
+  composer/composer.plugin.zsh
+  docker-compose/docker-compose.plugin.zsh
+  docker-machine/docker-machine.plugin.zsh
+  dotenv/dotenv.plugin.zsh
+  git-auto-fetch/git-auto-fetch.plugin.zsh
+  golang/golang.plugin.zsh
+  npm/npm.plugin.zsh
+  tmux/tmux.plugin.zsh
+  pip/pip.plugin.zsh
+  osx/osx.plugin.zsh
+  sudo/sudo.plugin.zsh
+  jsontools/jsontools.plugin.zsh
+  fzf/fzf.plugin.zsh
+  safe-paste/safe-paste.plugin.zsh
 )
 
-zinit lucid as=program pick="$ZPFX/bin/(fzf|fzf-tmux)" \
+zinit lucid as=program pick="$ZPFX/bin/(fzf|fzf-tmux)"\
     atclone="cp shell/completion.zsh _fzf_completion; \
-        cp bin/(fzf|fzf-tmux) $ZPFX/bin" \
+             cp bin/(fzf|fzf-tmux) $ZPFX/bin" \
     make="PREFIX=$ZPFX install" for \
         junegunn/fzf
 
-#zplugin ice depth"1" wait"0a" multisrc"${_ZSHRC_OMZ_LIB_SRCS}" pick"/dev/null" blockf lucid
-#zplugin snippet OMZ::lib
+zplugin ice svn depth"0" wait"0a" multisrc"${_ZSHRC_OMZ_LIB_SRCS}" pick"/dev/null" blockf lucid
+zplugin snippet OMZ::lib
 
-#zplugin ice depth"1" wait"0b" multisrc"${_ZSHRC_OMZ_PLUGINS_SRCS}" pick"/dev/null" blockf lucid
-#zplugin snippet OMZ::plugins
+zplugin ice depth"1" wait"0b" multisrc"${_ZSHRC_OMZ_PLUGINS_SRCS}" pick"/dev/null" blockf lucid
+zplugin snippet OMZ::plugins
 
 zplugin ice wait"1" as"completion" lucid
 zplugin snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
