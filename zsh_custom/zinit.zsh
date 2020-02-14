@@ -1,7 +1,7 @@
 # Two regular plugins loaded without tracking.
 #
 # Load within zshrc – for the instant prompt
-zinit atload'!source $ZSH_CUSTOM/powerlevel.zsh' lucid nocd
+zinit atload'!source $ZSH_CUSTOM/powerlevel.cfg' lucid nocd
 zinit load romkatv/powerlevel10k
 
 zinit ice wait atload"unalias grv" lucid
