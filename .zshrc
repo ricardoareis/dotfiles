@@ -96,7 +96,7 @@ alias q='tmux kill-pane'
 
 # OH-MY-ZSH: Plugins (put where to enable) { 
 #plugins=(safe-paste git golang pip osx sudo docker jsontools tmux dotenv fzf)
-plugins=(tmux)
+#plugins=(tmux)
 #}
 
 # Plugin: FZF properties {
@@ -125,17 +125,23 @@ source ${ZINIT[BIN_DIR]}/zinit.zsh
 autoload -Uz _zinit
 (( ${+_comps}  )) && _comps[zinit]=_zinit
 
+module_path+=( "${ZINIT[BIN_DIR]}/zmodules/Src" )
+zmodload zdharma/zplugin
 # } 
 
 # Loading OH-MY-ZSH at the end {
+# 
 ZSH="${ZINIT[HOME_DIR]}/plugins/robbyrussell---oh-my-zsh/"
-source $ZSH/oh-my-zsh.sh
+zinit ice atload="!source $ZSH/oh-my-zsh.sh" pick"/dev/null" nocd compile
+zinit light robbyrussell/oh-my-zsh
+
+#source $ZSH/oh-my-zsh.sh
 # }
 
 # Fortune with the Cow Vader :P {
-echo ""
+#echo ""
 
-fortune | cowsay -f vader | lolcat
+#fortune | cowsay -f vader | lolcat
 
-echo ""
+#echo ""
 # }
