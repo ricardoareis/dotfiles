@@ -67,7 +67,7 @@ zinit snippet OMZ::plugins/fzf
 zinit ice svn wait"2b" lucid
 zinit snippet OMZ::plugins/safe-paste
 
-zinit wait"" lucid atload"zicompinit; zicdreplay" blockf atpull'zinit creinstall -q .'
+zinit ice wait"" lucid atload"zicompinit; zicdreplay" blockf atpull'zinit creinstall -q .'
 zinit light zsh-users/zsh-completions
 
 zinit ice silent wait"2b" atload"_zsh_autosuggest_start"
