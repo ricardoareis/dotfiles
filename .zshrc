@@ -125,15 +125,14 @@ source ${ZINIT[BIN_DIR]}/zinit.zsh
 autoload -Uz _zinit
 (( ${+_comps}  )) && _comps[zinit]=_zinit
 
-module_path+=( "${ZINIT[BIN_DIR]}/zmodules/Src" )
-zmodload zdharma/zplugin
+module_path+=( "${ZINIT[BIN_DIR]}/zmodules/Src" )   # When "zinit module build" was executed, 
+zmodload zdharma/zplugin                            # these lines load this module, an execute zsh compilation
 # } 
 
-# Loading OH-MY-ZSH at the end {
-# 
-ZSH="${ZINIT[HOME_DIR]}/plugins/robbyrussell---oh-my-zsh/"
-zinit ice atload="!source $ZSH/oh-my-zsh.sh" pick"/dev/null" nocd compile
-zinit light robbyrussell/oh-my-zsh
+# Install/Load OH-MY-ZSH at the end {
+ZSH="${ZINIT[HOME_DIR]}/plugins/robbyrussell---oh-my-zsh/"                  # Defined $ZSH to be the same of managed by ZINIT
+zinit ice atload="!source $ZSH/oh-my-zsh.sh" pick"/dev/null" nocd compile   # After load source the oh-my-zsh config
+zinit light robbyrussell/oh-my-zsh                                          # Install OH-MY-ZSH package
 
 #source $ZSH/oh-my-zsh.sh
 # }
