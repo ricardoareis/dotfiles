@@ -120,13 +120,18 @@ declare -A ZINIT
 
 ZINIT[HOME_DIR]="${HOME}/repos/dotfiles/.zinit"     # Where Zinit should create all working directories, e.g.: "~/.zinit"
 ZINIT[BIN_DIR]="${ZINIT[HOME_DIR]}/bin"             # Where Zinit code resides, e.g.: "~/.zinit/bin"
+ZINIT[MODULES_DIR]="${ZINIT[BIN_DIR]}/zmodules/Src"
 
 source ${ZINIT[BIN_DIR]}/zinit.zsh
 autoload -Uz _zinit
 (( ${+_comps}  )) && _comps[zinit]=_zinit
 
-module_path+=( "${ZINIT[BIN_DIR]}/zmodules/Src" )   # When "zinit module build" was executed, 
-zmodload zdharma/zplugin                            # these lines load this module, an execute zsh compilation
+if [ ! -d ${ZINIT[MODULES_DIR]} ];then
+    zinit modules build
+fi
+
+module_path+=( ${ZINIT[MODULES_DIR]} )   # When "zinit module build" was executed, 
+zmodload zdharma/zplugin                 # these lines load this module, an execute zsh compilation
 # } 
 
 # Install/Load OH-MY-ZSH at the end {
