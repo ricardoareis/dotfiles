@@ -4,6 +4,18 @@
 
 COMPLETION_WAITING_DOTS="true" # Uncomment the following line to display red dots whilst waiting for completion.
 
+# Set ZSH_CACHE_DIR to the path where cache files should be created
+# or else we will use the default cache/
+if [[ -z "$ZSH_CACHE_DIR" ]]; then
+  ZSH_CACHE_DIR="$HOME/.cache"
+fi
+
+# Set ZSH_CUSTOM to the path where your custom config files
+# and plugins exists, or else we will use the default custom/
+if [[ -z "$ZSH_CUSTOM" ]]; then
+    ZSH_CUSTOM="$HOME/repos/dotfiles/zsh_custom"
+fi
+
 # Command history configuration
 if [ -z "$HISTFILE"  ]; then
     HISTFILE=$HOME/.zsh_history
@@ -111,10 +123,6 @@ ZSH_TMUX_AUTOSTART_ONCE=true
 ZSH_TMUX_AUTOCONNECT=false
 #}
 
-# Local Customization {
-export ZSH_CUSTOM=$HOME/repos/dotfiles/zsh_custom
-#}
-
 # Plugin: ZINIT a plugin manager {
 declare -A ZINIT
 
@@ -135,12 +143,22 @@ zmodload zdharma/zplugin                 # these lines load this module, an exec
 # } 
 
 # Install/Load OH-MY-ZSH at the end {
+ZSH_DISABLE_COMPFIX=true
 ZSH="${ZINIT[HOME_DIR]}/plugins/robbyrussell---oh-my-zsh/"                  # Defined $ZSH to be the same of managed by ZINIT
 zinit ice atload="!source $ZSH/oh-my-zsh.sh" pick"/dev/null" nocd compile   # After load source the oh-my-zsh config
 zinit light robbyrussell/oh-my-zsh                                          # Install OH-MY-ZSH package
 
 #source $ZSH/oh-my-zsh.sh
-# }
+#}
+
+# Load all of your custom configurations from custom {
+#export ZSH_CUSTOM=$HOME/repos/dotfiles/zsh_custom
+
+#for config_file ($ZSH_CUSTOM/*.zsh(N)); do
+#  source $config_file
+#done
+#unset config_file
+#}
 
 # Fortune with the Cow Vader :P {
 #echo ""
