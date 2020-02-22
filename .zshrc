@@ -180,6 +180,22 @@ for config_file ($ZSH_CUSTOM/*.zsh(N)); do
 done
 unset config_file
 
+# Set ZSH_3PARTY for zsh plugin managed with git submodules
+ZSH_3PARTY=${ZSH_3PARTY:-${ZSH_CUSTOM}/3party}
+for config_file ($ZSH_3PARTY/**/*.*sh(N)); do
+    source $config_file
+done
+unset config_file
+
+fpath=(
+    ${ZSH_CUSTOM}/functions.zsh 
+    "${fpath[@]}"
+)
+
+# partial completion suggestions
+zstyle ':completion:*' list-suffixes
+zstyle ':completion:*' expand prefix suffix
+
 # Remember to only call the compinit at the end of all included files has been loaded
 _update_zcomp "${ZSH_COMPDUMP}"
 unfunction _update_zcomp
