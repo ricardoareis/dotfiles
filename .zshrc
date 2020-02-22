@@ -54,20 +54,13 @@ _update_zcomp() {
     fi
 }
 
-# Set ZSH_CUSTOM to the path where your custom config files
-# and plugins exists, or else we will use the default custom/
-if [[ -z "$ZSH_CUSTOM" ]]; then
-    ZSH_CUSTOM="$HOME/repos/dotfiles/zsh_custom"
-fi
 
 # Command history configuration
-if [[ -z "$HISTFILE"  ]]; then
-    HISTFILE=$HOME/.zsh_history
-fi
+HISTFILE=${HISTFILE:-${HOME}/.zsh_history}
 
-HISTSIZE=10000
+HISTSIZE=1000000
 HIST_STAMPS="yyyy-mm-dd"
-SAVEHIST=10000
+SAVEHIST=500000
 
 alias history='fc -il 1'
 
@@ -112,7 +105,7 @@ fi
 
 unset fasd_cache
 
-# }
+#}
 
 # Workaround MacOSX / Linux / WSL properties {
 export PYTHON_CONFIGURE_OPTS="--enable-shared"
@@ -148,23 +141,12 @@ fi
 # SSH: properties {
 alias ssh='TERM=xterm-256color ssh'
 alias q='tmux kill-pane'
-# }
-
-# OH-MY-ZSH: Plugins (put where to enable) { 
-#plugins=(safe-paste git golang pip osx sudo docker jsontools tmux dotenv fzf)
-#plugins=(tmux)
 #}
 
 # Plugin: FZF properties {
 export FZF_DEFAULT_COMMAND="fd . $HOME"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd -t d . $HOME"
-#}
-
-# Plugin: TMUX properties {
-ZSH_TMUX_AUTOSTART=true
-ZSH_TMUX_AUTOSTART_ONCE=true
-ZSH_TMUX_AUTOCONNECT=false
 #}
 
 # Plugin: ZINIT a plugin manager {
@@ -186,14 +168,13 @@ fi
 
 module_path+=( ${ZINIT[MODULES_DIR]} )   # When "zinit module build" was executed, 
 zmodload zdharma/zplugin                 # these lines load this module, an execute zsh compilation
-# } 
+#} 
 
-# Install/Load OH-MY-ZSH at the end {
-
-ZSH_DISABLE_COMPFIX=true
-#}
-
-# Load all of your custom configurations from custom {
+# Load all of your custom configurations {
+#
+# Set ZSH_CUSTOM to the path where your custom config files
+# and plugins exists, or else we will use the default custom/
+ZSH_CUSTOM=${ZSH_CUSTOM:-${HOME}/repos/dotfiles/zsh_custom}
 for config_file ($ZSH_CUSTOM/*.zsh(N)); do
     source $config_file
 done
@@ -202,7 +183,7 @@ unset config_file
 # Remember to only call the compinit at the end of all included files has been loaded
 _update_zcomp "${ZSH_COMPDUMP}"
 unfunction _update_zcomp
-# }
+#}
 
 # Fortune with the Cow Vader :P {
 #echo ""
@@ -210,4 +191,4 @@ unfunction _update_zcomp
 #fortune | cowsay -f vader | lolcat
 
 #echo ""
-# }
+#}

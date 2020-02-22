@@ -19,7 +19,7 @@ zplugin snippet OMZ::lib
 zinit atload'!source $ZSH_CUSTOM/powerlevel.cfg' lucid nocd compile
 zinit light romkatv/powerlevel10k
 
-zinit ice svn lucid compile
+zinit ice svn atinit'source $ZSH_CUSTOM/tmux.cfg' lucid compile
 zinit snippet OMZ::plugins/tmux
 
 zinit ice wait"0a" atload"unalias grv" lucid
