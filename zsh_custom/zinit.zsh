@@ -67,14 +67,8 @@ zinit snippet OMZ::plugins/fzf
 zinit ice svn wait"2b" lucid
 zinit snippet OMZ::plugins/safe-paste
 
-zinit ice wait"" lucid atload"zicompinit; zicdreplay" blockf atpull'zinit creinstall -q .'
-zinit light zsh-users/zsh-completions
-
 zinit ice silent wait"2b" atload"_zsh_autosuggest_start"
 zinit light zsh-users/zsh-autosuggestions
-
-zinit ice silent wait"2d" atinit"zpcompinit; zpcdreplay"
-zinit light zdharma/fast-syntax-highlighting
 
 zplugin ice wait"2e" as"completion" lucid
 zplugin snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
@@ -84,3 +78,9 @@ zinit lucid as=program pick="$ZPFX/bin/(fzf|fzf-tmux)"\
              cp bin/(fzf|fzf-tmux) $ZPFX/bin" \
     make="PREFIX=$ZPFX install" for \
         junegunn/fzf
+
+zinit ice silent wait"2d" atinit"zpcompinit; zpcdreplay"
+zinit light zdharma/fast-syntax-highlighting
+
+zinit ice wait"" lucid atload"zicompinit; zicdreplay" blockf atpull'zinit creinstall -q .'
+zinit light zsh-users/zsh-completions

@@ -1,14 +1,58 @@
 # Basic properties {
 # vim: set expandtab sw=4 ts=4 sts=4 et tw=78 ft=zsh foldmarker={,} foldlevel=0 foldmethod=marker spell:
-#export ZSH=$HOME/.oh-my-zsh
 
-COMPLETION_WAITING_DOTS="true" # Uncomment the following line to display red dots whilst waiting for completion.
+#COMPLETION_WAITING_DOTS="true" # Uncomment the following line to display red dots whilst waiting for completion.
+
+# Configure the cache dir
+XDG_CACHE_HOME="${XDG_CACHE_HOME:-${HOME}/.cache}"
+ZSH_CACHE_DIR="${XDG_CACHE_HOME}/zsh"
+ZSH_COMPDUMP="${ZSH_COMPDUMP:-${ZSH_CACHE_DIR}}"
+
+# The instant prompt loaded a precompiled version of zsh
+# some times it does not work, breaking the load
+# the property below produce the config
+export POWERLEVEL9K_INSTANT_PROMPT=verbose
+
+# this if statement load the config
+#if [[ -r "${XDG_CACHE_HOME}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#    source "${XDG_CACHE_HOME}/p10k-instant-prompt-${(%):-%n}.zsh"
+#fi
+
+## completion stuff
+#zstyle ':compinstall' filename '$HOME/.zshrc'
 
 # Set ZSH_CACHE_DIR to the path where cache files should be created
 # or else we will use the default cache/
-if [[ -z "$ZSH_CACHE_DIR" ]]; then
-  ZSH_CACHE_DIR="$HOME/.cache"
-fi
+
+#ZSH_COMPDUMP="${XDG_CACHE_HOME}/zsh"
+[[ -d "${ZSH_COMPDUMP}" ]] || mkdir -p "${ZSH_COMPDUMP}"
+
+_update_zcomp() {
+    setopt local_options
+    setopt extendedglob
+    autoload -Uz compinit
+    local zcompf="$1/zcompdump"
+    # use a separate file to determine when to regenerate, as compinit doesn't
+    # always need to modify the compdump
+    local zcompf_a="${zcompf}.augur"
+
+    if [[ -e "$zcompf_a" && -f "$zcompf_a"(#qN.md-1) ]]; then
+        compinit -C -d "$zcompf"
+    else
+        compinit -d "$zcompf"
+        touch "$zcompf_a"
+    fi
+    # if zcompdump exists (and is non-zero), and is older than the .zwc file,
+    # then regenerate
+    if [[ -s "$zcompf" && (! -s "${zcompf}.zwc" || "$zcompf" -nt "${zcompf}.zwc") ]]; then
+        # since file is mapped, it might be mapped right now (current shells), so
+        # rename it then make a new one
+        [[ -e "$zcompf.zwc" ]] && mv -f "$zcompf.zwc" "$zcompf.zwc.old"
+        # compile it mapped, so multiple shells can share it (total mem reduction)
+        # run in background
+        zcompile -M "$zcompf" &!
+    fi
+}
 
 # Set ZSH_CUSTOM to the path where your custom config files
 # and plugins exists, or else we will use the default custom/
@@ -17,7 +61,7 @@ if [[ -z "$ZSH_CUSTOM" ]]; then
 fi
 
 # Command history configuration
-if [ -z "$HISTFILE"  ]; then
+if [[ -z "$HISTFILE"  ]]; then
     HISTFILE=$HOME/.zsh_history
 fi
 
@@ -129,6 +173,8 @@ declare -A ZINIT
 ZINIT[HOME_DIR]="${HOME}/repos/dotfiles/.zinit"     # Where Zinit should create all working directories, e.g.: "~/.zinit"
 ZINIT[BIN_DIR]="${ZINIT[HOME_DIR]}/bin"             # Where Zinit code resides, e.g.: "~/.zinit/bin"
 ZINIT[MODULES_DIR]="${ZINIT[BIN_DIR]}/zmodules/Src"
+ZINIT[ZCOMPDUMP_PATH]="${ZSH_COMPDUMP}/zcompdump"
+ZINIT[COMPINIT_OPTS]="-C"
 
 source ${ZINIT[BIN_DIR]}/zinit.zsh
 autoload -Uz _zinit
@@ -143,22 +189,20 @@ zmodload zdharma/zplugin                 # these lines load this module, an exec
 # } 
 
 # Install/Load OH-MY-ZSH at the end {
-ZSH_DISABLE_COMPFIX=true
-ZSH="${ZINIT[HOME_DIR]}/plugins/robbyrussell---oh-my-zsh/"                  # Defined $ZSH to be the same of managed by ZINIT
-zinit ice atload="!source $ZSH/oh-my-zsh.sh" pick"/dev/null" nocd compile   # After load source the oh-my-zsh config
-zinit light robbyrussell/oh-my-zsh                                          # Install OH-MY-ZSH package
 
-#source $ZSH/oh-my-zsh.sh
+ZSH_DISABLE_COMPFIX=true
 #}
 
 # Load all of your custom configurations from custom {
-#export ZSH_CUSTOM=$HOME/repos/dotfiles/zsh_custom
+for config_file ($ZSH_CUSTOM/*.zsh(N)); do
+    source $config_file
+done
+unset config_file
 
-#for config_file ($ZSH_CUSTOM/*.zsh(N)); do
-#  source $config_file
-#done
-#unset config_file
-#}
+# Remember to only call the compinit at the end of all included files has been loaded
+_update_zcomp "${ZSH_COMPDUMP}"
+unfunction _update_zcomp
+# }
 
 # Fortune with the Cow Vader :P {
 #echo ""
