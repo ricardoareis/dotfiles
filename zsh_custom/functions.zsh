@@ -1,20 +1,23 @@
-# vim: set expandtab sts=2 ts=2 sw=2 tw=78 ft=zsh norl:
-# recent directory with fasd
+# Function: recent directory with fasd ##{
+# vim: set expandtab sw=4 ts=4 sts=4 et tw=78 ft=zsh foldmarker=##{,##} foldlevel=0 foldmethod=marker spell:
 function rdf() {
   local dir
   dir=$(fasd -Rdl | fzf --no-sort +m) && cd "$dir"
 }
 zle -N rdf
+##}
 
-# lastest vim - recent files with fasd
+# Function: ltv (lastest vim) - recent files with fasd ##{
 function ltv() {
   local file
   zle reset-prompt
   file="$(fasd -Rfl "$1" | fzf -1 -0 --no-sort +m)" && vim "${file}"
 }
 zle -N ltv
+##}
 
-# fs [FUZZY PATTERN] - Select selected tmux session
+# Function: fs [FUZZY PATTERN] - Select selected tmux session ##{
+# }
 function fs() {
   local session
   session=$(tmux list-sessions -F "#{session_name}" |\
@@ -22,7 +25,9 @@ function fs() {
     tmux switch-client -t "$session"
 }
 zle -N fs
+##}
 
+# Function: getUniqueFolder ##{
 function getUniqueFolder() {
   local trunc_path directory test_dir test_dir_length
   local -a matching
@@ -43,6 +48,9 @@ function getUniqueFolder() {
   done
   echo "${trunc_path: : -1}"
 }
+##}
+
+# Function: truncatePath ##{
 ################################################################
 # Given a directory path, truncate it according to the settings.
 # Parameters:
@@ -118,3 +126,12 @@ function truncatePath() {
     echo $1
   fi
 }
+##}
+
+function .1() {cd ../}
+function .2() {cd ../../}
+function .3() {cd ../../../}
+function .4() {cd ../../../../}
+function .5() {cd ../../../../../}
+function .6() {cd ../../../../../../}
+function .7() {cd ../../../../../../../}
