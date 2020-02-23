@@ -11,15 +11,12 @@ ZSH_COMPDUMP="${ZSH_COMPDUMP:-${ZSH_CACHE_DIR}}"
 # The instant prompt loaded a precompiled version of zsh
 # some times it does not work, breaking the load
 # the property below produce the config
-export POWERLEVEL9K_INSTANT_PROMPT=verbose
+POWERLEVEL9K_INSTANT_PROMPT=verbose
 
 # this if statement load the config
 #if [[ -r "${XDG_CACHE_HOME}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
 #    source "${XDG_CACHE_HOME}/p10k-instant-prompt-${(%):-%n}.zsh"
 #fi
-
-## completion stuff
-#zstyle ':compinstall' filename '$HOME/.zshrc'
 
 # Set ZSH_CACHE_DIR to the path where cache files should be created
 # or else we will use the default cache/
@@ -120,16 +117,16 @@ export KEYTIMEOUT=1
 #}
 
 # FASD: properties {
-
-fasd_cache="$HOME/.fasd-init-bash"
-source "$fasd_cache"
-
-if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache"  ]; then
-  fasd --init posix-alias zsh-{hook,ccomp,ccomp-install,wcomp,wcomp-install} >| "$fasd_cache"
-fi
-
-unset fasd_cache
-
+#
+#fasd_cache="$HOME/.fasd-init-bash"
+#source "$fasd_cache"
+#
+#if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache"  ]; then
+#  fasd --init posix-alias zsh-{hook,ccomp,ccomp-install,wcomp,wcomp-install} >| "$fasd_cache"
+#fi
+#
+#unset fasd_cache
+#
 #}
 
 # Workaround MacOSX / Linux / WSL properties {

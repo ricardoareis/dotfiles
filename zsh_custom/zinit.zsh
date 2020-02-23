@@ -67,6 +67,12 @@ zinit snippet OMZ::plugins/fzf
 zinit ice svn wait"2b" lucid
 zinit snippet OMZ::plugins/safe-paste
 
+zinit ice silent wait"2b" atload '!export FZFZ_RECENT_DIRS_TOOL="fasd"' lucid
+zinit light andrewferrier/fzf-z
+
+zinit ice silent wait"2b" atinit'cp fasd /usr/local/bin' atload'!source $ZSH_CUSTOM/fasd.cfg' lucid
+zinit light clvv/fasd
+
 zinit ice silent wait"2b" atload"_zsh_autosuggest_start"
 zinit light zsh-users/zsh-autosuggestions
 
