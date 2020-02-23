@@ -77,6 +77,7 @@ setopt always_to_end            # when completing from the middle of a word, mov
 setopt complete_in_word         # allow completion from within a word/phrase
 setopt correct                  # spelling correction for commands
 setopt list_ambiguous           # complete as much of a completion until it gets ambiguous.
+setopt auto_cd                  # auto change directory
 
 zstyle ':completion::complete:*' use-cache on               # completion caching, use rehash to clear
 zstyle ':completion:*' cache-path ${ZSH_CACHE_DIR}          # cache path
@@ -116,19 +117,6 @@ export KEYTIMEOUT=1
 
 #}
 
-# FASD: properties {
-#
-#fasd_cache="$HOME/.fasd-init-bash"
-#source "$fasd_cache"
-#
-#if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache"  ]; then
-#  fasd --init posix-alias zsh-{hook,ccomp,ccomp-install,wcomp,wcomp-install} >| "$fasd_cache"
-#fi
-#
-#unset fasd_cache
-#
-#}
-
 # Workaround MacOSX / Linux / WSL properties {
 export PYTHON_CONFIGURE_OPTS="--enable-shared"
 
@@ -166,9 +154,9 @@ alias q='tmux kill-pane'
 #}
 
 # Plugin: FZF properties {
-export FZF_DEFAULT_COMMAND="fd . $HOME"
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND="fd -t d . $HOME"
+#export FZF_DEFAULT_COMMAND="fd . $HOME"
+#export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+#export FZF_ALT_C_COMMAND="fd -t d . $HOME"
 #}
 
 # Plugin: ZINIT a plugin manager {
