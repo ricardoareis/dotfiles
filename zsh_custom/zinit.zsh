@@ -19,7 +19,9 @@ zplugin snippet OMZ::lib
 zinit atload'!source $ZSH_CUSTOM/powerlevel.cfg' lucid nocd compile
 zinit light romkatv/powerlevel10k
 
-zinit ice svn atinit'source $ZSH_CUSTOM/tmux.cfg' lucid compile
+zinit ice svn atinit'ZSH_TMUX_AUTOSTART=true\
+                     ZSH_TMUX_AUTOSTART_ONCE=true\
+                     ZSH_TMUX_AUTOCONNECT=false' lucid compile
 zinit snippet OMZ::plugins/tmux
 
 zinit ice wait"0a" atload"unalias grv" lucid
@@ -67,10 +69,16 @@ zinit snippet OMZ::plugins/fzf
 zinit ice svn wait"2b" lucid
 zinit snippet OMZ::plugins/safe-paste
 
-zinit ice silent wait"2b" atload '!export FZFZ_RECENT_DIRS_TOOL="fasd"' lucid
+zinit ice silent wait"2b" atinit'FZFZ_RECENT_DIRS_TOOL="fasd"' lucid
 zinit light andrewferrier/fzf-z
 
-zinit ice silent wait"2b" atinit'cp fasd /usr/local/bin' atload'!source $ZSH_CUSTOM/fasd.cfg' lucid
+zinit ice silent wait"2b" atinit'cp fasd /usr/local/bin'\
+    atload'!fasd_cache="$HOME/.fasd-init-bash";\
+    if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ];then
+        fasd --init posix-alias bash-hook bash-ccomp bash-ccomp-install >| "$fasd_cache"
+    fi
+    source "$fasd_cache";\
+    unset fasd_cache' lucid
 zinit light clvv/fasd
 
 zinit ice silent wait"2b" atload"_zsh_autosuggest_start"
@@ -82,6 +90,9 @@ zplugin snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh
 zinit lucid as=program pick="$ZPFX/bin/(fzf|fzf-tmux)"\
     atclone="cp shell/completion.zsh _fzf_completion; \
              cp bin/(fzf|fzf-tmux) $ZPFX/bin" \
+    atinit='FZF_DEFAULT_COMMAND="fd . $HOME"\
+            FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"\
+            FZF_ALT_C_COMMAND="fd -t d . $HOME"'\
     make="PREFIX=$ZPFX install" for \
         junegunn/fzf
 
