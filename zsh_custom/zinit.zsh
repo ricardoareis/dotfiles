@@ -64,17 +64,9 @@ zinit ice svn wait"1a" lucid
 zinit snippet OMZ::plugins/jsontools
 
 zinit ice svn wait"1a" lucid
-zinit snippet OMZ::plugins/fzf
-
-zinit ice svn wait"1a" lucid
 zinit snippet OMZ::plugins/safe-paste
 
-zinit wait"1b" lucid for \
-    hlissner/zsh-autopair \
-	atinit'bindkey "m" fzm'\
-		urbainvaes/fzf-marks
-	
-zinit wait"1a" atinit'cp fasd /usr/local/bin'\
+zinit wait"1a" as=program atinit"cp fasd $ZPFX/bin"\
     atload'!fasd_cache="$HOME/.fasd-init-bash";\
     if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ];then
         fasd --init posix-alias bash-hook bash-ccomp bash-ccomp-install >| "$fasd_cache"
@@ -82,18 +74,25 @@ zinit wait"1a" atinit'cp fasd /usr/local/bin'\
     source "$fasd_cache"; unset fasd_cache' lucid for \
 		clvv/fasd
 
-zinit wait"1b" nocd lucid as=program pick="$ZPFX/bin/(fzf|fzf-tmux)"\
-    atclone="cp shell/completion.zsh _fzf_completion; \
-             cp bin/(fzf|fzf-tmux) $ZPFX/bin" \
+zinit wait"1b" lucid as=program silent pick="$ZPFX/bin/fzf,$ZPFX/bin/fzf-tmux"\
     atinit='FZF_DEFAULT_COMMAND="fd -H -E .git"\
             FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND -t f ."\
             FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND  -t d ."\
-            FZF_BASE="$PWD"\
-			bindkey "^P" fzf-file-widget; bindkey "p" fzf-cd-widget'\
-    make="PREFIX=$ZPFX install" for \
+            export FZF_BASE="${ZINIT[HOME_DIR]}/plugins/junegunn---fzf";\
+            bindkey "^P" fzf-file-widget; bindkey "p" fzf-cd-widget'\
+    make="install PREFIX=$ZPFX" for \
         junegunn/fzf \
     atinit'FZFZ_RECENT_DIRS_TOOL="fasd"' \
         andrewferrier/fzf-z
+
+zinit wait"1c" lucid for \
+    hlissner/zsh-autopair \
+    atload'source init.zsh'\
+    atinit'bindkey "m" fzm'\
+		urbainvaes/fzf-marks
+
+zinit ice svn wait"1c" lucid
+zinit snippet OMZ::plugins/fzf
 
 zplugin ice silent wait"2e" as"completion" lucid
 zplugin snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
