@@ -170,6 +170,8 @@ ZINIT[MODULES_DIR]="${ZINIT[BIN_DIR]}/zmodules/Src"
 ZINIT[ZCOMPDUMP_PATH]="${ZSH_COMPDUMP}/zcompdump"
 ZINIT[COMPINIT_OPTS]="-C"
 
+[[ -d "${ZINIT[HOME_DIR]}/polaris/bin" ]] || mkdir -p "${ZINIT[HOME_DIR]}/polaris/bin"
+
 source ${ZINIT[BIN_DIR]}/zinit.zsh
 autoload -Uz _zinit
 (( ${+_comps}  )) && _comps[zinit]=_zinit
