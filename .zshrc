@@ -117,6 +117,11 @@ export EDITOR="/Users/cabelo/repos/macvim/src/MacVim/build/Release/MacVim.app/Co
 export VISUAL="/Users/cabelo/repos/macvim/src/MacVim/build/Release/MacVim.app/Contents/bin/vim"
 export KEYTIMEOUT=1
 
+# Run manpage on Esc+h
+autoload -Uz run-help
+autoload -Uz run-help-git
+autoload -Uz run-help-sudo
+bindkey '^[h' run-help  # Esc+h
 #}
 
 # Workaround MacOSX / Linux / WSL properties {
