@@ -12,99 +12,97 @@ local _ZSHRC_OMZ_LIB_SRCS=(
   termsupport.zsh
 )
 
-zplugin ice svn depth"0" wait"0a" multisrc"${_ZSHRC_OMZ_LIB_SRCS}" pick"/dev/null" blockf lucid
+zplugin ice svn depth"0" wait multisrc"${_ZSHRC_OMZ_LIB_SRCS}" pick"/dev/null" blockf lucid
 zplugin snippet OMZ::lib
 
-# Load within zshrc – for the instant prompt
-zinit atload'!source $ZSH_CUSTOM/powerlevel.cfg' lucid nocd compile
-zinit light romkatv/powerlevel10k
+zinit ice svn wait atload"unalias grv" lucid
+zinit snippet OMZ::plugins/git/git.plugin.zsh
 
 zinit ice svn atinit'ZSH_TMUX_AUTOSTART=true\
                      ZSH_TMUX_AUTOSTART_ONCE=true\
                      ZSH_TMUX_AUTOCONNECT=false' lucid compile
 zinit snippet OMZ::plugins/tmux
 
-zinit ice wait"0a" atload"unalias grv" lucid
-zinit snippet OMZ::plugins/git/git.plugin.zsh
+# Load within zshrc – for the instant prompt
+zinit ice atload'!source $ZSH_CUSTOM/powerlevel.cfg' lucid nocd compile
+zinit light romkatv/powerlevel10k
 
 #zinit ice svn wait"2b" lucid
 #zinit snippet OMZ::plugins/aws
 
-zinit ice svn wait"2b" lucid
+zinit ice svn wait"1a" lucid
 zinit snippet OMZ::plugins/osx
 
-zinit ice svn wait"2b" lucid
+zinit ice svn wait"1a" lucid
 zinit snippet OMZ::plugins/colored-man-pages
 
-zinit ice svn wait"2b" lucid
+zinit ice svn wait"1a" lucid
 zinit snippet OMZ::plugins/docker-compose
 
-zinit ice svn wait"2b" lucid
+zinit ice svn wait"1a" lucid
 zinit snippet OMZ::plugins/docker-machine
 
-zinit ice svn wait"2b" lucid
+zinit ice svn wait"1a" lucid
 zinit snippet OMZ::plugins/dotenv
 
-zinit ice svn wait"2b" lucid
+zinit ice svn wait"1a" lucid
 zinit snippet OMZ::plugins/git-auto-fetch
 
-zinit ice svn wait"2b" lucid
+zinit ice svn wait"1a" lucid
 zinit snippet OMZ::plugins/golang
 
-zinit ice svn wait"2b" lucid
+zinit ice svn wait"1a" lucid
 zinit snippet OMZ::plugins/npm
 
-zinit ice svn wait"2b" lucid
+zinit ice svn wait"1a" lucid
 zinit snippet OMZ::plugins/pip
 
-zinit ice svn wait"2b" lucid
+zinit ice svn wait"1a" lucid
 zinit snippet OMZ::plugins/sudo
 
-zinit ice svn wait"2b" lucid
+zinit ice svn wait"1a" lucid
 zinit snippet OMZ::plugins/jsontools
 
-zinit ice svn wait"2b" lucid
+zinit ice svn wait"1a" lucid
 zinit snippet OMZ::plugins/fzf
 
-zinit ice svn wait"2b" lucid
+zinit ice svn wait"1a" lucid
 zinit snippet OMZ::plugins/safe-paste
 
-zinit ice svn wait"2c" lucid trackbinds bindmap'^G -> ^M'
-zinit light urbainvaes/fzf-marks
-
-zinit ice svn wait"2b" lucid
-zinit light hlissner/zsh-autopair
-
-zinit ice silent wait"2b" atinit'FZFZ_RECENT_DIRS_TOOL="fasd"' lucid
-zinit light andrewferrier/fzf-z
-
-zinit ice silent wait"2b" atinit'cp fasd /usr/local/bin'\
+zinit wait"1b" lucid for \
+    hlissner/zsh-autopair \
+	atinit'bindkey "m" fzm'\
+		urbainvaes/fzf-marks
+	
+zinit wait"1a" atinit'cp fasd /usr/local/bin'\
     atload'!fasd_cache="$HOME/.fasd-init-bash";\
     if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ];then
         fasd --init posix-alias bash-hook bash-ccomp bash-ccomp-install >| "$fasd_cache"
     fi
-    source "$fasd_cache";\
-    unset fasd_cache' lucid
-zinit light clvv/fasd
+    source "$fasd_cache"; unset fasd_cache' lucid for \
+		clvv/fasd
 
-zinit ice silent wait"2b" atload"_zsh_autosuggest_start"
-zinit light zsh-users/zsh-autosuggestions
-
-zplugin ice wait"2e" as"completion" lucid
-zplugin snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
-
-zinit lucid as=program pick="$ZPFX/bin/(fzf|fzf-tmux)"\
+zinit wait"1b" nocd lucid as=program pick="$ZPFX/bin/(fzf|fzf-tmux)"\
     atclone="cp shell/completion.zsh _fzf_completion; \
              cp bin/(fzf|fzf-tmux) $ZPFX/bin" \
-    atinit='FZF_DEFAULT_COMMAND="fd . $HOME"\
-            FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"\
-            FZF_ALT_C_COMMAND="fd -t d . $HOME"\
-            FZF_BASE="$PWD"'\
+    atinit='FZF_DEFAULT_COMMAND="fd -H -E .git"\
+            FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND -t f ."\
+            FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND  -t d ."\
+            FZF_BASE="$PWD"\
+			bindkey "^P" fzf-file-widget; bindkey "p" fzf-cd-widget'\
     make="PREFIX=$ZPFX install" for \
-        junegunn/fzf
+        junegunn/fzf \
+    atinit'FZFZ_RECENT_DIRS_TOOL="fasd"' \
+        andrewferrier/fzf-z
 
-zinit ice silent wait"2d" atinit"zpcompinit; zpcdreplay"
+zplugin ice silent wait"2e" as"completion" lucid
+zplugin snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
+
+zinit ice silent wait"2e" atload"_zsh_autosuggest_start"
+zinit light zsh-users/zsh-autosuggestions
+
+zinit ice silent wait"2e" atinit"zpcompinit; zpcdreplay"
 zinit light zdharma/fast-syntax-highlighting
 
-zinit ice wait"" lucid atload"zicompinit; zicdreplay" blockf atpull'zinit creinstall -q .'
+zinit ice silent wait"2e" atload"zicompinit; zicdreplay" blockf atpull'zinit creinstall -q .'
 zinit light zsh-users/zsh-completions
