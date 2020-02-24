@@ -97,7 +97,9 @@ zinit snippet OMZ::plugins/fzf
 zplugin ice silent wait"2e" as"completion" lucid
 zplugin snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
 
-zinit ice silent wait"2e" atload"_zsh_autosuggest_start"
+zinit ice silent wait"2e"\
+    atload"_zsh_autosuggest_start"\
+    atinit="export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=10"
 zinit light zsh-users/zsh-autosuggestions
 
 zinit ice silent wait"2e" atinit"zpcompinit; zpcdreplay"
