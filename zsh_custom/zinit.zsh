@@ -69,6 +69,12 @@ zinit snippet OMZ::plugins/fzf
 zinit ice svn wait"2b" lucid
 zinit snippet OMZ::plugins/safe-paste
 
+zinit ice svn wait"2c" lucid trackbinds bindmap'^G -> ^M'
+zinit light urbainvaes/fzf-marks
+
+zinit ice svn wait"2b" lucid
+zinit light hlissner/zsh-autopair
+
 zinit ice silent wait"2b" atinit'FZFZ_RECENT_DIRS_TOOL="fasd"' lucid
 zinit light andrewferrier/fzf-z
 
@@ -92,7 +98,8 @@ zinit lucid as=program pick="$ZPFX/bin/(fzf|fzf-tmux)"\
              cp bin/(fzf|fzf-tmux) $ZPFX/bin" \
     atinit='FZF_DEFAULT_COMMAND="fd . $HOME"\
             FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"\
-            FZF_ALT_C_COMMAND="fd -t d . $HOME"'\
+            FZF_ALT_C_COMMAND="fd -t d . $HOME"\
+            FZF_BASE="$PWD"'\
     make="PREFIX=$ZPFX install" for \
         junegunn/fzf
 
