@@ -189,6 +189,11 @@ module_path+=( ${ZINIT[MODULES_DIR]} )   # When "zinit module build" was execute
 zmodload zdharma/zplugin                 # these lines load this module, an execute zsh compilation
 #} 
 
+fpath=(
+    ${ZSH_CUSTOM}/functions.zsh 
+    "${fpath[@]}"
+)
+
 # Load all of your custom configurations {
 #
 # Set ZSH_CUSTOM to the path where your custom config files
@@ -205,12 +210,6 @@ for config_file ($ZSH_3PARTY/**/*.*sh(N)); do
     source $config_file
 done
 unset config_file
-
-fpath=(
-    ${ZSH_CUSTOM}/functions.zsh 
-    "${fpath[@]}"
-)
-
 
 # Remember to only call the compinit at the end of all included files has been loaded
 _update_zcomp "${ZSH_COMPDUMP}"
