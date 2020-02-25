@@ -77,9 +77,10 @@ zinit wait"1a" lucid as=program \
 		clvv/fasd
 
 zinit wait"1b" lucid as=program \
-    atload='export FZF_DEFAULT_COMMAND="fd -H -E .git"\
+    atload='export FZF_DEFAULT_COMMAND="fd --type f"\
+            export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border --inline-info"\
             export FZF_CTRL_T_COMMAND="fd -H -E .git -t f ."\
-            export FZF_ALT_C_COMMAND="fd -H -E .git -t d ."\
+            export FZF_ALT_C_COMMAND="fd -H -E .git -t d . "\
             export FZF_BASE="${ZINIT[HOME_DIR]}/plugins/junegunn---fzf";\
             bindkey "^P" fzf-file-widget; bindkey "p" fzf-cd-widget;\
 	        ln -sf $PWD/bin/fzf $ZPFX/bin;ln -sf $PWD/bin/fzf-tmux $ZPFX/bin'\
