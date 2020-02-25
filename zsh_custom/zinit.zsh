@@ -78,11 +78,11 @@ zinit wait"1a" lucid as=program \
 
 zinit wait"1b" lucid as=program \
     atload='export FZF_DEFAULT_COMMAND="fd -H -E .git"\
-            export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND -t f ."\
-            export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND -t d ."\
+            export FZF_CTRL_T_COMMAND="fd -H -E .git -t f ."\
+            export FZF_ALT_C_COMMAND="fd -H -E .git -t d ."\
             export FZF_BASE="${ZINIT[HOME_DIR]}/plugins/junegunn---fzf";\
             bindkey "^P" fzf-file-widget; bindkey "p" fzf-cd-widget;\
-			ln -sf $PWD/bin/fzf $ZPFX/bin;ln -sf $PWD/bin/fzf-tmux $ZPFX/bin'\
+	        ln -sf $PWD/bin/fzf $ZPFX/bin;ln -sf $PWD/bin/fzf-tmux $ZPFX/bin'\
     make="install PREFIX=$ZPFX" pick="bin/fzf*" for \
         junegunn/fzf
 
