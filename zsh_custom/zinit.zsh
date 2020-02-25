@@ -66,25 +66,35 @@ zinit snippet OMZ::plugins/jsontools
 zinit ice svn wait"1a" lucid
 zinit snippet OMZ::plugins/safe-paste
 
-zinit wait"1a" as=program atinit"cp fasd $ZPFX/bin"\
+#pick="fasd" atinit"cp fasd $ZPFX/bin"
+
+zinit wait"1a" lucid as=program \
     atload'!fasd_cache="$HOME/.fasd-init-bash";\
     if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ];then
         fasd --init posix-alias bash-hook bash-ccomp bash-ccomp-install >| "$fasd_cache"
     fi
-    source "$fasd_cache"; unset fasd_cache' lucid for \
+    source "$fasd_cache"; unset fasd_cache' pick="fasd" for \
 		clvv/fasd
 
-zinit wait"1b" lucid as=program silent pick="$ZPFX/bin/fzf,$ZPFX/bin/fzf-tmux"\
+zinit wait"1b" lucid as=program \
     atload='export FZF_DEFAULT_COMMAND="fd -H -E .git"\
             export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND -t f ."\
             export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND -t d ."\
             export FZF_BASE="${ZINIT[HOME_DIR]}/plugins/junegunn---fzf";\
-            bindkey "^P" fzf-file-widget; bindkey "p" fzf-cd-widget'\
-    make="install PREFIX=$ZPFX" for \
-        junegunn/fzf \
+            bindkey "^P" fzf-file-widget; bindkey "p" fzf-cd-widget;\
+			ln -sf $PWD/bin/fzf $ZPFX/bin;ln -sf $PWD/bin/fzf-tmux $ZPFX/bin'\
+    make="install PREFIX=$ZPFX" pick="bin/fzf*" for \
+        junegunn/fzf
+
+#cp bin/fzf* $ZPFX/bin
+
+zinit wait"1b" lucid as=program from"gh-r" for \
+    mv"fd* -> fd" pick="fd/fd" @sharkdp/fd
+
+zinit wait"1c" lucid for \
     atinit'FZFZ_RECENT_DIRS_TOOL="fasd"' \
         andrewferrier/fzf-z
-
+	
 zinit wait"1c" lucid for \
     hlissner/zsh-autopair \
     atload'source init.zsh'\

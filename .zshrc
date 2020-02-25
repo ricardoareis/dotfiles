@@ -128,7 +128,7 @@ bindkey '^[h' run-help  # Esc+h
 export PYTHON_CONFIGURE_OPTS="--enable-shared"
 
 if [[ "$(uname)" == "Linux" ]]; then
-    alias fd="fdfind"
+    #alias fd="fdfind"
     export GOROOT=/opt/go
     export PYENV_ROOT="$HOME/.pyenv"
     if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
