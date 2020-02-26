@@ -1,3 +1,12 @@
+zinit ice svn atinit'ZSH_TMUX_AUTOSTART=true\
+                     ZSH_TMUX_AUTOSTART_ONCE=true\
+                     ZSH_TMUX_AUTOCONNECT=false' lucid compile
+zinit snippet OMZ::plugins/tmux
+
+# Load within zshrc – for the instant prompt
+zinit ice atload'!source $ZSH_CUSTOM/powerlevel.cfg' lucid nocd compile
+zinit light romkatv/powerlevel10k
+
 # OMZ things to source
 local _ZSHRC_OMZ_LIB_SRCS=(
   # Libs
@@ -15,17 +24,8 @@ local _ZSHRC_OMZ_LIB_SRCS=(
 zplugin ice svn depth"0" wait multisrc"${_ZSHRC_OMZ_LIB_SRCS}" pick"/dev/null" blockf lucid
 zplugin snippet OMZ::lib
 
-zinit ice svn wait atload"unalias grv" lucid
+zinit ice svn wait"1a" atload"unalias grv" lucid
 zinit snippet OMZ::plugins/git/git.plugin.zsh
-
-zinit ice svn atinit'ZSH_TMUX_AUTOSTART=true\
-                     ZSH_TMUX_AUTOSTART_ONCE=true\
-                     ZSH_TMUX_AUTOCONNECT=false' lucid compile
-zinit snippet OMZ::plugins/tmux
-
-# Load within zshrc – for the instant prompt
-zinit ice atload'!source $ZSH_CUSTOM/powerlevel.cfg' lucid nocd compile
-zinit light romkatv/powerlevel10k
 
 #zinit ice svn wait"2b" lucid
 #zinit snippet OMZ::plugins/aws
@@ -66,9 +66,15 @@ zinit snippet OMZ::plugins/jsontools
 zinit ice svn wait"1a" lucid
 zinit snippet OMZ::plugins/safe-paste
 
-#pick="fasd" atinit"cp fasd $ZPFX/bin"
+zinit ice svn wait"1c" lucid
+zinit snippet OMZ::plugins/fzf
 
-zinit wait"1a" lucid as=program \
+zinit wait"1c" lucid for \
+    atload'source init.zsh'\
+    atinit'bindkey "m" fzm'\
+		urbainvaes/fzf-marks
+
+zinit wait"1c" lucid as=program \
     atload'!fasd_cache="$HOME/.fasd-init-bash";\
     if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ];then
         fasd --init posix-alias bash-hook bash-ccomp bash-ccomp-install >| "$fasd_cache"
@@ -77,41 +83,38 @@ zinit wait"1a" lucid as=program \
 		clvv/fasd
 
 zinit wait"1b" lucid as=program \
-    atload='export FZF_DEFAULT_COMMAND="fd --type f"\
-            export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border --inline-info"\
+    atload='export FZF_DEFAULT_COMMAND=""\
+            export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --inline-info"\
             export FZF_CTRL_T_COMMAND="fd -H -E .git -t f ."\
+	        export FZF_CTRL_T_OPTS="--preview=\"bat --style=numbers  --color=always {} | head -n50\""\
             export FZF_ALT_C_COMMAND="fd -H -E .git -t d . "\
+	        export FZF_ALT_C_OPTS="--preview \"tree -C {} | head -50\"" \
             export FZF_BASE="${ZINIT[HOME_DIR]}/plugins/junegunn---fzf";\
             bindkey "^P" fzf-file-widget; bindkey "p" fzf-cd-widget;\
 	        ln -sf $PWD/bin/fzf $ZPFX/bin;ln -sf $PWD/bin/fzf-tmux $ZPFX/bin'\
     make="install PREFIX=$ZPFX" pick="bin/fzf*" for \
         junegunn/fzf
 
-#cp bin/fzf* $ZPFX/bin
+zinit wait"1d" lucid as=program from"gh-r" for \
+    mv"bat* -> bat" pick="bat/bat" @sharkdp/bat
 
-zinit wait"1b" lucid as=program from"gh-r" for \
+zinit wait"1d" lucid as=program from"gh-r" for \
     mv"fd* -> fd" pick="fd/fd" @sharkdp/fd
 
-zinit wait"1c" lucid for \
-    atinit'FZFZ_RECENT_DIRS_TOOL="fasd"' \
-        andrewferrier/fzf-z
+#zinit wait"1c" lucid for \
+#    atinit'FZFZ_RECENT_DIRS_TOOL="fasd"' \
+#        andrewferrier/fzf-z
 	
-zinit wait"1c" lucid for \
-    hlissner/zsh-autopair \
-    atload'source init.zsh'\
-    atinit'bindkey "m" fzm'\
-		urbainvaes/fzf-marks
-
-zinit ice svn wait"1c" lucid
-zinit snippet OMZ::plugins/fzf
-
-zplugin ice silent wait"2e" as"completion" lucid
-zplugin snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
+zinit wait"2a" lucid for \
+    hlissner/zsh-autopair
 
 zinit ice silent wait"2e"\
     atload"_zsh_autosuggest_start"\
     atinit="export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=10"
 zinit light zsh-users/zsh-autosuggestions
+
+zinit ice silent wait"2b" as"completion" atload"zicompinit; zicdreplay" lucid
+zinit snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
 
 zinit ice silent wait"2e" atinit"zpcompinit; zpcdreplay"
 zinit light zdharma/fast-syntax-highlighting
