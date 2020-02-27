@@ -116,6 +116,9 @@ zinit light zsh-users/zsh-autosuggestions
 zinit ice silent wait"2b" as"completion" atload"zicompinit; zicdreplay" lucid
 zinit snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
 
+zinit wait lucid for \
+	voronkovich/gitignore.plugin.zsh
+
 zinit ice silent wait"2e" atinit"zpcompinit; zpcdreplay"
 zinit light zdharma/fast-syntax-highlighting
 
