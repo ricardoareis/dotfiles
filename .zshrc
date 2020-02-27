@@ -3,7 +3,7 @@
 
 #COMPLETION_WAITING_DOTS="true" # Uncomment the following line to display red dots whilst waiting for completion.
 
-export CLICOLOR=YES
+#export CLICOLOR=YES
 
 # Configure the cache dir
 XDG_CACHE_HOME="${XDG_CACHE_HOME:-${HOME}/.cache}"
@@ -13,7 +13,7 @@ ZSH_COMPDUMP="${ZSH_COMPDUMP:-${ZSH_CACHE_DIR}}"
 # The instant prompt loaded a precompiled version of zsh
 # some times it does not work, breaking the load
 # the property below produce the config
-POWERLEVEL9K_INSTANT_PROMPT=verbose
+POWERLEVEL9K_INSTANT_PROMPT=off
 
 # this if statement load the config
 #if [[ -r "${XDG_CACHE_HOME}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
@@ -23,7 +23,6 @@ POWERLEVEL9K_INSTANT_PROMPT=verbose
 # Set ZSH_CACHE_DIR to the path where cache files should be created
 # or else we will use the default cache/
 
-#ZSH_COMPDUMP="${XDG_CACHE_HOME}/zsh"
 [[ -d "${ZSH_COMPDUMP}" ]] || mkdir -p "${ZSH_COMPDUMP}"
 
 _update_zcomp() {
@@ -61,7 +60,7 @@ HISTSIZE=1000000
 HIST_STAMPS="yyyy-mm-dd"
 SAVEHIST=500000
 
-alias history='fc -il 1'
+#alias history='fc -il 1'
 
 setopt append_history           # append
 setopt extended_history         # add timestamp, and more
@@ -81,11 +80,11 @@ setopt correct                  # spelling correction for commands
 setopt list_ambiguous           # complete as much of a completion until it gets ambiguous.
 setopt auto_cd                  # auto change directory
 
-zstyle ':completion::complete:*' use-cache on               # completion caching, use rehash to clear
-zstyle ':completion:*' cache-path ${ZSH_CACHE_DIR}          # cache path
-zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'   # ignore case
-zstyle ':completion:*' menu select=2                        # menu if nb items > 2
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}       # colorz !
+zstyle ':completion:*' use-cache on                             # completion caching, use rehash to clear
+zstyle ':completion:*' cache-path ${ZSH_CACHE_DIR}              # cache path
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'       # ignore case
+zstyle ':completion:*' menu select=2                            # menu if nb items > 2
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}           # colorz !
 zstyle ':completion:*::::' completer _expand _complete _ignored _approximate # list of completers to use
 
 # partial completion suggestions
@@ -99,23 +98,23 @@ setopt pushd_silent             # no dir stack after pushd or popd
 setopt pushd_to_home            # `pushd` = `pushd $HOME`
 
 # Locale settings
-export LANG="en_US.UTF-8"
-export LC_COLLATE="en_US.UTF-8"
-export LC_CTYPE="en_US.UTF-8"
-export LC_MESSAGES="en_US.UTF-8"
-export LC_MONETARY="en_US.UTF-8"
-export LC_NUMERIC="en_US.UTF-8"
-export LC_TIME="en_US.UTF-8"
-export LC_ALL="en_US.UTF-8"
+#export LANG="en_US.UTF-8"
+#export LC_COLLATE="en_US.UTF-8"
+#export LC_CTYPE="en_US.UTF-8"
+#export LC_MESSAGES="en_US.UTF-8"
+#export LC_MONETARY="en_US.UTF-8"
+#export LC_NUMERIC="en_US.UTF-8"
+#export LC_TIME="en_US.UTF-8"
+#export LC_ALL="en_US.UTF-8"
 
 # Export TERM correctly for tmux
 [[ $TERM == "screen" ]] && export TERM=screen-256color
 [[ $TERM == "xterm"  ]] && export TERM=xterm-256color
 
-export DISABLE_UPDATE_PROMPT=true
-export EDITOR="/Users/cabelo/repos/macvim/src/MacVim/build/Release/MacVim.app/Contents/bin/vim"
-export VISUAL="/Users/cabelo/repos/macvim/src/MacVim/build/Release/MacVim.app/Contents/bin/vim"
-export KEYTIMEOUT=1
+#export DISABLE_UPDATE_PROMPT=true
+#export EDITOR="/Users/cabelo/repos/macvim/src/MacVim/build/Release/MacVim.app/Contents/bin/vim"
+#export VISUAL="/Users/cabelo/repos/macvim/src/MacVim/build/Release/MacVim.app/Contents/bin/vim"
+#export KEYTIMEOUT=1
 
 # Run manpage on Esc+h
 autoload -Uz run-help
@@ -125,10 +124,9 @@ bindkey '^[h' run-help  # Esc+h
 #}
 
 # Workaround MacOSX / Linux / WSL properties {
-export PYTHON_CONFIGURE_OPTS="--enable-shared"
+#export PYTHON_CONFIGURE_OPTS="--enable-shared"
 
 if [[ "$(uname)" == "Linux" ]]; then
-    #alias fd="fdfind"
     export GOROOT=/opt/go
     export PYENV_ROOT="$HOME/.pyenv"
     if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
@@ -156,14 +154,8 @@ fi
 #}
 
 # SSH: properties {
-alias ssh='TERM=xterm-256color ssh'
-alias q='tmux kill-pane'
-#}
-
-# Plugin: FZF properties {
-#export FZF_DEFAULT_COMMAND="fd . $HOME"
-#export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-#export FZF_ALT_C_COMMAND="fd -t d . $HOME"
+#alias ssh='TERM=xterm-256color ssh'
+#alias q='tmux kill-pane'
 #}
 
 # Plugin: ZINIT a plugin manager {
@@ -189,13 +181,14 @@ module_path+=( ${ZINIT[MODULES_DIR]} )   # When "zinit module build" was execute
 zmodload zdharma/zplugin                 # these lines load this module, an execute zsh compilation
 #} 
 
+# Load all of your custom configurations {
+
+# Load custom functions
 fpath=(
     ${ZSH_CUSTOM}/functions.zsh 
     "${fpath[@]}"
 )
 
-# Load all of your custom configurations {
-#
 # Set ZSH_CUSTOM to the path where your custom config files
 # and plugins exists, or else we will use the default custom/
 ZSH_CUSTOM=${ZSH_CUSTOM:-${HOME}/repos/dotfiles/zsh_custom}
