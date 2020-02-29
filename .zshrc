@@ -146,7 +146,7 @@ elif [[ "$(uname)" == "Darwin" ]] ; then
     if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
     export GOPATH=$HOME/Go 
     export GOROOT=/usr/local/opt/go/libexec
-    export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+    export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH
     export PATH=$PATH:/usr/local/sbin:/usr/local/opt/go/libexec/bin:$GOPATH/bin:$GOROOT/bin
     export PATH=$PYENV_ROOT/bin:$PYENV_ROOT/shims:$PATH
 fi
