@@ -104,7 +104,24 @@ autocmd BufWinLeave * call clearmatches()
 noremap <space> :set hlsearch! hlsearch?<cr>
 "}
 
+" Vimdiff - Properties {
+set diffopt=internal,algorithm:patience,indent-heuristic
+
+" Toggle Ignore Space
+if &diff
+	map gs :call IwhiteToggle()<CR>
+	function! IwhiteToggle()
+	if &diffopt =~ 'iwhite'
+		set diffopt-=iwhite
+	else
+		set diffopt+=iwhite
+	endif
+	endfunction
+endif
+"}
+
 " Conceal properties {
+set conceallevel=0
 nnoremap coe :set <C-R>=&conceallevel ? 'conceallevel=0' : 'conceallevel=1'<CR><CR>
 "}
 
