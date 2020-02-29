@@ -84,11 +84,18 @@ zinit wait"1c" lucid as=program \
 
 zinit wait"1b" lucid as=program \
     atload='export FZF_DEFAULT_COMMAND=""\
-            export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --inline-info"\
+            export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --inline-info \
+				--bind=\"alt-k:preview-up,alt-p:preview-up\"\
+				--bind=\"alt-j:preview-down,alt-n:preview-down\"\
+				--bind=\"ctrl-r:toggle-all\"\
+				--bind=\"ctrl-s:toggle-sort\"\
+				--bind=\"?:toggle-preview\"\
+				--bind=\"alt-w:toggle-preview-wrap\"\
+				--preview-window=\"right:60%\""\
             export FZF_CTRL_T_COMMAND="fd -H -E .git -t f ."\
-	        export FZF_CTRL_T_OPTS="--preview=\"bat --style=numbers  --color=always {} | head -n50\""\
+	        export FZF_CTRL_T_OPTS="--height 80% --preview=\"bat --style=numbers  --color=always {} | head -n50\""\
             export FZF_ALT_C_COMMAND="fd -H -E .git -t d . "\
-	        export FZF_ALT_C_OPTS="--preview \"tree -C {} | head -50\"" \
+	        export FZF_ALT_C_OPTS="--height 80% --preview \"tree -C {} | head -50\"" \
             export FZF_BASE="${ZINIT[HOME_DIR]}/plugins/junegunn---fzf";\
             bindkey "^P" fzf-file-widget; bindkey "p" fzf-cd-widget;\
 	        ln -sf $PWD/bin/fzf $ZPFX/bin;ln -sf $PWD/bin/fzf-tmux $ZPFX/bin'\
