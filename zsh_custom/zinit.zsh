@@ -101,6 +101,9 @@ zinit wait"1d" lucid as=program from"gh-r" for \
 zinit wait"1d" lucid as=program from"gh-r" for \
     mv"fd* -> fd" pick="fd/fd" @sharkdp/fd
 
+zinit wait"1d" lucid as=program from"gh-r" for \
+    mv"delta* -> delta" pick="delta/delta" @dandavison/delta
+
 #zinit wait"1c" lucid for \
 #    atinit'FZFZ_RECENT_DIRS_TOOL="fasd"' \
 #        andrewferrier/fzf-z
@@ -117,7 +120,16 @@ zinit ice silent wait"2b" as"completion" atload"zicompinit; zicdreplay" lucid
 zinit snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
 
 zinit wait lucid for \
-	voronkovich/gitignore.plugin.zsh
+	voronkovich/gitignore.plugin.zsh \
+    atinit='export forgit_log="gvlo"\
+            export forgit_diff="gvd"\
+            export forgit_add="gva"\
+            export forgit_reset_head="gvrh"\
+            export forgit_ignore="gvi"\
+            export forgit_restore="gvcf"\
+            export forgit_clean="gvclean"\
+            export forgit_stash_show="gvss"'\
+    wfxr/forgit
 
 zinit ice silent wait"2e" atinit"zpcompinit; zpcdreplay"
 zinit light zdharma/fast-syntax-highlighting
