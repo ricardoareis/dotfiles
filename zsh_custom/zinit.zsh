@@ -21,7 +21,7 @@ local _ZSHRC_OMZ_LIB_SRCS=(
   key-bindings.zsh
   #misc.zsh
   spectrum.zsh
-  stermsupport.zsh
+  #termsupport.zsh
   directories.zsh
   theme-and-appearance.zsh
 )
