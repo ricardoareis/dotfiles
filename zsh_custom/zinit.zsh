@@ -18,10 +18,10 @@ local _ZSHRC_OMZ_LIB_SRCS=(
   functions.zsh
   #diagnostics.zsh
   grep.zsh
-  #key-bindings.zsh
+  key-bindings.zsh
   #misc.zsh
   spectrum.zsh
-  termsupport.zsh
+  stermsupport.zsh
   directories.zsh
   theme-and-appearance.zsh
 )
