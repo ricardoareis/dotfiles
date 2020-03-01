@@ -14,15 +14,16 @@ zinit light romkatv/powerlevel10k
 # OMZ things to source
 local _ZSHRC_OMZ_LIB_SRCS=(
   # Libs
-  compfix.zsh
   completion.zsh
   functions.zsh
-  diagnostics.zsh
+  #diagnostics.zsh
   grep.zsh
-  key-bindings.zsh
-  misc.zsh
+  #key-bindings.zsh
+  #misc.zsh
   spectrum.zsh
   termsupport.zsh
+  directories.zsh
+  theme-and-appearance.zsh
 )
 
 zplugin ice svn depth"0" wait multisrc"${_ZSHRC_OMZ_LIB_SRCS}" pick"/dev/null" blockf lucid

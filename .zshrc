@@ -79,6 +79,7 @@ setopt complete_in_word         # allow completion from within a word/phrase
 setopt correct                  # spelling correction for commands
 setopt list_ambiguous           # complete as much of a completion until it gets ambiguous.
 setopt auto_cd                  # auto change directory
+setopt interactivecomments      # permit a command start w/ "#" like a bash 
 
 zstyle ':completion:*' use-cache on                             # completion caching, use rehash to clear
 zstyle ':completion:*' cache-path ${ZSH_CACHE_DIR}              # cache path
