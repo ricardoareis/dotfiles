@@ -13,3 +13,4 @@ export KEYTIMEOUT=1
 export PYTHON_CONFIGURE_OPTS="--enable-shared"
 export CLICOLOR=YES
 export TMUX_FZF_SED="gsed"
+export ZSH_DOTENV_PROMPT=false
