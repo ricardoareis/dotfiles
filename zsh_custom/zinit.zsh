@@ -14,6 +14,7 @@ zinit light romkatv/powerlevel10k
 # OMZ things to source
 local _ZSHRC_OMZ_LIB_SRCS=(
   # Libs
+  git.zsh
   completion.zsh
   functions.zsh
   #diagnostics.zsh
@@ -33,7 +34,7 @@ zplugin snippet OMZ::lib
 # Loading with a 1s delay {
 #
 zinit ice svn wait"1a" atload"unalias grv" lucid
-zinit snippet OMZ::plugins/git/git.plugin.zsh
+zinit snippet OMZ::plugins/git
 
 #zinit ice svn wait"2b" lucid
 #zinit snippet OMZ::plugins/aws
