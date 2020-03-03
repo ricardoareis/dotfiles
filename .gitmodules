@@ -1,12 +1,16 @@
 [submodule ".tmux/plugins/tpm"]
 	path = .tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
+    ignore = all
 [submodule ".vim/bundle/vundle"]
 	path = .vim/bundle/vundle
 	url = https://github.com/gmarik/vundle
+    ignore = all
 [submodule ".zinit/bin"]
 	path = .zinit/bin
 	url = https://github.com/zdharma/zinit.git
+    ignore = all
 [submodule "zsh_custom/3party/z"]
 	path = zsh_custom/3party/z
 	url = https://github.com/rupa/z
+    ignore = all
