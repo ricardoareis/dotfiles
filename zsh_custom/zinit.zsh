@@ -152,7 +152,11 @@ zinit wait"2" lucid for \
 #}
 
 # Loading the completions mandatory at the end {
-#
+zinit ice silent wait"1" atclone"./libexec/pyenv init - > zpyenv.zsh" \
+    atinit'export PYENV_ROOT="$HOME/.pyenv"' atpull"%atclone" \
+    as'command' pick'bin/pyenv' src"zpyenv.zsh" nocompile'!'
+zinit light pyenv/pyenv
+
 zinit ice silent wait"2b" as"completion" atload"zicompinit; zicdreplay" lucid
 zinit snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
 
