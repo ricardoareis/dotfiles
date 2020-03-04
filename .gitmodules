@@ -2,15 +2,19 @@
     path = .tmux/plugins/tpm
     url = https://github.com/tmux-plugins/tpm
     ignore = all
+    branch = master
 [submodule ".vim/bundle/vundle"]
     path = .vim/bundle/vundle
     url = https://github.com/gmarik/vundle
     ignore = all
+    branch = master
 [submodule ".zinit/bin"]
     path = .zinit/bin
     url = https://github.com/zdharma/zinit.git
     ignore = all
+    branch = master
 [submodule "zsh_custom/3party/z"]
     path = zsh_custom/3party/z
     url = https://github.com/rupa/z
     ignore = all
+    branch = master
