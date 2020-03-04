@@ -9,6 +9,5 @@ case "$TERM" in
     bindkey '^o' fzf-cd-widget
     # Ctrl-e: Lastest vim file
     bindkey '^b' ltv
-    bindkey '^ ' forward-word
   ;;
 esac
