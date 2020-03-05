@@ -109,14 +109,15 @@ bindkey '^[h' run-help  # Esc+h
 
 # Workaround MacOSX / Linux / WSL properties {
 
+export PYENV_ROOT="$HOME/.pyenv"
+
 if [[ "$(uname)" == "Linux" ]]; then
-    export GOROOT=/opt/go
-    #export PYENV_ROOT="$HOME/.pyenv"
     #if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
-    export PATH="$HOME/.local/bin:$PYENV_ROOT/bin:$PATH"
-    export PATH="$GOPATH/bin:$GOROOT/bin:$PATH"
+    export GOROOT=/opt/go
     export GOPATH=$HOME/repos/Go
     export DOCKER_HOST=tcp://0.0.0.0:2375
+    export PATH="$HOME/.local/bin:$PYENV_ROOT/bin:$PYENV_ROOT/shims:$PATH"
+    export PATH="$GOPATH/bin:$GOROOT/bin:$PATH"
 elif [[ "$(uname)" == "Darwin" ]] ; then
     alias updatedb="sudo /usr/libexec/locate.updatedb"
     #alias ctags="/usr/local/bin/ctags"
@@ -127,9 +128,9 @@ elif [[ "$(uname)" == "Darwin" ]] ; then
     #if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
     export GOPATH=$HOME/Go 
     export GOROOT=/usr/local/opt/go/libexec
-    export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH
-    export PATH=$PATH:/usr/local/sbin:/usr/local/opt/go/libexec/bin:$GOPATH/bin:$GOROOT/bin
     export PATH=$PYENV_ROOT/bin:$PYENV_ROOT/shims:$PATH
+    export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH
+    export PATH=/usr/local/sbin:/usr/local/opt/go/libexec/bin:$GOPATH/bin:$GOROOT/bin:$PATH
 fi
 #}
 
