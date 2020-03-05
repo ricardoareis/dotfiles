@@ -134,8 +134,12 @@ zinit wait"1d" lucid as=program \
 
 zinit wait"1d" lucid as=program atclone"./libexec/pyenv init - > zpyenv.zsh" \
     atinit'export PYENV_ROOT="$HOME/.pyenv"' atpull"%atclone" \
-    pick='bin/pyenv' src"zpyenv.zsh" nocompile'!'
-zinit light pyenv/pyenv
+    pick='bin/pyenv' src"zpyenv.zsh" nocompile'!' for\
+        pyenv/pyenv
+
+zinit wait"1f" lucid as=program \
+    atinit' ln -sf $PWD/fpp $ZPFX/bin' pick="fpp" for \
+    facebook/pathpicker
 #} 
 
 # Loading with a 2s delay {
