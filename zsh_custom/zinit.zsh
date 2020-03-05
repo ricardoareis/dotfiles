@@ -138,7 +138,7 @@ zinit wait"1d" lucid as=program atclone"./libexec/pyenv init - > zpyenv.zsh" \
         pyenv/pyenv
 
 zinit wait"1f" lucid as=program \
-    atinit' ln -sf $PWD/fpp $ZPFX/bin' pick="fpp" for \
+    atinit' ln -sf $PWD/fpp $ZPFX/bin' pick="fpp" nocompile'!' for \
     facebook/pathpicker
 #} 
 
