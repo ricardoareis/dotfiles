@@ -12,6 +12,6 @@ export VISUAL="vim"
 export KEYTIMEOUT=1
 export PYTHON_CONFIGURE_OPTS="--enable-shared"
 export CLICOLOR=YES
-export TMUX_FZF_SED="gsed"
+#export TMUX_FZF_SED="gsed"
 export ZSH_DOTENV_PROMPT=false
 export PYENV_ROOT=${PYENV_ROOT:-${HOME}/.pyenv}
