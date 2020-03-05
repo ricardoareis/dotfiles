@@ -126,6 +126,16 @@ zinit wait"1d" lucid as=program from"gh-r" for \
 
 zinit wait"1d" lucid as=program from"gh-r" for \
     mv"delta* -> delta" pick="delta/delta" @dandavison/delta
+
+zinit wait"1d" lucid as=program \
+    atclone="./autogen.sh && ./configure --prefix=$ZPFX" \
+    make="install PREFIX=$ZPFX" for \
+    universal-ctags/ctags
+
+zinit wait"1d" lucid as=program atclone"./libexec/pyenv init - > zpyenv.zsh" \
+    atinit'export PYENV_ROOT="$HOME/.pyenv"' atpull"%atclone" \
+    pick='bin/pyenv' src"zpyenv.zsh" nocompile'!'
+zinit light pyenv/pyenv
 #} 
 
 # Loading with a 2s delay {
@@ -152,10 +162,6 @@ zinit wait"2" lucid for \
 #}
 
 # Loading the completions mandatory at the end {
-zinit ice silent wait"1" atclone"./libexec/pyenv init - > zpyenv.zsh" \
-    atinit'export PYENV_ROOT="$HOME/.pyenv"' atpull"%atclone" \
-    as'command' pick'bin/pyenv' src"zpyenv.zsh" nocompile'!'
-zinit light pyenv/pyenv
 
 zinit ice silent wait"2b" as"completion" atload"zicompinit; zicdreplay" lucid
 zinit snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker

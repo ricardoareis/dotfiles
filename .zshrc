@@ -3,8 +3,6 @@
 
 #COMPLETION_WAITING_DOTS="true" # Uncomment the following line to display red dots whilst waiting for completion.
 
-#export CLICOLOR=YES
-
 umask 022
 # Configure the cache dir
 XDG_CACHE_HOME="${XDG_CACHE_HOME:-${HOME}/.cache}"
@@ -53,7 +51,6 @@ _update_zcomp() {
     fi
 }
 
-
 # Command history configuration
 HISTFILE=${HISTFILE:-${HOME}/.zsh_history}
 
@@ -99,24 +96,9 @@ setopt pushd_ignore_dups        # no duplicates in dir stack
 setopt pushd_silent             # no dir stack after pushd or popd
 setopt pushd_to_home            # `pushd` = `pushd $HOME`
 
-# Locale settings
-#export LANG="en_US.UTF-8"
-#export LC_COLLATE="en_US.UTF-8"
-#export LC_CTYPE="en_US.UTF-8"
-#export LC_MESSAGES="en_US.UTF-8"
-#export LC_MONETARY="en_US.UTF-8"
-#export LC_NUMERIC="en_US.UTF-8"
-#export LC_TIME="en_US.UTF-8"
-#export LC_ALL="en_US.UTF-8"
-
 # Export TERM correctly for tmux
 [[ $TERM == "screen" ]] && export TERM=screen-256color
 [[ $TERM == "xterm"  ]] && export TERM=xterm-256color
-
-#export DISABLE_UPDATE_PROMPT=true
-#export EDITOR="/Users/cabelo/repos/macvim/src/MacVim/build/Release/MacVim.app/Contents/bin/vim"
-#export VISUAL="/Users/cabelo/repos/macvim/src/MacVim/build/Release/MacVim.app/Contents/bin/vim"
-#export KEYTIMEOUT=1
 
 # Run manpage on Esc+h
 autoload -Uz run-help
@@ -126,7 +108,6 @@ bindkey '^[h' run-help  # Esc+h
 #}
 
 # Workaround MacOSX / Linux / WSL properties {
-#export PYTHON_CONFIGURE_OPTS="--enable-shared"
 
 if [[ "$(uname)" == "Linux" ]]; then
     export GOROOT=/opt/go
@@ -137,27 +118,19 @@ if [[ "$(uname)" == "Linux" ]]; then
     export GOPATH=$HOME/repos/Go
     export DOCKER_HOST=tcp://0.0.0.0:2375
 elif [[ "$(uname)" == "Darwin" ]] ; then
-    alias vim=/Users/cabelo/repos/macvim/src/MacVim/build/Release/MacVim.app/Contents/bin/vim
-    alias vimdiff=/Users/cabelo/repos/macvim/src/MacVim/build/Release/MacVim.app/Contents/bin/vimdiff
     alias updatedb="sudo /usr/libexec/locate.updatedb"
-    alias ctags="/usr/local/bin/ctags"
-    export PYENV_ROOT=/usr/local/opt/pyenv
+    #alias ctags="/usr/local/bin/ctags"
+    #export PYENV_ROOT=/usr/local/opt/pyenv
     export LDFLAGS=-L/usr/local/opt/openssl@1.1/lib
     export CPPFLAGS=-I/usr/local/opt/openssl@1.1/include
     export C_INCLUDE_PATH="/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include/libxml2:$C_INCLUDE_PATH"
-    if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+    #if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
     export GOPATH=$HOME/Go 
     export GOROOT=/usr/local/opt/go/libexec
     export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH
     export PATH=$PATH:/usr/local/sbin:/usr/local/opt/go/libexec/bin:$GOPATH/bin:$GOROOT/bin
     export PATH=$PYENV_ROOT/bin:$PYENV_ROOT/shims:$PATH
 fi
-
-#}
-
-# SSH: properties {
-#alias ssh='TERM=xterm-256color ssh'
-#alias q='tmux kill-pane'
 #}
 
 # Plugin: ZINIT a plugin manager {
