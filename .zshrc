@@ -51,6 +51,35 @@ _update_zcomp() {
     fi
 }
 
+_rationalize-path () {
+  # Remove entries that don't exist on this system.  Just for sanity's
+  # sake more than anything.
+  # rationalize-path()
+  # Later we'll need to trim down the paths that follow because the ones
+  # given here are for all my accounts, some of which have unusual
+  # paths in them.  rationalize-path will remove
+  # nonexistent directories from an array.
+  #http://zsh.sourceforge.net/Contrib/startup/users/debbiep/dot.zshenv
+  # Note that this works only on arrays, not colon-delimited strings.
+  # Not that this is a problem now that there is typeset -T.
+  local element
+  local build
+  build=()
+  # Evil quoting to survive an eval and to make sure that
+  # this works even with variables containing IFS characters, if I'm
+  # crazy enough to setopt shwordsplit.
+  eval '
+  foreach element in "$'"$1"'[@]"
+  do
+    if [[ -d "$element" ]]
+    then
+      build=("$build[@]" "$element")
+    fi
+  done
+  '"$1"'=( "$build[@]" )
+  '
+}
+
 # Command history configuration
 HISTFILE=${HISTFILE:-${HOME}/.zsh_history}
 
@@ -109,28 +138,53 @@ bindkey '^[h' run-help  # Esc+h
 
 # Workaround MacOSX / Linux / WSL properties {
 
+#if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+#alias ctags="/usr/local/bin/ctags"
 export PYENV_ROOT="$HOME/.pyenv"
+export DOCKER_HOST=tcp://0.0.0.0:2375
+export GOROOT=/usr/local/opt/go/libexec
+export GOPATH=$HOME/Go 
+
+typeset -U PATH path
+
+path=(
+    "$HOME/.local/bin"
+    "$PYENV_ROOT/bin"
+    "$PYENV_ROOT/shims"
+    "$GOPATH/bin"
+    "$GOROOT/bin"
+    /usr/local/bin
+    /usr/bin
+    /bin
+    /usr/local/sbin
+    /usr/sbin
+    /sbin
+    "$path[@]"
+    "$fpath[@]"
+    )
+
+# Remove entries that don't exist on this system.  Just for sanity's# sake
+# more than anything.
+_rationalize-path path
+unfunction _rationalize-path
+export PATH
 
 if [[ "$(uname)" == "Linux" ]]; then
-    #if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
     export GOROOT=/opt/go
     export GOPATH=$HOME/repos/Go
-    export DOCKER_HOST=tcp://0.0.0.0:2375
-    export PATH="$HOME/.local/bin:$PYENV_ROOT/bin:$PYENV_ROOT/shims:$PATH"
-    export PATH="$GOPATH/bin:$GOROOT/bin:$PATH"
+    #export PATH="$HOME/.local/bin:$PYENV_ROOT/bin:$PYENV_ROOT/shims:$PATH"
+    #export PATH="$GOPATH/bin:$GOROOT/bin:$PATH"
+    #export PATH="/usr/local/bin:/usr/bin:/bin:$PATH"
+    #export PATH="/usr/local/sbin:/usr/sbin:/sbin:$PATH"
 elif [[ "$(uname)" == "Darwin" ]] ; then
     alias updatedb="sudo /usr/libexec/locate.updatedb"
-    #alias ctags="/usr/local/bin/ctags"
-    #export PYENV_ROOT=/usr/local/opt/pyenv
     export LDFLAGS=-L/usr/local/opt/openssl@1.1/lib
     export CPPFLAGS=-I/usr/local/opt/openssl@1.1/include
     export C_INCLUDE_PATH="/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include/libxml2:$C_INCLUDE_PATH"
-    #if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
-    export GOPATH=$HOME/Go 
-    export GOROOT=/usr/local/opt/go/libexec
-    export PATH=$PYENV_ROOT/bin:$PYENV_ROOT/shims:$PATH
-    export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH
-    export PATH=/usr/local/sbin:/usr/local/opt/go/libexec/bin:$GOPATH/bin:$GOROOT/bin:$PATH
+    #export PATH="$HOME/.local/bin:$PYENV_ROOT/bin:$PYENV_ROOT/shims:$PATH"
+    #export PATH="$GOPATH/bin:$GOROOT/bin:$PATH"
+    #export PATH="/usr/local/bin:/usr/bin:/bin:$PATH"
+    #export PATH="/usr/local/sbin:/usr/sbin:/sbin:$PATH"
 fi
 #}
 
@@ -158,14 +212,25 @@ zmodload zdharma/zplugin                 # these lines load this module, an exec
 #} 
 
 # Load all of your custom configurations {
+ZSH_CUSTOM=${ZSH_CUSTOM:-${HOME}/repos/dotfiles/zsh_custom}
+typeset -U fpath
 
-# Load custom functions
 fpath=(
     ${ZSH_CUSTOM}/functions.zsh 
     "${fpath[@]}"
 )
 
-# Set ZSH_CUSTOM to the path where your custom config files
+export FPATH
+
+# autoload all functions in $FPATH - that is, all files in
+# each component of the array $fpath.  If there are none, feed the list
+# it prints into /dev/null.
+for paths in "$fpath[@]"; do
+	autoload -U "$paths"/*(N:t) >/dev/null
+done
+unset paths
+
+# TODO: Set ZSH_CUSTOM to the path where your custom config files
 # and plugins exists, or else we will use the default custom/
 ZSH_CUSTOM=${ZSH_CUSTOM:-${HOME}/repos/dotfiles/zsh_custom}
 for config_file ($ZSH_CUSTOM/*.zsh(N)); do
