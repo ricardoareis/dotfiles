@@ -6,7 +6,7 @@ zinit ice svn atinit'ZSH_TMUX_AUTOSTART=true\
 zinit snippet OMZ::plugins/tmux
 
 # Load within zshrc – for the instant prompt
-zinit ice atload'!source $ZSH_CUSTOM/powerlevel.cfg' lucid nocd compile
+zinit ice depth=1 atload'!source $ZSH_CUSTOM/powerlevel.cfg' lucid nocd compile
 zinit light romkatv/powerlevel10k
 #}
 
