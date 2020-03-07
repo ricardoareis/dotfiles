@@ -130,10 +130,7 @@ bindkey '^[h' run-help  # Esc+h
 #if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 #alias ctags="/usr/local/bin/ctags"
 export PYENV_ROOT="$HOME/.pyenv"
-#export GOENV_ROOT="$HOME/.goenv"
 export DOCKER_HOST=tcp://0.0.0.0:2375
-#export GOROOT=/usr/local/opt/go/libexec
-#export GOPATH=$HOME/Go 
 
 typeset -U PATH path
 
