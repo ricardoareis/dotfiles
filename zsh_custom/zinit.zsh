@@ -137,6 +137,13 @@ zinit wait"1d" lucid as=program atclone"./libexec/pyenv init - > zpyenv.zsh" \
     pick='bin/pyenv' src"zpyenv.zsh" nocompile'!' for\
         pyenv/pyenv
 
+zinit wait"1d" lucid as=program atclone"./libexec/goenv init - > zgoenv.zsh" \
+    atinit'export GOENV_ROOT="$PWD"
+           export PATH="$GOENV_ROOT/bin:$GOENV_ROOT/shims:$PATH"
+           export PATH="$GOPATH/bin:$GOROOT/bin:$PATH"' atpull"%atclone" \
+    pick='bin/goenv' src"zgoenv.zsh" nocompile'!' for\
+        syndbg/goenv
+
 zinit wait"1f" lucid as=program \
     atinit' ln -sf $PWD/fpp $ZPFX/bin' pick="fpp" nocompile'!' for \
     facebook/pathpicker

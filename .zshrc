@@ -1,6 +1,6 @@
-#zmodload zsh/zprof
 # Basic properties {
 # vim: set expandtab sw=4 ts=4 sts=4 et tw=78 ft=zsh foldmarker={,} foldlevel=0 foldmethod=marker spell:
+#zmodload zsh/zprof
 
 #COMPLETION_WAITING_DOTS="true" # Uncomment the following line to display red dots whilst waiting for completion.
 
@@ -15,13 +15,11 @@ ZSH_COMPDUMP="${ZSH_COMPDUMP:-${ZSH_CACHE_DIR}}"
 # the property below produce the config
 POWERLEVEL9K_INSTANT_PROMPT=off
 
-# this if statement load the config
+# this if, load the p10k instant prompt config
+# however, does not work.
 #if [[ -r "${XDG_CACHE_HOME}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
 #    source "${XDG_CACHE_HOME}/p10k-instant-prompt-${(%):-%n}.zsh"
 #fi
-
-# Set ZSH_CACHE_DIR to the path where cache files should be created
-# or else we will use the default cache/
 
 [[ -d "${ZSH_COMPDUMP}" ]] || mkdir -p "${ZSH_COMPDUMP}"
 
@@ -53,42 +51,32 @@ _update_zcomp() {
 }
 
 _rationalize-path () {
-  # Remove entries that don't exist on this system.  Just for sanity's
-  # sake more than anything.
-  # rationalize-path()
-  # Later we'll need to trim down the paths that follow because the ones
-  # given here are for all my accounts, some of which have unusual
-  # paths in them.  rationalize-path will remove
-  # nonexistent directories from an array.
-  #http://zsh.sourceforge.net/Contrib/startup/users/debbiep/dot.zshenv
-  # Note that this works only on arrays, not colon-delimited strings.
-  # Not that this is a problem now that there is typeset -T.
-  local element
-  local build
-  build=()
-  # Evil quoting to survive an eval and to make sure that
-  # this works even with variables containing IFS characters, if I'm
-  # crazy enough to setopt shwordsplit.
-  eval '
-  foreach element in "$'"$1"'[@]"
-  do
-    if [[ -d "$element" ]]
-    then
-      build=("$build[@]" "$element")
-    fi
-  done
-  '"$1"'=( "$build[@]" )
-  '
+    # Remove entries that don't exist on this system.  Just for sanity's
+    # sake more than anything.
+    #http://zsh.sourceforge.net/Contrib/startup/users/debbiep/dot.zshenv
+    # Note that this works only on arrays, not colon-delimited strings.
+    # Not that this is a problem now that there is typeset -T.
+    local element
+    local build
+    build=()
+    # Evil quoting to survive an eval and to make sure that
+    # this works even with variables containing IFS characters, if I'm
+    # crazy enough to setopt shwordsplit.
+    eval '
+    foreach element in "$'"$1"'[@]"; do
+        if [[ -d "$element" ]]; then
+            build=("$build[@]" "$element")
+        fi
+    done
+    '"$1"'=( "$build[@]" )
+    '
 }
 
 # Command history configuration
 HISTFILE=${HISTFILE:-${HOME}/.zsh_history}
-
 HISTSIZE=1000000
-HIST_STAMPS="yyyy-mm-dd"
 SAVEHIST=500000
-
-#alias history='fc -il 1'
+HIST_STAMPS="yyyy-mm-dd"
 
 setopt append_history           # append
 setopt extended_history         # add timestamp, and more
@@ -142,9 +130,10 @@ bindkey '^[h' run-help  # Esc+h
 #if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 #alias ctags="/usr/local/bin/ctags"
 export PYENV_ROOT="$HOME/.pyenv"
+#export GOENV_ROOT="$HOME/.goenv"
 export DOCKER_HOST=tcp://0.0.0.0:2375
-export GOROOT=/usr/local/opt/go/libexec
-export GOPATH=$HOME/Go 
+#export GOROOT=/usr/local/opt/go/libexec
+#export GOPATH=$HOME/Go 
 
 typeset -U PATH path
 
@@ -152,8 +141,10 @@ path=(
     "$HOME/.local/bin"
     "$PYENV_ROOT/bin"
     "$PYENV_ROOT/shims"
-    "$GOPATH/bin"
-    "$GOROOT/bin"
+#    "$GOENV_ROOT/bin"
+#    "$GOENV_ROOT/shims"
+#    "$GOPATH/bin"
+#    "$GOROOT/bin"
     /usr/local/bin
     /usr/bin
     /bin
@@ -162,7 +153,7 @@ path=(
     /sbin
     "$path[@]"
     "$fpath[@]"
-    )
+)
 
 # Remove entries that don't exist on this system.  Just for sanity's# sake
 # more than anything.
@@ -171,8 +162,8 @@ unfunction _rationalize-path
 export PATH
 
 if [[ "$(uname)" == "Linux" ]]; then
-    export GOROOT=/opt/go
-    export GOPATH=$HOME/repos/Go
+    #export GOROOT=/opt/go
+    #export GOPATH=$HOME/repos/Go
     #export PATH="$HOME/.local/bin:$PYENV_ROOT/bin:$PYENV_ROOT/shims:$PATH"
     #export PATH="$GOPATH/bin:$GOROOT/bin:$PATH"
     #export PATH="/usr/local/bin:/usr/bin:/bin:$PATH"
@@ -227,7 +218,7 @@ export FPATH
 # each component of the array $fpath.  If there are none, feed the list
 # it prints into /dev/null.
 for paths in "$fpath[@]"; do
-	autoload -U "$paths"/*(N:t) >/dev/null
+    autoload -U "$paths"/*(N:t) >/dev/null
 done
 unset paths
 
@@ -257,5 +248,5 @@ unfunction _update_zcomp
 #fortune | cowsay -f vader | lolcat
 
 #echo ""
-#}
 #zprof
+#}
