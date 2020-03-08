@@ -155,8 +155,34 @@ path=(
 # Remove entries that don't exist on this system.  Just for sanity's# sake
 # more than anything.
 _rationalize-path path
-unfunction _rationalize-path
 export PATH
+
+# MANPATH: path for the man command to search.
+# Look at the manpath command's output and prepend
+# my own manual paths manually (ahem).
+if [[ ${+MANPATH} -eq 1 ]]; then
+    # Only do this if the MANPATH variable isn't already set.
+    # And, as always, no duplicate entries are needed.
+    typeset -U manpath
+    if whence manpath >/dev/null 2>&1; then
+        # Get the original manpath, then modify it.
+        MANPATH="$(manpath)"
+        manpath=(
+            "$HOME/man"
+            "$HOME/.local/share/man"
+            "$manpath[@]"
+        )
+    else
+        # This list is out of date, but it will suffice.
+        manpath=(
+            "$HOME/man"
+            "$HOME/.local/share/man"
+        )
+    fi
+    _rationalize-path manpath
+    unfunction _rationalize-path
+    export MANPATH
+fi
 
 if [[ "$(uname)" == "Linux" ]]; then
     #export GOROOT=/opt/go
