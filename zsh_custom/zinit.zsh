@@ -39,10 +39,6 @@ zinit snippet OMZ::plugins/git
 #zinit ice svn wait"2b" lucid
 #zinit snippet OMZ::plugins/aws
 
-#zinit wait"1c" lucid for \
-#    atinit'FZFZ_RECENT_DIRS_TOOL="fasd"' \
-#        andrewferrier/fzf-z
-
 zinit ice svn wait"1a" lucid
 zinit snippet OMZ::plugins/osx
 
@@ -84,18 +80,14 @@ zinit snippet OMZ::plugins/fzf
 
 zinit wait"1c" lucid for \
     atload'source init.zsh'\
-    atinit'bindkey "m" fzm'\
+    atinit'export FZF_MARKS_JUMP="m"'\
         urbainvaes/fzf-marks
 #}
 
 # Loading as a program with a 1s delay {
 zinit wait"1c" lucid as=program \
-    atload'!fasd_cache="$HOME/.fasd-init-bash";\
-    if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ];then
-        fasd --init posix-alias bash-hook bash-ccomp bash-ccomp-install >| "$fasd_cache"
-    fi
-    source "$fasd_cache"; unset fasd_cache' pick="fasd" for \
-        clvv/fasd
+    atclone"./fasd --init auto > zfasd.zsh"\
+        src="zfasd.zsh" for clvv/fasd
 
 zinit wait"1b" lucid as=program \
     atload='export FZF_DEFAULT_COMMAND=""\
