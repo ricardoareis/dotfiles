@@ -178,6 +178,9 @@ zinit ice silent wait"2b" as"completion" atload"zicompinit; zicdreplay" lucid
 zinit snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
 
 zinit ice silent wait"2e" atinit"zpcompinit; zpcdreplay"
+zinit light scriptingosx/mac-zsh-completions
+
+zinit ice silent wait"2e" atinit"zpcompinit; zpcdreplay"
 zinit light zdharma/fast-syntax-highlighting
 
 zinit ice silent wait"2e" atload"zicompinit; zicdreplay" blockf atpull'zinit creinstall -q .'
