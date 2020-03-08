@@ -1,10 +1,18 @@
 # vim: ts=4 sw=4
 # Initialize completion
-zstyle ':completion::complete:*' use-cache 1
-zstyle ':completion::complete:*' cache-path ${ZSH_CACHE_DIR}
+#zstyle ':completion::complete:*' use-cache 1
+#zstyle ':completion::complete:*' cache-path ${ZSH_CACHE_DIR}
+zstyle ':completion:*' use-cache on                             # completion caching, use rehash to clear
+zstyle ':completion:*' cache-path ${ZSH_CACHE_DIR}              # cache path
+zstyle ':completion:*' menu select=2                            # menu if nb items > 2
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}           # colorz !
+
+# partial completion suggestions
+zstyle ':completion:*' list-suffixes
+zstyle ':completion:*' expand prefix suffix
 
 # Enable approximate completions
-zstyle ':completion:*' completer _complete _ignored _approximate
+zstyle ':completion:*' completer _expand _complete _ignored _approximate # list of completers to use
 zstyle -e ':completion:*:approximate:*' max-errors 'reply=($((($#PREFIX+$#SUFFIX)/3)) numeric)'
 
 # Automatically update PATH entries
@@ -18,6 +26,7 @@ zstyle ':completion:*' verbose true
 
 # Smart matching of dashed values, e.g. f-b matching foo-bar
 zstyle ':completion:*' matcher-list 'r:|[._-]=* r:|=*'
+#zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'       # ignore case
 
 # Group results by category
 zstyle ':completion:*' group-name ''
@@ -41,8 +50,8 @@ zstyle ':completion:*' select-prompt '%SScrolling active: current selection at %
 
 # Nicer format for completion messages
 zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
-zstyle ':completion:*:corrections' format '%U%F{green}%d (errors: %e)%f%u'
-zstyle ':completion:*:warnings' format '%F{202}%BSorry, no matches for: %F{214}%d%b'
+zstyle ':completion:*:corrections'  format '%U%F{green}%d (errors: %e)%f%u'
+zstyle ':completion:*:warnings'     format '%F{202}%BSorry, no matches for: %F{214}%d%b'
 
 # Show message while waiting for completion
 zstyle ':completion:*' show-completer true
@@ -73,6 +82,6 @@ zstyle ':completion:*:*:*:users' ignored-patterns \
 		named netdump news nfsnobody nobody nscd ntp nut nx obsrun openvpn \
 		operator pcap polkitd postfix postgres privoxy pulse pvm quagga radvd \
 		rpc rpcuser rpm rtkit scard shutdown squid sshd statd svn sync tftp \
-		usbmux uucp vcsa wwwrun xfs cron mongodb nullmail portage redis \
-		shoutcast tcpdump '_*'
+		usbmux uucp vcsa wwwrun xfs cron mongodb nullmail portage \
+		shoutcast '_*'
 zstyle ':completion:*' single-ignored show
