@@ -184,15 +184,15 @@ if [[ ${+MANPATH} -eq 1 ]]; then
     export MANPATH
 fi
 
-if [[ "$(uname)" == "Linux" ]]; then
+    #if [[ "$(uname)" == "Linux" ]]; then
     #export GOROOT=/opt/go
     #export GOPATH=$HOME/repos/Go
     #export PATH="$HOME/.local/bin:$PYENV_ROOT/bin:$PYENV_ROOT/shims:$PATH"
     #export PATH="$GOPATH/bin:$GOROOT/bin:$PATH"
     #export PATH="/usr/local/bin:/usr/bin:/bin:$PATH"
     #export PATH="/usr/local/sbin:/usr/sbin:/sbin:$PATH"
-elif [[ "$(uname)" == "Darwin" ]] ; then
-    alias updatedb="sudo /usr/libexec/locate.updatedb"
+
+if [[ "$(uname)" == "Darwin" ]] ; then
     export LDFLAGS=-L/usr/local/opt/openssl@1.1/lib
     export CPPFLAGS=-I/usr/local/opt/openssl@1.1/include
     export C_INCLUDE_PATH="/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include/libxml2:$C_INCLUDE_PATH"
