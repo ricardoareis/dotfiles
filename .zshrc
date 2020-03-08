@@ -97,16 +97,16 @@ setopt list_ambiguous           # complete as much of a completion until it gets
 setopt auto_cd                  # auto change directory
 setopt interactivecomments      # permit a command start w/ "#" like a bash 
 
-zstyle ':completion:*' use-cache on                             # completion caching, use rehash to clear
-zstyle ':completion:*' cache-path ${ZSH_CACHE_DIR}              # cache path
-zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'       # ignore case
-zstyle ':completion:*' menu select=2                            # menu if nb items > 2
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}           # colorz !
-zstyle ':completion:*::::' completer _expand _complete _ignored _approximate # list of completers to use
+#zstyle ':completion:*' use-cache on                             # completion caching, use rehash to clear
+#zstyle ':completion:*' cache-path ${ZSH_CACHE_DIR}              # cache path
+#zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'       # ignore case
+#zstyle ':completion:*' menu select=2                            # menu if nb items > 2
+#zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}           # colorz !
+#zstyle ':completion:*::::' completer _expand _complete _ignored _approximate # list of completers to use
 
 # partial completion suggestions
-zstyle ':completion:*' list-suffixes
-zstyle ':completion:*' expand prefix suffix
+#zstyle ':completion:*' list-suffixes
+#zstyle ':completion:*' expand prefix suffix
 
 # Pushd
 setopt auto_pushd               # make cd push old dir in dir stack
