@@ -19,6 +19,6 @@
     ignore = dirty
     branch = master
 [submodule "spf13-vim"]
-    path = spf13-vim
+	path = .spf13-vim
     url = https://github.com/spf13/spf13-vim
     branch = master
