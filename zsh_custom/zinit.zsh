@@ -129,6 +129,13 @@ zinit wait"1d" lucid as=program atclone"./libexec/pyenv init - > zpyenv.zsh" \
     pick='bin/pyenv' src"zpyenv.zsh" nocompile'!' for\
         pyenv/pyenv
 
+zinit wait"1e" lucid as=program \
+    atclone"ln -sf $PWD/pyenv---pyenv-virtualenv $PYENV_ROOT/plugins/pyenv-virtualenv ;\
+            pyenv virtualenv-init - > zpvirt.zsh" \
+    atinit'export PYENV_ROOT="$HOME/.pyenv"' atpull"%atclone" \
+        src"zpvirt.zsh" nocompile'!' for\
+        pyenv/pyenv-virtualenv
+
 zinit wait"1d" lucid as=program atclone"./libexec/goenv init - > zgoenv.zsh" \
     atinit'export GOENV_ROOT="$PWD"
            export PATH="$GOENV_ROOT/bin:$GOENV_ROOT/shims:$PATH"
