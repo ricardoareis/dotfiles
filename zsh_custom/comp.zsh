@@ -1,7 +1,5 @@
 # vim: ts=4 sw=4
 # Initialize completion
-#zstyle ':completion::complete:*' use-cache 1
-#zstyle ':completion::complete:*' cache-path ${ZSH_CACHE_DIR}
 zstyle ':completion:*' use-cache on                             # completion caching, use rehash to clear
 zstyle ':completion:*' cache-path ${ZSH_CACHE_DIR}              # cache path
 zstyle ':completion:*' menu select=2                            # menu if nb items > 2
@@ -60,7 +58,9 @@ zstyle ':completion:*' show-completer true
 zstyle ':completion:*:*:*:*:processes' force-list always
 zstyle ':completion:*:*:*:*:processes' menu yes select
 zstyle ':completion:*:*:*:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
-zstyle ':completion:*:*:*:*:processes' command "ps -u $USER -o pid,user,args -w -w"
+#zstyle ':completion:*:*:*:*:processes' command "ps -u $USER -o pid,user,args -w -w"
+zstyle ':completion:*:*:*:*:processes' command "ps -u $USER -o pid,user,comm,cmd -w -w"
+zstyle ':fzf-tab:complete:kill:argument-rest' extra-opts '--preview=echo $(<{f})' --preview-window=down:3:wrap
 
 # Use ls-colors for path completions
 function _set-list-colors() {
