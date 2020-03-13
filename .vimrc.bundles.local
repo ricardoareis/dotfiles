@@ -18,6 +18,8 @@ Bundle 'morhetz/gruvbox'
 Bundle 'ConradIrwin/vim-bracketed-paste'
 Bundle 'dense-analysis/ale'
 Plugin 'thaerkh/vim-workspace'
+Plugin 'sainnhe/gruvbox-material'
+Plugin 'sheerun/vim-polyglot'
 "}
 
 " Unistall Plugins {

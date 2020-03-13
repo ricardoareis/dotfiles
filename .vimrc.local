@@ -30,10 +30,18 @@ set magic                                   " Set magic on, for regex
 "}
 
 " Color properties {
-color gruvbox
-colorscheme gruvbox
-let g:gruvbox_termcolors=256
+
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
+
 set background=dark
+let g:gruvbox_material_background='hard'
+colorscheme gruvbox-material
+let g:gruvbox_termcolors=256
+let g:gruvbox_material_enable_italic = 1
 "}
 
 " Complete properties {
@@ -155,7 +163,7 @@ map <Leader><Leader>cl :VimuxRunLastCommand<CR>
 "}
 
 " Plugin: Airline properties {
-let g:airline_theme='gruvbox'
+let g:airline_theme='gruvbox_material'
 let g:airline#extensions#keymap#enabled=1
 let g:airline_extensions=['branch', 'bufferline', 'hunks', 'keymap', 'netrw', 'quickfix', 'ale', 'tagbar', 'term', 'undotree', 'whitespace', 'wordcount', 'ycm']
 "}
