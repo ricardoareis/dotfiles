@@ -2,8 +2,6 @@
 # vim: set expandtab sw=4 ts=4 sts=4 et tw=78 ft=zsh foldmarker={,} foldlevel=0 foldmethod=marker spell:
 #zmodload zsh/zprof
 
-#COMPLETION_WAITING_DOTS="true" # Uncomment the following line to display red dots whilst waiting for completion.
-
 umask 022
 # Configure the cache dir
 XDG_CACHE_HOME="${XDG_CACHE_HOME:-${HOME}/.cache}"
@@ -97,17 +95,6 @@ setopt list_ambiguous           # complete as much of a completion until it gets
 setopt auto_cd                  # auto change directory
 setopt interactivecomments      # permit a command start w/ "#" like a bash 
 
-#zstyle ':completion:*' use-cache on                             # completion caching, use rehash to clear
-#zstyle ':completion:*' cache-path ${ZSH_CACHE_DIR}              # cache path
-#zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'       # ignore case
-#zstyle ':completion:*' menu select=2                            # menu if nb items > 2
-#zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}           # colorz !
-#zstyle ':completion:*::::' completer _expand _complete _ignored _approximate # list of completers to use
-
-# partial completion suggestions
-#zstyle ':completion:*' list-suffixes
-#zstyle ':completion:*' expand prefix suffix
-
 # Pushd
 setopt auto_pushd               # make cd push old dir in dir stack
 setopt pushd_ignore_dups        # no duplicates in dir stack
@@ -127,8 +114,6 @@ bindkey '^[h' run-help  # Esc+h
 
 # Workaround MacOSX / Linux / WSL properties {
 
-#if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
-#alias ctags="/usr/local/bin/ctags"
 export PYENV_ROOT="$HOME/.pyenv"
 export DOCKER_HOST=tcp://0.0.0.0:2375
 
@@ -138,10 +123,6 @@ path=(
     "$HOME/.local/bin"
     "$PYENV_ROOT/bin"
     "$PYENV_ROOT/shims"
-#    "$GOENV_ROOT/bin"
-#    "$GOENV_ROOT/shims"
-#    "$GOPATH/bin"
-#    "$GOROOT/bin"
     /usr/local/bin
     /usr/bin
     /bin
@@ -184,22 +165,10 @@ if [[ ${+MANPATH} -eq 1 ]]; then
     export MANPATH
 fi
 
-    #if [[ "$(uname)" == "Linux" ]]; then
-    #export GOROOT=/opt/go
-    #export GOPATH=$HOME/repos/Go
-    #export PATH="$HOME/.local/bin:$PYENV_ROOT/bin:$PYENV_ROOT/shims:$PATH"
-    #export PATH="$GOPATH/bin:$GOROOT/bin:$PATH"
-    #export PATH="/usr/local/bin:/usr/bin:/bin:$PATH"
-    #export PATH="/usr/local/sbin:/usr/sbin:/sbin:$PATH"
-
 if [[ "$(uname)" == "Darwin" ]] ; then
     export LDFLAGS=-L/usr/local/opt/openssl@1.1/lib
     export CPPFLAGS=-I/usr/local/opt/openssl@1.1/include
     export C_INCLUDE_PATH="/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include/libxml2:$C_INCLUDE_PATH"
-    #export PATH="$HOME/.local/bin:$PYENV_ROOT/bin:$PYENV_ROOT/shims:$PATH"
-    #export PATH="$GOPATH/bin:$GOROOT/bin:$PATH"
-    #export PATH="/usr/local/bin:/usr/bin:/bin:$PATH"
-    #export PATH="/usr/local/sbin:/usr/sbin:/sbin:$PATH"
 fi
 #}
 
