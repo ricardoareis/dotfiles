@@ -196,11 +196,11 @@ zmodload zdharma/zplugin                 # these lines load this module, an exec
 #} 
 
 # Load all of your custom configurations {
-ZSH_CUSTOM=${ZSH_CUSTOM:-${HOME}/repos/dotfiles/zsh_custom}
+ZSH_CUSTOM_FPATH=${ZSH_CUSTOM_FPATH:-${HOME}/repos/dotfiles/zsh_custom/functions}
 typeset -U fpath
 
 fpath=(
-    ${ZSH_CUSTOM}/functions.zsh 
+    ${ZSH_CUSTOM_FPATH}
     "${fpath[@]}"
 )
 
