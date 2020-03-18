@@ -1,5 +1,6 @@
-# Function: getUniqueFolder ##{
-# vim: set expandtab sw=4 ts=4 sts=4 et tw=78 ft=zsh foldmarker=##{,##} foldlevel=0 foldmethod=marker spell:
+# Function: getUniqueFolder from OMZ
+# vim: set expandtab sw=4 ts=4 sts=4 tw=78 ft=zsh foldlevel=9 spell:
+#
 getUniqueFolder() {
     local trunc_path directory test_dir test_dir_length
     local -a matching
@@ -20,4 +21,3 @@ getUniqueFolder() {
     done
     echo "${${trunc_path: : -1}/h\/m/"~"}"
 }
-##}

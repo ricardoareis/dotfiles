@@ -1,0 +1,11 @@
+# Function: editRecentFile - recent files with fasd
+#
+# vim: set expandtab sw=4 ts=4 sts=4 tw=78 ft=zsh foldlevel=9 spell:
+#
+editRecentFile() {
+    local file
+    zle reset-prompt
+    file="$(fasd -Rfl "$1" | fzf -1 -0 --no-sort +m)" && $EDITOR "${file}"
+}
+
+zle -N editRecentFile
