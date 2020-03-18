@@ -1,9 +1,9 @@
-#!/bin/zsh
-if [ -f  $HOME/repos/dotfiles/zsh_custom/functions.zsh ];then
-    . $HOME/repos/dotfiles/zsh_custom/functions.zsh
-    current_path=$@
-    current_path=${current_path/#$HOME/"~"}
-    POWERLEVEL9K_SHORTEN_DELIMITER="\u2026"
-    local delim=$(echo -n $POWERLEVEL9K_SHORTEN_DELIMITER)
-    echo $(truncatePath $current_path 1 $delim "middle")  
+#!/bin/zsh -f
+
+if [[ -f $HOME/repos/dotfiles/zsh_custom/functions/getTruncatedPath ]];then
+    . $HOME/repos/dotfiles/zsh_custom/functions/getTruncatedPath
+
+    delim_unicode="\u2026"
+    local delim=$(echo -n $delim_unicode)
+    getTruncatedPath $1 1 $delim "middle"
 fi
