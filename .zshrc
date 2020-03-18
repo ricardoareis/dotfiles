@@ -209,8 +209,10 @@ export FPATH
 # autoload all functions in $FPATH - that is, all files in
 # each component of the array $fpath.  If there are none, feed the list
 # it prints into /dev/null.
+DO_NOT_EXEC="+X"
 for paths in "$fpath[@]"; do
-    autoload -U "$paths"/*(N:t) >/dev/null
+    [[ $paths != ${ZSH_CUSTOM_FPATH} ]] && DO_NOT_EXEC=""
+    autoload $DO_NOT_EXEC -U "$paths"/*(N:t) >/dev/null
 done
 unset paths
 
