@@ -71,7 +71,11 @@ getTruncatedPath() {
             ;;
         esac
         # return the truncated path + the current directory
-        echo $trunc_path${1:t}
+        if [[ -z $trunc_path ]];then
+            echo "~"
+        else
+            echo $trunc_path${1:t}
+        fi
     else # current path is 1 character long (e.g. "/" or "~")
         echo $1
     fi
