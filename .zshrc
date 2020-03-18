@@ -147,7 +147,7 @@ if [[ ${+MANPATH} -eq 1 ]]; then
     typeset -U manpath
     if whence manpath >/dev/null 2>&1; then
         # Get the original manpath, then modify it.
-        MANPATH="$(manpath >/dev/null 2>&1)"
+        MANPATH="$(manpath 2>/dev/null)"
         manpath=(
             "$HOME/man"
             "$HOME/.local/share/man"
