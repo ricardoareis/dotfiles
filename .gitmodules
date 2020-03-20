@@ -1,24 +1,24 @@
 [submodule ".tmux/plugins/tpm"]
-    path = .tmux/plugins/tpm
-    url = https://github.com/tmux-plugins/tpm
-    ignore = dirty
-    branch = master
+	path = .tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm
+	ignore = dirty
+	branch = master
 [submodule ".vim/bundle/vundle"]
-    path = .vim/bundle/vundle
-    url = https://github.com/gmarik/vundle
-    ignore = dirty
-    branch = master
+	path = .vim/bundle/vundle
+	url = https://github.com/gmarik/vundle
+	ignore = dirty
+	branch = master
 [submodule ".zinit/bin"]
-    path = .zinit/bin
-    url = https://github.com/zdharma/zinit.git
-    ignore = dirty
-    branch = master
+	path = .zinit/bin
+	url = https://github.com/zdharma/zinit.git
+	ignore = dirty
+	branch = master
 [submodule "zsh_custom/3party/z"]
-    path = zsh_custom/3party/z
-    url = https://github.com/rupa/z
-    ignore = dirty
-    branch = master
+	path = zsh_custom/3party/z
+	url = https://github.com/rupa/z
+	ignore = dirty
+	branch = master
 [submodule "spf13-vim"]
 	path = .spf13-vim
-    url = https://github.com/spf13/spf13-vim
-    branch = master
+	url = https://github.com/spf13/spf13-vim
+	branch = 3.0
