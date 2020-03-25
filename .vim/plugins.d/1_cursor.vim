@@ -1,6 +1,6 @@
 " Cursor properties
-hi CursorLine   cterm=underline ctermbg=none ctermfg=none "guibg=none guifg=none
-hi CursorColumn cterm=none      ctermbg=none ctermfg=gray "guibg=none guifg=none
+"hi CursorLine   cterm=underline ctermbg=none ctermfg=none "guibg=none guifg=none
+"hi CursorColumn cterm=none      ctermbg=none ctermfg=gray "guibg=none guifg=none
 
 autocmd InsertLeave,WinEnter * set cursorline
 autocmd InsertEnter,WinLeave * set nocursorline
