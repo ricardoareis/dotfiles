@@ -67,45 +67,15 @@ set tabstop=4         " an indentation every four columns
 set softtabstop=4     " let backspace delete indent
 "}
 
-" Inconsistency: Fix {
-" Yank from the cursor to the end of the line, to be consistent with C and D.
-nnoremap Y y$
-"}
-
 " Code folding properties - TODO {
 set foldenable
 set foldmethod=indent
 set foldnestmax=10          " deepest fold is 10 levels
 "}
 
-" Bindings properties {
-" Go to tab by number
-noremap <leader>t1 1gt
-noremap <leader>t2 2gt
-noremap <leader>t3 3gt
-noremap <leader>t4 4gt
-noremap <leader>t5 5gt
-noremap <leader>t6 6gt
-noremap <leader>t7 7gt
-noremap <leader>t8 8gt
-noremap <leader>t9 9gt
-noremap <leader>t0 :tablast<cr>
-nnoremap <C-Left> :tabprevious<CR>
-nnoremap <C-Right> :tabnext<CR>
-nnoremap <leader>ls :ls<cr>:b<space>
-"}
-
 " Show Invisible Chars {
 set listchars=eol:⏎,tab:␉·,trail:␠,nbsp:⎵
 nmap <leader>l :set list!<cr>
-"}
-
-" Highlight - Matching Noises { 
-highlight ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace /\s\+$/
-match ExtraWhitespace /\s\+$\| \+\ze\t/
-match ExtraWhitespace /[^\t]\zs\t\+/
-autocmd BufWinLeave * call clearmatches()
 "}
 
 " Highlight - Clear after search {
@@ -254,7 +224,7 @@ noremap <leader>v :vsp<CR><C-w>l
 " toggle cursor line
 nnoremap <leader>i :set cursorline!<cr>
 
-" scroll the viewport faster
+" scroll the view port faster
 nnoremap <C-e> 3<C-e>
 nnoremap <C-y> 3<C-y>
 
@@ -262,6 +232,26 @@ nnoremap <C-y> 3<C-y>
 nmap <leader>n :bn<cr> " go to next buffer
 nmap <leader>p :bp<cr> " go to prev buffers
 nmap <leader>q :bd<cr> " close the current buffer
+
+" Inconsistency: Fix
+" Yank from the cursor to the end of the line, to be consistent with C and D.
+nnoremap Y y$
+
+" Bindings properties
+" Go to tab by number
+noremap <leader>t1 1gt
+noremap <leader>t2 2gt
+noremap <leader>t3 3gt
+noremap <leader>t4 4gt
+noremap <leader>t5 5gt
+noremap <leader>t6 6gt
+noremap <leader>t7 7gt
+noremap <leader>t8 8gt
+noremap <leader>t9 9gt
+noremap <leader>t0 :tablast<cr>
+nnoremap <C-Left> :tabprevious<CR>
+nnoremap <C-Right> :tabnext<CR>
+nnoremap <leader>ls :ls<cr>:b<space>
 "}
 
 " Unmaps {

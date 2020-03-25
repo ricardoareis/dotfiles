@@ -51,3 +51,10 @@ hi Search       cterm=bold              ctermfg=Black   ctermbg=Yellow
 " Cursor properties
 hi CursorLine   cterm=underline         ctermbg=NONE    ctermfg=NONE
 hi CursorColumn cterm=NONE              ctermbg=NONE    ctermfg=Gray
+
+" Highlight - Matching Noises
+highlight ExtraWhitespace ctermbg=DarkRed
+match ExtraWhitespace /\s\+$/
+match ExtraWhitespace /\s\+$\| \+\ze\t/
+match ExtraWhitespace /[^\t]\zs\t\+/
+autocmd BufWinLeave * call clearmatches()
