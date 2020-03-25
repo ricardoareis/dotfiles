@@ -1,5 +1,5 @@
 " Basic properties {
-" vim: set expandtab sw=4 ts=4 sts=4 et tw=78 ft=vim foldmarker={,} foldlevel=0 foldmethod=marker spell:
+" vim: set expandtab sw=4 ts=4 sts=4 tw=78 ft=vim foldmarker={,} foldlevel=0 foldmethod=marker spell:
 
 syntax on
 filetype plugin indent on " Enable file type detection and do language dependent indenting
@@ -15,7 +15,7 @@ set hidden                                  " hidden buffers
 set wildmenu                                " enhanced command line completion
 set wildmode=list:longest                   " complete files like a shell
 set scrolloff=10                            " lines of text around cursor
-set shell=/bin/zsh
+set shell=$SHELL                            " Using default $SHELL
 set ruler                                   " show postiion in file
 set cmdheight=1                             " command bar height
 
@@ -27,20 +27,22 @@ set incsearch                               " set incremental search, like moder
 set nolazyredraw                            " don't redraw while executing macros
 set magic                                   " Set magic on, for regex
 
+" reload configuration
+nnoremap <leader><leader>r :source ~/.vimrc<CR>
 "}
 
 " Color properties {
-if exists('+termguicolors')
+if exists('+termguicolors')                     " Only if compiled
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
   set termguicolors
 endif
 
-set background=dark
-let g:gruvbox_material_background='hard'
-colorscheme gruvbox-material
-let g:gruvbox_termcolors=256
-let g:gruvbox_material_enable_italic = 1
+set background=dark                             " Prefer Dark over Light
+let g:gruvbox_material_background='hard'        " Contrast Level
+colorscheme gruvbox-material                    " Using the same color scheme
+let g:gruvbox_termcolors=256                    " Accepting the 256 colors
+let g:gruvbox_material_enable_italic = 1        " Allow Italic fonts
 "}
 
 " Complete properties {
@@ -50,7 +52,6 @@ set complete-=t   " disable searching tags
 
 " Spell properties {
 set spelllang=en_us,pt
-hi SpellBad cterm=underline ctermfg=white
 "}
 
 " Alerts and feedback properties{
