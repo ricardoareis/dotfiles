@@ -252,6 +252,10 @@ noremap <leader>t0 :tablast<cr>
 nnoremap <C-Left> :tabprevious<CR>
 nnoremap <C-Right> :tabnext<CR>
 nnoremap <leader>ls :ls<cr>:b<space>
+
+" Navigate vim-better-whitespace
+nnoremap ]w :NextTrailingWhitespace<CR>
+nnoremap [w :PrevTrailingWhitespace<CR>
 "}
 
 " Unmaps {
