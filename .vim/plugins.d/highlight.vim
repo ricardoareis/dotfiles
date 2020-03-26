@@ -53,8 +53,10 @@ hi CursorLine   cterm=underline         ctermbg=NONE    ctermfg=NONE
 hi CursorColumn cterm=NONE              ctermbg=NONE    ctermfg=Gray
 
 " Highlight - Matching Noises
-highlight ExtraWhitespace ctermbg=DarkRed
-match ExtraWhitespace /\s\+$/
-match ExtraWhitespace /\s\+$\| \+\ze\t/
-match ExtraWhitespace /[^\t]\zs\t\+/
-autocmd BufWinLeave * call clearmatches()
+"hi ExtraWhitespace ctermbg=DarkRed
+"autocmd BufWinEnter * match ExtraWhitespace /\s\+$/            " Show trailing whitespace
+"autocmd BufWinEnter * match ExtraWhitespace /\s\+$\| \+\ze\t/  " Show trailing whitespace and spaces before a tab:
+"autocmd BufWinEnter * match ExtraWhitespace /[^\t]\zs\t\+/     " Show tabs that are not at the start of a line:
+"autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+"autocmd InsertLeave * match ExtraWhitespace /\s\+$/            " Show trailing whitespace
+"autocmd BufWinLeave * call clearmatches()
