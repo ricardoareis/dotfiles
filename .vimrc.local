@@ -2,18 +2,23 @@
 " vim: set expandtab sw=4 ts=4 sts=4 tw=78 ft=vim foldmarker={,} foldlevel=0 foldmethod=marker spell:
 
     " Important Properties{
+    set nocompatible                            " be iMproved, required"
+    scriptencoding utf-8
+    set encoding=utf-8
+
     syntax on
     filetype plugin indent on                   " Enable file type detection and do language dependent indenting
 
     set synmaxcol=5000                          " Don't try to highlight lines longer than 5000 characters"
-    set encoding=utf-8
-    let mapleader=","
-    set laststatus=2
+    set laststatus=0                            " Disabled defaut statusbar
+
+    set report=0                                " after yank/delete/... report number of lines affected
     set signcolumn=yes
     " set notimeout ttimeout ttimeoutlen=10     " Quickly time out on keycodes, but never timeout on mappings
     " set virtualedit=all                       " Allow the cursor to go in to 'invalid' places
-    set switchbuf=useopen,usetab                " Attempt to edit currently open files instead of opening multiple buf"
-    set hidden                                  " hidden buffers
+    set completeopt=longest,menuone,preview
+    set switchbuf=useopen,usetab                " Attempt to edit currently open files instead of opening multiple buf
+    set hidden                                  " Hide buffers when they are abandoned
     set wildmenu                                " enhanced command line completion
     set wildmode=list:longest                   " complete files like a shell
     set scrolloff=10                            " lines of text around cursor
@@ -53,45 +58,51 @@
     let g:loaded_logipat           = 1
     "}
 
-" reload configuration
-nnoremap <leader><leader>r :source ~/.vimrc<CR>
+    " Color properties {
+    if exists('+termguicolors')                     " Only if compiled
+      let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+      let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+      set termguicolors
+    endif
 
+    set background=dark                             " Prefer Dark over Light
+    let g:gruvbox_material_background='hard'        " Contrast Level
+    colorscheme gruvbox-material                    " Using the same color scheme
+    let g:gruvbox_termcolors=256                    " Accepting the 256 colors
+    let g:gruvbox_material_enable_italic = 1        " Allow Italic fonts
+    "}
+
+    " Alerts and feedback properties{
+    set noerrorbells
+    set novisualbell
+    set t_vb=                       "Never Flash de Screen"
+    "}
+
+    " Spell properties {
+    set spelllang=en_us,pt
+    "}
+
+    " Tabs/Spaces properties {
+    set shiftwidth=4      " use indents of 4 spaces
+    set expandtab         " tabs are spaces, not tabs
+    set tabstop=4         " an indentation every four columns
+    set softtabstop=4     " let backspace delete indent
+    "}
 "}
 
-" Color properties {
-if exists('+termguicolors')                     " Only if compiled
-  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-  set termguicolors
-endif
-
-set background=dark                             " Prefer Dark over Light
-let g:gruvbox_material_background='hard'        " Contrast Level
-colorscheme gruvbox-material                    " Using the same color scheme
-let g:gruvbox_termcolors=256                    " Accepting the 256 colors
-let g:gruvbox_material_enable_italic = 1        " Allow Italic fonts
-"}
-
-" Complete properties {
+" The complete properties {
+"
+" .: Scan the current buffer
+" w: Scan buffers from other windows
+" b: Scan buffers from the buffer list
+" u: Scan buffers that have been unloaded from the buffer list
+" t: Tag completion
+" i: Scan the current and included files
+"
+" see :set complet
+"
 set complete-=i   " disable scanning included files
 set complete-=t   " disable searching tags
-"}
-
-" Spell properties {
-set spelllang=en_us,pt
-"}
-
-" Alerts and feedback properties{
-set noerrorbells
-set novisualbell
-set t_vb=
-"}
-
-" Tabs/Spaces properties {
-set shiftwidth=4      " use indents of 4 spaces
-set expandtab         " tabs are spaces, not tabs
-set tabstop=4         " an indentation every four columns
-set softtabstop=4     " let backspace delete indent
 "}
 
 " Code folding properties - TODO {
@@ -101,7 +112,8 @@ set foldnestmax=10          " deepest fold is 10 levels
 "}
 
 " Show Invisible Chars {
-set listchars=eol:⏎,tab:␉·,trail:␠,nbsp:⎵
+set nolist                                          " default disable
+set listchars=eol:⏎,tab:␉·,trail:␠,nbsp:⎵           " default unicode
 nmap <leader>l :set list!<cr>
 "}
 
@@ -241,6 +253,11 @@ let g:tagbar_autoclose=1
 "}
 
 " Maps {
+let mapleader=","
+
+" reload configuration
+nnoremap <leader><leader>r :source ~/.vimrc<CR>
+
 " Better split management, kept in sync with tmux' mappings
 noremap <leader>h :sp<CR><C-w>j
 noremap <leader>v :vsp<CR><C-w>l
