@@ -149,7 +149,7 @@ let g:go_fmt_command="goimports"
 
 " disable fmt on save
 let g:go_fmt_autosave=1
-"} 
+"}
 
 " Plugin: GitGutter properties {
 let g:gitgutter_enabled=1
@@ -192,8 +192,8 @@ nunmap   <leader>u
 nnoremap <leader>uu :UndotreeToggle<cr>
 "}
 
-" Plugin: Workspace properties {
-nnoremap <leader>s :ToggleWorkspace<CR>
+" Plugin: Work space properties {
+nnoremap <leader>w :ToggleWorkspace<CR>
 let g:workspace_session_directory = $HOME . '/.vim/sessions/'
 let g:workspace_autosave_always = 0
 let g:workspace_autosave_ignore = ['gitcommit', 'gitrebase', 'nerdtree']
@@ -256,6 +256,7 @@ nnoremap <leader>ls :ls<cr>:b<space>
 " Navigate vim-better-whitespace
 nnoremap ]w :NextTrailingWhitespace<CR>
 nnoremap [w :PrevTrailingWhitespace<CR>
+let g:strip_whitespace_on_save = 1
 "}
 
 " Unmaps {

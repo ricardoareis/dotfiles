@@ -84,16 +84,16 @@ unsetopt hist_ignore_space      # ignore space prefixed commands
 setopt hist_reduce_blanks       # trim blanks
 setopt hist_verify              # show before executing history commands
 setopt inc_append_history       # add commands as they are typed, don't wait until shell exit
-setopt share_history            # share command history data between 
+setopt share_history            # share command history data between
 
 setopt hash_list_all            # hash everything before completion
 setopt completealiases          # complete alisases
-setopt always_to_end            # when completing from the middle of a word, move the cursor to the end of the word    
+setopt always_to_end            # when completing from the middle of a word, move the cursor to the end of the word
 setopt complete_in_word         # allow completion from within a word/phrase
 setopt correct                  # spelling correction for commands
 setopt list_ambiguous           # complete as much of a completion until it gets ambiguous.
 setopt auto_cd                  # auto change directory
-setopt interactivecomments      # permit a command start w/ "#" like a bash 
+setopt interactivecomments      # permit a command start w/ "#" like a bash
 
 # Pushd
 setopt auto_pushd               # make cd push old dir in dir stack
@@ -191,9 +191,9 @@ if [ ! -d ${ZINIT[MODULES_DIR]} ];then
     zinit modules build
 fi
 
-module_path+=( ${ZINIT[MODULES_DIR]} )   # When "zinit module build" was executed, 
+module_path+=( ${ZINIT[MODULES_DIR]} )   # When "zinit module build" was executed,
 zmodload zdharma/zplugin                 # these lines load this module, an execute zsh compilation
-#} 
+#}
 
 # Load all of your custom configurations {
 ZSH_CUSTOM_FPATH=${ZSH_CUSTOM_FPATH:-${HOME}/repos/dotfiles/zsh_custom/functions}
