@@ -1,6 +1,12 @@
 " Basic properties {
 " vim: set expandtab sw=4 ts=4 sts=4 tw=78 ft=vim foldmarker={,} foldlevel=0 foldmethod=marker spell:
 
+" Use bundles config {
+    if filereadable(expand("~/.vimrc.bundles"))
+        source ~/.vimrc.bundles
+    endif
+" }
+
     " SnipMate {
         " Setting the author var
         " If forking, please overwrite in your .vimrc.local file
@@ -245,261 +251,265 @@ autocmd VimResized * | set columns=120
 set showbreak=...
 "}
 
-" Plugin: YCM properties {
-if isdirectory(expand("~/.vim/bundle/YouCompleteMe"))
-    let g:ycm_use_clangd=0
-    let g:ycm_global_ycm_extra_conf='~/repos/dotfiles/.ycm_extra_conf.py'
-    let g:ycm_autoclose_preview_window_after_completion=1
-    map <leader>gg  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+"Plugins {
 
-    "TODO: Review bellow - SPF13 config
-    let g:acp_enableAtStartup = 0
+    " Plugin: YCM properties {
+    if isdirectory(expand("~/.vim/bundle/YouCompleteMe"))
+        let g:ycm_use_clangd=0
+        let g:ycm_global_ycm_extra_conf='~/repos/dotfiles/.ycm_extra_conf.py'
+        let g:ycm_autoclose_preview_window_after_completion=1
+        map <leader>gg  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
-    " enable completion from tags
-    let g:ycm_collect_identifiers_from_tags_files = 1
+        "TODO: Review bellow - SPF13 config
+        let g:acp_enableAtStartup = 0
 
-    " remap Ultisnips for compatibility for YCM
-    let g:UltiSnipsExpandTrigger = '<C-j>'
-    let g:UltiSnipsJumpForwardTrigger = '<C-j>'
-    let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
+        " enable completion from tags
+        let g:ycm_collect_identifiers_from_tags_files = 1
 
-    " Enable omni completion.
-    autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-    autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-    autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-    autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-    autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-    autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-    autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+        " remap Ultisnips for compatibility for YCM
+        let g:UltiSnipsExpandTrigger = '<C-j>'
+        let g:UltiSnipsJumpForwardTrigger = '<C-j>'
+        let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
 
-    " Haskell post write lint and check with ghcmod
-    " $ `cabal install ghcmod` if missing and ensure
-    " ~/.cabal/bin is in your $PATH.
-    if !executable("ghcmod")
-        autocmd BufWritePost *.hs GhcModCheckAndLintAsync
-    endif
+        " Enable omni completion.
+        autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+        autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+        autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+        autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+        autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+        autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+        autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 
-    " For snippet_complete marker.
-    if has('conceal')
-        set conceallevel=2 concealcursor=i
-    endif
-
-    " Disable the neosnippet preview candidate window
-    " When enabled, there can be too much visual noise
-    " especially when splits are used.
-    set completeopt-=preview
-endif
-"}
-
-" Plugin: Identlines properties (this plugin change conceal properties) {
-if isdirectory(expand("~/.vim/bundle/vim-indent-guides/"))
-    let g:indentLine_enabled=0
-    let g:indentLine_setConceal=1
-    let g:indent_guides_start_level = 2
-    let g:indent_guides_guide_size = 1
-    let g:indent_guides_enable_on_vim_startup = 1
-endif
-"}
-
-" Plugin: Vimux Properties {
-" Prompt for a command to run
-map <Leader><Leader>c :VimuxPromptCommand<CR>
-
-" Run last command executed by VimuxRunCommand
-map <Leader><Leader>cl :VimuxRunLastCommand<CR>
-"}
-
-" Plugin: Airline properties {
-if isdirectory(expand("~/.vim/bundle/vim-airline/"))
-    let g:airline_powerline_fonts=1
-    if isdirectory(expand("~/.vim/bundle/vim-airline-themes/"))
-        if !exists('g:gruvbox_material')
-            let g:airline_theme='gruvbox_material'
+        " Haskell post write lint and check with ghcmod
+        " $ `cabal install ghcmod` if missing and ensure
+        " ~/.cabal/bin is in your $PATH.
+        if !executable("ghcmod")
+            autocmd BufWritePost *.hs GhcModCheckAndLintAsync
         endif
-        if !exists('g:airline_powerline_fonts')
-            " Use the default set of separators with a few customizations
-            let g:airline_left_sep='›'  " Slightly fancier than '>'
-            let g:airline_right_sep='‹' " Slightly fancier than '<'
+
+        " For snippet_complete marker.
+        if has('conceal')
+            set conceallevel=2 concealcursor=i
+        endif
+
+        " Disable the neosnippet preview candidate window
+        " When enabled, there can be too much visual noise
+        " especially when splits are used.
+        set completeopt-=preview
+    endif
+    "}
+
+    " Plugin: Identlines properties (this plugin change conceal properties) {
+    if isdirectory(expand("~/.vim/bundle/vim-indent-guides/"))
+        let g:indentLine_enabled=0
+        let g:indentLine_setConceal=1
+        let g:indent_guides_start_level = 2
+        let g:indent_guides_guide_size = 1
+        let g:indent_guides_enable_on_vim_startup = 1
+    endif
+    "}
+
+    " Plugin: Vimux Properties {
+    " Prompt for a command to run
+    map <Leader><Leader>c :VimuxPromptCommand<CR>
+
+    " Run last command executed by VimuxRunCommand
+    map <Leader><Leader>cl :VimuxRunLastCommand<CR>
+    "}
+
+    " Plugin: Airline properties {
+    if isdirectory(expand("~/.vim/bundle/vim-airline/"))
+        let g:airline_powerline_fonts=1
+        if isdirectory(expand("~/.vim/bundle/vim-airline-themes/"))
+            if !exists('g:gruvbox_material')
+                let g:airline_theme='gruvbox_material'
+            endif
+            if !exists('g:airline_powerline_fonts')
+                " Use the default set of separators with a few customizations
+                let g:airline_left_sep='›'  " Slightly fancier than '>'
+                let g:airline_right_sep='‹' " Slightly fancier than '<'
+            endif
+        endif
+        let g:airline#extensions#keymap#enabled=1
+        let g:airline_extensions=['branch', 'bufferline', 'hunks', 'keymap', 'quickfix', 'ale', 'tagbar', 'term', 'undotree', 'whitespace', 'wordcount', 'ycm']
+    endif
+    "}
+
+    " Plugin: FZF (performs like CtrlP) {
+    nnoremap <C-p> :Files<CR>
+    let g:fzf_layout={ 'window': 'bot'.float2nr(&lines * 0.4).'new'  }
+    "}
+
+    " Plugin: Golang properties {
+    let g:go_fmt_command="goimports" " format with goimports instead of gofmt
+    let g:go_fmt_autosave=1          " disable fmt on save
+    "}
+
+    " Plugin: GitGutter properties {
+    let g:gitgutter_enabled=1
+    let g:gitgutter_map_keys=0
+    let g:gitgutter_sign_allow_clobber=1
+    let g:gitgutter_highlight_lines=0
+    let g:gitgutter_highlight_linenrs=1
+    let g:gitgutter_sign_added='ad'
+    let g:gitgutter_sign_modified='md'
+    let g:gitgutter_sign_removed='rd'
+    let g:gitgutter_sign_removed_first_line='rf'
+    let g:gitgutter_sign_modified_removed='mr'
+    let g:gitgutter_max_signs=50
+    set updatetime=2000
+    set foldtext=gitgutter#fold#foldtext()
+    map ghs :GitGutterStageHunk<CR>
+    map ghu :GitGutterUndoHunk<CR>
+    map ghf :GitGutterFold<CR>
+    "}
+
+    " Plugin: EditorConfig properties {
+    let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
+    "}
+
+    " Plugin: Session List {
+    set sessionoptions=blank,buffers,curdir,folds,tabpages,winsize
+    if isdirectory(expand("~/.vim/bundle/sessionman.vim/"))
+        nmap <leader>sl :SessionList<CR>
+        nmap <leader>ss :SessionSave<CR>
+        nmap <leader>sc :SessionClose<CR>
+    endif
+    " }
+
+    " Plugin: Vim-GO {
+    " Disable some vim-go properties to better cursorline performance
+    let g:go_highlight_space_tab_error=0
+    let g:go_highlight_array_whitespace_error=0
+    let g:go_highlight_trailing_whitespace_error=0
+    "TODO SPF13-VIM
+    let g:go_highlight_functions = 1
+    let g:go_highlight_methods = 1
+    let g:go_highlight_structs = 1
+    let g:go_highlight_operators = 1
+    let g:go_highlight_build_constraints = 1
+    let g:go_fmt_command = "goimports"
+    "au FileType go nmap <Leader>s <Plug>(go-implements)
+    "au FileType go nmap <Leader>i <Plug>(go-info)
+    "au FileType go nmap <Leader>e <Plug>(go-rename)
+    "au FileType go nmap <leader>r <Plug>(go-run)
+    "au FileType go nmap <leader>b <Plug>(go-build)
+    "au FileType go nmap <leader>t <Plug>(go-test)
+    "au FileType go nmap <Leader>gd <Plug>(go-doc)
+    "au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
+    "au FileType go nmap <leader>co <Plug>(go-coverage)
+    "}
+
+    " Plugin: UndoTree properties {
+    if isdirectory(expand("~/.vim/bundle/undotree/"))
+        nunmap   <leader>u
+        nnoremap <leader>uu :UndotreeToggle<cr>
+        " If undotree is opened, it is likely one wants to interact with it.
+        let g:undotree_SetFocusWhenToggle=1
+        let g:gundo_right = 0
+        let g:gundo_preview_bottom=1
+        let g:gundo_preview_height = 50
+    endif
+    "}
+
+    " Plugin: Work space properties {
+    nnoremap <leader>w :ToggleWorkspace<CR>
+    let g:workspace_session_directory = $HOME . '/.vim/sessions/'
+    let g:workspace_autosave_always = 0
+    let g:workspace_autosave_ignore = ['gitcommit', 'gitrebase', 'nerdtree']
+    let g:workspace_persist_undo_history = 0  " enabled = 1 (default), disabled = 0
+    "}
+
+    " Plugin: NerdTree properties{
+    if isdirectory(expand("~/.vim/bundle/nerdtree"))
+        "map <C-e> <plug>NERDTreeTabsToggle<CR>
+        "map <leader>e :NERDTreeFind<CR>
+        "nmap <leader>nt :NERDTreeFind<CR>
+
+        let g:NERDShutUp=1
+        let g:NERDTreeQuitOnOpen=1                      " close NERDTree after a file is opened
+        let NERDTreeShowLineNumbers=1
+        let NERDTreeMinimalUI=0
+        let NERDTreeDirArrows=0
+        let NERDTreeShowBookmarks=1
+        let NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
+        let NERDTreeChDirMode=0
+        let NERDTreeQuitOnOpen=1
+        let NERDTreeMouseMode=2
+        let NERDTreeShowHidden=1
+        let NERDTreeKeepTreeInNewTab=1
+        let g:nerdtree_tabs_open_on_gui_startup=0
+        nnoremap <silent> <leader>ff :NERDTreeFind<cr>  " expand to the path of the file in the current buffer
+    endif
+    "}
+
+    " Plugin: TagBar properties {
+    if isdirectory(expand("~/.vim/bundle/tagbar/"))
+        nnoremap <silent> <leader>tt :TagbarToggle<CR>
+        let g:tagbar_left=0
+        let g:tagbar_autofocus=1
+        let g:tagbar_compact=1
+        let g:tagbar_autoclose=1
+        "TODO: investigate git and tags
+        set tags=./tags;/,~/.vimtags
+
+        " Make tags placed in .git/tags file available in all levels of a repository
+        let gitroot = substitute(system('git rev-parse --show-toplevel'), '[\n\r]', '', 'g')
+        if gitroot != ''
+            let &tags = &tags . ',' . gitroot . '/.git/tags'
         endif
     endif
-    let g:airline#extensions#keymap#enabled=1
-    let g:airline_extensions=['branch', 'bufferline', 'hunks', 'keymap', 'quickfix', 'ale', 'tagbar', 'term', 'undotree', 'whitespace', 'wordcount', 'ycm']
-endif
-"}
+    "}
 
-" Plugin: FZF (performs like CtrlP) {
-nnoremap <C-p> :Files<CR>
-let g:fzf_layout={ 'window': 'bot'.float2nr(&lines * 0.4).'new'  }
-"}
-
-" Plugin: Golang properties {
-" format with goimports instead of gofmt
-let g:go_fmt_command="goimports"
-
-" disable fmt on save
-let g:go_fmt_autosave=1
-"}
-
-" Plugin: GitGutter properties {
-let g:gitgutter_enabled=1
-let g:gitgutter_map_keys=0
-let g:gitgutter_sign_allow_clobber=1
-let g:gitgutter_highlight_lines=0
-let g:gitgutter_highlight_linenrs=1
-let g:gitgutter_sign_added='ad'
-let g:gitgutter_sign_modified='md'
-let g:gitgutter_sign_removed='rd'
-let g:gitgutter_sign_removed_first_line='rf'
-let g:gitgutter_sign_modified_removed='mr'
-let g:gitgutter_max_signs=50
-set updatetime=2000
-set foldtext=gitgutter#fold#foldtext()
-map ghs :GitGutterStageHunk<CR>
-map ghu :GitGutterUndoHunk<CR>
-map ghf :GitGutterFold<CR>
-"}
-
-" Plugin: EditorConfig properties {
-let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
-"}
-
-" Plugin: Session List {
-set sessionoptions=blank,buffers,curdir,folds,tabpages,winsize
-if isdirectory(expand("~/.vim/bundle/sessionman.vim/"))
-    nmap <leader>sl :SessionList<CR>
-    nmap <leader>ss :SessionSave<CR>
-    nmap <leader>sc :SessionClose<CR>
-endif
-" }
-
-" JSON {
-nmap <leader>jt <Esc>:%!python -m json.tool<CR><Esc>:set filetype=json<CR>
-let g:vim_json_syntax_conceal = 0
-" }
-
-" Wildfire {
-let g:wildfire_objects = {
-            \ "*" : ["i'", 'i"', "i)", "i]", "i}", "ip"],
-            \ "html,xml" : ["at"],
-            \ }
-
-" Plugin: Vim-GO {
-" Disable some vim-go properties to better cursorline performance
-let g:go_highlight_space_tab_error=0
-let g:go_highlight_array_whitespace_error=0
-let g:go_highlight_trailing_whitespace_error=0
-"TODO SPF13-VIM
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_build_constraints = 1
-let g:go_fmt_command = "goimports"
-"au FileType go nmap <Leader>s <Plug>(go-implements)
-"au FileType go nmap <Leader>i <Plug>(go-info)
-"au FileType go nmap <Leader>e <Plug>(go-rename)
-"au FileType go nmap <leader>r <Plug>(go-run)
-"au FileType go nmap <leader>b <Plug>(go-build)
-"au FileType go nmap <leader>t <Plug>(go-test)
-"au FileType go nmap <Leader>gd <Plug>(go-doc)
-"au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
-"au FileType go nmap <leader>co <Plug>(go-coverage)
-"}
-
-" Plugin: UndoTree properties {
-
-if isdirectory(expand("~/.vim/bundle/undotree/"))
-    nunmap   <leader>u
-    nnoremap <leader>uu :UndotreeToggle<cr>
-    " If undotree is opened, it is likely one wants to interact with it.
-    let g:undotree_SetFocusWhenToggle=1
-    let g:gundo_right = 0
-    let g:gundo_preview_bottom=1
-    let g:gundo_preview_height = 50
-endif
-"}
-
-" Plugin: Work space properties {
-nnoremap <leader>w :ToggleWorkspace<CR>
-let g:workspace_session_directory = $HOME . '/.vim/sessions/'
-let g:workspace_autosave_always = 0
-let g:workspace_autosave_ignore = ['gitcommit', 'gitrebase', 'nerdtree']
-let g:workspace_persist_undo_history = 0  " enabled = 1 (default), disabled = 0
-"}
-
-" Plugin: NerdTree properties{
-
-if isdirectory(expand("~/.vim/bundle/nerdtree"))
-    "map <C-e> <plug>NERDTreeTabsToggle<CR>
-    "map <leader>e :NERDTreeFind<CR>
-    "nmap <leader>nt :NERDTreeFind<CR>
-
-    let g:NERDShutUp=1
-    let g:NERDTreeQuitOnOpen=1                      " close NERDTree after a file is opened
-    let NERDTreeShowLineNumbers=1
-    let NERDTreeMinimalUI=0
-    let NERDTreeDirArrows=0
-    let NERDTreeShowBookmarks=1
-    let NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
-    let NERDTreeChDirMode=0
-    let NERDTreeQuitOnOpen=1
-    let NERDTreeMouseMode=2
-    let NERDTreeShowHidden=1
-    let NERDTreeKeepTreeInNewTab=1
-    let g:nerdtree_tabs_open_on_gui_startup=0
-    nnoremap <silent> <leader>ff :NERDTreeFind<cr>  " expand to the path of the file in the current buffer
-endif
-"}
-
-" Plugin: TagBar properties {
-if isdirectory(expand("~/.vim/bundle/tagbar/"))
-    nnoremap <silent> <leader>tt :TagbarToggle<CR>
-    let g:tagbar_left=0
-    let g:tagbar_autofocus=1
-    let g:tagbar_compact=1
-    let g:tagbar_autoclose=1
-    "TODO: investigate git and tags
-    set tags=./tags;/,~/.vimtags
-
-    " Make tags placed in .git/tags file available in all levels of a repository
-    let gitroot = substitute(system('git rev-parse --show-toplevel'), '[\n\r]', '', 'g')
-    if gitroot != ''
-        let &tags = &tags . ',' . gitroot . '/.git/tags'
+    " Plugin: Rainbow {
+    if isdirectory(expand("~/.vim/bundle/rainbow/"))
+        let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
     endif
-endif
+    "}
+
+    " Plugin: Fugitive {
+    if isdirectory(expand("~/.vim/bundle/vim-fugitive/"))
+        nnoremap <silent> <leader>gs :Gstatus<CR>
+        nnoremap <silent> <leader>gd :Gdiff<CR>
+        nnoremap <silent> <leader>gc :Gcommit<CR>
+        nnoremap <silent> <leader>gb :Gblame<CR>
+        nnoremap <silent> <leader>gl :Glog<CR>
+        nnoremap <silent> <leader>gp :Git push<CR>
+        nnoremap <silent> <leader>gr :Gread<CR>
+        nnoremap <silent> <leader>gw :Gwrite<CR>
+        nnoremap <silent> <leader>ge :Gedit<CR>
+        " Mnemonic _i_nteractive
+        nnoremap <silent> <leader>gi :Git add -p %<CR>
+        nnoremap <silent> <leader>gg :SignifyToggle<CR>
+    endif
+    "}
+
+    " Plugin: Better-WhiteSpace {
+    if isdirectory(expand("~/.vim/bundle/vim-better-whitespace/"))
+        " Navigate vim-better-whitespace
+        nnoremap ]w :NextTrailingWhitespace<CR>
+        nnoremap [w :PrevTrailingWhitespace<CR>
+        let g:strip_whitespace_on_save = 1
+    endif
+    "}
+
+
+
 "}
 
-" Plugin: Rainbow {
-if isdirectory(expand("~/.vim/bundle/rainbow/"))
-    let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
-endif
-"}
+" Misc {
 
-" Plugin: Fugitive {
-if isdirectory(expand("~/.vim/bundle/vim-fugitive/"))
-    nnoremap <silent> <leader>gs :Gstatus<CR>
-    nnoremap <silent> <leader>gd :Gdiff<CR>
-    nnoremap <silent> <leader>gc :Gcommit<CR>
-    nnoremap <silent> <leader>gb :Gblame<CR>
-    nnoremap <silent> <leader>gl :Glog<CR>
-    nnoremap <silent> <leader>gp :Git push<CR>
-    nnoremap <silent> <leader>gr :Gread<CR>
-    nnoremap <silent> <leader>gw :Gwrite<CR>
-    nnoremap <silent> <leader>ge :Gedit<CR>
-    " Mnemonic _i_nteractive
-    nnoremap <silent> <leader>gi :Git add -p %<CR>
-    nnoremap <silent> <leader>gg :SignifyToggle<CR>
-endif
-"}
+    " JSON {
+    nmap <leader>jt <Esc>:%!python -m json.tool<CR><Esc>:set filetype=json<CR>
+    let g:vim_json_syntax_conceal = 0
+    " }
 
-" Plugin: Better-WhiteSpace {
-if isdirectory(expand("~/.vim/bundle/vim-better-whitespace/"))
-    " Navigate vim-better-whitespace
-    nnoremap ]w :NextTrailingWhitespace<CR>
-    nnoremap [w :PrevTrailingWhitespace<CR>
-    let g:strip_whitespace_on_save = 1
-endif
-"}
+    " Wildfire {
+    let g:wildfire_objects = {
+                \ "*" : ["i'", 'i"', "i)", "i]", "i}", "ip"],
+                \ "html,xml" : ["at"],
+                \ }
+" }
 
 " Maps {
 "
@@ -635,6 +645,96 @@ inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 "}
+
+" Funtions {
+
+    " Initialize directories {
+    function! InitializeDirectories()
+        let parent = $HOME
+        let prefix = 'vim'
+        let dir_list = {
+                    \ 'backup': 'backupdir',
+                    \ 'views': 'viewdir',
+                    \ 'swap': 'directory' }
+
+        if has('persistent_undo')
+            let dir_list['undo'] = 'undodir'
+        endif
+
+        let common_dir = parent . '/.' . prefix
+
+        for [dirname, settingname] in items(dir_list)
+            let directory = common_dir . dirname . '/'
+            if exists("*mkdir")
+                if !isdirectory(directory)
+                    call mkdir(directory)
+                endif
+            endif
+            if !isdirectory(directory)
+                echo "Warning: Unable to create backup directory: " . directory
+                echo "Try: mkdir -p " . directory
+            else
+                let directory = substitute(directory, " ", "\\\\ ", "g")
+                exec "set " . settingname . "=" . directory
+            endif
+        endfor
+    endfunction
+    call InitializeDirectories()
+    " }
+
+    " Initialize NERDTree as needed {
+    function! NERDTreeInitAsNeeded()
+        redir => bufoutput
+        buffers!
+        redir END
+        let idx = stridx(bufoutput, "NERD_tree")
+        if idx > -1
+            NERDTreeMirror
+            NERDTreeFind
+            wincmd l
+        endif
+    endfunction
+    " }
+
+    " Strip whitespace {
+    function! StripTrailingWhitespace()
+        " Preparation: save last search, and cursor position.
+        let _s=@/
+        let l = line(".")
+        let c = col(".")
+        " do the business:
+        %s/\s\+$//e
+        " clean up: restore previous search history, and cursor position
+        let @/=_s
+        call cursor(l, c)
+    endfunction
+    " }
+
+    " Shell command {
+    function! s:RunShellCommand(cmdline)
+        botright new
+
+        setlocal buftype=nofile
+        setlocal bufhidden=delete
+        setlocal nobuflisted
+        setlocal noswapfile
+        setlocal nowrap
+        setlocal filetype=shell
+        setlocal syntax=shell
+
+        call setline(1, a:cmdline)
+        call setline(2, substitute(a:cmdline, '.', '=', 'g'))
+        execute 'silent $read !' . escape(a:cmdline, '%#')
+        setlocal nomodifiable
+        1
+    endfunction
+
+    command! -complete=file -nargs=+ Shell call s:RunShellCommand(<q-args>)
+    " e.g. Grep current file for <search_term>: Shell grep -Hn <search_term> %
+    " }
+
+
+" }
 
 " Loading others .vim {
 " function to source in directory
