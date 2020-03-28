@@ -127,6 +127,11 @@
     "}
 
     " Color properties {
+
+    if &term == 'xterm' || &term == 'screen' || &term == "^tmux"
+        set t_Co=256                                " Enable 256 colors to stop the CSApprox warning and make xterm vim shine
+    endif
+
     if exists('+termguicolors')                     " Only if compiled
       let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
       let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
@@ -241,16 +246,59 @@ set showbreak=...
 "}
 
 " Plugin: YCM properties {
-let g:ycm_use_clangd=0
-let g:ycm_global_ycm_extra_conf='~/repos/dotfiles/.ycm_extra_conf.py'
-let g:ycm_autoclose_preview_window_after_completion=1
-map <leader>gg  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+if isdirectory(expand("~/.vim/bundle/YouCompleteMe"))
+    let g:ycm_use_clangd=0
+    let g:ycm_global_ycm_extra_conf='~/repos/dotfiles/.ycm_extra_conf.py'
+    let g:ycm_autoclose_preview_window_after_completion=1
+    map <leader>gg  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+    "TODO: Review bellow - SPF13 config
+    let g:acp_enableAtStartup = 0
+
+    " enable completion from tags
+    let g:ycm_collect_identifiers_from_tags_files = 1
+
+    " remap Ultisnips for compatibility for YCM
+    let g:UltiSnipsExpandTrigger = '<C-j>'
+    let g:UltiSnipsJumpForwardTrigger = '<C-j>'
+    let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
+
+    " Enable omni completion.
+    autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+    autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+    autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+    autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+    autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+    autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+    autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+
+    " Haskell post write lint and check with ghcmod
+    " $ `cabal install ghcmod` if missing and ensure
+    " ~/.cabal/bin is in your $PATH.
+    if !executable("ghcmod")
+        autocmd BufWritePost *.hs GhcModCheckAndLintAsync
+    endif
+
+    " For snippet_complete marker.
+    if has('conceal')
+        set conceallevel=2 concealcursor=i
+    endif
+
+    " Disable the neosnippet preview candidate window
+    " When enabled, there can be too much visual noise
+    " especially when splits are used.
+    set completeopt-=preview
+endif
 "}
 
 " Plugin: Identlines properties (this plugin change conceal properties) {
-let g:indentLine_enabled=0
-let g:indentLine_setConceal=1
-let g:indent_guides_enable_on_vim_startup=1
+if isdirectory(expand("~/.vim/bundle/vim-indent-guides/"))
+    let g:indentLine_enabled=0
+    let g:indentLine_setConceal=1
+    let g:indent_guides_start_level = 2
+    let g:indent_guides_guide_size = 1
+    let g:indent_guides_enable_on_vim_startup = 1
+endif
 "}
 
 " Plugin: Vimux Properties {
@@ -262,9 +310,21 @@ map <Leader><Leader>cl :VimuxRunLastCommand<CR>
 "}
 
 " Plugin: Airline properties {
-let g:airline_theme='gruvbox_material'
-let g:airline#extensions#keymap#enabled=1
-let g:airline_extensions=['branch', 'bufferline', 'hunks', 'keymap', 'quickfix', 'ale', 'tagbar', 'term', 'undotree', 'whitespace', 'wordcount', 'ycm']
+if isdirectory(expand("~/.vim/bundle/vim-airline/"))
+    let g:airline_powerline_fonts=1
+    if isdirectory(expand("~/.vim/bundle/vim-airline-themes/"))
+        if !exists('g:gruvbox_material')
+            let g:airline_theme='gruvbox_material'
+        endif
+        if !exists('g:airline_powerline_fonts')
+            " Use the default set of separators with a few customizations
+            let g:airline_left_sep='›'  " Slightly fancier than '>'
+            let g:airline_right_sep='‹' " Slightly fancier than '<'
+        endif
+    endif
+    let g:airline#extensions#keymap#enabled=1
+    let g:airline_extensions=['branch', 'bufferline', 'hunks', 'keymap', 'quickfix', 'ale', 'tagbar', 'term', 'undotree', 'whitespace', 'wordcount', 'ycm']
+endif
 "}
 
 " Plugin: FZF (performs like CtrlP) {
@@ -317,6 +377,12 @@ nmap <leader>jt <Esc>:%!python -m json.tool<CR><Esc>:set filetype=json<CR>
 let g:vim_json_syntax_conceal = 0
 " }
 
+" Wildfire {
+let g:wildfire_objects = {
+            \ "*" : ["i'", 'i"', "i)", "i]", "i}", "ip"],
+            \ "html,xml" : ["at"],
+            \ }
+
 " Plugin: Vim-GO {
 " Disable some vim-go properties to better cursorline performance
 let g:go_highlight_space_tab_error=0
@@ -341,11 +407,16 @@ let g:go_fmt_command = "goimports"
 "}
 
 " Plugin: UndoTree properties {
-let g:gundo_right = 0
-let g:gundo_preview_bottom=1
-let g:gundo_preview_height = 50
-nunmap   <leader>u
-nnoremap <leader>uu :UndotreeToggle<cr>
+
+if isdirectory(expand("~/.vim/bundle/undotree/"))
+    nunmap   <leader>u
+    nnoremap <leader>uu :UndotreeToggle<cr>
+    " If undotree is opened, it is likely one wants to interact with it.
+    let g:undotree_SetFocusWhenToggle=1
+    let g:gundo_right = 0
+    let g:gundo_preview_bottom=1
+    let g:gundo_preview_height = 50
+endif
 "}
 
 " Plugin: Work space properties {
@@ -395,6 +466,29 @@ if isdirectory(expand("~/.vim/bundle/tagbar/"))
     if gitroot != ''
         let &tags = &tags . ',' . gitroot . '/.git/tags'
     endif
+endif
+"}
+
+" Plugin: Rainbow {
+if isdirectory(expand("~/.vim/bundle/rainbow/"))
+    let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
+endif
+"}
+
+" Plugin: Fugitive {
+if isdirectory(expand("~/.vim/bundle/vim-fugitive/"))
+    nnoremap <silent> <leader>gs :Gstatus<CR>
+    nnoremap <silent> <leader>gd :Gdiff<CR>
+    nnoremap <silent> <leader>gc :Gcommit<CR>
+    nnoremap <silent> <leader>gb :Gblame<CR>
+    nnoremap <silent> <leader>gl :Glog<CR>
+    nnoremap <silent> <leader>gp :Git push<CR>
+    nnoremap <silent> <leader>gr :Gread<CR>
+    nnoremap <silent> <leader>gw :Gwrite<CR>
+    nnoremap <silent> <leader>ge :Gedit<CR>
+    " Mnemonic _i_nteractive
+    nnoremap <silent> <leader>gi :Git add -p %<CR>
+    nnoremap <silent> <leader>gg :SignifyToggle<CR>
 endif
 "}
 
