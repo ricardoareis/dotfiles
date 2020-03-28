@@ -120,8 +120,8 @@ zinit wait"1d" lucid as=program from"gh-r" for \
     mv"delta* -> delta" pick="delta/delta" @dandavison/delta
 
 zinit wait"1d" lucid as=program \
-    atclone="./autogen.sh && ./configure --prefix=$ZPFX" \
-    make="install PREFIX=$ZPFX" for \
+    atclone="./autogen.sh && ./configure --prefix=$PWD" \
+    make="" pick="ctags" for \
     universal-ctags/ctags
 
 zinit wait"1d" lucid as=program atclone"./libexec/pyenv init - > zpyenv.zsh" \
@@ -146,7 +146,7 @@ zinit wait"1d" lucid as=program atclone"./libexec/goenv init - > zgoenv.zsh" \
 zinit wait"1f" lucid as=program \
     atinit' ln -sf $PWD/fpp $ZPFX/bin' pick="fpp" nocompile'!' for \
     facebook/pathpicker
-#} 
+#}
 
 # Loading with a 2s delay {
 #
