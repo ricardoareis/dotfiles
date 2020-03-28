@@ -492,6 +492,15 @@ if isdirectory(expand("~/.vim/bundle/vim-fugitive/"))
 endif
 "}
 
+" Plugin: Better-WhiteSpace {
+if isdirectory(expand("~/.vim/bundle/vim-better-whitespace/"))
+    " Navigate vim-better-whitespace
+    nnoremap ]w :NextTrailingWhitespace<CR>
+    nnoremap [w :PrevTrailingWhitespace<CR>
+    let g:strip_whitespace_on_save = 1
+endif
+"}
+
 " Maps {
 "
 " The default leader is '\', but many people prefer ',' as it's in a standard
@@ -536,10 +545,17 @@ nnoremap <C-Left> :tabprevious<CR>
 nnoremap <C-Right> :tabnext<CR>
 nnoremap <leader>ls :ls<cr>:b<space>
 
-" Navigate vim-better-whitespace
-nnoremap ]w :NextTrailingWhitespace<CR>
-nnoremap [w :PrevTrailingWhitespace<CR>
-let g:strip_whitespace_on_save = 1
+" Code folding options
+nmap <leader>f0 :set foldlevel=0<CR>
+nmap <leader>f1 :set foldlevel=1<CR>
+nmap <leader>f2 :set foldlevel=2<CR>
+nmap <leader>f3 :set foldlevel=3<CR>
+nmap <leader>f4 :set foldlevel=4<CR>
+nmap <leader>f5 :set foldlevel=5<CR>
+nmap <leader>f6 :set foldlevel=6<CR>
+nmap <leader>f7 :set foldlevel=7<CR>
+nmap <leader>f8 :set foldlevel=8<CR>
+nmap <leader>f9 :set foldlevel=9<CR>
 
 " Most prefer to toggle search highlighting rather than clear the current
 noremap <space> :set hlsearch! hlsearch?<cr>
@@ -586,29 +602,6 @@ noremap <Up> g<Up>
     vnoremap ^ :<C-U>call WrapRelativeMotion("^", 1)<CR>
     " }
 
-" Code folding options
-nmap <leader>f0 :set foldlevel=0<CR>
-nmap <leader>f1 :set foldlevel=1<CR>
-nmap <leader>f2 :set foldlevel=2<CR>
-nmap <leader>f3 :set foldlevel=3<CR>
-nmap <leader>f4 :set foldlevel=4<CR>
-nmap <leader>f5 :set foldlevel=5<CR>
-nmap <leader>f6 :set foldlevel=6<CR>
-nmap <leader>f7 :set foldlevel=7<CR>
-nmap <leader>f8 :set foldlevel=8<CR>
-nmap <leader>f9 :set foldlevel=9<CR>
-
-"}
-
-" Unmaps {
-" STOP the help from being so... HELPFULL ;)
-inoremap <F1> <ESC>
-nnoremap <F1> <ESC>
-vnoremap <F1> <ESC>
-
-" Find merge conflict markers
-map <leader>fc /\v^[<\|=>]{7}( .*\|$)<CR>
-
 " Visual shifting (does not exit Visual mode)
 vnoremap < <gv
 vnoremap > >gv
@@ -633,6 +626,14 @@ map <Leader>= <C-w>=
 
 " Easier formatting
 nnoremap <silent> <leader>q gwip
+
+"}
+
+" Unmaps {
+" STOP the help from being so... HELPFULL ;)
+inoremap <F1> <ESC>
+nnoremap <F1> <ESC>
+vnoremap <F1> <ESC>
 "}
 
 " Loading others .vim {
