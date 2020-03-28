@@ -1,6 +1,12 @@
 " Basic properties {
 " vim: set expandtab sw=4 ts=4 sts=4 tw=78 ft=vim foldmarker={,} foldlevel=0 foldmethod=marker spell:
 
+    " SnipMate {
+        " Setting the author var
+        " If forking, please overwrite in your .vimrc.local file
+        let g:snips_author = 'Ricardo Reis <ricardo.areis@gmail.com>'
+    " }
+
     " Important Properties{
     set nocompatible                            " be iMproved, required"
     scriptencoding utf-8
@@ -164,7 +170,16 @@
     " Workaround broken colour highlighting in Haskell
     autocmd FileType haskell,rust setlocal nospell
 
+    " AutoCloseTag
+
+    " Make it so AutoCloseTag works for xml and xhtml files as well
+    au FileType xhtml,xml ru ftplugin/html/autoclosetag.vim
+    nmap <Leader>ac <Plug>ToggleAutoCloseMappings
     "}
+
+if isdirectory(expand("~/.vim/bundle/matchit.zip"))
+    let b:match_ignorecase = 1
+endif
 "}
 
 " The complete properties {
@@ -288,11 +303,41 @@ map ghf :GitGutterFold<CR>
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 "}
 
+" Plugin: Session List {
+set sessionoptions=blank,buffers,curdir,folds,tabpages,winsize
+if isdirectory(expand("~/.vim/bundle/sessionman.vim/"))
+    nmap <leader>sl :SessionList<CR>
+    nmap <leader>ss :SessionSave<CR>
+    nmap <leader>sc :SessionClose<CR>
+endif
+" }
+
+" JSON {
+nmap <leader>jt <Esc>:%!python -m json.tool<CR><Esc>:set filetype=json<CR>
+let g:vim_json_syntax_conceal = 0
+" }
+
 " Plugin: Vim-GO {
 " Disable some vim-go properties to better cursorline performance
 let g:go_highlight_space_tab_error=0
 let g:go_highlight_array_whitespace_error=0
 let g:go_highlight_trailing_whitespace_error=0
+"TODO SPF13-VIM
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+let g:go_fmt_command = "goimports"
+"au FileType go nmap <Leader>s <Plug>(go-implements)
+"au FileType go nmap <Leader>i <Plug>(go-info)
+"au FileType go nmap <Leader>e <Plug>(go-rename)
+"au FileType go nmap <leader>r <Plug>(go-run)
+"au FileType go nmap <leader>b <Plug>(go-build)
+"au FileType go nmap <leader>t <Plug>(go-test)
+"au FileType go nmap <Leader>gd <Plug>(go-doc)
+"au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
+"au FileType go nmap <leader>co <Plug>(go-coverage)
 "}
 
 " Plugin: UndoTree properties {
@@ -312,18 +357,45 @@ let g:workspace_persist_undo_history = 0  " enabled = 1 (default), disabled = 0
 "}
 
 " Plugin: NerdTree properties{
-let NERDTreeShowLineNumbers=1
-let NERDTreeMinimalUI=0
-let NERDTreeDirArrows=0
-let g:NERDTreeQuitOnOpen=1                      " close NERDTree after a file is opened
-nnoremap <silent> <leader>ff :NERDTreeFind<cr>  " expand to the path of the file in the current buffer
+
+if isdirectory(expand("~/.vim/bundle/nerdtree"))
+    "map <C-e> <plug>NERDTreeTabsToggle<CR>
+    "map <leader>e :NERDTreeFind<CR>
+    "nmap <leader>nt :NERDTreeFind<CR>
+
+    let g:NERDShutUp=1
+    let g:NERDTreeQuitOnOpen=1                      " close NERDTree after a file is opened
+    let NERDTreeShowLineNumbers=1
+    let NERDTreeMinimalUI=0
+    let NERDTreeDirArrows=0
+    let NERDTreeShowBookmarks=1
+    let NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
+    let NERDTreeChDirMode=0
+    let NERDTreeQuitOnOpen=1
+    let NERDTreeMouseMode=2
+    let NERDTreeShowHidden=1
+    let NERDTreeKeepTreeInNewTab=1
+    let g:nerdtree_tabs_open_on_gui_startup=0
+    nnoremap <silent> <leader>ff :NERDTreeFind<cr>  " expand to the path of the file in the current buffer
+endif
 "}
 
-" Plugin: Ctags properties {
-let g:tagbar_left=0
-let g:tagbar_autofocus=1
-let g:tagbar_compact=1
-let g:tagbar_autoclose=1
+" Plugin: TagBar properties {
+if isdirectory(expand("~/.vim/bundle/tagbar/"))
+    nnoremap <silent> <leader>tt :TagbarToggle<CR>
+    let g:tagbar_left=0
+    let g:tagbar_autofocus=1
+    let g:tagbar_compact=1
+    let g:tagbar_autoclose=1
+    "TODO: investigate git and tags
+    set tags=./tags;/,~/.vimtags
+
+    " Make tags placed in .git/tags file available in all levels of a repository
+    let gitroot = substitute(system('git rev-parse --show-toplevel'), '[\n\r]', '', 'g')
+    if gitroot != ''
+        let &tags = &tags . ',' . gitroot . '/.git/tags'
+    endif
+endif
 "}
 
 " Maps {
