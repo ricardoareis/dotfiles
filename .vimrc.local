@@ -34,7 +34,7 @@
     set nolazyredraw                            " don't redraw while executing macros
     set magic                                   " Set magic on, for regex
 
-    set re=1
+    set re=1                                    " revert to regexp engine v1
     set ttyfast                                 " Improves screen redraw"
     set lazyredraw                              " Avoid redrawing the screen mid-command."
     "}
@@ -109,16 +109,13 @@ set complete-=t   " disable searching tags
 set foldenable
 set foldmethod=indent
 set foldnestmax=10          " deepest fold is 10 levels
+noremap <C-x> :exec "normal zA"<CR>
 "}
 
 " Show Invisible Chars {
 set nolist                                          " default disable
 set listchars=eol:⏎,tab:␉·,trail:␠,nbsp:⎵           " default unicode
 nmap <leader>l :set list!<cr>
-"}
-
-" Highlight - Clear after search {
-noremap <space> :set hlsearch! hlsearch?<cr>
 "}
 
 " Vimdiff - Properties {
@@ -240,9 +237,8 @@ let g:workspace_persist_undo_history = 0  " enabled = 1 (default), disabled = 0
 let NERDTreeShowLineNumbers=1
 let NERDTreeMinimalUI=0
 let NERDTreeDirArrows=0
-let g:NERDTreeQuitOnOpen=1                  " close NERDTree after a file is opened
-nnoremap <silent> <leader>ff :NERDTreeFind<cr>   " expand to the path of the file in the current buffer
-
+let g:NERDTreeQuitOnOpen=1                      " close NERDTree after a file is opened
+nnoremap <silent> <leader>ff :NERDTreeFind<cr>  " expand to the path of the file in the current buffer
 "}
 
 " Plugin: Ctags properties {
@@ -298,6 +294,9 @@ nnoremap <leader>ls :ls<cr>:b<space>
 nnoremap ]w :NextTrailingWhitespace<CR>
 nnoremap [w :PrevTrailingWhitespace<CR>
 let g:strip_whitespace_on_save = 1
+
+" Highlight - Clear after search
+noremap <space> :set hlsearch! hlsearch?<cr>
 "}
 
 " Unmaps {
