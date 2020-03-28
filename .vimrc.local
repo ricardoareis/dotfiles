@@ -402,7 +402,6 @@ set showbreak=...
 
     " Plugin: UndoTree properties {
     if isdirectory(expand("~/.vim/bundle/undotree/"))
-        nunmap   <leader>u
         nnoremap <leader>uu :UndotreeToggle<cr>
         " If undotree is opened, it is likely one wants to interact with it.
         let g:undotree_SetFocusWhenToggle=1
