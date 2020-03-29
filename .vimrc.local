@@ -48,6 +48,7 @@
     set report=0                                " after yank/delete/... report number of lines affected
     set signcolumn=yes
     " set notimeout ttimeout ttimeoutlen=10     " Quickly time out on keycodes, but never timeout on mappings
+    set ttimeoutlen=10
     set completeopt=longest,menuone,preview
     set switchbuf=useopen,usetab                " Attempt to edit currently open files instead of opening multiple buf
     set hidden                                  " Hide buffers when they are abandoned
@@ -578,8 +579,11 @@ vnoremap <F1> <ESC>
     let g:fzf_layout={ 'window': 'bot'.float2nr(&lines * 0.4).'new'  }
     "}
 
-    " Plugin: Golang properties {
+    " Plugin: Vim-Go properties {
     let g:go_fmt_command="goimports" " format with goimports instead of gofmt
+    let g:go_list_type = "quickfix"
+    let g:go_version_warning = 0
+    let g:go_fmt_fail_silently = 1
     let g:go_fmt_autosave=1          " disable fmt on save
     "}
 
@@ -601,6 +605,13 @@ vnoremap <F1> <ESC>
     map ghu :GitGutterUndoHunk<CR>
     map ghf :GitGutterFold<CR>
     "}
+
+    " Plugin: Vim-Ale properties {
+    let g:ale_sign_column_always = 1
+    let g:ale_lint_on_enter = 0
+    let g:ale_open_list = 1
+    let g:ale_keep_list_window_open = 0
+    " }
 
     " Plugin: EditorConfig properties {
     let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
