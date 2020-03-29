@@ -65,7 +65,8 @@
         set cmdheight=1                         " command bar height
     endif
 
-    set laststatus=0                            " Disabled defaut statusbar
+    set laststatus=1                            " TODO: read manual
+    set noshowmode                              " Disabled default showmode
 
     "https://vi.stackexchange.com/questions/2162/why-doesnt-the-backspace-key-work-in-insert-mode
     set backspace=indent,eol,start              " Backspace for dummies (vim has a different approach)
@@ -391,6 +392,9 @@ map <Leader>= <C-w>=
 " Easier formatting
 nnoremap <silent> <leader>q gwip
 
+" LocalSearch
+nmap <leader>/ <Plug>localsearch_toggle
+
 "}
 
 " Unmaps {
@@ -565,7 +569,7 @@ vnoremap <F1> <ESC>
             endif
         endif
         let g:airline#extensions#keymap#enabled=1
-        let g:airline_extensions=['branch', 'bufferline', 'hunks', 'keymap', 'quickfix', 'ale', 'tagbar', 'term', 'undotree', 'whitespace', 'wordcount', 'ycm']
+        let g:airline_extensions=['branch', 'localsearch', 'virtualenv', 'csv', 'bufferline', 'hunks', 'keymap', 'quickfix', 'ale', 'tagbar', 'term', 'undotree', 'whitespace', 'wordcount', 'ycm']
     endif
     "}
 
