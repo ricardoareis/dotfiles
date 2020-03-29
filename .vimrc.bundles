@@ -150,6 +150,9 @@
     Plugin 'sainnhe/gruvbox-material'
     Plugin 'sheerun/vim-polyglot'
     Plugin 'ntpeters/vim-better-whitespace'
+    Plugin 'jmcantrell/vim-virtualenv'
+    Plugin 'chrisbra/csv.vim'
+    Plugin 'mox-mox/vim-localsearch'
     "}
 
     " All of your Plugins must be added before the following line
