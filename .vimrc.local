@@ -281,7 +281,7 @@
     noremap <leader>v :vsp<CR><C-w>l
 
     " toggle cursor line
-    nnoremap <leader>i :set cursorline!<cr>
+    noremap <leader><Leader>cl :set cursorline!<cr>
 
     " scroll the view port faster {
     nnoremap <C-e> 3<C-e>
@@ -293,6 +293,8 @@
     nmap <leader>p :bp<cr> " go to prev buffers
     nmap <leader>q :bd<cr> " close the current buffer
     nnoremap <leader>ls :ls<cr>:b<space>
+    "nnoremap <C-Left>  :bn<CR>
+    "nnoremap <C-Right> :bd<CR>
     " }
 
     " Inconsistency: Fix {
@@ -312,8 +314,6 @@
     noremap <leader>t8 8gt
     noremap <leader>t9 9gt
     noremap <leader>t0 :tablast<cr>
-    nnoremap <C-Left> :tabprevious<CR>
-    nnoremap <C-Right> :tabnext<CR>
     " }
 
     " Code folding options {
@@ -551,10 +551,10 @@
 
     " Plugin: Vimux Properties {
     " Prompt for a command to run
-    map <Leader><Leader>c :VimuxPromptCommand<CR>
+    map <Leader><Leader>pc :VimuxPromptCommand<CR>
 
     " Run last command executed by VimuxRunCommand
-    map <Leader><Leader>cl :VimuxRunLastCommand<CR>
+    map <Leader><Leader>lc :VimuxRunLastCommand<CR>
     " }
 
     " Plugin: Airline properties {
