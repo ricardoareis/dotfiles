@@ -1,19 +1,20 @@
 " Basic properties {
 " vim: set expandtab sw=4 ts=4 sts=4 tw=78 ft=vim foldmarker={,} foldlevel=0 foldmethod=marker spell:
 
-" Use bundles config {
+    " Use bundles config {
     if filereadable(expand("~/.vimrc.bundles"))
         source ~/.vimrc.bundles
     endif
-" }
+    " }
 
     " SnipMate {
-        " Setting the author var
-        " If forking, please overwrite in your .vimrc.local file
-        let g:snips_author = 'Ricardo Reis <ricardo.areis@gmail.com>'
+    " Setting the author var
+    " If forking, please overwrite in your .vimrc.local file
+    let g:snips_author = 'Ricardo Reis <ricardo.areis@gmail.com>'
     " }
 
     " Important Properties{
+
     set nocompatible                            " be iMproved, required"
     scriptencoding utf-8
     set encoding=utf-8
@@ -92,7 +93,6 @@
             return 1
         endif
     endfunction
-
     augroup resCur
         autocmd!
         autocmd BufWinEnter * call ResCur()
@@ -113,7 +113,7 @@
         execute "set <xRight>=\e[1;*C"
         execute "set <xLeft>=\e[1;*D"
     endif
-    "}
+    " }
 
     " Disable unused builtin plugins {
     let g:loaded_gzip              = 1
@@ -132,20 +132,17 @@
     let g:loaded_netrwSettings     = 1
     let g:loaded_netrwFileHandlers = 1
     let g:loaded_logipat           = 1
-    "}
+    " }
 
     " Color properties {
-
     if &term == 'xterm' || &term == 'screen' || &term == "^tmux"
         set t_Co=256                                " Enable 256 colors to stop the CSApprox warning and make xterm vim shine
     endif
-
     if exists('+termguicolors')                     " Only if compiled
       let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
       let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
       set termguicolors
     endif
-
     set background=dark                             " Prefer Dark over Light
     let g:gruvbox_material_background='hard'        " Contrast Level
     colorscheme gruvbox-material                    " Using the same color scheme
@@ -153,18 +150,18 @@
     let g:gruvbox_material_enable_italic = 1        " Allow Italic fonts
     "}
 
-    " Alerts and feedback properties{
+    " Alerts and feedback properties {
     set noerrorbells
     set novisualbell
     set t_vb=                       "Never Flash de Screen"
-    "}
+    " }
 
     " Spell properties {
     set spelllang=en_us,pt
-    "}
+    "TODO: LOCAL DICT
+    " }
 
     " Format properties {
-    "
     set autoindent        " Indent at the same level of the previous line
     set shiftwidth=4      " use indents of 4 spaces
     set expandtab         " tabs are spaces, not tabs
@@ -173,86 +170,84 @@
     set nojoinspaces      " Prevents inserting two spaces after punctuation on a join (J)
     set splitright        " Puts new vsplit windows to the right of the current
     set splitbelow        " Puts new split windows to the bottom of the current
-
+    "
     autocmd BufNewFile,BufRead *.html.twig set filetype=html.twig
     autocmd FileType haskell,puppet,ruby,yml setlocal expandtab shiftwidth=2 softtabstop=2
     autocmd BufNewFile,BufRead *.coffee set filetype=coffee
-
+    "
     " Workaround vim-commentary for Haskell
     autocmd FileType haskell setlocal commentstring=--\ %s
     " Workaround broken colour highlighting in Haskell
     autocmd FileType haskell,rust setlocal nospell
-
+    "
     " AutoCloseTag
-
+    "
     " Make it so AutoCloseTag works for xml and xhtml files as well
     au FileType xhtml,xml ru ftplugin/html/autoclosetag.vim
     nmap <Leader>ac <Plug>ToggleAutoCloseMappings
-    "}
+    " }
 
-"}
+    " The complete properties {
+    "
+    " .: Scan the current buffer
+    " w: Scan buffers from other windows
+    " b: Scan buffers from the buffer list
+    " u: Scan buffers that have been unloaded from the buffer list
+    " t: Tag completion
+    " i: Scan the current and included files
+    "
+    " see :set complet
+    "
+    set complete-=i   " disable scanning included files
+    set complete-=t   " disable searching tags
+    " }
 
-" The complete properties {
-"
-" .: Scan the current buffer
-" w: Scan buffers from other windows
-" b: Scan buffers from the buffer list
-" u: Scan buffers that have been unloaded from the buffer list
-" t: Tag completion
-" i: Scan the current and included files
-"
-" see :set complet
-"
-set complete-=i   " disable scanning included files
-set complete-=t   " disable searching tags
-"}
+    " Code folding properties - TODO {
+    set foldenable
+    set foldmethod=indent
+    set foldnestmax=10          " deepest fold is 10 levels
+    noremap <C-x> :exec "normal zA"<CR>
+    " }
 
-" Code folding properties - TODO {
-set foldenable
-set foldmethod=indent
-set foldnestmax=10          " deepest fold is 10 levels
-noremap <C-x> :exec "normal zA"<CR>
-"}
+" }
 
 " Misc {
 
-" Show Invisible Chars {
-set nolist                                          " default disable
-set listchars=eol:⏎,tab:␉·,trail:␠,nbsp:⎵           " default unicode
-nmap <leader>l :set list!<cr>
-"}
+    " Show Invisible Chars {
+    set nolist                                          " default disable
+    set listchars=eol:⏎,tab:␉·,trail:␠,nbsp:⎵           " default unicode
+    nmap <leader>l :set list!<cr>
+    " }
 
-" Dealing with a long lines properties {
-set wrap                        " wrap long lines by default
-set whichwrap=b,s,h,l,<,>,[,]   " Backspace and cursor keys wrap too
-set textwidth=120
-set colorcolumn=120
-autocmd VimResized * | set columns=120
-set showbreak=...
-"}
+    " Dealing with a long lines properties {
+    set wrap                                            " wrap long lines by default
+    set whichwrap=b,s,h,l,<,>,[,]                       " Backspace and cursor keys wrap too
+    set colorcolumn=120
+    autocmd VimResized * | set columns=120
+    set showbreak=...
+    " }
 
-" Vimdiff - Properties {
-set diffopt=internal,algorithm:patience,indent-heuristic
+    " Vimdiff - Properties {
+    set diffopt=internal,algorithm:patience,indent-heuristic
+    "
+    if &diff
+        map gs :call IwhiteToggle()<CR>
+        function! IwhiteToggle()
+            if &diffopt =~ 'iwhite'
+                set diffopt-=iwhite
+            else
+                set diffopt+=iwhite
+            endif
+        endfunction
+    endif
+    " }
 
-" Toggle Ignore Space
-if &diff
-	map gs :call IwhiteToggle()<CR>
-	function! IwhiteToggle()
-	if &diffopt =~ 'iwhite'
-		set diffopt-=iwhite
-	else
-		set diffopt+=iwhite
-	endif
-	endfunction
-endif
-"}
-
-" Conceal properties {
-if has('conceal')
-    set conceallevel=0
-    nnoremap coe :set <C-R>=&conceallevel ? 'conceallevel=0' : 'conceallevel=1'<CR><CR>
-endif
-"}
+    " Conceal properties {
+    if has('conceal')
+        set conceallevel=0
+        nnoremap coe :set <C-R>=&conceallevel ? 'conceallevel=0' : 'conceallevel=1'<CR><CR>
+    endif
+    " }
 
     " JSON {
     nnoremap jt <Esc>:%!python -m json.tool<CR><Esc>:set filetype=json<CR>
@@ -260,11 +255,13 @@ endif
     " }
 
     " Wildfire {
+
     let g:wildfire_objects = {
                 \ "*" : ["i'", 'i"', "i)", "i]", "i}", "ip"],
                 \ "html,xml" : ["at"],
                 \ }
 
+    "TODO: GIT SUBMODULES
     if isdirectory(expand("~/.vim/bundle/matchit.zip"))
         let b:match_ignorecase = 1
     endif
@@ -273,68 +270,74 @@ endif
 
 " Maps {
 "
-" The default leader is '\', but many people prefer ',' as it's in a standard
-let mapleader=","
+    " The default leader is '\', but many people prefer ',' as it's in a standard
+    let mapleader=","
 
-" reload configuration
-nnoremap <leader><leader>r :source ~/.vimrc<CR>
+    " reload configuration
+    nnoremap <leader><leader>r :source ~/.vimrc<CR>
 
-" Better split management, kept in sync with tmux' mappings
-noremap <leader>h :sp<CR><C-w>j
-noremap <leader>v :vsp<CR><C-w>l
+    " Better split management, kept in sync with tmux' mappings
+    noremap <leader>h :sp<CR><C-w>j
+    noremap <leader>v :vsp<CR><C-w>l
 
-" toggle cursor line
-nnoremap <leader>i :set cursorline!<cr>
+    " toggle cursor line
+    nnoremap <leader>i :set cursorline!<cr>
 
-" scroll the view port faster
-nnoremap <C-e> 3<C-e>
-nnoremap <C-y> 3<C-y>
+    " scroll the view port faster {
+    nnoremap <C-e> 3<C-e>
+    nnoremap <C-y> 3<C-y>
+    " }
 
-" buffer shortcuts
-nmap <leader>n :bn<cr> " go to next buffer
-nmap <leader>p :bp<cr> " go to prev buffers
-nmap <leader>q :bd<cr> " close the current buffer
+    " buffer shortcuts {
+    nmap <leader>n :bn<cr> " go to next buffer
+    nmap <leader>p :bp<cr> " go to prev buffers
+    nmap <leader>q :bd<cr> " close the current buffer
+    nnoremap <leader>ls :ls<cr>:b<space>
+    " }
 
-" Inconsistency: Fix
-" Yank from the cursor to the end of the line, to be consistent with C and D.
-nnoremap Y y$
+    " Inconsistency: Fix {
+    "
+    " Yank from the cursor to the end of the line, to be consistent with C and D.
+    nnoremap Y y$
+    " }
 
-" Bindings properties
-" Go to tab by number
-noremap <leader>t1 1gt
-noremap <leader>t2 2gt
-noremap <leader>t3 3gt
-noremap <leader>t4 4gt
-noremap <leader>t5 5gt
-noremap <leader>t6 6gt
-noremap <leader>t7 7gt
-noremap <leader>t8 8gt
-noremap <leader>t9 9gt
-noremap <leader>t0 :tablast<cr>
-nnoremap <C-Left> :tabprevious<CR>
-nnoremap <C-Right> :tabnext<CR>
-nnoremap <leader>ls :ls<cr>:b<space>
+    " Go to tab by number {
+    noremap <leader>t1 1gt
+    noremap <leader>t2 2gt
+    noremap <leader>t3 3gt
+    noremap <leader>t4 4gt
+    noremap <leader>t5 5gt
+    noremap <leader>t6 6gt
+    noremap <leader>t7 7gt
+    noremap <leader>t8 8gt
+    noremap <leader>t9 9gt
+    noremap <leader>t0 :tablast<cr>
+    nnoremap <C-Left> :tabprevious<CR>
+    nnoremap <C-Right> :tabnext<CR>
+    " }
 
-" Code folding options
-nmap <leader>f0 :set foldlevel=0<CR>
-nmap <leader>f1 :set foldlevel=1<CR>
-nmap <leader>f2 :set foldlevel=2<CR>
-nmap <leader>f3 :set foldlevel=3<CR>
-nmap <leader>f4 :set foldlevel=4<CR>
-nmap <leader>f5 :set foldlevel=5<CR>
-nmap <leader>f6 :set foldlevel=6<CR>
-nmap <leader>f7 :set foldlevel=7<CR>
-nmap <leader>f8 :set foldlevel=8<CR>
-nmap <leader>f9 :set foldlevel=9<CR>
+    " Code folding options {
+    nmap <leader>f0 :set foldlevel=0<CR>
+    nmap <leader>f1 :set foldlevel=1<CR>
+    nmap <leader>f2 :set foldlevel=2<CR>
+    nmap <leader>f3 :set foldlevel=3<CR>
+    nmap <leader>f4 :set foldlevel=4<CR>
+    nmap <leader>f5 :set foldlevel=5<CR>
+    nmap <leader>f6 :set foldlevel=6<CR>
+    nmap <leader>f7 :set foldlevel=7<CR>
+    nmap <leader>f8 :set foldlevel=8<CR>
+    nmap <leader>f9 :set foldlevel=9<CR>
+    " }
 
-" Most prefer to toggle search highlighting rather than clear the current
-noremap <space> :set hlsearch! hlsearch?<cr>
+    " Most prefer to toggle search highlighting rather than clear the current
+    noremap <space> :set hlsearch! hlsearch?<cr>
 
-" Wrapped lines goes down/up to next row, rather than next line in file.
-noremap j gj
-noremap k gk
-noremap <Down> g<Down>
-noremap <Up> g<Up>
+    " Wrapped lines goes down/up to next row, rather than next line in file {
+    noremap j gj
+    noremap k gk
+    noremap <Down> g<Down>
+    noremap <Up> g<Up>
+    " }
 
     " End/Start of line motion keys act relative to row/wrap width in the {
     " presence of `:set wrap`, and relative to line for `:set nowrap`.
@@ -370,42 +373,43 @@ noremap <Up> g<Up>
     vnoremap ^ :<C-U>call WrapRelativeMotion("^", 1)<CR>
     " }
 
-" Visual shifting (does not exit Visual mode)
-vnoremap < <gv
-vnoremap > >gv
+    " Visual shifting (does not exit Visual mode)
+    vnoremap < <gv
+    vnoremap > >gv
 
-" Allow using the repeat operator with a visual selection (!)
-" http://stackoverflow.com/a/8064607/127816
-vnoremap . :normal .<CR>
+    " Allow using the repeat operator with a visual selection (!)
+    " http://stackoverflow.com/a/8064607/127816
+    vnoremap . :normal .<CR>
 
-" For when you forget to sudo.. Really Write the file.
-cmap w!! w !sudo tee % >/dev/null
+    " For when you forget to sudo.. Really Write the file.
+    cmap w!! w !sudo tee % >/dev/null
 
-" Some helpers to edit mode
-" http://vimcasts.org/e/14
-cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
-map <leader>ew :e %%
-map <leader>es :sp %%
-map <leader>ev :vsp %%
-map <leader>et :tabe %%
+    " Some helpers to edit mode {
+    " http://vimcasts.org/e/14
+    cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
+    map <leader>ew :e %%
+    map <leader>es :sp %%
+    map <leader>ev :vsp %%
+    map <leader>et :tabe %%
+    " }
 
-" Adjust viewports to the same size
-map <Leader>= <C-w>=
+    " Adjust viewports to the same size
+    map <Leader>= <C-w>=
 
-" Easier formatting
-nnoremap <silent> <leader>q gwip
+    " Easier formatting
+    nnoremap <silent> <leader>q gwip
 
-" LocalSearch
-nmap <leader>/ <Plug>localsearch_toggle
+    " LocalSearch
+    nmap <leader>/ <Plug>localsearch_toggle
 
-"}
+" }
 
-" Unmaps {
-" STOP the help from being so... HELPFULL ;)
-inoremap <F1> <ESC>
-nnoremap <F1> <ESC>
-vnoremap <F1> <ESC>
-"}
+    " Unmaps {
+    " STOP the help from being so... HELPFULL ;)
+    inoremap <F1> <ESC>
+    nnoremap <F1> <ESC>
+    vnoremap <F1> <ESC>
+    " }
 
 " Funtions {
 
@@ -417,13 +421,13 @@ vnoremap <F1> <ESC>
                     \ 'backup': 'backupdir',
                     \ 'views': 'viewdir',
                     \ 'swap': 'directory' }
-
+        "
         if has('persistent_undo')
             let dir_list['undo'] = 'undodir'
         endif
-
+        "
         let common_dir = parent . '/.' . prefix
-
+        "
         for [dirname, settingname] in items(dir_list)
             let directory = common_dir . dirname . '/'
             if exists("*mkdir")
@@ -474,7 +478,6 @@ vnoremap <F1> <ESC>
     " Shell command {
     function! s:RunShellCommand(cmdline)
         botright new
-
         setlocal buftype=nofile
         setlocal bufhidden=delete
         setlocal nobuflisted
@@ -489,34 +492,32 @@ vnoremap <F1> <ESC>
         setlocal nomodifiable
         1
     endfunction
-
+    "
     command! -complete=file -nargs=+ Shell call s:RunShellCommand(<q-args>)
     " e.g. Grep current file for <search_term>: Shell grep -Hn <search_term> %
     " }
 
-
 " }
 
 "Plugins {
-
     " Plugin: YCM properties {
     if isdirectory(expand("~/.vim/bundle/YouCompleteMe"))
         let g:ycm_use_clangd=0
         let g:ycm_global_ycm_extra_conf='~/repos/dotfiles/.ycm_extra_conf.py'
         let g:ycm_autoclose_preview_window_after_completion=1
         map <leader>gg  :YcmCompleter GoToDefinitionElseDeclaration<CR>
-
+        "
         "TODO: Review bellow - SPF13 config
         let g:acp_enableAtStartup = 0
-
+        "
         " enable completion from tags
         let g:ycm_collect_identifiers_from_tags_files = 1
-
+        "
         " remap Ultisnips for compatibility for YCM
         let g:UltiSnipsExpandTrigger = '<C-j>'
         let g:UltiSnipsJumpForwardTrigger = '<C-j>'
         let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
-
+        "
         " Enable omni completion.
         autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
         autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
@@ -525,20 +526,18 @@ vnoremap <F1> <ESC>
         autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
         autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
         autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
-
         " Haskell post write lint and check with ghcmod
         " $ `cabal install ghcmod` if missing and ensure
         " ~/.cabal/bin is in your $PATH.
         if !executable("ghcmod")
             autocmd BufWritePost *.hs GhcModCheckAndLintAsync
         endif
-
         " Disable the neosnippet preview candidate window
         " When enabled, there can be too much visual noise
         " especially when splits are used.
         set completeopt-=preview
     endif
-    "}
+    " }
 
     " Plugin: Identlines properties (this plugin change conceal properties) {
     if isdirectory(expand("~/.vim/bundle/vim-indent-guides/"))
@@ -548,7 +547,7 @@ vnoremap <F1> <ESC>
         let g:indent_guides_guide_size = 1
         let g:indent_guides_enable_on_vim_startup = 1
     endif
-    "}
+    " }
 
     " Plugin: Vimux Properties {
     " Prompt for a command to run
@@ -556,7 +555,7 @@ vnoremap <F1> <ESC>
 
     " Run last command executed by VimuxRunCommand
     map <Leader><Leader>cl :VimuxRunLastCommand<CR>
-    "}
+    " }
 
     " Plugin: Airline properties {
     if isdirectory(expand("~/.vim/bundle/vim-airline/"))
@@ -574,12 +573,12 @@ vnoremap <F1> <ESC>
         let g:airline#extensions#keymap#enabled=1
         let g:airline_extensions=['branch', 'localsearch', 'virtualenv', 'csv', 'bufferline', 'hunks', 'keymap', 'quickfix', 'ale', 'tagbar', 'term', 'undotree', 'whitespace', 'wordcount', 'ycm']
     endif
-    "}
+    " }
 
     " Plugin: FZF (performs like CtrlP) {
     nnoremap <C-p> :Files<CR>
     let g:fzf_layout={ 'window': 'bot'.float2nr(&lines * 0.4).'new'  }
-    "}
+    " }
 
     " Plugin: Vim-Go properties {
     let g:go_fmt_command="goimports" " format with goimports instead of gofmt
@@ -587,7 +586,7 @@ vnoremap <F1> <ESC>
     let g:go_version_warning = 0
     let g:go_fmt_fail_silently = 1
     let g:go_fmt_autosave=1          " disable fmt on save
-    "}
+    " }
 
     " Plugin: GitGutter properties {
     let g:gitgutter_enabled=1
@@ -606,7 +605,7 @@ vnoremap <F1> <ESC>
     map ghs :GitGutterStageHunk<CR>
     map ghu :GitGutterUndoHunk<CR>
     map ghf :GitGutterFold<CR>
-    "}
+    " }
 
     " Plugin: Vim-Ale properties {
     let g:ale_lint_on_enter = 0
@@ -624,7 +623,7 @@ vnoremap <F1> <ESC>
 
     " Plugin: EditorConfig properties {
     let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
-    "}
+    " }
 
     " Plugin: Session List {
     set sessionoptions=blank,buffers,curdir,folds,tabpages,winsize
@@ -656,7 +655,7 @@ vnoremap <F1> <ESC>
     "au FileType go nmap <Leader>gd <Plug>(go-doc)
     "au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
     "au FileType go nmap <leader>co <Plug>(go-coverage)
-    "}
+    " }
 
     " Plugin: UndoTree properties {
     if isdirectory(expand("~/.vim/bundle/undotree/"))
@@ -667,7 +666,7 @@ vnoremap <F1> <ESC>
         let g:gundo_preview_bottom=1
         let g:gundo_preview_height = 50
     endif
-    "}
+    " }
 
     " Plugin: Work space properties {
     nnoremap <leader>w :ToggleWorkspace<CR>
@@ -675,14 +674,13 @@ vnoremap <F1> <ESC>
     let g:workspace_autosave_always = 0
     let g:workspace_autosave_ignore = ['gitcommit', 'gitrebase', 'nerdtree']
     let g:workspace_persist_undo_history = 0  " enabled = 1 (default), disabled = 0
-    "}
+    " }
 
     " Plugin: NerdTree properties{
     if isdirectory(expand("~/.vim/bundle/nerdtree"))
         "map <C-e> <plug>NERDTreeTabsToggle<CR>
         "map <leader>e :NERDTreeFind<CR>
         "nmap <leader>nt :NERDTreeFind<CR>
-
         let g:NERDShutUp=1
         let g:NERDTreeQuitOnOpen=1                      " close NERDTree after a file is opened
         let NERDTreeShowLineNumbers=1
@@ -698,7 +696,7 @@ vnoremap <F1> <ESC>
         let g:nerdtree_tabs_open_on_gui_startup=0
         nnoremap <silent> <leader>ff :NERDTreeFind<cr>  " expand to the path of the file in the current buffer
     endif
-    "}
+    " }
 
     " Plugin: TagBar properties {
     if isdirectory(expand("~/.vim/bundle/tagbar/"))
@@ -709,20 +707,19 @@ vnoremap <F1> <ESC>
         let g:tagbar_autoclose=1
         "TODO: investigate git and tags
         set tags=./tags;/,~/.vimtags
-
         " Make tags placed in .git/tags file available in all levels of a repository
         let gitroot = substitute(system('git rev-parse --show-toplevel'), '[\n\r]', '', 'g')
         if gitroot != ''
             let &tags = &tags . ',' . gitroot . '/.git/tags'
         endif
     endif
-    "}
+    " }
 
     " Plugin: Rainbow {
     if isdirectory(expand("~/.vim/bundle/rainbow/"))
-        let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
+        let g:rainbow_active = 1                        " 0 if you want to enable it later via :RainbowToggle
     endif
-    "}
+    " }
 
     " Plugin: Fugitive {
     if isdirectory(expand("~/.vim/bundle/vim-fugitive/"))
@@ -739,7 +736,7 @@ vnoremap <F1> <ESC>
         nnoremap <silent> <leader>gi :Git add -p %<CR>
         nnoremap <silent> <leader>gg :SignifyToggle<CR>
     endif
-    "}
+    " }
 
     " Plugin: Better-WhiteSpace {
     if isdirectory(expand("~/.vim/bundle/vim-better-whitespace/"))
@@ -748,7 +745,7 @@ vnoremap <F1> <ESC>
         nnoremap [w :PrevTrailingWhitespace<CR>
         let g:strip_whitespace_on_save = 1
     endif
-    "}
+    " }
 
 "}
 
