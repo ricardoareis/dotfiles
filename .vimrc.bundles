@@ -9,7 +9,7 @@
 
     " Setup Bundle Support {
         " The next three lines ensure that the ~/.vim/bundle/ system works
-        set rtp+=~/.vim/bundle/vundle
+        set rtp+=~/.vim/bundle/Vundle.vim
         call vundle#begin()
     " }
 
