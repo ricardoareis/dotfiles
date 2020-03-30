@@ -190,9 +190,6 @@
     nmap <Leader>ac <Plug>ToggleAutoCloseMappings
     "}
 
-if isdirectory(expand("~/.vim/bundle/matchit.zip"))
-    let b:match_ignorecase = 1
-endif
 "}
 
 " The complete properties {
@@ -256,7 +253,7 @@ if has('conceal')
     nnoremap coe :set <C-R>=&conceallevel ? 'conceallevel=0' : 'conceallevel=1'<CR><CR>
 endif
 "}
-"
+
     " JSON {
     nnoremap jt <Esc>:%!python -m json.tool<CR><Esc>:set filetype=json<CR>
     let g:vim_json_syntax_conceal = 1
@@ -267,6 +264,11 @@ endif
                 \ "*" : ["i'", 'i"', "i)", "i]", "i}", "ip"],
                 \ "html,xml" : ["at"],
                 \ }
+
+    if isdirectory(expand("~/.vim/bundle/matchit.zip"))
+        let b:match_ignorecase = 1
+    endif
+
 " }
 
 " Maps {
@@ -612,7 +614,12 @@ vnoremap <F1> <ESC>
     let g:ale_lint_on_insert_leave = 0
     let g:ale_sign_column_always = 1
     let g:ale_keep_list_window_open = 0
-    let g:ale_open_list = 1
+    let g:ale_open_list = 0
+    let g:ale_set_loclist = 0
+    let g:ale_set_quickfix = 1
+    nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+    nmap <silent> <C-j> <Plug>(ale_next_wrap)
+    nmap <Leader><Leader>af <Plug>(ale_fix)
     " }
 
     " Plugin: EditorConfig properties {
@@ -742,8 +749,6 @@ vnoremap <F1> <ESC>
         let g:strip_whitespace_on_save = 1
     endif
     "}
-
-
 
 "}
 
