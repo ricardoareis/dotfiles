@@ -22,3 +22,6 @@
 	path = .spf13-vim
 	url = https://github.com/spf13/spf13-vim
 	branch = 3.0
+[submodule ".vim/bundle/Vundle.vim"]
+	path = .vim/bundle/Vundle.vim
+	url = https://github.com/VundleVim/Vundle.vim
