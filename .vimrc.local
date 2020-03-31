@@ -387,10 +387,10 @@
     " Some helpers to edit mode {
     " http://vimcasts.org/e/14
     cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
-    map <leader>ew :e %%
-    map <leader>es :sp %%
-    map <leader>ev :vsp %%
-    map <leader>et :tabe %%
+    map <leader>ew :e %%                " open in a new buffer
+    map <leader>es :sp %%               " open in a new horizontal window"
+    map <leader>ev :vsp %%              " open in a new vertical window
+    map <leader>et :tabe %%             " open in a new tab
     " }
 
     " Adjust viewports to the same size
