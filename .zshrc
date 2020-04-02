@@ -180,6 +180,7 @@ ZINIT[BIN_DIR]="${ZINIT[HOME_DIR]}/bin"             # Where Zinit code resides, 
 ZINIT[MODULES_DIR]="${ZINIT[BIN_DIR]}/zmodules/Src"
 ZINIT[ZCOMPDUMP_PATH]="${ZSH_COMPDUMP}/zcompdump"
 ZINIT[COMPINIT_OPTS]="-C"
+ZINIT[OPTIMIZE_OUT_DISK_ACCESSES]=1
 
 [[ -d "${ZINIT[HOME_DIR]}/polaris/bin" ]] || mkdir -p "${ZINIT[HOME_DIR]}/polaris/bin"
 
