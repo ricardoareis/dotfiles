@@ -44,7 +44,7 @@
     set iskeyword-=#                            " '#' is an end of word
     set iskeyword-=-                            " '-' is an end of word
 
-    set synmaxcol=5000                          " Don't try to highlight lines longer than 5000 characters"
+    set synmaxcol=500                          " Don't try to highlight lines longer than 5000 characters"
 
     set report=0                                " after yank/delete/... report number of lines affected
     set signcolumn=yes
