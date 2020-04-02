@@ -20,12 +20,9 @@ local _ZSHRC_OMZ_LIB_SRCS=(
   git.zsh
   completion.zsh
   functions.zsh
-  #diagnostics.zsh
   grep.zsh
   key-bindings.zsh
-  #misc.zsh
   spectrum.zsh
-  #termsupport.zsh
   directories.zsh
   theme-and-appearance.zsh
 )
