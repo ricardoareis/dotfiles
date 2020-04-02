@@ -11,6 +11,9 @@ zinit light romkatv/powerlevel10k
 #}
 
 # Loading with a min delay (default) {
+#
+# zinit light zinit-zsh/z-a-as-monitor
+
 # OMZ things to source
 local _ZSHRC_OMZ_LIB_SRCS=(
   # Libs
