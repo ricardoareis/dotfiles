@@ -27,8 +27,8 @@ local _ZSHRC_OMZ_LIB_SRCS=(
   theme-and-appearance.zsh
 )
 
-zplugin ice svn depth"0" wait multisrc"${_ZSHRC_OMZ_LIB_SRCS}" pick"/dev/null" blockf lucid
-zplugin snippet OMZ::lib
+zinit ice svn depth"0" wait multisrc"${_ZSHRC_OMZ_LIB_SRCS}" pick"/dev/null" blockf lucid
+zinit snippet OMZ::lib
 #}
 
 # Loading with a 1s delay {
@@ -146,6 +146,7 @@ zinit wait"1d" lucid as=program atclone"./libexec/goenv init - > zgoenv.zsh" \
 zinit wait"1f" lucid as=program \
     atinit' ln -sf $PWD/fpp $ZPFX/bin' pick="fpp" nocompile'!' for \
     facebook/pathpicker
+
 #}
 
 # Loading with a 2s delay {
