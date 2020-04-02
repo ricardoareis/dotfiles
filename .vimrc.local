@@ -107,7 +107,7 @@
     endif
 
     " tmux will send xterm-style keys when its xterm-keys option is on
-    if &term =~ '^tmux'
+    if &term =~ '^xterm' || &term =~ '^screen' || &term =~ "^tmux"
         execute "set <xUp>=\e[1;*A"
         execute "set <xDown>=\e[1;*B"
         execute "set <xRight>=\e[1;*C"
@@ -135,7 +135,7 @@
     " }
 
     " Color properties {
-    if &term == 'xterm' || &term == 'screen' || &term == "^tmux"
+    if &term =~ '^xterm' || &term =~ '^screen' || &term =~ "^tmux"
         set t_Co=256                                " Enable 256 colors to stop the CSApprox warning and make xterm vim shine
     endif
     if exists('+termguicolors')                     " Only if compiled
@@ -293,8 +293,12 @@
     nmap <leader>p :bp<cr> " go to prev buffers
     nmap <leader>q :bd<cr> " close the current buffer
     nnoremap <leader>ls :ls<cr>:b<space>
-    "nnoremap <C-Left>  :bn<CR>
-    "nnoremap <C-Right> :bd<CR>
+    nnoremap <C-Left>  :bn<CR>
+    nnoremap <C-Right> :bp<CR>
+
+    "nnoremap <C-Left> :tabprevious<CR>
+    "nnoremap <C-Right> :tabnext<CR>
+
     " }
 
     " Inconsistency: Fix {
