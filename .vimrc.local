@@ -228,7 +228,7 @@
     " }
 
     " Vimdiff - Properties {
-    set diffopt=internal,algorithm:patience,indent-heuristic
+    set diffopt=internal,algorithm:patience,indent-heuristic,horizontal
     "
     if &diff
         map gs :call IwhiteToggle()<CR>
