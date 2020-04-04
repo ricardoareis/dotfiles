@@ -289,15 +289,32 @@
     " }
 
     " buffer shortcuts {
-    nmap <leader>n :bn<cr> " go to next buffer
-    nmap <leader>p :bp<cr> " go to prev buffers
     nmap <leader>q :bd<cr> " close the current buffer
     nnoremap <leader>ls :ls<cr>:b<space>
     nnoremap <C-Left>  :bn<CR>
     nnoremap <C-Right> :bp<CR>
 
-    "nnoremap <C-Left> :tabprevious<CR>
-    "nnoremap <C-Right> :tabnext<CR>
+        " Map to move lines to bellow than current line {
+        "
+        "TODO:
+        "nnoremap cp mc3kY'cP :delmark c<CR>
+        "nnoremap <expr>cp 'mc'.nr2char(getchar())."kY'cP :delmark c"<CR>
+        "nnoremap          cp :exec    ("normal mc" . nr2char(getchar()) . "kY'c")<CR>
+
+        function! MvLines()
+            let l:number = 2
+            let l:string = ""
+
+            while l:number > 0
+                let l:string .= nr2char(getchar())
+                let l:number -= 1
+            endwhile
+
+            return l:string . "m."
+        endfunction
+
+        nnoremap mv :exe MvLines()<cr>
+        " }
 
     " }
 
