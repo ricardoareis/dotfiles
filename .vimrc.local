@@ -112,6 +112,9 @@
         execute "set <xDown>=\e[1;*B"
         execute "set <xRight>=\e[1;*C"
         execute "set <xLeft>=\e[1;*D"
+
+        "execute "set <M-;>=\e;"
+        "execute "set <M-,>=\e,"
     endif
     " }
 
@@ -276,12 +279,14 @@
     " reload configuration
     nnoremap <leader><leader>r :source ~/.vimrc<CR>
 
-    " Better split management, kept in sync with tmux' mappings
+    " Better split management, kept in sync with tmux' mappings {
     noremap <leader>h :sp<CR><C-w>j
     noremap <leader>v :vsp<CR><C-w>l
+    " }
 
-    " toggle cursor line
+    " toggle cursor line {
     noremap <leader><Leader>cl :set cursorline!<cr>
+    " }
 
     " scroll the view port faster {
     nnoremap <C-e> 3<C-e>
@@ -293,35 +298,36 @@
     nnoremap <leader>ls :ls<cr>:b<space>
     nnoremap <C-Left>  :bn<CR>
     nnoremap <C-Right> :bp<CR>
+    " }
 
-        " Map to move lines to bellow than current line {
-        "
-        "TODO:
-        "nnoremap cp mc3kY'cP :delmark c<CR>
-        "nnoremap <expr>cp 'mc'.nr2char(getchar())."kY'cP :delmark c"<CR>
-        "nnoremap          cp :exec    ("normal mc" . nr2char(getchar()) . "kY'c")<CR>
-
-        function! MvLines()
-            let l:number = 2
-            let l:string = ""
-
-            while l:number > 0
-                let l:string .= nr2char(getchar())
-                let l:number -= 1
-            endwhile
-
-            return l:string . "m."
-        endfunction
-
-        nnoremap mv :exe MvLines()<cr>
-        " }
-
+    " Map to move lines to bellow than current line {
+    "
+    "TODO:
+    "nnoremap cp mc3kY'cP :delmark c<CR>
+    "nnoremap <expr>cp 'mc'.nr2char(getchar())."kY'cP :delmark c"<CR>
+    "nnoremap          cp :exec    ("normal mc" . nr2char(getchar()) . "kY'c")<CR>
+    "
+    function! MvLines()
+        let l:number = 2
+        let l:string = ""
+    "
+        while l:number > 0
+            let l:string .= nr2char(getchar())
+            let l:number -= 1
+        endwhile
+    "
+        return l:string . "m."
+    endfunction
+    "
+    nnoremap mv :<c-u>execute MvLines()<cr>
     " }
 
     " Inconsistency: Fix {
     "
     " Yank from the cursor to the end of the line, to be consistent with C and D.
     nnoremap Y y$
+    nnoremap vv ^vg_
+    nnoremap vV vg_
     " }
 
     " Go to tab by number {
@@ -350,8 +356,9 @@
     nmap <leader>f9 :set foldlevel=9<CR>
     " }
 
-    " Most prefer to toggle search highlighting rather than clear the current
+    " Most prefer to toggle search highlighting rather than clear the current {
     noremap <space> :set hlsearch! hlsearch?<cr>
+    " }
 
     " Wrapped lines goes down/up to next row, rather than next line in file {
     noremap j gj
@@ -394,34 +401,47 @@
     vnoremap ^ :<C-U>call WrapRelativeMotion("^", 1)<CR>
     " }
 
-    " Visual shifting (does not exit Visual mode)
+    " Visual shifting (does not exit Visual mode) {
     vnoremap < <gv
     vnoremap > >gv
+    " }
 
-    " Allow using the repeat operator with a visual selection (!)
+    " Allow using the repeat operator with a visual selection (!) {
     " http://stackoverflow.com/a/8064607/127816
     vnoremap . :normal .<CR>
+    " }
 
-    " For when you forget to sudo.. Really Write the file.
+    " For when you forget to sudo.. Really Write the file. {
     cmap w!! w !sudo tee % >/dev/null
+    " }
 
     " Some helpers to edit mode {
     " http://vimcasts.org/e/14
     cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
     map <leader>ew :e %%                " open in a new buffer
-    map <leader>es :sp %%               " open in a new horizontal window"
+    map <leader>es :sp %%               " open in a new horizontal window
     map <leader>ev :vsp %%              " open in a new vertical window
     map <leader>et :tabe %%             " open in a new tab
     " }
 
-    " Adjust viewports to the same size
+    "TODO: Adjust viewports to the same size {
     map <Leader>= <C-w>=
+    " }
 
-    " Easier formatting
+    "TODO: Easier formatting {
     nnoremap <silent> <leader>q gwip
+    " }
 
-    " LocalSearch
-    nmap <leader>/ <Plug>localsearch_toggle
+    " Jump to the middle of the current written line as opposed to the window width {
+    nnoremap <silent> gm :call cursor(0, virtcol('$')/2)<CR>|nnoremap gM gm
+    " }
+
+    " Toggle fold methods {
+    nnoremap <silent>cof :let &foldmethod = tolower(matchstr(
+          \',mmanual,kmarker,iindent,ssyntax,eexpr,ddiff',
+          \','.nr2char(getchar()).'\zs\a*\C'))\|set foldmethod<CR>
+    nmap <silent>zfm cof
+    " }
 
 " }
 
@@ -572,10 +592,12 @@
 
     " Plugin: Vimux Properties {
     " Prompt for a command to run
-    map <Leader><Leader>pc :VimuxPromptCommand<CR>
+    if isdirectory(expand("~/.vim/bundle/vimux/"))
+        map <Leader><Leader>pc :VimuxPromptCommand<CR>
 
-    " Run last command executed by VimuxRunCommand
-    map <Leader><Leader>lc :VimuxRunLastCommand<CR>
+        " Run last command executed by VimuxRunCommand
+        map <Leader><Leader>lc :VimuxRunLastCommand<CR>
+    endif
     " }
 
     " Plugin: Airline properties {
@@ -597,53 +619,63 @@
     " }
 
     " Plugin: FZF (performs like CtrlP) {
-    nnoremap <C-p> :Files<CR>
-    let g:fzf_layout={ 'window': 'bot'.float2nr(&lines * 0.4).'new'  }
+    if isdirectory(expand("~/.vim/bundle/fzf/"))
+        nnoremap <C-p> :Files<CR>
+        let g:fzf_layout={ 'window': 'bot'.float2nr(&lines * 0.4).'new'  }
+    endif
     " }
 
     " Plugin: Vim-Go properties {
-    let g:go_fmt_command="goimports" " format with goimports instead of gofmt
-    let g:go_list_type = "quickfix"
-    let g:go_version_warning = 0
-    let g:go_fmt_fail_silently = 1
-    let g:go_fmt_autosave=1          " disable fmt on save
+    if isdirectory(expand("~/.vim/bundle/vim-go/"))
+        let g:go_fmt_command="goimports" " format with goimports instead of gofmt
+        let g:go_list_type = "quickfix"
+        let g:go_version_warning = 0
+        let g:go_fmt_fail_silently = 1
+        let g:go_fmt_autosave=1          " disable fmt on save
+    endif
     " }
 
     " Plugin: GitGutter properties {
-    let g:gitgutter_enabled=1
-    let g:gitgutter_map_keys=0
-    let g:gitgutter_sign_allow_clobber=1
-    let g:gitgutter_highlight_lines=0
-    let g:gitgutter_highlight_linenrs=1
-    let g:gitgutter_sign_added='ad'
-    let g:gitgutter_sign_modified='md'
-    let g:gitgutter_sign_removed='rd'
-    let g:gitgutter_sign_removed_first_line='rf'
-    let g:gitgutter_sign_modified_removed='mr'
-    let g:gitgutter_max_signs=50
-    set updatetime=2000
-    set foldtext=gitgutter#fold#foldtext()
-    map ghs :GitGutterStageHunk<CR>
-    map ghu :GitGutterUndoHunk<CR>
-    map ghf :GitGutterFold<CR>
+    if isdirectory(expand("~/.vim/bundle/vim-gitgutter/"))
+        let g:gitgutter_enabled=1
+        let g:gitgutter_map_keys=0
+        let g:gitgutter_sign_allow_clobber=1
+        let g:gitgutter_highlight_lines=0
+        let g:gitgutter_highlight_linenrs=1
+        let g:gitgutter_sign_added='ad'
+        let g:gitgutter_sign_modified='md'
+        let g:gitgutter_sign_removed='rd'
+        let g:gitgutter_sign_removed_first_line='rf'
+        let g:gitgutter_sign_modified_removed='mr'
+        let g:gitgutter_max_signs=50
+        set updatetime=2000
+        set foldtext=gitgutter#fold#foldtext()
+        map ghs :GitGutterStageHunk<CR>
+        map ghu :GitGutterUndoHunk<CR>
+        map ghf :GitGutterFold<CR>
+    endif
     " }
 
     " Plugin: Vim-Ale properties {
-    let g:ale_lint_on_enter = 0
-    let g:ale_lint_on_text_changed = 'never'
-    let g:ale_lint_on_insert_leave = 0
-    let g:ale_sign_column_always = 1
-    let g:ale_keep_list_window_open = 0
-    let g:ale_open_list = 0
-    let g:ale_set_loclist = 0
-    let g:ale_set_quickfix = 1
-    nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-    nmap <silent> <C-j> <Plug>(ale_next_wrap)
-    nmap <Leader><Leader>af <Plug>(ale_fix)
+    if isdirectory(expand("~/.vim/bundle/ale/"))
+        let g:ale_lint_on_enter = 0
+        let g:ale_lint_on_text_changed = 'never'
+        let g:ale_lint_on_insert_leave = 0
+        let g:ale_sign_column_always = 1
+        let g:ale_keep_list_window_open = 0
+        let g:ale_open_list = 0
+        let g:ale_set_loclist = 0
+        let g:ale_set_quickfix = 1
+        nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+        nmap <silent> <C-j> <Plug>(ale_next_wrap)
+        nmap <Leader><Leader>af <Plug>(ale_fix)
+    endif
     " }
 
     " Plugin: EditorConfig properties {
-    let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
+    if isdirectory(expand("~/.vim/bundle/editorconfig/"))
+        let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
+    endif
     " }
 
     " Plugin: Session List {
@@ -657,25 +689,27 @@
 
     " Plugin: Vim-GO {
     " Disable some vim-go properties to better cursorline performance
-    let g:go_highlight_space_tab_error=0
-    let g:go_highlight_array_whitespace_error=0
-    let g:go_highlight_trailing_whitespace_error=0
-    "TODO SPF13-VIM
-    let g:go_highlight_functions = 1
-    let g:go_highlight_methods = 1
-    let g:go_highlight_structs = 1
-    let g:go_highlight_operators = 1
-    let g:go_highlight_build_constraints = 1
-    let g:go_fmt_command = "goimports"
-    "au FileType go nmap <Leader>s <Plug>(go-implements)
-    "au FileType go nmap <Leader>i <Plug>(go-info)
-    "au FileType go nmap <Leader>e <Plug>(go-rename)
-    "au FileType go nmap <leader>r <Plug>(go-run)
-    "au FileType go nmap <leader>b <Plug>(go-build)
-    "au FileType go nmap <leader>t <Plug>(go-test)
-    "au FileType go nmap <Leader>gd <Plug>(go-doc)
-    "au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
-    "au FileType go nmap <leader>co <Plug>(go-coverage)
+    if isdirectory(expand("~/.vim/bundle/vim-go/"))
+        let g:go_highlight_space_tab_error=0
+        let g:go_highlight_array_whitespace_error=0
+        let g:go_highlight_trailing_whitespace_error=0
+        let g:go_highlight_functions = 1
+        let g:go_highlight_methods = 1
+        let g:go_highlight_structs = 1
+        let g:go_highlight_operators = 1
+        let g:go_highlight_build_constraints = 1
+        let g:go_fmt_command = "goimports"
+        "TODO: MAP
+        "au FileType go nmap <Leader>s <Plug>(go-implements)
+        "au FileType go nmap <Leader>i <Plug>(go-info)
+        "au FileType go nmap <Leader>e <Plug>(go-rename)
+        "au FileType go nmap <leader>r <Plug>(go-run)
+        "au FileType go nmap <leader>b <Plug>(go-build)
+        "au FileType go nmap <leader>t <Plug>(go-test)
+        "au FileType go nmap <Leader>gd <Plug>(go-doc)
+        "au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
+        "au FileType go nmap <leader>co <Plug>(go-coverage)
+    endif
     " }
 
     " Plugin: UndoTree properties {
@@ -690,11 +724,13 @@
     " }
 
     " Plugin: Work space properties {
-    nnoremap <leader>w :ToggleWorkspace<CR>
-    let g:workspace_session_directory = $HOME . '/.vim/sessions/'
-    let g:workspace_autosave_always = 0
-    let g:workspace_autosave_ignore = ['gitcommit', 'gitrebase', 'nerdtree']
-    let g:workspace_persist_undo_history = 0  " enabled = 1 (default), disabled = 0
+    if isdirectory(expand("~/.vim/bundle/vim-workspace"))
+        nnoremap <leader>w :ToggleWorkspace<CR>
+        let g:workspace_session_directory = $HOME . '/.vim/sessions/'
+        let g:workspace_autosave_always = 0
+        let g:workspace_autosave_ignore = ['gitcommit', 'gitrebase', 'nerdtree']
+        let g:workspace_persist_undo_history = 0  " enabled = 1 (default), disabled = 0
+    endif
     " }
 
     " Plugin: NerdTree properties{
@@ -768,6 +804,11 @@
     endif
     " }
 
+    " Plugin: LocalSearch {
+    if isdirectory(expand("~/.vim/bundle/vim-localsearch/"))
+        nmap <leader>/ <Plug>localsearch_toggle
+    endif
+    " }
 "}
 
 " Loading others .vim {
