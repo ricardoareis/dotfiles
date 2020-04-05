@@ -454,7 +454,7 @@
 
     " Refine the last command
     " TODO: Remap
-    " NXnoremap @<Space> @:
+    "noremap <Space>@ @:
 " }
 
     " Unmaps {
