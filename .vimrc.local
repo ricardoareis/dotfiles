@@ -614,7 +614,9 @@
             endif
         endif
         let g:airline#extensions#keymap#enabled=1
-        let g:airline_extensions=['branch', 'localsearch', 'virtualenv', 'csv', 'bufferline', 'hunks', 'keymap', 'quickfix', 'ale', 'tagbar', 'term', 'undotree', 'whitespace', 'wordcount', 'ycm']
+        let g:airline_extensions=['branch', 'localsearch', 'virtualenv', 'csv', 'bufferline',
+                    \             'hunks', 'keymap', 'quickfix', 'ale', 'tagbar', 'term', 'undotree',
+                    \             'whitespace', 'wordcount', 'ycm']
     endif
     " }
 
