@@ -218,8 +218,11 @@
 
     " Show Invisible Chars {
     set nolist                                          " default disable
-    set listchars=eol:⏎,tab:␉·,trail:␠,nbsp:⎵           " default unicode
-    nmap <leader>l :set list!<cr>
+    if &encoding =~ 'utf-8'
+        set listchars=eol:⏎,tab:␉·,trail:␠,nbsp:⎵       " default unicode
+    endif
+    "TODO: map does not work here
+    "map <leader>l :set list!<cr>
     " }
 
     " Dealing with a long lines properties {
@@ -294,8 +297,9 @@
     " }
 
     " buffer shortcuts {
-    nmap <leader>q :bd<cr> " close the current buffer
-    nnoremap <leader>ls :ls<cr>:b<space>
+    nnoremap <leader>q  :bd<cr> " close the current buffer
+    map <leader>ls :ls<cr>:b<space>
+    map <leader>l :set list!<cr>
     nnoremap <C-Left>  :bn<CR>
     nnoremap <C-Right> :bp<CR>
     " }
@@ -443,6 +447,14 @@
     nmap <silent>zfm cof
     " }
 
+    " Scroll relative to cursor (@_ suppresses [count] for zt)
+    " TODO: Better map <UP> <Down>
+    nnoremap <expr>zt v:count > 0 ? '@_zt'.v:count.'<c-y>' : 'zt'
+    nnoremap <expr>zb v:count > 0 ? '@_zb'.v:count.'<c-e>' : 'zb'
+
+    " Refine the last command
+    " TODO: Remap
+    " NXnoremap @<Space> @:
 " }
 
     " Unmaps {
