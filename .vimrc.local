@@ -215,7 +215,7 @@
         set listchars=eol:⏎,tab:␉·,trail:␠,nbsp:⎵       " default unicode
     endif
     "TODO: map does not work here
-    "map <leader>l :set list!<cr>
+    "noremap <leader>l :set list!<cr>
     " }
 
     " Dealing with a long lines properties {
@@ -291,7 +291,8 @@
 
     " buffer shortcuts {
     nnoremap <leader>q  :bd<cr>
-    map <leader>ls :ls<cr>:b<space>
+    noremap <leader>ls :ls<cr>:b<space>
+    "TODO mv close then list properties, but it does not work
     map <leader>l :set list!<cr>
     "Map <Alt-Tab>
     nnoremap <silent><Esc>[Z   :bp<CR>
