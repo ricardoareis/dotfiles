@@ -67,7 +67,7 @@
         set cmdheight=1                         " command bar height
     endif
 
-    set laststatus=1                            " TODO: read manual
+    set laststatus=2                            " Always show the status line
     set noshowmode                              " Disabled default showmode
 
     "https://vi.stackexchange.com/questions/2162/why-doesnt-the-backspace-key-work-in-insert-mode
