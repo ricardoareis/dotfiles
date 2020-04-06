@@ -205,11 +205,32 @@
     set complete-=t   " disable searching tags
     " }
 
-    " Code folding properties - TODO {
+    " Code folding properties {
     set foldenable
     set foldmethod=indent
     set foldnestmax=10          " deepest fold is 10 levels
     noremap <C-x> :exec "normal zA"<CR>
+    "
+        " Code folding options {
+        nmap <leader>f0 :set foldlevel=0<CR>
+        nmap <leader>f1 :set foldlevel=1<CR>
+        nmap <leader>f2 :set foldlevel=2<CR>
+        nmap <leader>f3 :set foldlevel=3<CR>
+        nmap <leader>f4 :set foldlevel=4<CR>
+        nmap <leader>f5 :set foldlevel=5<CR>
+        nmap <leader>f6 :set foldlevel=6<CR>
+        nmap <leader>f7 :set foldlevel=7<CR>
+        nmap <leader>f8 :set foldlevel=8<CR>
+        nmap <leader>f9 :set foldlevel=9<CR>
+        " }
+        "
+        " Toggle fold methods {
+        nnoremap <silent>cof :let &foldmethod = tolower(matchstr(
+              \',mmanual,kmarker,iindent,ssyntax,eexpr,ddiff',
+              \','.nr2char(getchar()).'\zs\a*\C'))\|set foldmethod<CR>
+        nmap <silent>zfm cof
+        " }
+    "
     " }
 
 " }
@@ -297,7 +318,7 @@
     " }
 
     " buffer shortcuts {
-    nnoremap <leader>q  :bd<cr> " close the current buffer
+    nnoremap <leader>q  :bd<cr>
     map <leader>ls :ls<cr>:b<space>
     map <leader>l :set list!<cr>
     nnoremap <C-Left>  :bn<CR>
@@ -345,19 +366,6 @@
     noremap <leader>t8 8gt
     noremap <leader>t9 9gt
     noremap <leader>t0 :tablast<cr>
-    " }
-
-    " Code folding options {
-    nmap <leader>f0 :set foldlevel=0<CR>
-    nmap <leader>f1 :set foldlevel=1<CR>
-    nmap <leader>f2 :set foldlevel=2<CR>
-    nmap <leader>f3 :set foldlevel=3<CR>
-    nmap <leader>f4 :set foldlevel=4<CR>
-    nmap <leader>f5 :set foldlevel=5<CR>
-    nmap <leader>f6 :set foldlevel=6<CR>
-    nmap <leader>f7 :set foldlevel=7<CR>
-    nmap <leader>f8 :set foldlevel=8<CR>
-    nmap <leader>f9 :set foldlevel=9<CR>
     " }
 
     " Most prefer to toggle search highlighting rather than clear the current {
@@ -428,25 +436,14 @@
     map <leader>et :tabe %%             " open in a new tab
     " }
 
-    "Improve viewports {
-    map <Leader>= <C-w>=                " increase active viewport by one line
-    map <Leader>_ <C-w>_                " reduce active viewport by one line
-    map <Leader>+ <C-w>+                " increase active viewport by one line
-    " }
-
-    "TODO: Easier formatting {
-    nnoremap <silent> <leader>q gwip
+    "Improvesymotion-prefix) viewports {
+    map <Leader>= <C-w>=
+    map <Leader>_ <C-w>_
+    map <Leader>+ <C-w>+
     " }
 
     " Jump to the middle of the current written line as opposed to the window width {
     nnoremap <silent> gm :call cursor(0, virtcol('$')/2)<CR>|nnoremap gM gm
-    " }
-
-    " Toggle fold methods {
-    nnoremap <silent>cof :let &foldmethod = tolower(matchstr(
-          \',mmanual,kmarker,iindent,ssyntax,eexpr,ddiff',
-          \','.nr2char(getchar()).'\zs\a*\C'))\|set foldmethod<CR>
-    nmap <silent>zfm cof
     " }
 
     " Scroll relative to cursor (@_ suppresses [count] for zt)
@@ -563,7 +560,6 @@
         map <leader>gg  :YcmCompleter GoToDefinitionElseDeclaration<CR>
         "
         "TODO: Review bellow - SPF13 config
-        let g:acp_enableAtStartup = 0
         "
         " enable completion from tags
         let g:ycm_collect_identifiers_from_tags_files = 1
@@ -715,16 +711,16 @@
         let g:go_highlight_operators = 1
         let g:go_highlight_build_constraints = 1
         let g:go_fmt_command = "goimports"
-        "TODO: MAP
-        "au FileType go nmap <Leader>s <Plug>(go-implements)
-        "au FileType go nmap <Leader>i <Plug>(go-info)
-        "au FileType go nmap <Leader>e <Plug>(go-rename)
-        "au FileType go nmap <leader>r <Plug>(go-run)
-        "au FileType go nmap <leader>b <Plug>(go-build)
-        "au FileType go nmap <leader>t <Plug>(go-test)
-        "au FileType go nmap <Leader>gd <Plug>(go-doc)
-        "au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
-        "au FileType go nmap <leader>co <Plug>(go-coverage)
+        "TODO: Validating namespace <Space>
+        au FileType go nmap <Leader><Space>s <Plug>(go-implements)
+        au FileType go nmap <Leader><Space>i <Plug>(go-info)
+        au FileType go nmap <Leader><Space>e <Plug>(go-rename)
+        au FileType go nmap <leader><Space>r <Plug>(go-run)
+        au FileType go nmap <leader><Space>b <Plug>(go-build)
+        au FileType go nmap <leader><Space>t <Plug>(go-test)
+        au FileType go nmap <Leader><Space>d <Plug>(go-doc)
+        au FileType go nmap <Leader><Space>v <Plug>(go-doc-vertical)
+        au FileType go nmap <leader><Space>c <Plug>(go-coverage)
     endif
     " }
 
@@ -801,6 +797,7 @@
         nnoremap <silent> <leader>gc :Gcommit<CR>
         nnoremap <silent> <leader>gb :Gblame<CR>
         nnoremap <silent> <leader>gl :Glog<CR>
+        nnoremap <silent> <leader>gl :Glog<CR>
         nnoremap <silent> <leader>gp :Git push<CR>
         nnoremap <silent> <leader>gr :Gread<CR>
         nnoremap <silent> <leader>gw :Gwrite<CR>
@@ -832,4 +829,3 @@
 for fpath in split(globpath('~/.vim/plugins.d/', '*.vim'), '\n')
     exe 'source' fpath
 endfor
-"}
