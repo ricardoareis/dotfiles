@@ -112,9 +112,8 @@
         execute "set <xDown>=\e[1;*B"
         execute "set <xRight>=\e[1;*C"
         execute "set <xLeft>=\e[1;*D"
-
-        "execute "set <M-;>=\e;"
-        "execute "set <M-,>=\e,"
+        "execute "set t_FI=\e[1;3D"
+        "execute "set t_FJ=\e[1;3C"
     endif
     " }
 
@@ -339,6 +338,8 @@
     noremap <leader>t8 8gt
     noremap <leader>t9 9gt
     noremap <leader>t0 :tablast<cr>
+    noremap <Esc>[1;3D :tabnext<CR>
+    noremap <Esc>[1;3C :tabprevious<CR>
     " }
 
     " Code folding options {
