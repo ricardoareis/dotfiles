@@ -90,7 +90,7 @@ zinit wait"1c" lucid as=program \
         src="zfasd.zsh" for clvv/fasd
 
 zinit wait"1b" lucid as=program \
-    atload='export FZF_DEFAULT_COMMAND=""\
+    atload='export FZF_DEFAULT_COMMAND="fd -H -E .git -t f"\
             export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --inline-info \
             --bind=\"alt-k:preview-up,alt-p:preview-up\"\
             --bind=\"alt-j:preview-down,alt-n:preview-down\"\
