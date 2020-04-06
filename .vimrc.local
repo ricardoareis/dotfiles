@@ -293,6 +293,9 @@
     nnoremap <leader>q  :bd<cr>
     map <leader>ls :ls<cr>:b<space>
     map <leader>l :set list!<cr>
+    "Map <Alt-Tab>
+    nnoremap <silent><Esc>[Z   :bp<CR>
+    "TODO: probably it will be removed
     nnoremap <C-Left>  :bn<CR>
     nnoremap <C-Right> :bp<CR>
     " }
