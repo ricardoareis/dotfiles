@@ -205,32 +205,11 @@
     set complete-=t   " disable searching tags
     " }
 
-    " Code folding properties {
+    " Code folding properties - TODO {
     set foldenable
     set foldmethod=indent
     set foldnestmax=10          " deepest fold is 10 levels
     noremap <C-x> :exec "normal zA"<CR>
-    "
-        " Code folding options {
-        nmap <leader>f0 :set foldlevel=0<CR>
-        nmap <leader>f1 :set foldlevel=1<CR>
-        nmap <leader>f2 :set foldlevel=2<CR>
-        nmap <leader>f3 :set foldlevel=3<CR>
-        nmap <leader>f4 :set foldlevel=4<CR>
-        nmap <leader>f5 :set foldlevel=5<CR>
-        nmap <leader>f6 :set foldlevel=6<CR>
-        nmap <leader>f7 :set foldlevel=7<CR>
-        nmap <leader>f8 :set foldlevel=8<CR>
-        nmap <leader>f9 :set foldlevel=9<CR>
-        " }
-        "
-        " Toggle fold methods {
-        nnoremap <silent>cof :let &foldmethod = tolower(matchstr(
-              \',mmanual,kmarker,iindent,ssyntax,eexpr,ddiff',
-              \','.nr2char(getchar()).'\zs\a*\C'))\|set foldmethod<CR>
-        nmap <silent>zfm cof
-        " }
-    "
     " }
 
 " }
@@ -368,6 +347,19 @@
     noremap <leader>t0 :tablast<cr>
     " }
 
+    " Code folding options {
+    nmap <leader>f0 :set foldlevel=0<CR>
+    nmap <leader>f1 :set foldlevel=1<CR>
+    nmap <leader>f2 :set foldlevel=2<CR>
+    nmap <leader>f3 :set foldlevel=3<CR>
+    nmap <leader>f4 :set foldlevel=4<CR>
+    nmap <leader>f5 :set foldlevel=5<CR>
+    nmap <leader>f6 :set foldlevel=6<CR>
+    nmap <leader>f7 :set foldlevel=7<CR>
+    nmap <leader>f8 :set foldlevel=8<CR>
+    nmap <leader>f9 :set foldlevel=9<CR>
+    " }
+
     " Most prefer to toggle search highlighting rather than clear the current {
     noremap <space> :set hlsearch! hlsearch?<cr>
     " }
@@ -444,6 +436,13 @@
 
     " Jump to the middle of the current written line as opposed to the window width {
     nnoremap <silent> gm :call cursor(0, virtcol('$')/2)<CR>|nnoremap gM gm
+    " }
+
+    " Toggle fold methods {
+    nnoremap <silent>cof :let &foldmethod = tolower(matchstr(
+          \',mmanual,kmarker,iindent,ssyntax,eexpr,ddiff',
+          \','.nr2char(getchar()).'\zs\a*\C'))\|set foldmethod<CR>
+    nmap <silent>zfm cof
     " }
 
     " Scroll relative to cursor (@_ suppresses [count] for zt)
@@ -711,7 +710,7 @@
         let g:go_highlight_operators = 1
         let g:go_highlight_build_constraints = 1
         let g:go_fmt_command = "goimports"
-        "TODO: Validating namespace <Space>
+        "TODO: MAP
         au FileType go nmap <Leader><Space>s <Plug>(go-implements)
         au FileType go nmap <Leader><Space>i <Plug>(go-info)
         au FileType go nmap <Leader><Space>e <Plug>(go-rename)
