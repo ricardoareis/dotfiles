@@ -205,12 +205,6 @@
     set complete-=t   " disable searching tags
     " }
 
-    " Code folding properties - TODO {
-    set foldenable
-    set foldmethod=indent
-    set foldnestmax=10          " deepest fold is 10 levels
-    noremap <C-x> :exec "normal zA"<CR>
-    " }
 
 " }
 
@@ -348,6 +342,11 @@
     " }
 
     " Code folding options {
+    set foldenable
+    set foldmethod=indent
+    set foldnestmax=10                              " deepest fold is 10 levels
+    "
+    noremap <C-x> :exec "normal zA"<CR>
     nmap <leader>f0 :set foldlevel=0<CR>
     nmap <leader>f1 :set foldlevel=1<CR>
     nmap <leader>f2 :set foldlevel=2<CR>
@@ -358,6 +357,11 @@
     nmap <leader>f7 :set foldlevel=7<CR>
     nmap <leader>f8 :set foldlevel=8<CR>
     nmap <leader>f9 :set foldlevel=9<CR>
+    "
+    nnoremap <silent>cof :let &foldmethod = tolower(matchstr(
+          \',mmanual,kmarker,iindent,ssyntax,eexpr,ddiff',
+          \','.nr2char(getchar()).'\zs\a*\C'))\|set foldmethod<CR>
+    nmap <silent>zfm cof
     " }
 
     " Most prefer to toggle search highlighting rather than clear the current {
@@ -438,17 +442,10 @@
     nnoremap <silent> gm :call cursor(0, virtcol('$')/2)<CR>|nnoremap gM gm
     " }
 
-    " Toggle fold methods {
-    nnoremap <silent>cof :let &foldmethod = tolower(matchstr(
-          \',mmanual,kmarker,iindent,ssyntax,eexpr,ddiff',
-          \','.nr2char(getchar()).'\zs\a*\C'))\|set foldmethod<CR>
-    nmap <silent>zfm cof
-    " }
-
     " Scroll relative to cursor (@_ suppresses [count] for zt)
     " TODO: Better map <UP> <Down>
-    nnoremap <expr>zt v:count > 0 ? '@_zt'.v:count.'<c-y>' : 'zt'
-    nnoremap <expr>zb v:count > 0 ? '@_zb'.v:count.'<c-e>' : 'zb'
+    nnoremap <expr><C-Up>   v:count > 0 ? '@_zt'.v:count.'<c-y>' : 'zt'
+    nnoremap <expr><C-Down> v:count > 0 ? '@_zb'.v:count.'<c-e>' : 'zb'
 
     " Refine the last command
     " TODO: Remap
