@@ -267,7 +267,7 @@
                 \ "html,xml" : ["at"],
                 \ }
 
-    "TODO: GIT SUBMODULES
+    " https://vimawesome.com/plugin/matchit-zip-the-story-of-us
     if isdirectory(expand("~/.vim/bundle/matchit.zip"))
         let b:match_ignorecase = 1
     endif
@@ -306,10 +306,10 @@
 
     " Map to move lines to bellow than current line {
     "
-    "TODO:
+    "TODO: Refining this cmd, bellow to samples produced by me
     "nnoremap cp mc3kY'cP :delmark c<CR>
     "nnoremap <expr>cp 'mc'.nr2char(getchar())."kY'cP :delmark c"<CR>
-    "nnoremap          cp :exec    ("normal mc" . nr2char(getchar()) . "kY'c")<CR>
+    "nnoremap cp :exec    ("normal mc" . nr2char(getchar()) . "kY'c")<CR>
     "
     function! MvLines()
         let l:number = 2
@@ -428,8 +428,10 @@
     map <leader>et :tabe %%             " open in a new tab
     " }
 
-    "TODO: Adjust viewports to the same size {
-    map <Leader>= <C-w>=
+    "Improve viewports {
+    map <Leader>= <C-w>=                " increase active viewport by one line
+    map <Leader>_ <C-w>_                " reduce active viewport by one line
+    map <Leader>+ <C-w>+                " increase active viewport by one line
     " }
 
     "TODO: Easier formatting {
