@@ -215,7 +215,7 @@
         set listchars=eol:⏎,tab:␉·,trail:␠,nbsp:⎵       " default unicode
     endif
     "TODO: map does not work here
-    "noremap <leader>l :set list!<cr>
+    "noremap <Leader>l :set list!<CR>
     " }
 
     " Dealing with a long lines properties {
@@ -273,15 +273,15 @@
     let mapleader=","
 
     " reload configuration
-    nnoremap <leader><leader>r :source ~/.vimrc<CR>
+    nnoremap <Leader><Leader>r :source ~/.vimrc<CR>
 
     " Better split management, kept in sync with tmux' mappings {
-    noremap <leader>h :sp<CR><C-w>j
-    noremap <leader>v :vsp<CR><C-w>l
+    noremap <Leader>h :sp<CR><C-w>j
+    noremap <Leader>v :vsp<CR><C-w>l
     " }
 
     " toggle cursor line {
-    noremap <leader><Leader>cl :set cursorline!<cr>
+    noremap <Leader><Leader>cl :set cursorline!<CR>
     " }
 
     " scroll the view port faster {
@@ -290,12 +290,15 @@
     " }
 
     " buffer shortcuts {
-    nnoremap <leader>q  :bd<cr>
-    noremap <leader>ls :ls<cr>:b<space>
+    nnoremap <Leader>q  :bd<CR>
+    noremap  <Leader>ls :ls<CR>:b<space>
+    "
     "TODO mv close then list properties, but it does not work
-    map <leader>l :set list!<cr>
+    map <Leader>l :set list!<CR>
+    "
     "Map <Alt-Tab>
     nnoremap <silent><S-Tab>  :bp<CR>
+    "
     "TODO: probably it will be removed
     nnoremap <C-Left>  :bn<CR>
     nnoremap <C-Right> :bp<CR>
@@ -320,7 +323,7 @@
         return l:string . "m."
     endfunction
     "
-    nnoremap mv :<c-u>execute MvLines()<cr>
+    nnoremap mv :<C-u>execute MvLines()<CR>
     " }
 
     " Inconsistency: Fix {
@@ -332,16 +335,16 @@
     " }
 
     " Go to tab by number {
-    noremap <leader>t1 1gt
-    noremap <leader>t2 2gt
-    noremap <leader>t3 3gt
-    noremap <leader>t4 4gt
-    noremap <leader>t5 5gt
-    noremap <leader>t6 6gt
-    noremap <leader>t7 7gt
-    noremap <leader>t8 8gt
-    noremap <leader>t9 9gt
-    noremap <leader>t0 :tablast<cr>
+    noremap <Leader>t1 1gt
+    noremap <Leader>t2 2gt
+    noremap <Leader>t3 3gt
+    noremap <Leader>t4 4gt
+    noremap <Leader>t5 5gt
+    noremap <Leader>t6 6gt
+    noremap <Leader>t7 7gt
+    noremap <Leader>t8 8gt
+    noremap <Leader>t9 9gt
+    noremap <Leader>t0 :tablast<CR>
     noremap <Esc>[1;3D :tabnext<CR>
     noremap <Esc>[1;3C :tabprevious<CR>
     " }
@@ -352,16 +355,16 @@
     set foldnestmax=10                              " deepest fold is 10 levels
     "
     noremap <C-x> :exec "normal zA"<CR>
-    nmap <leader>f0 :set foldlevel=0<CR>
-    nmap <leader>f1 :set foldlevel=1<CR>
-    nmap <leader>f2 :set foldlevel=2<CR>
-    nmap <leader>f3 :set foldlevel=3<CR>
-    nmap <leader>f4 :set foldlevel=4<CR>
-    nmap <leader>f5 :set foldlevel=5<CR>
-    nmap <leader>f6 :set foldlevel=6<CR>
-    nmap <leader>f7 :set foldlevel=7<CR>
-    nmap <leader>f8 :set foldlevel=8<CR>
-    nmap <leader>f9 :set foldlevel=9<CR>
+    nmap <Leader>f0 :set foldlevel=0<CR>
+    nmap <Leader>f1 :set foldlevel=1<CR>
+    nmap <Leader>f2 :set foldlevel=2<CR>
+    nmap <Leader>f3 :set foldlevel=3<CR>
+    nmap <Leader>f4 :set foldlevel=4<CR>
+    nmap <Leader>f5 :set foldlevel=5<CR>
+    nmap <Leader>f6 :set foldlevel=6<CR>
+    nmap <Leader>f7 :set foldlevel=7<CR>
+    nmap <Leader>f8 :set foldlevel=8<CR>
+    nmap <Leader>f9 :set foldlevel=9<CR>
     "
     nnoremap <silent>cof :let &foldmethod = tolower(matchstr(
           \',mmanual,kmarker,iindent,ssyntax,eexpr,ddiff',
@@ -370,7 +373,7 @@
     " }
 
     " Most prefer to toggle search highlighting rather than clear the current {
-    noremap <space> :set hlsearch! hlsearch?<cr>
+    noremap <space> :set hlsearch! hlsearch?<CR>
     " }
 
     " Wrapped lines goes down/up to next row, rather than next line in file {
@@ -407,11 +410,11 @@
     onoremap <End> v:call WrapRelativeMotion("$")<CR>
     " Overwrite the Visual+select mode mappings from above
     " to ensure the correct vis_sel flag is passed to function
-    vnoremap $ :<C-U>call WrapRelativeMotion("$", 1)<CR>
-    vnoremap <End> :<C-U>call WrapRelativeMotion("$", 1)<CR>
-    vnoremap 0 :<C-U>call WrapRelativeMotion("0", 1)<CR>
-    vnoremap <Home> :<C-U>call WrapRelativeMotion("0", 1)<CR>
-    vnoremap ^ :<C-U>call WrapRelativeMotion("^", 1)<CR>
+    vnoremap $ :<C-u>call WrapRelativeMotion("$", 1)<CR>
+    vnoremap <End> :<C-u>call WrapRelativeMotion("$", 1)<CR>
+    vnoremap 0 :<C-u>call WrapRelativeMotion("0", 1)<CR>
+    vnoremap <Home> :<C-u>call WrapRelativeMotion("0", 1)<CR>
+    vnoremap ^ :<C-u>call WrapRelativeMotion("^", 1)<CR>
     " }
 
     " Visual shifting (does not exit Visual mode) {
@@ -430,11 +433,11 @@
 
     " Some helpers to edit mode {
     " http://vimcasts.org/e/14
-    cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
-    map <leader>ew :e %%                " open in a new buffer
-    map <leader>es :sp %%               " open in a new horizontal window
-    map <leader>ev :vsp %%              " open in a new vertical window
-    map <leader>et :tabe %%             " open in a new tab
+    cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<CR>
+    map <Leader>ew :e %%                " open in a new buffer
+    map <Leader>es :sp %%               " open in a new horizontal window
+    map <Leader>ev :vsp %%              " open in a new vertical window
+    map <Leader>et :tabe %%             " open in a new tab
     " }
 
     "Improvesymotion-prefix) viewports {
@@ -464,9 +467,9 @@
 
     " Unmaps {
     " STOP the help from being so... HELPFULL ;)
-    inoremap <F1> <ESC>
-    nnoremap <F1> <ESC>
-    vnoremap <F1> <ESC>
+    inoremap <F1> <Esc>
+    nnoremap <F1> <Esc>
+    vnoremap <F1> <Esc>
     " }
 
 " Funtions {
@@ -558,12 +561,13 @@
 " }
 
 "Plugins {
+
     " Plugin: YCM properties {
     if isdirectory(expand("~/.vim/bundle/YouCompleteMe"))
         let g:ycm_use_clangd=0
         let g:ycm_global_ycm_extra_conf='~/repos/dotfiles/.ycm_extra_conf.py'
         let g:ycm_autoclose_preview_window_after_completion=1
-        map <leader>gg  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+        map <Leader>gg  :YcmCompleter GoToDefinitionElseDeclaration<CR>
         "
         "TODO: Review YCM ommifunc
         "
@@ -587,7 +591,6 @@
         autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
         autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
         autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-
         " Disable the neosnippet preview candidate window
         " When enabled, there can be too much visual noise
         " especially when splits are used.
@@ -698,9 +701,9 @@
     " Plugin: Session List {
     set sessionoptions=blank,buffers,curdir,folds,tabpages,winsize
     if isdirectory(expand("~/.vim/bundle/sessionman.vim/"))
-        nmap <leader>sl :SessionList<CR>
-        nmap <leader>ss :SessionSave<CR>
-        nmap <leader>sc :SessionClose<CR>
+        nmap <Leader>sl :SessionList<CR>
+        nmap <Leader>ss :SessionSave<CR>
+        nmap <Leader>sc :SessionClose<CR>
     endif
     " }
 
@@ -720,18 +723,18 @@
         au FileType go nmap <Leader><Space>s <Plug>(go-implements)
         au FileType go nmap <Leader><Space>i <Plug>(go-info)
         au FileType go nmap <Leader><Space>e <Plug>(go-rename)
-        au FileType go nmap <leader><Space>r <Plug>(go-run)
-        au FileType go nmap <leader><Space>b <Plug>(go-build)
-        au FileType go nmap <leader><Space>t <Plug>(go-test)
+        au FileType go nmap <Leader><Space>r <Plug>(go-run)
+        au FileType go nmap <Leader><Space>b <Plug>(go-build)
+        au FileType go nmap <Leader><Space>t <Plug>(go-test)
         au FileType go nmap <Leader><Space>d <Plug>(go-doc)
         au FileType go nmap <Leader><Space>v <Plug>(go-doc-vertical)
-        au FileType go nmap <leader><Space>c <Plug>(go-coverage)
+        au FileType go nmap <Leader><Space>c <Plug>(go-coverage)
     endif
     " }
 
     " Plugin: UndoTree properties {
     if isdirectory(expand("~/.vim/bundle/undotree/"))
-        nnoremap <leader>uu :UndotreeToggle<cr>
+        nnoremap <Leader>uu :UndotreeToggle<CR>
         " If undotree is opened, it is likely one wants to interact with it.
         let g:undotree_SetFocusWhenToggle=1
         let g:gundo_right = 0
@@ -742,7 +745,7 @@
 
     " Plugin: Work space properties {
     if isdirectory(expand("~/.vim/bundle/vim-workspace"))
-        nnoremap <leader>w :ToggleWorkspace<CR>
+        nnoremap <Leader>w :ToggleWorkspace<CR>
         let g:workspace_session_directory = $HOME . '/.vim/sessions/'
         let g:workspace_autosave_always = 0
         let g:workspace_autosave_ignore = ['gitcommit', 'gitrebase', 'nerdtree']
@@ -753,8 +756,8 @@
     " Plugin: NerdTree properties{
     if isdirectory(expand("~/.vim/bundle/nerdtree"))
         "map <C-e> <plug>NERDTreeTabsToggle<CR>
-        "map <leader>e :NERDTreeFind<CR>
-        "nmap <leader>nt :NERDTreeFind<CR>
+        "map <Leader>e :NERDTreeFind<CR>
+        "nmap <Leader>nt :NERDTreeFind<CR>
         let g:NERDShutUp=1
         let g:NERDTreeQuitOnOpen=1                      " close NERDTree after a file is opened
         let NERDTreeShowLineNumbers=1
@@ -768,13 +771,13 @@
         let NERDTreeShowHidden=1
         let NERDTreeKeepTreeInNewTab=1
         let g:nerdtree_tabs_open_on_gui_startup=0
-        nnoremap <silent> <leader>ff :NERDTreeFind<cr>  " expand to the path of the file in the current buffer
+        nnoremap <silent> <Leader>ff :NERDTreeFind<CR>  " expand to the path of the file in the current buffer
     endif
     " }
 
     " Plugin: TagBar properties {
     if isdirectory(expand("~/.vim/bundle/tagbar/"))
-        nnoremap <silent> <leader>tt :TagbarToggle<CR>
+        nnoremap <silent> <Leader>tt :TagbarToggle<CR>
         let g:tagbar_left=0
         let g:tagbar_autofocus=1
         let g:tagbar_compact=1
@@ -797,19 +800,19 @@
 
     " Plugin: Fugitive {
     if isdirectory(expand("~/.vim/bundle/vim-fugitive/"))
-        nnoremap <silent> <leader>gs :Gstatus<CR>
-        nnoremap <silent> <leader>gd :Gdiff<CR>
-        nnoremap <silent> <leader>gc :Gcommit<CR>
-        nnoremap <silent> <leader>gb :Gblame<CR>
-        nnoremap <silent> <leader>gl :Glog<CR>
-        nnoremap <silent> <leader>gl :Glog<CR>
-        nnoremap <silent> <leader>gp :Git push<CR>
-        nnoremap <silent> <leader>gr :Gread<CR>
-        nnoremap <silent> <leader>gw :Gwrite<CR>
-        nnoremap <silent> <leader>ge :Gedit<CR>
+        nnoremap <silent> <Leader>gs :Gstatus<CR>
+        nnoremap <silent> <Leader>gd :Gdiff<CR>
+        nnoremap <silent> <Leader>gc :Gcommit<CR>
+        nnoremap <silent> <Leader>gb :Gblame<CR>
+        nnoremap <silent> <Leader>gl :Glog<CR>
+        nnoremap <silent> <Leader>gl :Glog<CR>
+        nnoremap <silent> <Leader>gp :Git push<CR>
+        nnoremap <silent> <Leader>gr :Gread<CR>
+        nnoremap <silent> <Leader>gw :Gwrite<CR>
+        nnoremap <silent> <Leader>ge :Gedit<CR>
         " Mnemonic _i_nteractive
-        nnoremap <silent> <leader>gi :Git add -p %<CR>
-        nnoremap <silent> <leader>gg :SignifyToggle<CR>
+        nnoremap <silent> <Leader>gi :Git add -p %<CR>
+        nnoremap <silent> <Leader>gg :SignifyToggle<CR>
     endif
     " }
 
@@ -824,7 +827,7 @@
 
     " Plugin: LocalSearch {
     if isdirectory(expand("~/.vim/bundle/vim-localsearch/"))
-        nmap <leader>/ <Plug>localsearch_toggle
+        nmap <Leader>/ <Plug>localsearch_toggle
     endif
     " }
 
