@@ -291,7 +291,7 @@
 
     " buffer shortcuts {
     nnoremap <Leader>q  :bd<CR>
-    noremap  <Leader>ls :ls<CR>:b<space>
+    noremap  <Leader>ls :ls<CR>:b<Space>
     "
     "TODO mv close then list properties, but it does not work
     map <Leader>l :set list!<CR>
@@ -373,7 +373,7 @@
     " }
 
     " Most prefer to toggle search highlighting rather than clear the current {
-    noremap <space> :set hlsearch! hlsearch?<CR>
+    noremap <Space> :set hlsearch! hlsearch?<CR>
     " }
 
     " Wrapped lines goes down/up to next row, rather than next line in file {
