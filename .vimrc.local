@@ -560,20 +560,20 @@
         let g:ycm_autoclose_preview_window_after_completion=1
         map <leader>gg  :YcmCompleter GoToDefinitionElseDeclaration<CR>
         "
-        "TODO: Review bellow - SPF13 config
+        "TODO: Review YCM ommifunc
         "
         " enable completion from tags
         let g:ycm_collect_identifiers_from_tags_files = 1
         "
         " Trigger configuration.
         " Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-
+        "
         let g:UltiSnipsExpandTrigger = '<C-j>'
         let g:UltiSnipsJumpForwardTrigger = '<C-j>'
         let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
         " If you want :UltiSnipsEdit to split your window.
         let g:UltiSnipsEditSplit="vertical"
-
+        "
         "
         " Enable omni completion.
         autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -582,13 +582,7 @@
         autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
         autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
         autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-        autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
-        " Haskell post write lint and check with ghcmod
-        " $ `cabal install ghcmod` if missing and ensure
-        " ~/.cabal/bin is in your $PATH.
-        if !executable("ghcmod")
-            autocmd BufWritePost *.hs GhcModCheckAndLintAsync
-        endif
+
         " Disable the neosnippet preview candidate window
         " When enabled, there can be too much visual noise
         " especially when splits are used.
@@ -717,7 +711,7 @@
         let g:go_highlight_operators = 1
         let g:go_highlight_build_constraints = 1
         let g:go_fmt_command = "goimports"
-        "TODO: MAP
+        "TODO: Evaluate the <Space> namespace
         au FileType go nmap <Leader><Space>s <Plug>(go-implements)
         au FileType go nmap <Leader><Space>i <Plug>(go-info)
         au FileType go nmap <Leader><Space>e <Plug>(go-rename)
