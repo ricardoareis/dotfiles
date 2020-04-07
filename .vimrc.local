@@ -295,7 +295,7 @@
     "TODO mv close then list properties, but it does not work
     map <leader>l :set list!<cr>
     "Map <Alt-Tab>
-    nnoremap <silent><Esc>[Z   :bp<CR>
+    nnoremap <silent><S-Tab>  :bp<CR>
     "TODO: probably it will be removed
     nnoremap <C-Left>  :bn<CR>
     nnoremap <C-Right> :bp<CR>
@@ -447,14 +447,19 @@
     nnoremap <silent> gm :call cursor(0, virtcol('$')/2)<CR>|nnoremap gM gm
     " }
 
-    " Scroll relative to cursor (@_ suppresses [count] for zt)
-    " TODO: Better map <UP> <Down>
+    " Scroll relative to cursor (@_ suppresses [count] for zt) {
+    " this cmd alternate between 10 lines bellow and above.
+    " Use <expr> to increase or decrease
     nnoremap <expr><C-Up>   v:count > 0 ? '@_zt'.v:count.'<c-y>' : 'zt'
     nnoremap <expr><C-Down> v:count > 0 ? '@_zb'.v:count.'<c-e>' : 'zb'
+    " }
 
-    " Refine the last command
-    " TODO: Remap
-    "noremap <Space>@ @:
+    " Repeat the last command (ex. :ls) {
+    " If your terminal print the same  for, both <Esc> and <Alt>
+    " decide the best usability.
+    nnoremap <Esc>. @:
+    " }
+
 " }
 
     " Unmaps {
