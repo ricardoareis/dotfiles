@@ -10,7 +10,7 @@
     " SnipMate {
     " Setting the author var
     " If forking, please overwrite in your .vimrc.local file
-    let g:snips_author = 'Ricardo Reis <ricardo.areis@gmail.com>'
+    let g:snips_author='Ricardo Reis <ricardo.areis@gmail.com>'
     " }
 
     " Important Properties{
@@ -118,22 +118,22 @@
     " }
 
     " Disable unused builtin plugins {
-    let g:loaded_gzip              = 1
-    let g:loaded_tar               = 1
-    let g:loaded_tarPlugin         = 1
-    let g:loaded_zip               = 1
-    let g:loaded_zipPlugin         = 1
-    let g:loaded_rrhelper          = 1
-    let g:loaded_2html_plugin      = 1
-    let g:loaded_vimball           = 1
-    let g:loaded_vimballPlugin     = 1
-    let g:loaded_getscript         = 1
-    let g:loaded_getscriptPlugin   = 1
-    let g:loaded_netrw             = 1
-    let g:loaded_netrwPlugin       = 1
-    let g:loaded_netrwSettings     = 1
-    let g:loaded_netrwFileHandlers = 1
-    let g:loaded_logipat           = 1
+    let g:loaded_gzip=1
+    let g:loaded_tar=1
+    let g:loaded_tarPlugin=1
+    let g:loaded_zip=1
+    let g:loaded_zipPlugin=1
+    let g:loaded_rrhelper=1
+    let g:loaded_2html_plugin=1
+    let g:loaded_vimball=1
+    let g:loaded_vimballPlugin=1
+    let g:loaded_getscript=1
+    let g:loaded_getscriptPlugin=1
+    let g:loaded_netrw=1
+    let g:loaded_netrwPlugin=1
+    let g:loaded_netrwSettings=1
+    let g:loaded_netrwFileHandlers=1
+    let g:loaded_logipat=1
     " }
 
     " Color properties {
@@ -141,15 +141,15 @@
         set t_Co=256                                " Enable 256 colors to stop the CSApprox warning and make xterm vim shine
     endif
     if exists('+termguicolors')                     " Only if compiled
-      let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-      let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+      let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
+      let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
       set termguicolors
     endif
     set background=dark                             " Prefer Dark over Light
     let g:gruvbox_material_background='hard'        " Contrast Level
     colorscheme gruvbox-material                    " Using the same color scheme
     let g:gruvbox_termcolors=256                    " Accepting the 256 colors
-    let g:gruvbox_material_enable_italic = 1        " Allow Italic fonts
+    let g:gruvbox_material_enable_italic=1          " Allow Italic fonts
     "}
 
     " Alerts and feedback properties {
@@ -250,19 +250,19 @@
 
     " JSON {
     nnoremap jt <Esc>:%!python -m json.tool<CR><Esc>:set filetype=json<CR>
-    let g:vim_json_syntax_conceal = 1
+    let g:vim_json_syntax_conceal=1
     " }
 
     " Wildfire {
 
-    let g:wildfire_objects = {
+    let g:wildfire_objects={
                 \ "*" : ["i'", 'i"', "i)", "i]", "i}", "ip"],
                 \ "html,xml" : ["at"],
                 \ }
 
     " https://vimawesome.com/plugin/matchit-zip-the-story-of-us
     if isdirectory(expand("~/.vim/bundle/matchit.zip"))
-        let b:match_ignorecase = 1
+        let b:match_ignorecase=1
     endif
 
 " }
@@ -291,8 +291,8 @@
 
     " buffer shortcuts {
     nnoremap <Leader>q  :bd<CR>
-    noremap  <Leader>ls :ls<CR>:b<Space>
-    "
+    noremap <Leader>ls :ls<CR>:b<Space>
+
     "TODO mv close then list properties, but it does not work
     map <Leader>l :set list!<CR>
     "
@@ -312,8 +312,8 @@
     "nnoremap cp :exec    ("normal mc" . nr2char(getchar()) . "kY'c")<CR>
     "
     function! MvLines()
-        let l:number = 2
-        let l:string = ""
+        let l:number=2
+        let l:string=""
     "
         while l:number > 0
             let l:string .= nr2char(getchar())
@@ -366,7 +366,7 @@
     nmap <Leader>f8 :set foldlevel=8<CR>
     nmap <Leader>f9 :set foldlevel=9<CR>
     "
-    nnoremap <silent>cof :let &foldmethod = tolower(matchstr(
+    nnoremap <silent>cof :let &foldmethod=tolower(matchstr(
           \',mmanual,kmarker,iindent,ssyntax,eexpr,ddiff',
           \','.nr2char(getchar()).'\zs\a*\C'))\|set foldmethod<CR>
     nmap <silent>zfm cof
@@ -476,21 +476,21 @@
 
     " Initialize directories {
     function! InitializeDirectories()
-        let parent = $HOME
-        let prefix = 'vim'
-        let dir_list = {
+        let parent=$HOME
+        let prefix='vim'
+        let dir_list={
                     \ 'backup': 'backupdir',
                     \ 'views': 'viewdir',
                     \ 'swap': 'directory' }
         "
         if has('persistent_undo')
-            let dir_list['undo'] = 'undodir'
+            let dir_list['undo']='undodir'
         endif
         "
-        let common_dir = parent . '/.' . prefix
+        let common_dir=parent . '/.' . prefix
         "
         for [dirname, settingname] in items(dir_list)
-            let directory = common_dir . dirname . '/'
+            let directory=common_dir . dirname . '/'
             if exists("*mkdir")
                 if !isdirectory(directory)
                     call mkdir(directory)
@@ -500,7 +500,7 @@
                 echo "Warning: Unable to create backup directory: " . directory
                 echo "Try: mkdir -p " . directory
             else
-                let directory = substitute(directory, " ", "\\\\ ", "g")
+                let directory=substitute(directory, " ", "\\\\ ", "g")
                 exec "set " . settingname . "=" . directory
             endif
         endfor
@@ -513,7 +513,7 @@
         redir => bufoutput
         buffers!
         redir END
-        let idx = stridx(bufoutput, "NERD_tree")
+        let idx=stridx(bufoutput, "NERD_tree")
         if idx > -1
             NERDTreeMirror
             NERDTreeFind
@@ -526,8 +526,8 @@
     function! StripTrailingWhitespace()
         " Preparation: save last search, and cursor position.
         let _s=@/
-        let l = line(".")
-        let c = col(".")
+        let l=line(".")
+        let c=col(".")
         " do the business:
         %s/\s\+$//e
         " clean up: restore previous search history, and cursor position
@@ -572,14 +572,14 @@
         "TODO: Review YCM ommifunc
         "
         " enable completion from tags
-        let g:ycm_collect_identifiers_from_tags_files = 1
+        let g:ycm_collect_identifiers_from_tags_files=1
         "
         " Trigger configuration.
         " Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
         "
-        let g:UltiSnipsExpandTrigger = '<C-j>'
-        let g:UltiSnipsJumpForwardTrigger = '<C-j>'
-        let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
+        let g:UltiSnipsExpandTrigger='<C-j>'
+        let g:UltiSnipsJumpForwardTrigger='<C-j>'
+        let g:UltiSnipsJumpBackwardTrigger='<C-k>'
         " If you want :UltiSnipsEdit to split your window.
         let g:UltiSnipsEditSplit="vertical"
         "
@@ -602,9 +602,9 @@
     if isdirectory(expand("~/.vim/bundle/vim-indent-guides/"))
         let g:indentLine_enabled=0
         let g:indentLine_setConceal=1
-        let g:indent_guides_start_level = 2
-        let g:indent_guides_guide_size = 1
-        let g:indent_guides_enable_on_vim_startup = 1
+        let g:indent_guides_start_level=2
+        let g:indent_guides_guide_size=1
+        let g:indent_guides_enable_on_vim_startup=1
     endif
     " }
 
@@ -648,9 +648,9 @@
     " Plugin: Vim-Go properties {
     if isdirectory(expand("~/.vim/bundle/vim-go/"))
         let g:go_fmt_command="goimports" " format with goimports instead of gofmt
-        let g:go_list_type = "quickfix"
-        let g:go_version_warning = 0
-        let g:go_fmt_fail_silently = 1
+        let g:go_list_type="quickfix"
+        let g:go_version_warning=0
+        let g:go_fmt_fail_silently=1
         let g:go_fmt_autosave=1          " disable fmt on save
     endif
     " }
@@ -678,14 +678,14 @@
 
     " Plugin: Vim-Ale properties {
     if isdirectory(expand("~/.vim/bundle/ale/"))
-        let g:ale_lint_on_enter = 0
-        let g:ale_lint_on_text_changed = 'never'
-        let g:ale_lint_on_insert_leave = 0
-        let g:ale_sign_column_always = 1
-        let g:ale_keep_list_window_open = 0
-        let g:ale_open_list = 0
-        let g:ale_set_loclist = 0
-        let g:ale_set_quickfix = 1
+        let g:ale_lint_on_enter=0
+        let g:ale_lint_on_text_changed='never'
+        let g:ale_lint_on_insert_leave=0
+        let g:ale_sign_column_always=1
+        let g:ale_keep_list_window_open=0
+        let g:ale_open_list=0
+        let g:ale_set_loclist=0
+        let g:ale_set_quickfix=1
         nmap <silent> <C-k> <Plug>(ale_previous_wrap)
         nmap <silent> <C-j> <Plug>(ale_next_wrap)
         nmap <Leader><Leader>af <Plug>(ale_fix)
@@ -694,7 +694,7 @@
 
     " Plugin: EditorConfig properties {
     if isdirectory(expand("~/.vim/bundle/editorconfig/"))
-        let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
+        let g:EditorConfig_exclude_patterns=['fugitive://.*', 'scp://.*']
     endif
     " }
 
@@ -713,12 +713,12 @@
         let g:go_highlight_space_tab_error=0
         let g:go_highlight_array_whitespace_error=0
         let g:go_highlight_trailing_whitespace_error=0
-        let g:go_highlight_functions = 1
-        let g:go_highlight_methods = 1
-        let g:go_highlight_structs = 1
-        let g:go_highlight_operators = 1
-        let g:go_highlight_build_constraints = 1
-        let g:go_fmt_command = "goimports"
+        let g:go_highlight_functions=1
+        let g:go_highlight_methods=1
+        let g:go_highlight_structs=1
+        let g:go_highlight_operators=1
+        let g:go_highlight_build_constraints=1
+        let g:go_fmt_command="goimports"
         "TODO: Evaluate the <Space> namespace
         au FileType go nmap <Leader><Space>s <Plug>(go-implements)
         au FileType go nmap <Leader><Space>i <Plug>(go-info)
@@ -737,19 +737,19 @@
         nnoremap <Leader>uu :UndotreeToggle<CR>
         " If undotree is opened, it is likely one wants to interact with it.
         let g:undotree_SetFocusWhenToggle=1
-        let g:gundo_right = 0
+        let g:gundo_right=0
         let g:gundo_preview_bottom=1
-        let g:gundo_preview_height = 50
+        let g:gundo_preview_height=50
     endif
     " }
 
     " Plugin: Work space properties {
     if isdirectory(expand("~/.vim/bundle/vim-workspace"))
         nnoremap <Leader>w :ToggleWorkspace<CR>
-        let g:workspace_session_directory = $HOME . '/.vim/sessions/'
-        let g:workspace_autosave_always = 0
-        let g:workspace_autosave_ignore = ['gitcommit', 'gitrebase', 'nerdtree']
-        let g:workspace_persist_undo_history = 0  " enabled = 1 (default), disabled = 0
+        let g:workspace_session_directory=$HOME . '/.vim/sessions/'
+        let g:workspace_autosave_always=0
+        let g:workspace_autosave_ignore=['gitcommit', 'gitrebase', 'nerdtree']
+        let g:workspace_persist_undo_history=0          " enabled = 1 (default), disabled = 0
     endif
     " }
 
@@ -785,16 +785,16 @@
         "TODO: investigate git and tags
         set tags=./tags;/,~/.vimtags
         " Make tags placed in .git/tags file available in all levels of a repository
-        let gitroot = substitute(system('git rev-parse --show-toplevel'), '[\n\r]', '', 'g')
+        let gitroot=substitute(system('git rev-parse --show-toplevel'), '[\n\r]', '', 'g')
         if gitroot != ''
-            let &tags = &tags . ',' . gitroot . '/.git/tags'
+            let &tags=&tags . ',' . gitroot . '/.git/tags'
         endif
     endif
     " }
 
     " Plugin: Rainbow {
     if isdirectory(expand("~/.vim/bundle/rainbow/"))
-        let g:rainbow_active = 1                        " 0 if you want to enable it later via :RainbowToggle
+        let g:rainbow_active=1                          " 0 if you want to enable it later via :RainbowToggle
     endif
     " }
 
@@ -821,7 +821,7 @@
         " Navigate vim-better-whitespace
         nnoremap ]w :NextTrailingWhitespace<CR>
         nnoremap [w :PrevTrailingWhitespace<CR>
-        let g:strip_whitespace_on_save = 1
+        let g:strip_whitespace_on_save=1
     endif
     " }
 
