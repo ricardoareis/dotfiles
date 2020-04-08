@@ -834,16 +834,13 @@
     " }
 
     " Plugin: Wordy {
-    "  TODO: maps
     noremap  <silent> <F8> :<C-u>NextWordy<cr>
     xnoremap <silent> <F8> :<C-u>NextWordy<cr>
     inoremap <silent> <F8> <C-o>:NextWordy<cr>
     "]s	- Move to next misspelled word after the cursor.
     "[s	- Like ]s but search backwards
-
-    "if !&wildcharm | set wildcharm=<C-z> | endif
-    "execute 'nnoremap <leader>w :Wordy<space>'.nr2char(&wildcharm)
     " }
+
     let g:SignatureMarkerTextHLDynamic=1
 "}
 
@@ -852,3 +849,4 @@
 for fpath in split(globpath('~/.vim/plugins.d/', '*.vim'), '\n')
     exe 'source' fpath
 endfor
+" }
