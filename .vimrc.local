@@ -657,6 +657,7 @@
 
     " Plugin: GitGutter properties {
     if isdirectory(expand("~/.vim/bundle/vim-gitgutter/"))
+        set updatetime=100
         let g:gitgutter_enabled=1
         let g:gitgutter_map_keys=0
         let g:gitgutter_sign_allow_clobber=1
@@ -668,11 +669,12 @@
         let g:gitgutter_sign_removed_first_line='rf'
         let g:gitgutter_sign_modified_removed='mr'
         let g:gitgutter_max_signs=50
-        set updatetime=2000
         set foldtext=gitgutter#fold#foldtext()
         map ghs :GitGutterStageHunk<CR>
         map ghu :GitGutterUndoHunk<CR>
         map ghf :GitGutterFold<CR>
+        nmap ]h <Plug>(GitGutterNextHunk)
+        nmap [h <Plug>(GitGutterPrevHunk)
     endif
     " }
 
