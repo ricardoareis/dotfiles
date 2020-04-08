@@ -657,7 +657,7 @@
 
     " Plugin: GitGutter properties {
     if isdirectory(expand("~/.vim/bundle/vim-gitgutter/"))
-        set updatetime=100
+        set updatetime=500
         let g:gitgutter_enabled=1
         let g:gitgutter_map_keys=0
         let g:gitgutter_sign_allow_clobber=1
@@ -736,12 +736,15 @@
 
     " Plugin: UndoTree properties {
     if isdirectory(expand("~/.vim/bundle/undotree/"))
-        nnoremap <Leader>uu :UndotreeToggle<CR>
-        " If undotree is opened, it is likely one wants to interact with it.
+        nnoremap <silent><F2> :UndotreeToggle<CR>
         let g:undotree_SetFocusWhenToggle=1
-        let g:gundo_right = 0
-        let g:gundo_preview_bottom=1
-        let g:gundo_preview_height = 50
+        let g:undotree_WindowLayout = 4
+        let g:undotree_ShortIndicators = 1
+        let g:undotree_DiffpanelHeight = 13
+        let g:undotree_SplitWidth = 30
+        let g:undotree_HighlightChangedWithSign = 1
+        let g:undotree_DiffCommand = 'diff -pud --label earlier --label later'
+        let g:undotree_HighlightChangedWithSign = 1
     endif
     " }
 
@@ -757,9 +760,7 @@
 
     " Plugin: NerdTree properties{
     if isdirectory(expand("~/.vim/bundle/nerdtree"))
-        "map <C-e> <plug>NERDTreeTabsToggle<CR>
-        "map <Leader>e :NERDTreeFind<CR>
-        "nmap <Leader>nt :NERDTreeFind<CR>
+        nnoremap <silent><F1> :NERDTreeToggle<CR>
         let g:NERDShutUp=1
         let g:NERDTreeQuitOnOpen=1                      " close NERDTree after a file is opened
         let NERDTreeShowLineNumbers=1
@@ -779,7 +780,7 @@
 
     " Plugin: TagBar properties {
     if isdirectory(expand("~/.vim/bundle/tagbar/"))
-        nnoremap <silent> <Leader>tt :TagbarToggle<CR>
+        nnoremap <silent> <F3> :TagbarToggle<CR>
         let g:tagbar_left=0
         let g:tagbar_autofocus=1
         let g:tagbar_compact=1
