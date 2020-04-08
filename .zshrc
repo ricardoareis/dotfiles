@@ -36,7 +36,7 @@ _update_zcomp() {
         compinit -d "$zcompf"
         touch "$zcompf_a"
     fi
-    # if zcompdump exists (and is non-zero), and is older than the .zwc file,
+    # if zcompdump exists (and is not zero), and is older than the .zwc file,
     # then regenerate
     if [[ -s "$zcompf" && (! -s "${zcompf}.zwc" || "$zcompf" -nt "${zcompf}.zwc") ]]; then
         # since file is mapped, it might be mapped right now (current shells), so

@@ -49,20 +49,19 @@
     " }
 
     " Writing {
-    Plugin 'reedes/vim-litecorrect'
+    "Plugin 'reedes/vim-litecorrect'
     Plugin 'reedes/vim-textobj-sentence'
-    Plugin 'reedes/vim-textobj-quote'
     Plugin 'reedes/vim-wordy'
     " }
 
     " General Programming {
     " Pick one of the checksyntax, jslint, or syntastic
     Plugin 'tpope/vim-fugitive'
-    Plugin 'mattn/webapi-vim'
+    "Plugin 'mattn/webapi-vim'
     Plugin 'mattn/gist-vim'
     Plugin 'scrooloose/nerdcommenter'
     Plugin 'tpope/vim-commentary'
-    Plugin 'godlygeek/tabular'
+    Plugin 'godlygeek/tabular'                  "TODO study
     Plugin 'luochen1990/rainbow'
     if executable('ctags')
         Plugin 'majutsushi/tagbar'
@@ -81,50 +80,47 @@
 
     " Python {
     " Pick either python-mode or pyflakes & pydoc
-    Plugin 'yssource/python.vim'
-    Plugin 'python_match.vim'
+    "Plugin 'yssource/python.vim'               "TODO deprecated
+    "Plugin 'python_match.vim'                  "TODO deprecated?
     " }
 
     " Javascript {
     Plugin 'elzr/vim-json'
     Plugin 'groenewege/vim-less'
     Plugin 'pangloss/vim-javascript'
-    Plugin 'briancollins/vim-jst'
-    Plugin 'kchmck/vim-coffee-script'
     " }
 
     " Go Lang {
-    "Plugin 'Blackrush/vim-gocode'
     Plugin 'fatih/vim-go'
     " }
 
     " Misc {
     Plugin 'rust-lang/rust.vim'
-    Plugin 'tpope/vim-markdown'
-    Plugin 'spf13/vim-preview'
-    Plugin 'cespare/vim-toml'
-    Plugin 'saltstack/salt-vim'
+    "Plugin 'tpope/vim-markdown'
+    "Plugin 'spf13/vim-preview'
+    "Plugin 'cespare/vim-toml'
+    "Plugin 'saltstack/salt-vim'
     " }
 
     " Install Plugins {
-    Plugin 'kshenoy/vim-signature'
+    Plugin 'kshenoy/vim-signature'                      "TODO sym overwrited by vim-gitgutter
     Plugin 'airblade/vim-gitgutter'                     "TODO study
     Plugin 'editorconfig/editorconfig'
     Plugin 'liuchengxu/vim-which-key'
     Plugin 'benmills/vimux'
-    Plugin 'terryma/vim-expand-region'
+    Plugin 'terryma/vim-expand-region'                  "TODO document keycode
     Plugin 'junegunn/fzf'
-    Plugin 'junegunn/fzf.vim'
+    Plugin 'junegunn/fzf.vim'                           "TODO customization
     Plugin 'roxma/vim-tmux-clipboard'
     Plugin 'tmux-plugins/vim-tmux-focus-events'
-    Plugin 'christoomey/vim-tmux-navigator'
-    Plugin 'liuchengxu/vim-clap'
-    Plugin 'liuchengxu/vista.vim'
+    "Plugin 'christoomey/vim-tmux-navigator'
+    Plugin 'liuchengxu/vim-clap'                        "TODO overlap fzf
+    Plugin 'liuchengxu/vista.vim'                       "TODO overlap nerdtree ctags-bar
     "Plugin 'Yggdroot/indentLine'
-    Plugin 'morhetz/gruvbox'
+    "Plugin 'morhetz/gruvbox'
     Plugin 'ConradIrwin/vim-bracketed-paste'
     Plugin 'dense-analysis/ale'
-    Plugin 'thaerkh/vim-workspace'
+    Plugin 'thaerkh/vim-workspace'                      "TODO removed after implement auto save!?
     Plugin 'sainnhe/gruvbox-material'
     Plugin 'sheerun/vim-polyglot'
     Plugin 'ntpeters/vim-better-whitespace'
