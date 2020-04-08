@@ -16,33 +16,18 @@
     " let Vundle manage Vundle, required
     Plugin 'VundleVim/Vundle.vim'
 
-
 " }
 
 " Bundles {
 
-    " Deps {
-        "Plugin 'gmarik/vundle'
-        "Plugin 'MarcWeber/vim-addon-mw-utils'
-        "Plugin 'tomtom/tlib_vim'
-        if executable('ag')
-            Plugin 'mileszs/ack.vim'
-            let g:ackprg = 'ag --nogroup --nocolor --column --smart-case'
-        elseif executable('ack-grep')
-            let g:ackprg="ack-grep -H --nocolor --nogroup --column"
-            Plugin 'mileszs/ack.vim'
-        elseif executable('ack')
-            Plugin 'mileszs/ack.vim'
-        endif
-    " }
-
     " General {
+
     Plugin 'scrooloose/nerdtree'
-    Plugin 'spf13/vim-colors'
+    "Plugin 'spf13/vim-colors'
     Plugin 'tpope/vim-surround'
     Plugin 'tpope/vim-repeat'
     Plugin 'rhysd/conflict-marker.vim'
-    Plugin 'jiangmiao/auto-pairs'
+    Plugin 'jiangmiao/auto-pairs'               "TODO study
     Plugin 'terryma/vim-multiple-cursors'
     Plugin 'vim-scripts/sessionman.vim'
     Plugin 'matchit.zip'
@@ -51,16 +36,16 @@
     Plugin 'powerline/fonts'
     Plugin 'bling/vim-bufferline'
     Plugin 'easymotion/vim-easymotion'
-    Plugin 'jistr/vim-nerdtree-tabs'
+    "Plugin 'jistr/vim-nerdtree-tabs'
     Plugin 'flazz/vim-colorschemes'
-    Plugin 'mbbill/undotree'
-    Plugin 'nathanaelkane/vim-indent-guides'
-    Plugin 'mhinz/vim-signify'
-    Plugin 'tpope/vim-abolish.git'
-    Plugin 'osyo-manga/vim-over'
-    Plugin 'kana/vim-textobj-user'
-    Plugin 'kana/vim-textobj-indent'
-    Plugin 'gcmt/wildfire.vim'
+    Plugin 'mbbill/undotree'                    "TODO study
+    Plugin 'nathanaelkane/vim-indent-guides'    "TODO study
+    "Plugin 'mhinz/vim-signify'                 "Deprecated by vim-gitgutter
+    Plugin 'tpope/vim-abolish.git'              "TODO study
+    Plugin 'osyo-manga/vim-over'                "TODO study
+    Plugin 'kana/vim-textobj-user'              "TODO study
+    Plugin 'kana/vim-textobj-indent'            "TODO study
+    Plugin 'gcmt/wildfire.vim'                  "TODO study
     " }
 
     " Writing {
@@ -123,7 +108,7 @@
 
     " Install Plugins {
     Plugin 'kshenoy/vim-signature'
-    Plugin 'airblade/vim-gitgutter'
+    Plugin 'airblade/vim-gitgutter'                     "TODO study
     Plugin 'editorconfig/editorconfig'
     Plugin 'liuchengxu/vim-which-key'
     Plugin 'benmills/vimux'
