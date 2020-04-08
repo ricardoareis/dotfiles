@@ -174,7 +174,7 @@
     set splitbelow        " Puts new split windows to the bottom of the current
     "
     autocmd BufNewFile,BufRead *.html.twig set filetype=html.twig
-    autocmd FileType haskell,puppet,ruby,yml setlocal expandtab shiftwidth=2 softtabstop=2
+    autocmd FileType            haskell,puppet,ruby,yml setlocal expandtab shiftwidth=2 softtabstop=2
     autocmd BufNewFile,BufRead *.coffee set filetype=coffee
     "
     " Workaround vim-commentary for Haskell
@@ -831,6 +831,18 @@
     endif
     " }
 
+    " Plugin: Wordy {
+    "  TODO: maps
+    noremap  <silent> <F8> :<C-u>NextWordy<cr>
+    xnoremap <silent> <F8> :<C-u>NextWordy<cr>
+    inoremap <silent> <F8> <C-o>:NextWordy<cr>
+    "]s	- Move to next misspelled word after the cursor.
+    "[s	- Like ]s but search backwards
+
+    "if !&wildcharm | set wildcharm=<C-z> | endif
+    "execute 'nnoremap <leader>w :Wordy<space>'.nr2char(&wildcharm)
+    " }
+    let g:SignatureMarkerTextHLDynamic=1
 "}
 
 " Loading others .vim {
