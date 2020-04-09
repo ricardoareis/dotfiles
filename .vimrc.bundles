@@ -127,6 +127,7 @@
     Plugin 'jmcantrell/vim-virtualenv'
     Plugin 'chrisbra/csv.vim'
     Plugin 'mox-mox/vim-localsearch'
+    "https://github.com/jaxbot/semantic-highlight.vim
     "}
 
     " All of your Plugins must be added before the following line

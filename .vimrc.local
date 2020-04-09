@@ -229,8 +229,11 @@
     " }
 
     " Vimdiff - Properties {
-    set diffopt=internal,algorithm:patience,indent-heuristic,horizontal
-    "
+    "set diffopt=internal,algorithm:patience,indent-heuristic,horizontal
+    set diffopt+=iwhite
+    if has('nvim-0.3.2') || has("patch-8.1.0360")
+        set diffopt=internal,filler,algorithm:histogram,indent-heuristic,horizontal
+    endif
     if &diff
         map gs :call IwhiteToggle()<CR>
         function! IwhiteToggle()
@@ -614,8 +617,13 @@
 
     " Plugin: Airline properties {
     if isdirectory(expand("~/.vim/bundle/vim-airline/"))
+        "TODO: https://jnrowe-vim.readthedocs.io
         let g:airline_powerline_fonts=1
+        let g:airline_skip_empty_sections = v:true
         if isdirectory(expand("~/.vim/bundle/vim-airline-themes/"))
+            let g:airline_extensions=['branch', 'localsearch', 'virtualenv', 'csv', 'bufferline',
+                        \             'hunks', 'keymap', 'quickfix', 'ale', 'tagbar', 'term', 'undotree',
+                        \             'whitespace', 'wordcount', 'ycm' ,'wordcont']
             if !exists('g:gruvbox_material')
                 let g:airline_theme='gruvbox_material'
             endif
@@ -623,12 +631,25 @@
                 " Use the default set of separators with a few customizations
                 let g:airline_left_sep='›'  " Slightly fancier than '>'
                 let g:airline_right_sep='‹' " Slightly fancier than '<'
+                let g:airline_symbols = {
+                    \ 'branch': '',
+                    \ 'crypt': '',
+                    \ 'linenr': '⏎',
+                    \ 'maxlinenr': '⌇',
+                    \ 'modified': '+',
+                    \ 'notexists': 'Ɇ',
+                    \ 'paste': 'ρ',
+                    \ 'readonly': '',
+                    \ 'space': ' ',
+                    \ 'spell': '',
+                    \ 'whitespace': 'Ξ',
+                \ }
+                if v:version >= 800 && has('signs')
+                    let g:airline#extensions#ale#error_symbol = ''
+                    let g:airline#extensions#ale#warning_symbol = ''
+                endif
             endif
         endif
-        let g:airline#extensions#keymap#enabled=1
-        let g:airline_extensions=['branch', 'localsearch', 'virtualenv', 'csv', 'bufferline',
-                    \             'hunks', 'keymap', 'quickfix', 'ale', 'tagbar', 'term', 'undotree',
-                    \             'whitespace', 'wordcount', 'ycm']
     endif
     " }
 
