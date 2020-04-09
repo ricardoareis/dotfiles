@@ -99,6 +99,20 @@
     augroup END
     " }
 
+    " changed the cursor behavior, in a edit, replace and append mode {
+    " see autocmds.vim
+    if empty($TMUX)
+      let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+      let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+      let &t_SR = "\<Esc>]50;CursorShape=2\x7"
+    else
+      let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+      let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+      let &t_SR = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=2\x7\<Esc>\\"
+    endif
+    " }
+
+    set cursorcolumn
     set backup                                  " Backups are nice ...
     if has('persistent_undo')
         set undofile                            " So is persistent undo ...
@@ -173,17 +187,6 @@
     set splitright        " Puts new vsplit windows to the right of the current
     set splitbelow        " Puts new split windows to the bottom of the current
     "
-    autocmd BufNewFile,BufRead *.html.twig set filetype=html.twig
-    autocmd FileType            haskell,puppet,ruby,yml setlocal expandtab shiftwidth=2 softtabstop=2
-    autocmd BufNewFile,BufRead *.coffee set filetype=coffee
-    "
-    " Workaround vim-commentary for Haskell
-    autocmd FileType haskell setlocal commentstring=--\ %s
-    " Workaround broken colour highlighting in Haskell
-    autocmd FileType haskell,rust setlocal nospell
-    "
-    " AutoCloseTag
-    "
     " Make it so AutoCloseTag works for xml and xhtml files as well
     au FileType xhtml,xml ru ftplugin/html/autoclosetag.vim
     nmap <Leader>ac <Plug>ToggleAutoCloseMappings
@@ -222,7 +225,6 @@
     set wrap                                            " wrap long lines by default
     set whichwrap=b,s,h,l,<,>,[,]                       " Backspace and cursor keys wrap too
     set colorcolumn=120
-    autocmd VimResized * | set columns=120
     set showbreak=...
     " }
 
@@ -583,14 +585,6 @@
         " If you want :UltiSnipsEdit to split your window.
         let g:UltiSnipsEditSplit="vertical"
         "
-        "
-        " Enable omni completion.
-        autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-        autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-        autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-        autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-        autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-        autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
         " Disable the neosnippet preview candidate window
         " When enabled, there can be too much visual noise
         " especially when splits are used.
