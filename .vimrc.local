@@ -1,5 +1,21 @@
 " Basic properties {
 " vim: set expandtab sw=4 ts=4 sts=4 tw=78 ft=vim foldmarker={,} foldlevel=0 foldmethod=marker spell:
+"
+" Note:
+"
+" <F1> Open NERDTree
+" <F2> Open UndoTree
+" <F8> Shift Spell dictionaries
+" <S-Tab> Shift between buffers
+" <Alt-Left> Next Tab | <Alt-Right> Previous Tab
+" zfm       Fold Method
+" z<Down>   Next Fold
+" z<Up>     Previous Fold
+" z<Right>  Open Fold
+" z<Left>   Close Fold
+" <C-x>     Toggle Open/Close Fold
+" <C-p>     Fuzzy Finder
+" <Space>   Toggle On/Off Search Highlight
 
     " Use bundles config {
     if filereadable(expand("~/.vimrc.bundles"))
@@ -207,7 +223,6 @@
     set complete-=t   " disable searching tags
     " }
 
-
 " }
 
 " Misc {
@@ -254,8 +269,12 @@
     " }
 
     " JSON {
-    command! JSONPretty %!python -m json.tool
-    nnoremap jt <Esc>:%!python -m json.tool<CR><Esc>:set filetype=json<CR>
+    if has('python3')
+        command! JSONPretty call FormatJson()
+    else
+        command! JSONPretty %!python -m json.tool
+    endif
+    nnoremap jp <Esc>:JSONPretty<CR><Esc>:set filetype=json<CR>
     let g:vim_json_syntax_conceal = 1
     " }
 
