@@ -358,9 +358,14 @@
 
     " Code folding options {
     set foldenable
-    set foldmethod=indent
     set foldnestmax=10                              " deepest fold is 10 levels
     "
+    "Jump between folding
+    nnoremap z<Up> zk
+    nnoremap z<Down> zj
+    nnoremap z<Left> zc
+    nnoremap z<Right> zo
+    "TODO: review the map bellow
     noremap <C-x> :exec "normal zA"<CR>
     nmap <Leader>f0 :set foldlevel=0<CR>
     nmap <Leader>f1 :set foldlevel=1<CR>
@@ -373,9 +378,7 @@
     nmap <Leader>f8 :set foldlevel=8<CR>
     nmap <Leader>f9 :set foldlevel=9<CR>
     "
-    nnoremap z<Up> zk                               "Jump between folding
-    nnoremap z<Down> zj
-    "
+    set foldmethod=indent
     nnoremap <silent>cof :let &foldmethod = tolower(matchstr(
           \',mmanual,kmarker,iindent,ssyntax,eexpr,ddiff',
           \','.nr2char(getchar()).'\zs\a*\C'))\|set foldmethod<CR>
