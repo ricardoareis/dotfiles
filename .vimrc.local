@@ -338,6 +338,7 @@
     nnoremap Y y$
     nnoremap vv ^vg_
     nnoremap vV vg_
+    vnoremap <Tab> >gv
     " }
 
     " Go to tab by number {
@@ -371,6 +372,9 @@
     nmap <Leader>f7 :set foldlevel=7<CR>
     nmap <Leader>f8 :set foldlevel=8<CR>
     nmap <Leader>f9 :set foldlevel=9<CR>
+    "
+    nnoremap z<Up> zk                               "Jump between folding
+    nnoremap z<Down> zj
     "
     nnoremap <silent>cof :let &foldmethod = tolower(matchstr(
           \',mmanual,kmarker,iindent,ssyntax,eexpr,ddiff',
@@ -598,8 +602,8 @@
 
     " Plugin: Identlines properties (this plugin change conceal properties) {
     if isdirectory(expand("~/.vim/bundle/vim-indent-guides/"))
-        let g:indentLine_enabled=0
-        let g:indentLine_setConceal=1
+        "let g:indentLine_enabled=0  TODO: outro plugin rs
+        "let g:indentLine_setConceal=1
         let g:indent_guides_start_level = 2
         let g:indent_guides_guide_size = 1
         let g:indent_guides_enable_on_vim_startup = 1
