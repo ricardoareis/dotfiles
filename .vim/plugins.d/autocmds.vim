@@ -55,6 +55,10 @@ augroup vimhooks
     autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
     autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 
+    " Relative Numbers on/off when a different events occurred
+    autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+    autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+
 augroup END
 
 augroup textobj_sentence
