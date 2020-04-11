@@ -907,7 +907,7 @@
         let g:repl_cursor_down = 1
         let g:repl_python_automerge = 1
         let g:repl_ipython_version = '7.13.0'
-        nnoremap <leader>r :REPLToggle<CR>
+        autocmd Filetype python nnoremap <leader>r  :REPLToggle<CR>
         autocmd Filetype python nnoremap <F10> <Esc>:REPLPDBN<CR>
         autocmd Filetype python nnoremap <F11> <Esc>:REPLPDBS<CR>
         autocmd Filetype python nnoremap <F12> <Esc>:REPLDebugStopAtCurrentLine<CR>
