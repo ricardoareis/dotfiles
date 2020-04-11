@@ -96,10 +96,6 @@
 
     " Misc {
     Plugin 'rust-lang/rust.vim'
-    "Plugin 'tpope/vim-markdown'
-    "Plugin 'spf13/vim-preview'
-    "Plugin 'cespare/vim-toml'
-    "Plugin 'saltstack/salt-vim'
     " }
 
     " Install Plugins {
@@ -113,11 +109,8 @@
     Plugin 'junegunn/fzf.vim'                           "TODO customization
     Plugin 'roxma/vim-tmux-clipboard'
     Plugin 'tmux-plugins/vim-tmux-focus-events'
-    "Plugin 'christoomey/vim-tmux-navigator'
     Plugin 'liuchengxu/vim-clap'                        "TODO overlap fzf
     Plugin 'liuchengxu/vista.vim'                       "TODO overlap nerdtree ctags-bar
-    "Plugin 'Yggdroot/indentLine'
-    "Plugin 'morhetz/gruvbox'
     Plugin 'ConradIrwin/vim-bracketed-paste'
     Plugin 'dense-analysis/ale'
     Plugin 'thaerkh/vim-workspace'                      "TODO removed after implement auto save!?
