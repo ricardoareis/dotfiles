@@ -1,21 +1,22 @@
 " Basic properties {
 " vim: set expandtab sw=4 ts=4 sts=4 tw=78 ft=vim foldmarker={,} foldlevel=0 foldmethod=marker spell:
 "
-" Note:
+" Note: Custom Maps
 "
-" <F1> Open NERDTree
-" <F2> Open UndoTree
-" <F8> Shift Spell dictionaries
-" <S-Tab> Shift between buffers
-" <Alt-Left> Next Tab | <Alt-Right> Previous Tab
-" zfm       Fold Method
-" z<Down>   Next Fold
-" z<Up>     Previous Fold
-" z<Right>  Open Fold
-" z<Left>   Close Fold
-" <C-x>     Toggle Open/Close Fold
-" <C-p>     Fuzzy Finder
-" <Space>   Toggle On/Off Search Highlight
+" <F1>      Open NERDTree
+" <F2>      Open UndoTree
+" <F3>      Open Tagbar
+" <F8>      Shift Spell dictionaries
+" <S-Tab>   Shift between buffers
+" <Alt-(Left|Right)> (Next|Previous) Tab
+" <Alt-(Up|Down)>     Move view to see (bellow|above) the cursor
+"
+" zfm                               Fold Method
+" z<(Down|UP)>     (Next|Previous)  Fold
+" z<(Right|Left)> (Close|Open)      Fold
+" <C-x>    Toggle  (Open|Close)     Fold
+" <C-p>    Fuzzy Finder
+" <Space>  Toggle    (On|Off)   Search Highlight
 
     " Use bundles config {
     if filereadable(expand("~/.vimrc.bundles"))
