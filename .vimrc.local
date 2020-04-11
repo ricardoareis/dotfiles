@@ -884,6 +884,31 @@
     " }
 
     let g:SignatureMarkerTextHLDynamic=1
+
+    "Plugin: Vim-repl - Python {
+    if isdirectory(expand("~/.vim/bundle/vim-repl/"))
+        let g:repl_program = {
+                    \   'python': 'ipython',
+                    \   'default': 'zsh',
+                    \   'r': 'R',
+                    \   'lua': 'lua',
+                    \   'vim': 'vim -e',
+                    \   }
+        let g:repl_predefine_python = {
+                    \   'numpy': 'import numpy as np',
+                    \   'matplotlib': 'from matplotlib import pyplot as plt'
+                    \   }
+        let g:repl_cursor_down = 1
+        let g:repl_python_automerge = 1
+        let g:repl_ipython_version = '7.13.0'
+        nnoremap <leader>r :REPLToggle<CR>
+        autocmd Filetype python nnoremap <F10> <Esc>:REPLPDBN<CR>
+        autocmd Filetype python nnoremap <F11> <Esc>:REPLPDBS<CR>
+        autocmd Filetype python nnoremap <F12> <Esc>:REPLDebugStopAtCurrentLine<CR>
+        let g:repl_position = 3
+    endif
+    "}
+
 "}
 
 " Loading others .vim {

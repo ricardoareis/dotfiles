@@ -24,30 +24,33 @@
 
     Plugin 'scrooloose/nerdtree'                " Support of file tree bar
     Plugin 'mbbill/undotree'                    " Support of undo tree bar
+    if executable('ctags')
+        Plugin 'majutsushi/tagbar'              " Support of tagbar
+    endif
     Plugin 'tpope/vim-repeat'                   " Support to repeat some cmds
-    Plugin 'tpope/vim-abolish.git'              " Support an abbreviation - TODO study
+    Plugin 'tpope/vim-abolish.git'              " Support an abbreviation                            - TODO study
     Plugin 'matchit.zip'                        " Extend support of %
     " }
 
     " Writing {
-    "Plugin 'reedes/vim-litecorrect'
-    Plugin 'kana/vim-textobj-user'              " TODO study
-    Plugin 'kana/vim-textobj-indent'            " TODO study
-    Plugin 'reedes/vim-textobj-sentence'
+    Plugin 'reedes/vim-textobj-quote'           " Extending Vim to better support typographic
+    Plugin 'kana/vim-textobj-user'              " Create your own text objects                       - TODO study
+    Plugin 'kana/vim-textobj-indent'            " Text objects for indented blocks of lines          - TODO study
+    Plugin 'reedes/vim-textobj-sentence'        " Improve sentence object                            - TODO keycode
     Plugin 'reedes/vim-wordy'                   " Supporting of different dictionaries i,e; <F8>
-    Plugin 'tpope/vim-surround'                 " TODO study
-    Plugin 'jiangmiao/auto-pairs'               " TODO study
+    Plugin 'tpope/vim-surround'                 " Improve surroundings in pairs                      - TODO study
+    Plugin 'jiangmiao/auto-pairs'               " Insert or delete brackets, parens, quotes in pair. - TODO study
     " }
 
     " General Programming {
     " Pick one of the checksyntax, jslint, or syntastic
     Plugin 'tpope/vim-fugitive'                 " Git cmds
-    Plugin 'airblade/vim-gitgutter'             " Git integration       - TODO study
+    Plugin 'airblade/vim-gitgutter'             " Git integration                                    - TODO study
     Plugin 'rhysd/conflict-marker.vim'          " Handler of git conflict marker
     Plugin 'mattn/gist-vim'                     " Support a Gist
     Plugin 'scrooloose/nerdcommenter'           " Intelligent commenter
-    Plugin 'tpope/vim-commentary'               " Intelligent commenter - TODO study
-    Plugin 'godlygeek/tabular'                  " Formating with tab    - TODO study
+    Plugin 'tpope/vim-commentary'               " Intelligent commenter                              - TODO study
+    Plugin 'godlygeek/tabular'                  " Formating with tab                                 - TODO study
     Plugin 'luochen1990/rainbow'                " Different color for open, and close {([])}
     Plugin 'dense-analysis/ale'                 " Engine for linters and fixers
     Plugin 'ntpeters/vim-better-whitespace'     " Removed extra whitespaces
@@ -57,9 +60,6 @@
     Plugin 'terryma/vim-multiple-cursors'       " Support a multiple cursors
     Plugin 'sillybun/vim-repl'
     "
-    if executable('ctags')
-        Plugin 'majutsushi/tagbar'
-    endif
     " }
 
     " Snippets & AutoComplete {
@@ -72,12 +72,6 @@
     if filereadable(expand("~/.vim/bundle/vim-snippets/snippets/support_functions.vim"))
         source ~/.vim/bundle/vim-snippets/snippets/support_functions.vim
     endif
-    " }
-
-    " Python {
-    " Pick either python-mode or pyflakes & pydoc
-    "Plugin 'yssource/python.vim'               " TODO deprecated
-    "Plugin 'python_match.vim'                  " TODO deprecated?
     " }
 
     " Langs {
