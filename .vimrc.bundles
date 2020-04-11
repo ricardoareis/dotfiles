@@ -128,6 +128,7 @@
     Plugin 'chrisbra/csv.vim'
     Plugin 'mox-mox/vim-localsearch'
     "https://github.com/jaxbot/semantic-highlight.vim
+    Plugin 'sillybun/vim-repl'
     "}
 
     " All of your Plugins must be added before the following line
