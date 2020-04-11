@@ -15,8 +15,10 @@
 " z<(Down|UP)>     (Next|Previous)  Fold
 " z<(Right|Left)> (Close|Open)      Fold
 " <C-x>    Toggle  (Open|Close)     Fold
+"
 " <C-p>    Fuzzy Finder
 " <Space>  Toggle    (On|Off)   Search Highlight
+" <Alt-.>  Execute last :cmd
 
     " Use bundles config {
     if filereadable(expand("~/.vimrc.bundles"))
@@ -490,6 +492,10 @@
     " Use <expr> to increase or decrease
     nnoremap <expr><C-Up>   v:count > 0 ? '@_zt'.v:count.'<c-y>' : 'zt'
     nnoremap <expr><C-Down> v:count > 0 ? '@_zb'.v:count.'<c-e>' : 'zb'
+    " }
+
+    " Vim Terminal {
+    nnoremap <Leader><Space> :terminal<CR>
     " }
 
     " Repeat the last command (ex. :ls) {
