@@ -13,19 +13,19 @@ call which_key#register(',', "g:which_key_map")
 
 let g:which_key_map =  {}
 
-let g:which_key_map['t'] = {
-  \ 'name': '+tab'   ,
-  \ '1' : ['1gt'     , 'tab-1'],
-  \ '2' : ['2gt'     , 'tab-2'],
-  \ '3' : ['3gt'     , 'tab-3'],
-  \ '4' : ['4gt'     , 'tab-4'],
-  \ '5' : ['5gt'     , 'tab-5'],
-  \ '6' : ['6gt'     , 'tab-6'],
-  \ '7' : ['7gt'     , 'tab-7'],
-  \ '8' : ['8gt'     , 'tab-8'],
-  \ '9' : ['9gt'     , 'tab-9'],
-  \ 'c' : ['tabclose', 'close-current-tab'],
-  \ }
+"let g:which_key_map['t'] = {
+  "\ 'name': '+tab'   ,
+  "\ '1' : ['1gt'     , 'tab-1'],
+  "\ '2' : ['2gt'     , 'tab-2'],
+  "\ '3' : ['3gt'     , 'tab-3'],
+  "\ '4' : ['4gt'     , 'tab-4'],
+  "\ '5' : ['5gt'     , 'tab-5'],
+  "\ '6' : ['6gt'     , 'tab-6'],
+  "\ '7' : ['7gt'     , 'tab-7'],
+  "\ '8' : ['8gt'     , 'tab-8'],
+  "\ '9' : ['9gt'     , 'tab-9'],
+  "\ 'c' : ['tabclose', 'close-current-tab'],
+  "\ }
 
 let g:which_key_map['f'] = {
   \ 'name' : '+find/files/fold'             ,
