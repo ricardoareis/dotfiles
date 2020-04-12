@@ -16,9 +16,9 @@
 " z<(Right|Left)> (Close|Open)      Fold
 " <C-x>    Toggle  (Open|Close)     Fold
 "
-" <C-p>    Fuzzy Finder
-" <Space>  Toggle    (On|Off)   Search Highlight
-" <Alt-.>  Execute last :cmd
+" <C-p>     Fuzzy Finder
+" <C-/>     Toggle   (On|Off)   Search Highlight
+" <Alt-.>   Execute last :cmd
 
     " Use bundles config {
     if filereadable(expand("~/.vimrc.bundles"))
@@ -310,7 +310,7 @@
     " }
 
     " toggle cursor line {
-    noremap <Leader><Leader>cl :set cursorline!<CR>
+    nnoremap <Leader>tc :set cursorline!<CR>
     " }
 
     " scroll the view port faster {
@@ -324,7 +324,7 @@
     noremap  <Leader>ls :ls<CR>:b<Space>
     "
     "TODO mv close then list properties, but it does not work
-    map <Leader>l :set list!<CR>
+    nnoremap <Leader>tl :set list!<CR>
     "
     "Map <Alt-Tab>
     nnoremap <silent><S-Tab>  :bp<CR>
@@ -366,16 +366,16 @@
     " }
 
     " Go to tab by number {
-    noremap <Leader>t1 1gt
-    noremap <Leader>t2 2gt
-    noremap <Leader>t3 3gt
-    noremap <Leader>t4 4gt
-    noremap <Leader>t5 5gt
-    noremap <Leader>t6 6gt
-    noremap <Leader>t7 7gt
-    noremap <Leader>t8 8gt
-    noremap <Leader>t9 9gt
-    noremap <Leader>t0 :tablast<CR>
+    "noremap <Leader>t1 1gt
+    "noremap <Leader>t2 2gt
+    "noremap <Leader>t3 3gt
+    "noremap <Leader>t4 4gt
+    "noremap <Leader>t5 5gt
+    "noremap <Leader>t6 6gt
+    "noremap <Leader>t7 7gt
+    "noremap <Leader>t8 8gt
+    "noremap <Leader>t9 9gt
+    "noremap <Leader>t0 :tablast<CR>
     noremap <Esc>[1;3D :tabnext<CR>
     noremap <Esc>[1;3C :tabprevious<CR>
     " }
@@ -410,7 +410,7 @@
     " }
 
     " Most prefer to toggle search highlighting rather than clear the current {
-    noremap <Space> :set hlsearch! hlsearch?<CR>
+    noremap    :set hlsearch! hlsearch?<CR>
     " }
 
     " Wrapped lines goes down/up to next row, rather than next line in file {
@@ -471,10 +471,14 @@
     " Some helpers to edit mode {
     " http://vimcasts.org/e/14
     cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<CR>
-    map <Leader>ew :e %%                " open in a new buffer
-    map <Leader>es :sp %%               " open in a new horizontal window
-    map <Leader>ev :vsp %%              " open in a new vertical window
-    map <Leader>et :tabe %%             " open in a new tab
+    " open in a new buffer
+    map <Leader>ew :e %%
+    " open in a new horizontal window
+    map <Leader>es :sp %%
+    " open in a new vertical window
+    map <Leader>ev :vsp %%
+    " open in a new tab
+    map <Leader>et :tabe %%
     " }
 
     "Improvesymotion-prefix) viewports {
@@ -641,15 +645,15 @@
     endif
     " }
 
-    " Plugin: Vimux Properties {
-    " Prompt for a command to run
-    if isdirectory(expand("~/.vim/bundle/vimux/"))
-        map <Leader><Leader>pc :VimuxPromptCommand<CR>
+    "" Plugin: Vimux Properties {
+    "" Prompt for a command to run
+    "if isdirectory(expand("~/.vim/bundle/vimux/"))
+        "map <Leader><Leader>pc :VimuxPromptCommand<CR>
 
-        " Run last command executed by VimuxRunCommand
-        map <Leader><Leader>lc :VimuxRunLastCommand<CR>
-    endif
-    " }
+        "" Run last command executed by VimuxRunCommand
+        "map <Leader><Leader>lc :VimuxRunLastCommand<CR>
+    "endif
+    "" }
 
     " Plugin: Airline properties {
     if isdirectory(expand("~/.vim/bundle/vim-airline/"))
