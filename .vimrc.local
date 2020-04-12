@@ -269,6 +269,7 @@
     if has('conceal')
         set conceallevel=0
         nnoremap coe :set <C-R>=&conceallevel ? 'conceallevel=0' : 'conceallevel=1'<CR><CR>
+        "nmap <silent><unique> <Leader>tcoe :set <C-R>=&conceallevel ? 'conceallevel=0' : 'conceallevel=1'<CR><CR>
     endif
     " }
 
@@ -310,7 +311,8 @@
     " }
 
     " toggle cursor line {
-    nnoremap <Leader>tc :set cursorline!<CR>
+    "nnoremap <Leader>tc :set cursorline!<CR>
+    nmap <silent><unique> <Leader>tcl :set cursorline!<CR>
     " }
 
     " scroll the view port faster {
@@ -321,10 +323,11 @@
     " buffer shortcuts {
     nnoremap <Leader>q  :bd<CR>
     "nnoremap <silent> <LocalLeader>q :Bdelete<CR> "TODO Leader vc LocalLeader
-    noremap  <Leader>ls :ls<CR>:b<Space>
+    "noremap  <Leader>ls :ls<CR>:b<Space>
     "
     "TODO mv close then list properties, but it does not work
-    nnoremap <Leader>tl :set list!<CR>
+    "nnoremap <Leader>tl :set list!<CR>
+    nmap <silent><unique> <Leader>tl :set list!<CR>
     "
     "Map <Alt-Tab>
     nnoremap <silent><S-Tab>  :bp<CR>
@@ -481,7 +484,7 @@
     map <Leader>et :tabe %%
     " }
 
-    "Improvesymotion-prefix) viewports {
+    "Improve viewports {
     map <Leader>= <C-w>=
     map <Leader>_ <C-w>_
     map <Leader>+ <C-w>+
@@ -642,6 +645,7 @@
         let g:indent_guides_start_level = 2
         let g:indent_guides_guide_size = 1
         let g:indent_guides_enable_on_vim_startup = 1
+        nmap <silent><unique> <Leader>tig <Plug>IndentGuidesToggle
     endif
     " }
 
@@ -911,7 +915,10 @@
         let g:repl_cursor_down = 1
         let g:repl_python_automerge = 1
         let g:repl_ipython_version = '7.13.0'
-        autocmd Filetype python nnoremap <leader>r  :REPLToggle<CR>
+
+        autocmd Filetype python nnoremap <silent> <Leader>w   :SendCurrentLine<CR>
+        autocmd Filetype python vnoremap <silent> <Leader>w   :SendLineToREPL<CR>
+        autocmd Filetype python nnoremap <silent> <Leader>tr  :REPLToggle<CR>
         autocmd Filetype python nnoremap <F10> <Esc>:REPLPDBN<CR>
         autocmd Filetype python nnoremap <F11> <Esc>:REPLPDBS<CR>
         autocmd Filetype python nnoremap <F12> <Esc>:REPLDebugStopAtCurrentLine<CR>
