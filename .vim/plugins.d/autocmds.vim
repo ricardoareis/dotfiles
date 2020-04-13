@@ -59,6 +59,45 @@ augroup vimhooks
     autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
     autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 
+    " Golang Menu && Maps
+    autocmd Filetype go let g:which_key_localleader_map.g = { 'name' : '+Golang' }
+    "
+    autocmd Filetype go nmap <LocalLeader>gs <Plug>(go-implements)
+    autocmd Filetype go let g:which_key_localleader_map.g.s = 'Go-Implements'
+    "
+    autocmd FileType go nmap <LocalLeader>gi <Plug>(go-info)
+    autocmd Filetype go let g:which_key_localleader_map.g.i = 'Go-Info'
+    "
+    autocmd FileType go nmap <LocalLeader>ge <Plug>(go-rename)
+    autocmd Filetype go let g:which_key_localleader_map.g.e = 'Go-Rename'
+    "
+    autocmd FileType go nmap <LocalLeader>gr <Plug>(go-run)
+    autocmd Filetype go let g:which_key_localleader_map.g.r = 'Go-Run'
+    "
+    autocmd FileType go nmap <LocalLeader>gb <Plug>(go-build)
+    autocmd Filetype go let g:which_key_localleader_map.g.b = 'Go-Build'
+    "
+    autocmd FileType go nmap <LocalLeader>gt <Plug>(go-test)
+    autocmd Filetype go let g:which_key_localleader_map.g.t = 'Go-Test'
+    "
+    autocmd FileType go nmap <LocalLeader>gd <Plug>(go-doc)
+    autocmd Filetype go let g:which_key_localleader_map.g.d = 'Go-Doc'
+    "
+    autocmd FileType go nmap <LocalLeader>gv <Plug>(go-doc-vertical)
+    autocmd Filetype go let g:which_key_localleader_map.g.v = 'Go-Doc-Vertical'
+    "
+    autocmd FileType go nmap <LocalLeader>gc <Plug>(go-coverage)
+    autocmd Filetype go let g:which_key_localleader_map.g.c = 'Go-Coverage'
+
+    " Python Menu && Maps
+    autocmd Filetype python let g:which_key_localleader_map.p = { 'name' : '+Python' }
+    autocmd Filetype python nnoremap <silent> <LocalLeader>pw  :SendCurrentLine<CR>
+    autocmd Filetype python vnoremap <silent> <LocalLeader>pw  :SendLineToREPL<CR>
+    autocmd Filetype python nnoremap <silent> <LocalLeader>pr  :REPLToggle<CR>
+    autocmd Filetype python nnoremap <F10> <Esc>:REPLPDBN<CR>
+    autocmd Filetype python nnoremap <F11> <Esc>:REPLPDBS<CR>
+    autocmd Filetype python nnoremap <F12> <Esc>:REPLDebugStopAtCurrentLine<CR>
+
 augroup END
 
 augroup textobj_sentence

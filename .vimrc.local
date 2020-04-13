@@ -227,6 +227,10 @@
     set complete-=t   " disable searching tags
     " }
 
+" }
+
+" Misc {
+
     " WhichKey - Map {
     set timeoutlen=500
     let mapleader=","
@@ -242,18 +246,14 @@
 
     let g:which_key_leader_map =  {}
     let g:which_key_localleader_map =  {}
-    let g:which_key_leader_map.t = { 'name' : '+toggle' }
-    let g:which_key_leader_map.f = { 'name' : '+find/files/fold' }
-    let g:which_key_leader_map.e = { 'name' : '+edit' }
-    let g:which_key_leader_map.y = { 'name' : '+go' }
-    let g:which_key_leader_map.s = { 'name' : '+session' }
-    let g:which_key_leader_map.g = { 'name' : '+git' }
-    "let g:which_key_leader_map.c = { 'name' : '+commenter' }
-    let g:which_key_leader_map.w = { 'name' : '+windows' }
+    let g:which_key_leader_map.t = { 'name' : '+Toggle' }
+    let g:which_key_leader_map.f = { 'name' : '+Find/Files/Fold' }
+    let g:which_key_leader_map.e = { 'name' : '+Edit' }
+    let g:which_key_leader_map.y = { 'name' : '+Go' }
+    let g:which_key_leader_map.s = { 'name' : '+Session' }
+    let g:which_key_leader_map.g = { 'name' : '+Git' }
+    let g:which_key_leader_map.w = { 'name' : '+Windows' }
     " }
-" }
-
-" Misc {
 
     " Show Invisible Chars {
     set nolist                                          " default disable
@@ -312,7 +312,6 @@
                 \ "html,xml" : ["at"],
                 \ }
 
-
 " }
 
 " Maps {
@@ -333,7 +332,7 @@
         "map <Leader>w+ <C-w>+
         "
         let g:which_key_leader_map['w'] = {
-          \ 'name' : '+windows' ,
+          \ 'name' : '+Windows' ,
           \ 'w' : ['<C-W>w'     , 'other-window']          ,
           \ 'd' : ['<C-W>c'     , 'delete-window']         ,
           \ '-' : ['<C-W>s'     , 'split-window-below']    ,
@@ -379,7 +378,7 @@
     nnoremap <C-Left>  :bn<CR>
     nnoremap <C-Right> :bp<CR>
     let g:which_key_leader_map.b = {
-      \ 'name' : '+buffer' ,
+      \ 'name' : '+Buffers' ,
       \ '1' : ['b1'        , 'buffer 1']        ,
       \ '2' : ['b2'        , 'buffer 2']        ,
       \ 'd' : ['bd'        , 'delete-buffer']   ,
@@ -551,7 +550,6 @@
     map <Leader>et :tabe %%
     let g:which_key_leader_map.e.t = 'NewTab'
     " }
-
 
     " Jump to the middle of the current written line as opposed to the window width {
     nnoremap <silent> gm :call cursor(0, virtcol('$')/2)<CR>|nnoremap gM gm
@@ -847,35 +845,34 @@
         let g:go_highlight_operators = 1
         let g:go_highlight_build_constraints = 1
         let g:go_fmt_command = "goimports"
-        "TODO: Evaluate the <Space> namespace
-        autocmd Filetype go let g:which_key_localleader_map.g = { 'name' : '+Golang' }
-        "
-        autocmd Filetype go nmap <LocalLeader>gs <Plug>(go-implements)
-        autocmd Filetype go let g:which_key_localleader_map.g.s = 'Go-Implements'
-        "
-        autocmd FileType go nmap <LocalLeader>gi <Plug>(go-info)
-        autocmd Filetype go let g:which_key_localleader_map.g.i = 'Go-Info'
-        "
-        autocmd FileType go nmap <LocalLeader>ge <Plug>(go-rename)
-        autocmd Filetype go let g:which_key_localleader_map.g.e = 'Go-Rename'
-        "
-        autocmd FileType go nmap <LocalLeader>gr <Plug>(go-run)
-        autocmd Filetype go let g:which_key_localleader_map.g.r = 'Go-Run'
-        "
-        autocmd FileType go nmap <LocalLeader>gb <Plug>(go-build)
-        autocmd Filetype go let g:which_key_localleader_map.g.b = 'Go-Build'
-        "
-        autocmd FileType go nmap <LocalLeader>gt <Plug>(go-test)
-        autocmd Filetype go let g:which_key_localleader_map.g.t = 'Go-Test'
-        "
-        autocmd FileType go nmap <LocalLeader>gd <Plug>(go-doc)
-        autocmd Filetype go let g:which_key_localleader_map.g.d = 'Go-Doc'
-        "
-        autocmd FileType go nmap <LocalLeader>gv <Plug>(go-doc-vertical)
-        autocmd Filetype go let g:which_key_localleader_map.g.v = 'Go-Doc-Vertical'
-        "
-        autocmd FileType go nmap <LocalLeader>gc <Plug>(go-coverage)
-        autocmd Filetype go let g:which_key_localleader_map.g.c = 'Go-Coverage'
+        "autocmd Filetype go let g:which_key_localleader_map.g = { 'name' : '+Golang' }
+        ""
+        "autocmd Filetype go nmap <LocalLeader>gs <Plug>(go-implements)
+        "autocmd Filetype go let g:which_key_localleader_map.g.s = 'Go-Implements'
+        ""
+        "autocmd FileType go nmap <LocalLeader>gi <Plug>(go-info)
+        "autocmd Filetype go let g:which_key_localleader_map.g.i = 'Go-Info'
+        ""
+        "autocmd FileType go nmap <LocalLeader>ge <Plug>(go-rename)
+        "autocmd Filetype go let g:which_key_localleader_map.g.e = 'Go-Rename'
+        ""
+        "autocmd FileType go nmap <LocalLeader>gr <Plug>(go-run)
+        "autocmd Filetype go let g:which_key_localleader_map.g.r = 'Go-Run'
+        ""
+        "autocmd FileType go nmap <LocalLeader>gb <Plug>(go-build)
+        "autocmd Filetype go let g:which_key_localleader_map.g.b = 'Go-Build'
+        ""
+        "autocmd FileType go nmap <LocalLeader>gt <Plug>(go-test)
+        "autocmd Filetype go let g:which_key_localleader_map.g.t = 'Go-Test'
+        ""
+        "autocmd FileType go nmap <LocalLeader>gd <Plug>(go-doc)
+        "autocmd Filetype go let g:which_key_localleader_map.g.d = 'Go-Doc'
+        ""
+        "autocmd FileType go nmap <LocalLeader>gv <Plug>(go-doc-vertical)
+        "autocmd Filetype go let g:which_key_localleader_map.g.v = 'Go-Doc-Vertical'
+        ""
+        "autocmd FileType go nmap <LocalLeader>gc <Plug>(go-coverage)
+        "autocmd Filetype go let g:which_key_localleader_map.g.c = 'Go-Coverage'
     endif
     " }
 
@@ -1045,6 +1042,28 @@
     " Plugin: MarkerText {
     let g:SignatureMarkerTextHLDynamic=1
     " }
+
+    " Plugin: NERDCommenter {
+    if isdirectory(expand("~/.vim/bundle/nerdcommenter/"))
+        let g:which_key_leader_map['c'] = {
+         \ 'name' : '+Commentes'                       ,
+         \ ' ' : ['<Plug>NERDCommentToggle   ', 'Toggle'    ],
+         \ '$' : ['<Plug>NERDCommentToEOL    ', 'ToEOL'     ],
+         \ 'A' : ['<Plug>NERDCommentAppend   ', 'Append'    ],
+         \ 'a' : ['<Plug>NERDCommentAltDelims', 'AltDelims' ],
+         \ 'b' : ['<Plug>NERDCommentAlignBoth', 'AlignBoth' ],
+         \ 'c' : ['<Plug>NERDCommentComment  ', 'Comment'   ],
+         \ 'i' : ['<Plug>NERDCommentInvert   ', 'Invert'    ],
+         \ 'l' : ['<Plug>NERDCommentAlignLeft', 'AlignLeft' ],
+         \ 'm' : ['<Plug>NERDCommentMinimal  ', 'Minimal'   ],
+         \ 'n' : ['<Plug>NERDCommentNested   ', 'Nested'    ],
+         \ 's' : ['<Plug>NERDCommentSexy     ', 'Sexy'      ],
+         \ 'u' : ['<Plug>NERDCommentUncomment', 'Uncomment' ],
+         \ 'y' : ['<Plug>NERDCommentYank     ', 'Yank'      ],
+         \ }
+    endif
+    " }
+
 "}
 
 " Loading others .vim {
