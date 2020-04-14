@@ -253,6 +253,7 @@
     let g:which_key_leader_map.s = { 'name' : '+Session' }
     let g:which_key_leader_map.g = { 'name' : '+Git' }
     let g:which_key_leader_map.w = { 'name' : '+Windows' }
+    let g:which_key_leader_map.a = { 'name' : '+Applications' }
     " }
 
     " Show Invisible Chars {
@@ -317,8 +318,25 @@
 " Maps {
     " The default leader is '\', but many people prefer ',' as it's in a standard
 
+    " Plugin: TODO <Leader><Leader> {
+    let g:which_key_leader_map[','] = {
+     \ 'name' : '+System'                                ,
+     \ 'r' : [':source ~/.vimrc          ', 'VimReload' ],
+     "\ '$' : ['<Plug>NERDCommentToEOL    ', 'ToEOL'     ],
+     "\ 'A' : ['<Plug>NERDCommentAppend   ', 'Append'    ],
+     "\ 'a' : ['<Plug>NERDCommentAltDelims', 'AltDelims' ],
+     "\ 'b' : ['<Plug>NERDCommentAlignBoth', 'AlignBoth' ],
+     "\ 'c' : ['<Plug>NERDCommentComment  ', 'Comment'   ],
+     "\ 'i' : ['<Plug>NERDCommentInvert   ', 'Invert'    ],
+     "\ 'l' : ['<Plug>NERDCommentAlignLeft', 'AlignLeft' ],
+     "\ 'm' : ['<Plug>NERDCommentMinimal  ', 'Minimal'   ],
+     "\ 'n' : ['<Plug>NERDCommentNested   ', 'Nested'    ],
+     "\ 'u' : ['<Plug>NERDCommentUncomment', 'Uncomment' ],
+     "\ 'y' : ['<Plug>NERDCommentYank     ', 'Yank'      ],
+     \ }
+    "
     " reload configuration
-    nnoremap <Leader><Leader>r :source ~/.vimrc<CR>
+    "nnoremap <Leader><Leader>r :source ~/.vimrc<CR>
 
     " Windows: Better split management, kept in sync with tmux' mappings {
     noremap <Leader>wh :sp<CR><C-w>j
@@ -673,12 +691,13 @@
 
     " Plugin: YCM properties {
     if isdirectory(expand("~/.vim/bundle/YouCompleteMe"))
-        let g:ycm_use_clangd = 0
+        let g:ycm_use_clangd = 1
         let g:ycm_global_ycm_extra_conf = '~/repos/dotfiles/.ycm_extra_conf.py'
         let g:ycm_autoclose_preview_window_after_completion=1
         "
-        map <Leader>yc  :YcmCompleter GoToDefinitionElseDeclaration<CR>
-        let g:which_key_leader_map.y.c = 'GoToDefinitionElseDeclaration'
+        map <Leader>ad  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+        let g:which_key_leader_map.a.d = 'GoToDefinitionElseDeclaration'
+        let g:ycm_key_detailed_diagnostics = ''
         "
         "TODO: Review YCM ommifunc
         "
@@ -800,7 +819,8 @@
         let g:ale_set_quickfix = 1
         nmap <silent> <C-k> <Plug>(ale_previous_wrap)
         nmap <silent> <C-j> <Plug>(ale_next_wrap)
-        nmap <Leader><Leader>af <Plug>(ale_fix)
+        nnoremap <silent><Leader>af :ALEFix<CR>
+        let g:which_key_leader_map.a.f = 'ALEFix'
     endif
     " }
 
@@ -836,34 +856,6 @@
         let g:go_highlight_operators = 1
         let g:go_highlight_build_constraints = 1
         let g:go_fmt_command = "goimports"
-        "autocmd Filetype go let g:which_key_localleader_map.g = { 'name' : '+Golang' }
-        ""
-        "autocmd Filetype go nmap <LocalLeader>gs <Plug>(go-implements)
-        "autocmd Filetype go let g:which_key_localleader_map.g.s = 'Go-Implements'
-        ""
-        "autocmd FileType go nmap <LocalLeader>gi <Plug>(go-info)
-        "autocmd Filetype go let g:which_key_localleader_map.g.i = 'Go-Info'
-        ""
-        "autocmd FileType go nmap <LocalLeader>ge <Plug>(go-rename)
-        "autocmd Filetype go let g:which_key_localleader_map.g.e = 'Go-Rename'
-        ""
-        "autocmd FileType go nmap <LocalLeader>gr <Plug>(go-run)
-        "autocmd Filetype go let g:which_key_localleader_map.g.r = 'Go-Run'
-        ""
-        "autocmd FileType go nmap <LocalLeader>gb <Plug>(go-build)
-        "autocmd Filetype go let g:which_key_localleader_map.g.b = 'Go-Build'
-        ""
-        "autocmd FileType go nmap <LocalLeader>gt <Plug>(go-test)
-        "autocmd Filetype go let g:which_key_localleader_map.g.t = 'Go-Test'
-        ""
-        "autocmd FileType go nmap <LocalLeader>gd <Plug>(go-doc)
-        "autocmd Filetype go let g:which_key_localleader_map.g.d = 'Go-Doc'
-        ""
-        "autocmd FileType go nmap <LocalLeader>gv <Plug>(go-doc-vertical)
-        "autocmd Filetype go let g:which_key_localleader_map.g.v = 'Go-Doc-Vertical'
-        ""
-        "autocmd FileType go nmap <LocalLeader>gc <Plug>(go-coverage)
-        "autocmd Filetype go let g:which_key_localleader_map.g.c = 'Go-Coverage'
     endif
     " }
 
@@ -887,7 +879,7 @@
         let g:workspace_session_directory = $HOME . '/.vim/sessions/'
         let g:workspace_autosave_always = 0
         let g:workspace_autosave_ignore = ['gitcommit', 'gitrebase', 'nerdtree']
-        let g:workspace_persist_undo_history = 0  " enabled = 1 (default), disabled = 0
+        let g:workspace_persist_undo_history = 0        " enabled = 1 (default), disabled = 0
     endif
     " }
 
@@ -1045,24 +1037,6 @@
     endif
     " }
 
-    " Plugin: TODO <Leader><Leader> {
-    "let g:which_key_localleader_map[' '] = {
-     "\ 'name' : '+Easymotion'                       ,
-     "\ ' ' : ['<Plug>NERDCommentToggle   ', 'Toggle'    ],
-     "\ '$' : ['<Plug>NERDCommentToEOL    ', 'ToEOL'     ],
-     "\ 'A' : ['<Plug>NERDCommentAppend   ', 'Append'    ],
-     "\ 'a' : ['<Plug>NERDCommentAltDelims', 'AltDelims' ],
-     "\ 'b' : ['<Plug>NERDCommentAlignBoth', 'AlignBoth' ],
-     "\ 'c' : ['<Plug>NERDCommentComment  ', 'Comment'   ],
-     "\ 'i' : ['<Plug>NERDCommentInvert   ', 'Invert'    ],
-     "\ 'l' : ['<Plug>NERDCommentAlignLeft', 'AlignLeft' ],
-     "\ 'm' : ['<Plug>NERDCommentMinimal  ', 'Minimal'   ],
-     "\ 'n' : ['<Plug>NERDCommentNested   ', 'Nested'    ],
-     "\ 's' : ['<Plug>NERDCommentSexy     ', 'Sexy'      ],
-     "\ 'u' : ['<Plug>NERDCommentUncomment', 'Uncomment' ],
-     "\ 'y' : ['<Plug>NERDCommentYank     ', 'Yank'      ],
-     "\ }
-    "}
 "}
 
 " Loading others .vim {
