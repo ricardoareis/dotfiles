@@ -713,16 +713,6 @@
     endif
     " }
 
-    "" Plugin: Vimux Properties {
-    "" Prompt for a command to run
-    "if isdirectory(expand("~/.vim/bundle/vimux/"))
-        "map <Leader><Leader>pc :VimuxPromptCommand<CR>
-
-        "" Run last command executed by VimuxRunCommand
-        "map <Leader><Leader>lc :VimuxRunLastCommand<CR>
-    "endif
-    "" }
-
     " Plugin: Airline properties {
     if isdirectory(expand("~/.vim/bundle/vim-airline/"))
         " TODO: https://jnrowe-vim.readthedocs.io
@@ -1018,17 +1008,7 @@
         let g:repl_cursor_down = 1
         let g:repl_python_automerge = 1
         let g:repl_ipython_version = '7.13.0'
-        "let g:sendtorepl_invoke_key = "<LocalLeader>pw"
         let g:sendtorepl_invoke_key = ""
-        "let g:which_key_localleader_map.p = { 'name' : '+Python' }
-
-        autocmd Filetype python let g:which_key_localleader_map.p = { 'name' : '+Python' }
-        autocmd Filetype python nnoremap <silent> <LocalLeader>pw  :SendCurrentLine<CR>
-        autocmd Filetype python vnoremap <silent> <LocalLeader>pw  :SendLineToREPL<CR>
-        autocmd Filetype python nnoremap <silent> <LocalLeader>pr  :REPLToggle<CR>
-        autocmd Filetype python nnoremap <F10> <Esc>:REPLPDBN<CR>
-        autocmd Filetype python nnoremap <F11> <Esc>:REPLPDBS<CR>
-        autocmd Filetype python nnoremap <F12> <Esc>:REPLDebugStopAtCurrentLine<CR>
         let g:repl_position = 3
     endif
     "}
@@ -1064,6 +1044,24 @@
     endif
     " }
 
+    " Plugin: TODO <Leader><Leader> {
+    "let g:which_key_localleader_map[' '] = {
+     "\ 'name' : '+Easymotion'                       ,
+     "\ ' ' : ['<Plug>NERDCommentToggle   ', 'Toggle'    ],
+     "\ '$' : ['<Plug>NERDCommentToEOL    ', 'ToEOL'     ],
+     "\ 'A' : ['<Plug>NERDCommentAppend   ', 'Append'    ],
+     "\ 'a' : ['<Plug>NERDCommentAltDelims', 'AltDelims' ],
+     "\ 'b' : ['<Plug>NERDCommentAlignBoth', 'AlignBoth' ],
+     "\ 'c' : ['<Plug>NERDCommentComment  ', 'Comment'   ],
+     "\ 'i' : ['<Plug>NERDCommentInvert   ', 'Invert'    ],
+     "\ 'l' : ['<Plug>NERDCommentAlignLeft', 'AlignLeft' ],
+     "\ 'm' : ['<Plug>NERDCommentMinimal  ', 'Minimal'   ],
+     "\ 'n' : ['<Plug>NERDCommentNested   ', 'Nested'    ],
+     "\ 's' : ['<Plug>NERDCommentSexy     ', 'Sexy'      ],
+     "\ 'u' : ['<Plug>NERDCommentUncomment', 'Uncomment' ],
+     "\ 'y' : ['<Plug>NERDCommentYank     ', 'Yank'      ],
+     "\ }
+    "}
 "}
 
 " Loading others .vim {
