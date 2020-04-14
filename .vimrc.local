@@ -1030,6 +1030,12 @@ vnoremap <F1> <Esc>
     endif
     " 1>>>
 
+    " Plugin: Sneake <<<1
+    let g:sneak#label = 1
+    map f <Plug>Sneak_s
+    map F <Plug>Sneak_S
+    " 1>>>
+
 " 1>>>
 
 " Loading others .vim <<<1
