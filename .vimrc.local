@@ -718,6 +718,7 @@
         " TODO: https://jnrowe-vim.readthedocs.io
         let g:airline_powerline_fonts=1
         let g:airline_skip_empty_sections = v:true
+        let g:bufferline_echo = 0
         if isdirectory(expand("~/.vim/bundle/vim-airline-themes/"))
             let g:airline_extensions=['branch', 'localsearch', 'virtualenv', 'csv', 'bufferline',
                         \             'hunks', 'keymap', 'quickfix', 'ale', 'tagbar', 'term', 'undotree',
