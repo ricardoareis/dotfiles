@@ -1,5 +1,5 @@
-" Basic properties {
-" vim: set expandtab sw=4 ts=4 sts=4 tw=78 ft=vim foldmarker={,} foldlevel=0 foldmethod=marker spell:
+" Basic properties <<<1
+" vim: set expandtab sw=4 ts=4 sts=4 tw=78 ft=vim foldmarker=<<<1,1>>> foldlevel=0 foldmethod=marker spell:
 "
 " Note: Custom Maps
 "
@@ -20,26 +20,26 @@
 " <C-/>     Toggle   (On|Off)   Search Highlight
 " <Alt-.>   Execute last :cmd
 
-    " Use bundles config {
+    " Use bundles config <<<1
     if filereadable(expand("~/.vimrc.bundles"))
         source ~/.vimrc.bundles
     endif
-    " }
+    " 1>>>
 
-    " SnipMate {
+    " SnipMate <<<1
     " Setting the author var
     " If forking, please overwrite in your .vimrc.local file
     let g:snips_author = 'Ricardo Reis <ricardo.areis@gmail.com>'
-    " }
+    " 1>>>
 
-    " Important Properties{
+    " Important Properties <<<1
 
     set nocompatible                            " be iMproved, required"
     scriptencoding utf-8
     set encoding=utf-8
     set shell=$SHELL                            " Using default $SHELL
 
-    " Config Clipboard {
+    " Config Clipboard
     if has('clipboard')
         if has('unnamedplus')                   " When possible use + register for copy-paste
             set clipboard=unnamed,unnamedplus
@@ -47,7 +47,7 @@
             set clipboard=unnamed
         endif
     endif
-    " }
+    " 1>>>
 
     syntax on
     filetype plugin indent on                   " Enable file type detection and do language dependent indenting
@@ -106,7 +106,7 @@
     set lazyredraw                              " Avoid redrawing the screen mid-command."
 
     " http://vim.wikia.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
-    " Restore cursor to file position in previous editing session {
+    " Restore cursor to file position in previous editing session <<<1
     function! ResCur()
         if line("'\"") <= line("$")
             silent! normal! g`"
@@ -117,9 +117,9 @@
         autocmd!
         autocmd BufWinEnter * call ResCur()
     augroup END
-    " }
+    " 1>>>
 
-    " changed the cursor behavior, in a edit, replace and append mode {
+    " changed the cursor behavior, in a edit, replace and append mode <<<1
     " see autocmds.vim
     if empty($TMUX)
       let &t_SI = "\<Esc>]50;CursorShape=1\x7"
@@ -130,7 +130,7 @@
       let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
       let &t_SR = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=2\x7\<Esc>\\"
     endif
-    " }
+    " 1>>>
 
     set cursorcolumn
     set backup                                  " Backups are nice ...
@@ -140,7 +140,7 @@
         set undoreload=10000                    " Maximum number lines to save for undo on a buffer reload
     endif
 
-    " tmux will send xterm-style keys when its xterm-keys option is on
+    " tmux will send xterm-style keys when its xterm-keys option is on <<<1
     if &term =~ '^xterm' || &term =~ '^screen' || &term =~ "^tmux"
         execute "set <xUp>=\e[1;*A"
         execute "set <xDown>=\e[1;*B"
@@ -149,9 +149,9 @@
         "execute "set t_FI=\e[1;3D"
         "execute "set t_FJ=\e[1;3C"
     endif
-    " }
+    " 1>>>
 
-    " Disable unused builtin plugins {
+    " Disable unused builtin plugins <<<1
     let g:loaded_gzip              = 1
     let g:loaded_tar               = 1
     let g:loaded_tarPlugin         = 1
@@ -168,9 +168,9 @@
     let g:loaded_netrwSettings     = 1
     let g:loaded_netrwFileHandlers = 1
     let g:loaded_logipat           = 1
-    " }
+    " 1>>>
 
-    " Color properties {
+    " Color properties <<<1
     if &term =~ '^xterm' || &term =~ '^screen' || &term =~ "^tmux"
         set t_Co=256                                " Enable 256 colors to stop the CSApprox warning and make xterm vim shine
     endif
@@ -184,20 +184,20 @@
     colorscheme gruvbox-material                    " Using the same color scheme
     let g:gruvbox_termcolors=256                    " Accepting the 256 colors
     let g:gruvbox_material_enable_italic = 1        " Allow Italic fonts
-    "}
+    " 1>>>
 
-    " Alerts and feedback properties {
+    " Alerts and feedback properties <<<1
     set noerrorbells
     set novisualbell
     set t_vb=                       "Never Flash de Screen"
-    " }
+    " 1>>>
 
-    " Spell properties {
+    " Spell properties <<<1
     set spelllang=en_us,pt
     "TODO: LOCAL DICT
-    " }
+    " 1>>>
 
-    " Format properties {
+    " Format properties <<<1
     set autoindent        " Indent at the same level of the previous line
     set shiftwidth=4      " use indents of 4 spaces
     set expandtab         " tabs are spaces, not tabs
@@ -210,9 +210,9 @@
     " Make it so AutoCloseTag works for xml and xhtml files as well
     au FileType xhtml,xml ru ftplugin/html/autoclosetag.vim
     nmap <Leader>ac <Plug>ToggleAutoCloseMappings
-    " }
+    " 1>>>
 
-    " The complete properties {
+    " The complete properties <<<1
     "
     " .: Scan the current buffer
     " w: Scan buffers from other windows
@@ -225,13 +225,13 @@
     "
     set complete-=i   " disable scanning included files
     set complete-=t   " disable searching tags
-    " }
+    " 1>>>
 
-" }
+" 1>>>
 
-" Misc {
+" Misc <<<1
 
-    " WhichKey - Map {
+    " WhichKey - Map <<<1
     set timeoutlen=500
     let mapleader=","
     let maplocalleader=" "
@@ -240,7 +240,7 @@
     nnoremap <silent> <LocalLeader> :<c-u>WhichKey        '<Space>'<CR>
     vnoremap <silent> <LocalLeader> :<c-u>WhichKeyVisual  '<Space>'<CR>
 
-    "Define prefix dictionary
+    " Define prefix dictionary
     call which_key#register(',',       "g:which_key_leader_map")
     call which_key#register('<Space>', "g:which_key_localleader_map")
 
@@ -254,23 +254,23 @@
     let g:which_key_leader_map.g = { 'name' : '+Git' }
     let g:which_key_leader_map.w = { 'name' : '+Windows' }
     let g:which_key_leader_map.a = { 'name' : '+Applications' }
-    " }
+    " 1>>>
 
-    " Show Invisible Chars {
+    " Show Invisible Chars <<<1
     set nolist                                          " default disable
     if &encoding =~ 'utf-8'
         set listchars=eol:⏎,tab:␉·,trail:␠,nbsp:⎵       " default unicode
     endif
-    " }
+    " 1>>>
 
-    " Dealing with a long lines properties {
+    " Dealing with a long lines properties <<<1
     set wrap                                            " wrap long lines by default
     set whichwrap=b,s,h,l,<,>,[,]                       " Backspace and cursor keys wrap too
     set colorcolumn=120
     set showbreak=...
-    " }
+    " 1>>>
 
-    " Vimdiff - Properties {
+    " Vimdiff - Properties <<<1
     "set diffopt=internal,algorithm:patience,indent-heuristic,horizontal
     set diffopt+=iwhite
     if has('nvim-0.3.2') || has("patch-8.1.0360")
@@ -286,17 +286,17 @@
             endif
         endfunction
     endif
-    " }
+    " 1>>>
 
-    " Conceal properties {
+    " Conceal properties <<<1
     if has('conceal')
         set conceallevel=0
         nnoremap coe :set <C-R>=&conceallevel ? 'conceallevel=0' : 'conceallevel=1'<CR><CR>
         "nmap <silent><unique> <Leader>tcoe :set <C-R>=&conceallevel ? 'conceallevel=0' : 'conceallevel=1'<CR><CR>
     endif
-    " }
+    " 1>>>
 
-    " JSON {
+    " JSON <<<1
     if has('python3')
         command! JSONPretty call FormatJson()
     else
@@ -304,21 +304,21 @@
     endif
     nnoremap jp <Esc>:JSONPretty<CR><Esc>:set filetype=json<CR>
     let g:vim_json_syntax_conceal = 1
-    " }
+    " 1>>>
 
-    " Wildfire {
-
+    " Wildfire <<<1
     let g:wildfire_objects = {
                 \ "*" : ["i'", 'i"', "i)", "i]", "i}", "ip"],
                 \ "html,xml" : ["at"],
                 \ }
+    " 1>>>
 
-" }
+" 1>>>
 
-" Maps {
+" Maps <<<1
+
     " The default leader is '\', but many people prefer ',' as it's in a standard
-
-    " Plugin: TODO <Leader><Leader> {
+    " Plugin: TODO <Leader><Leader> <<<1
     let g:which_key_leader_map[','] = {
      \ 'name' : '+System'                                ,
      \ 'r' : [':source ~/.vimrc          ', 'VimReload' ],
@@ -334,57 +334,52 @@
      "\ 'u' : ['<Plug>NERDCommentUncomment', 'Uncomment' ],
      "\ 'y' : ['<Plug>NERDCommentYank     ', 'Yank'      ],
      \ }
-    "
-    " reload configuration
-    "nnoremap <Leader><Leader>r :source ~/.vimrc<CR>
+    " 1>>>
 
-    " Windows: Better split management, kept in sync with tmux' mappings {
+    " Windows: Better split management, kept in sync with tmux' mappings <<<1
     noremap <Leader>wh :sp<CR><C-w>j
     noremap <Leader>wv :vsp<CR><C-w>l
     let g:which_key_leader_map.w.h = 'Horizontal'
     let g:which_key_leader_map.w.v = 'Vertical'
+    "
+    "map <Leader>w= <C-w>=
+    "map <Leader>w_ <C-w>_
+    "map <Leader>w+ <C-w>+
+    "
+    let g:which_key_leader_map['w'] = {
+      \ 'name' : '+Windows' ,
+      \ 'w' : ['<C-W>w'     , 'other-window']          ,
+      \ 'd' : ['<C-W>c'     , 'delete-window']         ,
+      \ '-' : ['<C-W>s'     , 'split-window-below']    ,
+      \ '|' : ['<C-W>v'     , 'split-window-right']    ,
+      \ '2' : ['<C-W>v'     , 'layout-double-columns'] ,
+      \ 'h' : ['<C-W>h'     , 'window-left']           ,
+      \ 'j' : ['<C-W>j'     , 'window-below']          ,
+      \ 'l' : ['<C-W>l'     , 'window-right']          ,
+      \ 'k' : ['<C-W>k'     , 'window-up']             ,
+      \ 'H' : ['<C-W>5<'    , 'expand-window-left']    ,
+      \ 'J' : ['resize +5'  , 'expand-window-below']   ,
+      \ 'L' : ['<C-W>5>'    , 'expand-window-right']   ,
+      \ 'K' : ['resize -5'  , 'expand-window-up']      ,
+      \ '=' : ['<C-W>='     , 'balance-window']        ,
+      \ 's' : ['<C-W>s'     , 'split-window-below']    ,
+      \ 'v' : ['<C-W>v'     , 'split-window-below']    ,
+      \ '?' : ['Windows'    , 'fzf-window']            ,
+      \ }
+    " 1>>>
 
-        "Improve viewports {
-        "map <Leader>w= <C-w>=
-        "map <Leader>w_ <C-w>_
-        "map <Leader>w+ <C-w>+
-        "
-        let g:which_key_leader_map['w'] = {
-          \ 'name' : '+Windows' ,
-          \ 'w' : ['<C-W>w'     , 'other-window']          ,
-          \ 'd' : ['<C-W>c'     , 'delete-window']         ,
-          \ '-' : ['<C-W>s'     , 'split-window-below']    ,
-          \ '|' : ['<C-W>v'     , 'split-window-right']    ,
-          \ '2' : ['<C-W>v'     , 'layout-double-columns'] ,
-          \ 'h' : ['<C-W>h'     , 'window-left']           ,
-          \ 'j' : ['<C-W>j'     , 'window-below']          ,
-          \ 'l' : ['<C-W>l'     , 'window-right']          ,
-          \ 'k' : ['<C-W>k'     , 'window-up']             ,
-          \ 'H' : ['<C-W>5<'    , 'expand-window-left']    ,
-          \ 'J' : ['resize +5'  , 'expand-window-below']   ,
-          \ 'L' : ['<C-W>5>'    , 'expand-window-right']   ,
-          \ 'K' : ['resize -5'  , 'expand-window-up']      ,
-          \ '=' : ['<C-W>='     , 'balance-window']        ,
-          \ 's' : ['<C-W>s'     , 'split-window-below']    ,
-          \ 'v' : ['<C-W>v'     , 'split-window-below']    ,
-          \ '?' : ['Windows'    , 'fzf-window']            ,
-          \ }
-        " }
-
-    " }
-
-    " toggle cursor line {
+    " toggle cursor line <<<1
     "nnoremap <Leader>tc :set cursorline!<CR>
     nnoremap <silent><unique> <Leader>tc :set cursorline!<CR>
     let g:which_key_leader_map.t.c = 'CursorLine'
-    " }
+    " 1>>>
 
-    " scroll the view port faster {
+    " scroll the view port faster <<<1
     nnoremap <C-e> 3<C-e>
     nnoremap <C-y> 3<C-y>
-    " }
+    " 1>>>
 
-    " buffer shortcuts {
+    " buffer shortcuts <<<1
     "TODO mv close then list properties, but it does not work
     nnoremap <silent><unique> <Leader>tl :set list!<CR>
     let g:which_key_leader_map.t.l = 'ListChars'
@@ -406,9 +401,9 @@
       \ 'p' : ['bprevious' , 'previous-buffer'] ,
       \ '?' : ['Buffers'   , 'fzf-buffer']      ,
       \ }
-    " }
+    " 1>>>
 
-    " Map to move lines to bellow than current line {
+    " Map to move lines to bellow than current line <<<1
     "
     "TODO: Refining this cmd, bellow to samples produced by me
     "nnoremap cp mc3kY'cP :delmark c<CR>
@@ -418,28 +413,26 @@
     function! MvLines()
         let l:number = 2
         let l:string = ""
-    "
         while l:number > 0
             let l:string .= nr2char(getchar())
             let l:number -= 1
         endwhile
-    "
         return l:string . "m."
     endfunction
     "
     nnoremap mv :<C-u>execute MvLines()<CR>
-    " }
+    " 1>>>
 
-    " Inconsistency: Fix {
+    " Inconsistency: Fix <<<1
     "
     " Yank from the cursor to the end of the line, to be consistent with C and D.
     nnoremap Y y$
     nnoremap vv ^vg_
     nnoremap vV vg_
     vnoremap <Tab> >gv
-    " }
+    " 1>>>
 
-    " Go to tab by number {
+    " Go to tab by number <<<1
     "noremap <Leader>t1 1gt
     "noremap <Leader>t2 2gt
     "noremap <Leader>t3 3gt
@@ -452,9 +445,9 @@
     "noremap <Leader>t0 :tablast<CR>
     noremap <Esc>[1;3D :tabnext<CR>
     noremap <Esc>[1;3C :tabprevious<CR>
-    " }
+    " 1>>>
 
-    " Code folding options {
+    " Code folding options <<<1
     set foldenable
     set foldnestmax=10                              " deepest fold is 10 levels
     "
@@ -491,20 +484,20 @@
           \',mmanual,kmarker,iindent,ssyntax,eexpr,ddiff',
           \','.nr2char(getchar()).'\zs\a*\C'))\|set foldmethod<CR>
     nmap <silent>zfm cof
-    " }
+    " 1>>>
 
-    " Most prefer to toggle search highlighting rather than clear the current {
+    " Most prefer to toggle search highlighting rather than clear the current <<<1
     noremap    :set hlsearch! hlsearch?<CR>
-    " }
+    " 1>>>
 
-    " Wrapped lines goes down/up to next row, rather than next line in file {
+    " Wrapped lines goes down/up to next row, rather than next line in file <<<1
     noremap j gj
     noremap k gk
     noremap <Down> g<Down>
     noremap <Up> g<Up>
-    " }
+    " 1>>>
 
-    " End/Start of line motion keys act relative to row/wrap width in the {
+    " End/Start of line motion keys act relative to row/wrap width in the <<<1
     " presence of `:set wrap`, and relative to line for `:set nowrap`.
     " Default vim behaviour is to act relative to text line in both cases
     function! WrapRelativeMotion(key, ...)
@@ -536,23 +529,23 @@
     vnoremap 0 :<C-u>call WrapRelativeMotion("0", 1)<CR>
     vnoremap <Home> :<C-u>call WrapRelativeMotion("0", 1)<CR>
     vnoremap ^ :<C-u>call WrapRelativeMotion("^", 1)<CR>
-    " }
+    " 1>>>
 
-    " Visual shifting (does not exit Visual mode) {
+    " Visual shifting (does not exit Visual mode) <<<1
     vnoremap < <gv
     vnoremap > >gv
-    " }
+    " 1>>>
 
-    " Allow using the repeat operator with a visual selection (!) {
+    " Allow using the repeat operator with a visual selection (!) <<<1
     " http://stackoverflow.com/a/8064607/127816
     vnoremap . :normal .<CR>
-    " }
+    " 1>>>
 
-    " For when you forget to sudo.. Really Write the file. {
+    " For when you forget to sudo.. Really Write the file. <<<1
     cmap w!! w !sudo tee % >/dev/null
-    " }
+    " 1>>>
 
-    " Some helpers to edit mode {
+    " Some helpers to edit mode <<<1
     " http://vimcasts.org/e/14
     cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<CR>
     " open in a new buffer
@@ -567,41 +560,41 @@
     " open in a new tab
     map <Leader>et :tabe %%
     let g:which_key_leader_map.e.t = 'NewTab'
-    " }
+    " 1>>>
 
-    " Jump to the middle of the current written line as opposed to the window width {
+    " Jump to the middle of the current written line as opposed to the window width <<<1
     nnoremap <silent> gm :call cursor(0, virtcol('$')/2)<CR>|nnoremap gM gm
-    " }
+    " 1>>>
 
-    " Scroll relative to cursor (@_ suppresses [count] for zt) {
+    " Scroll relative to cursor (@_ suppresses [count] for zt) <<<1
     " this cmd alternate between 10 lines bellow and above.
     " Use <expr> to increase or decrease
     nnoremap <expr><C-Up>   v:count > 0 ? '@_zt'.v:count.'<c-y>' : 'zt'
     nnoremap <expr><C-Down> v:count > 0 ? '@_zb'.v:count.'<c-e>' : 'zb'
-    " }
+    " 1>>>
 
-    " Vim Terminal {
+    " Vim Terminal <<<1
     nnoremap <Leader><Space> :terminal<CR>
-    " }
+    " 1>>>
 
-    " Repeat the last command (ex. :ls) {
+    " Repeat the last command (ex. :ls) <<<1
     " If your terminal print the same  for, both <Esc> and <Alt>
     " decide the best usability.
     nnoremap <Esc>. @:
-    " }
+    " 1>>>
 
-" }
+" 1>>>
 
-    " Unmaps {
-    " STOP the help from being so... HELPFULL ;)
-    inoremap <F1> <Esc>
-    nnoremap <F1> <Esc>
-    vnoremap <F1> <Esc>
-    " }
+" Unmaps <<<1
+" STOP the help from being so... HELPFULL ;)
+inoremap <F1> <Esc>
+nnoremap <F1> <Esc>
+vnoremap <F1> <Esc>
+" 1>>>
 
-" Funtions {
+" Funtions <<<1
 
-    " Initialize directories {
+    " Initialize directories <<<1
     function! InitializeDirectories()
         let parent = $HOME
         let prefix = 'vim'
@@ -633,9 +626,9 @@
         endfor
     endfunction
     call InitializeDirectories()
-    " }
+    " 1>>>
 
-    " Initialize NERDTree as needed {
+    " Initialize NERDTree as needed <<<1
     function! NERDTreeInitAsNeeded()
         redir => bufoutput
         buffers!
@@ -647,9 +640,9 @@
             wincmd l
         endif
     endfunction
-    " }
+    " 1>>>
 
-    " Strip whitespace {
+    " Strip whitespace <<<1
     function! StripTrailingWhitespace()
         " Preparation: save last search, and cursor position.
         let _s=@/
@@ -661,9 +654,9 @@
         let @/=_s
         call cursor(l, c)
     endfunction
-    " }
+    " 1>>>
 
-    " Shell command {
+    " Shell command <<<1
     function! s:RunShellCommand(cmdline)
         botright new
         setlocal buftype=nofile
@@ -683,13 +676,13 @@
     "
     command! -complete=file -nargs=+ Shell call s:RunShellCommand(<q-args>)
     " e.g. Grep current file for <search_term>: Shell grep -Hn <search_term> %
-    " }
+    " 1>>>
 
-" }
+" 1>>>
 
-"Plugins {
+"Plugins <<<1
 
-    " Plugin: YCM properties {
+    " Plugin: YCM properties <<<1
     if isdirectory(expand("~/.vim/bundle/YouCompleteMe"))
         let g:ycm_use_clangd = 1
         let g:ycm_global_ycm_extra_conf = '~/repos/dotfiles/.ycm_extra_conf.py'
@@ -718,9 +711,9 @@
         " especially when splits are used.
         set completeopt-=preview
     endif
-    " }
+    " 1>>>
 
-    " Plugin: Identlines properties (this plugin change conceal properties) {
+    " Plugin: Identlines properties (this plugin change conceal properties) <<<1
     if isdirectory(expand("~/.vim/bundle/vim-indent-guides/"))
         let g:indent_guides_default_mapping = 0
         let g:indent_guides_start_level = 2
@@ -730,9 +723,9 @@
         nnoremap <silent><unique> <Leader>ti :IndentGuidesToggle<CR>
         let g:which_key_leader_map.t.i = 'IndentGuidesToggle'
     endif
-    " }
+    " 1>>>
 
-    " Plugin: Airline properties {
+    " Plugin: Airline properties <<<1
     if isdirectory(expand("~/.vim/bundle/vim-airline/"))
         " TODO: https://jnrowe-vim.readthedocs.io
         let g:airline_powerline_fonts=1
@@ -765,16 +758,16 @@
             endif
         endif
     endif
-    " }
+    " 1>>>
 
-    " Plugin: FZF (performs like CtrlP) {
+    " Plugin: FZF (performs like CtrlP) <<<1
     if isdirectory(expand("~/.vim/bundle/fzf/"))
         nnoremap <C-p> :Files<CR>
         let g:fzf_layout={ 'window': 'bot'.float2nr(&lines * 0.4).'new'  }
     endif
-    " }
+    " 1>>>
 
-    " Plugin: Vim-Go properties {
+    " Plugin: Vim-Go properties <<<1
     if isdirectory(expand("~/.vim/bundle/vim-go/"))
         let g:go_fmt_command="goimports" " format with goimports instead of gofmt
         let g:go_list_type = "quickfix"
@@ -782,9 +775,9 @@
         let g:go_fmt_fail_silently = 1
         let g:go_fmt_autosave=1          " disable fmt on save
     endif
-    " }
+    " 1>>>
 
-    " Plugin: GitGutter properties {
+    " Plugin: GitGutter properties <<<1
     if isdirectory(expand("~/.vim/bundle/vim-gitgutter/"))
         set updatetime=500
         let g:gitgutter_enabled=1
@@ -805,9 +798,9 @@
         nmap ]h <Plug>(GitGutterNextHunk)
         nmap [h <Plug>(GitGutterPrevHunk)
     endif
-    " }
+    " 1>>>
 
-    " Plugin: Vim-Ale properties {
+    " Plugin: Vim-Ale properties <<<1
     if isdirectory(expand("~/.vim/bundle/ale/"))
         let g:ale_lint_on_enter = 0
         let g:ale_lint_on_text_changed = 'never'
@@ -822,15 +815,15 @@
         nnoremap <silent><Leader>af :ALEFix<CR>
         let g:which_key_leader_map.a.f = 'ALEFix'
     endif
-    " }
+    " 1>>>
 
-    " Plugin: EditorConfig properties {
+    " Plugin: EditorConfig properties <<<1
     if isdirectory(expand("~/.vim/bundle/editorconfig/"))
         let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
     endif
-    " }
+    " 1>>>
 
-    " Plugin: Session List {
+    " Plugin: Session List <<<1
     set sessionoptions=blank,buffers,curdir,folds,tabpages,winsize
     if isdirectory(expand("~/.vim/bundle/sessionman.vim/"))
         nnoremap <silent><Leader>sl :SessionList<CR><CR>
@@ -842,9 +835,9 @@
         nnoremap <silent><Leader>sc :SessionClose<CR><CR>
         let g:which_key_leader_map.s.c = 'Close'
     endif
-    " }
+    " 1>>>
 
-    " Plugin: Vim-GO {
+    " Plugin: Vim-GO <<<1
     " Disable some vim-go properties to better cursorline performance
     if isdirectory(expand("~/.vim/bundle/vim-go/"))
         let g:go_highlight_space_tab_error=0
@@ -857,9 +850,9 @@
         let g:go_highlight_build_constraints = 1
         let g:go_fmt_command = "goimports"
     endif
-    " }
+    " 1>>>
 
-    " Plugin: UndoTree properties {
+    " Plugin: UndoTree properties <<<1
     if isdirectory(expand("~/.vim/bundle/undotree/"))
         nnoremap <silent><F2> :UndotreeToggle<CR>
         let g:undotree_SetFocusWhenToggle=1
@@ -871,9 +864,9 @@
         let g:undotree_DiffCommand = 'diff -pud --label earlier --label later'
         let g:undotree_HighlightChangedWithSign = 1
     endif
-    " }
+    " 1>>>
 
-    " Plugin: Work space properties {
+    " Plugin: Work space properties <<<1
     if isdirectory(expand("~/.vim/bundle/vim-workspace"))
         nnoremap <silent><F4> :ToggleWorkspace<CR>
         let g:workspace_session_directory = $HOME . '/.vim/sessions/'
@@ -881,9 +874,9 @@
         let g:workspace_autosave_ignore = ['gitcommit', 'gitrebase', 'nerdtree']
         let g:workspace_persist_undo_history = 0        " enabled = 1 (default), disabled = 0
     endif
-    " }
+    " 1>>>
 
-    " Plugin: NerdTree properties{
+    " Plugin: NerdTree properties <<<1
     if isdirectory(expand("~/.vim/bundle/nerdtree"))
         nnoremap <silent><F1> :NERDTreeToggle<CR>
         let g:NERDShutUp=1
@@ -903,9 +896,9 @@
         nnoremap <silent> <Leader>ff :NERDTreeFind<CR>
         let g:which_key_leader_map.f.f = 'NERDTreeFind'
     endif
-    " }
+    " 1>>>
 
-    " Plugin: TagBar properties {
+    " Plugin: TagBar properties <<<1
     if isdirectory(expand("~/.vim/bundle/tagbar/"))
         nnoremap <silent> <F3> :TagbarToggle<CR>
         let g:tagbar_left=0
@@ -920,15 +913,15 @@
             let &tags = &tags . ',' . gitroot . '/.git/tags'
         endif
     endif
-    " }
+    " 1>>>
 
-    " Plugin: Rainbow {
+    " Plugin: Rainbow <<<1
     if isdirectory(expand("~/.vim/bundle/rainbow/"))
         let g:rainbow_active = 1                        " 0 if you want to enable it later via :RainbowToggle
     endif
-    " }
+    " 1>>>
 
-    " Plugin: Fugitive {
+    " Plugin: Fugitive <<<1
     if isdirectory(expand("~/.vim/bundle/vim-fugitive/"))
         nnoremap <silent> <Leader>gs :Gstatus<CR>
         let g:which_key_leader_map.g.s = 'Gstatus'
@@ -960,32 +953,32 @@
         nnoremap <silent> <Leader>gi :Git add -p %<CR>
         let g:which_key_leader_map.g.i = 'Gadd -p %'
     endif
-    " }
+    " 1>>>
 
-    " Plugin: Better-WhiteSpace {
+    " Plugin: Better-WhiteSpace <<<1
     if isdirectory(expand("~/.vim/bundle/vim-better-whitespace/"))
         " Navigate vim-better-whitespace
         nnoremap ]w :NextTrailingWhitespace<CR>
         nnoremap [w :PrevTrailingWhitespace<CR>
         let g:strip_whitespace_on_save = 1
     endif
-    " }
+    " 1>>>
 
-    " Plugin: LocalSearch {
+    " Plugin: LocalSearch <<<1
     if isdirectory(expand("~/.vim/bundle/vim-localsearch/"))
         nmap <Leader>/ <Plug>localsearch_toggle
     endif
-    " }
+    " 1>>>
 
-    " Plugin: Wordy {
+    " Plugin: Wordy <<<1
     noremap  <silent> <F8> :<C-u>NextWordy<cr>
     xnoremap <silent> <F8> :<C-u>NextWordy<cr>
     inoremap <silent> <F8> <C-o>:NextWordy<cr>
     "]s	- Move to next misspelled word after the cursor.
     "[s	- Like ]s but search backwards
-    " }
+    " 1>>>
 
-    "Plugin: Vim-repl - Python {
+    "Plugin: Vim-repl - Python <<<1
     if isdirectory(expand("~/.vim/bundle/vim-repl/"))
         let g:repl_program = {
                     \   'python': 'ipython',
@@ -1004,19 +997,19 @@
         let g:sendtorepl_invoke_key = ""
         let g:repl_position = 3
     endif
-    "}
+    " 1>>>
 
-    " https://vimawesome.com/plugin/matchit-zip-the-story-of-us {
+    " https://vimawesome.com/plugin/matchit-zip-the-story-of-us <<<1
     if isdirectory(expand("~/.vim/bundle/matchit.zip"))
         let b:match_ignorecase = 1
     endif
-    " }
+    " 1>>>
 
-    " Plugin: MarkerText {
+    " Plugin: MarkerText <<<1
     let g:SignatureMarkerTextHLDynamic=1
-    " }
+    " 1>>>
 
-    " Plugin: NERDCommenter {
+    " Plugin: NERDCommenter <<<1
     if isdirectory(expand("~/.vim/bundle/nerdcommenter/"))
         let g:which_key_leader_map['c'] = {
          \ 'name' : '+Commentes'                       ,
@@ -1035,13 +1028,13 @@
          \ 'y' : ['<Plug>NERDCommentYank     ', 'Yank'      ],
          \ }
     endif
-    " }
+    " 1>>>
 
-"}
+" 1>>>
 
-" Loading others .vim {
+" Loading others .vim <<<1
 " function to source in directory
 for fpath in split(globpath('~/.vim/plugins.d/', '*.vim'), '\n')
     exe 'source' fpath
 endfor
-" }
+" 1>>>
