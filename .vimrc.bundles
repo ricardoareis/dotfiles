@@ -109,7 +109,8 @@
     Plugin 'bling/vim-bufferline'
     Plugin 'vim-airline/vim-airline'
     Plugin 'vim-airline/vim-airline-themes'
-    Plugin 'easymotion/vim-easymotion'
+    "Plugin 'easymotion/vim-easymotion'
+    Plugin 'justinmk/vim-sneak'
     Plugin 'flazz/vim-colorschemes'
     "https://github.com/jaxbot/semantic-highlight.vim
     "}
