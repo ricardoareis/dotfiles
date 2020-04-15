@@ -253,7 +253,7 @@
     let g:which_key_leader_map.s = { 'name' : '+Session' }
     let g:which_key_leader_map.g = { 'name' : '+Git' }
     let g:which_key_leader_map.w = { 'name' : '+Windows' }
-    let g:which_key_leader_map.a = { 'name' : '+Applications' }
+    let g:which_key_leader_map.l = { 'name' : '+Linters' }
     " 1>>>
 
     " Show Invisible Chars <<<1
@@ -320,10 +320,13 @@
     " The default leader is '\', but many people prefer ',' as it's in a standard
     " Plugin: TODO <Leader><Leader> <<<1
     let g:which_key_leader_map[','] = {
-     \ 'name' : '+System'                                ,
-     \ 'r' : [':source ~/.vimrc          ', 'VimReload' ],
-     "\ '$' : ['<Plug>NERDCommentToEOL    ', 'ToEOL'     ],
-     "\ 'A' : ['<Plug>NERDCommentAppend   ', 'Append'    ],
+     \ 'name' : '+Quick'                                                                       ,
+     \ 'r' : [':source ~/.vimrc                             ', 'VimReload'                    ],
+     \ 'f' : [':ALEFix                                      ', 'ALEFix'                       ],
+     \ 'n' : [':ALENext                                     ', 'ALENext'                       ],
+     \ 'p' : [':ALEPreviows                                 ', 'ALEPreviows'                       ],
+     \ 'i' : [':ALEInfoToClipboard                          ', 'ALEInfoToClipboard'           ],
+     \ 'd' : [':YcmCompleter GoToDefinitionElseDeclaration  ', 'GoToDefinitionElseDeclaration'],
      "\ 'a' : ['<Plug>NERDCommentAltDelims', 'AltDelims' ],
      "\ 'b' : ['<Plug>NERDCommentAlignBoth', 'AlignBoth' ],
      "\ 'c' : ['<Plug>NERDCommentComment  ', 'Comment'   ],
@@ -688,8 +691,8 @@ vnoremap <F1> <Esc>
         let g:ycm_global_ycm_extra_conf = '~/repos/dotfiles/.ycm_extra_conf.py'
         let g:ycm_autoclose_preview_window_after_completion=1
         "
-        map <Leader>ad  :YcmCompleter GoToDefinitionElseDeclaration<CR>
-        let g:which_key_leader_map.a.d = 'GoToDefinitionElseDeclaration'
+        "map <Leader>ld  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+        "let g:which_key_leader_map.l.d = 'GoToDefinitionElseDeclaration'
         let g:ycm_key_detailed_diagnostics = ''
         "
         "TODO: Review YCM ommifunc
@@ -812,8 +815,8 @@ vnoremap <F1> <Esc>
         let g:ale_set_quickfix = 1
         nmap <silent> <C-k> <Plug>(ale_previous_wrap)
         nmap <silent> <C-j> <Plug>(ale_next_wrap)
-        nnoremap <silent><Leader>af :ALEFix<CR>
-        let g:which_key_leader_map.a.f = 'ALEFix'
+        "nnoremap <silent><Leader>lf :ALEFix<CR>
+        "let g:which_key_leader_map.l.f = 'ALEFix'
     endif
     " 1>>>
 
@@ -874,8 +877,8 @@ vnoremap <F1> <Esc>
         "let g:workspace_autosave_ignore = ['gitcommit', 'gitrebase', 'nerdtree']
         "let g:workspace_persist_undo_history = 0        " enabled = 1 (default), disabled = 0
     "endif
-    let g:auto_save = 1
-    let g:auto_save_events = ["InsertLeave", "TextChanged"]
+    "let g:auto_save = 1
+    "let g:auto_save_events = ["InsertLeave", "TextChanged"]
     " 1>>>
 
     " Plugin: NerdTree properties <<<1
