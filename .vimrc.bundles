@@ -97,7 +97,7 @@
     Plugin 'junegunn/fzf.vim'                   " TODO customization
     Plugin 'liuchengxu/vim-clap'                " TODO overlap fzf
     Plugin 'liuchengxu/vista.vim'               " TODO overlap nerdtree ctags-bar
-    Plugin 'thaerkh/vim-workspace'              " TODO removed after implement auto save!?
+    "Plugin 'thaerkh/vim-workspace'              " TODO removed after implement auto save!?
     Plugin 'chrisbra/csv.vim'                   " Support better csv support
     Plugin 'mox-mox/vim-localsearch'            " Allow a register a local pattern, instead of only a global / search
     Plugin 'sheerun/vim-polyglot'               " Syntax for many different type of files
@@ -113,6 +113,7 @@
     Plugin 'justinmk/vim-sneak'
     Plugin 'flazz/vim-colorschemes'
     "https://github.com/jaxbot/semantic-highlight.vim
+    Plugin '907th/vim-auto-save'
     "}
 
     " All of your Plugins must be added before the following line

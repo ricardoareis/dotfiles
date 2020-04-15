@@ -867,13 +867,15 @@ vnoremap <F1> <Esc>
     " 1>>>
 
     " Plugin: Work space properties <<<1
-    if isdirectory(expand("~/.vim/bundle/vim-workspace"))
-        nnoremap <silent><F4> :ToggleWorkspace<CR>
-        let g:workspace_session_directory = $HOME . '/.vim/sessions/'
-        let g:workspace_autosave_always = 0
-        let g:workspace_autosave_ignore = ['gitcommit', 'gitrebase', 'nerdtree']
-        let g:workspace_persist_undo_history = 0        " enabled = 1 (default), disabled = 0
-    endif
+    "if isdirectory(expand("~/.vim/bundle/vim-workspace"))
+        "nnoremap <silent><F4> :ToggleWorkspace<CR>
+        "let g:workspace_session_directory = $HOME . '/.vim/sessions/'
+        "let g:workspace_autosave_always = 0
+        "let g:workspace_autosave_ignore = ['gitcommit', 'gitrebase', 'nerdtree']
+        "let g:workspace_persist_undo_history = 0        " enabled = 1 (default), disabled = 0
+    "endif
+    let g:auto_save = 1
+    let g:auto_save_events = ["InsertLeave", "TextChanged"]
     " 1>>>
 
     " Plugin: NerdTree properties <<<1
