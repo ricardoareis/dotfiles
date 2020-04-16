@@ -113,7 +113,8 @@
     Plugin 'justinmk/vim-sneak'
     Plugin 'flazz/vim-colorschemes'
     "https://github.com/jaxbot/semantic-highlight.vim
-    Plugin '907th/vim-auto-save'
+    "Plugin '907th/vim-auto-save'
+    Plugin 'voldikss/vim-floaterm'
     "}
 
     " All of your Plugins must be added before the following line
