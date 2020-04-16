@@ -119,6 +119,9 @@ zinit wait"1d" lucid as=program from"gh-r" for \
 zinit wait"1d" lucid as=program from"gh-r" for \
     mv"delta* -> delta" pick="delta/delta" @dandavison/delta
 
+zinit wait"1d" lucid as=program from"gh-r" for \
+    mv"ripgrep* -> rg" pick="rg/rg" @BurntSushi/ripgrep
+
 zinit wait"1d" lucid as=program \
     atclone="./autogen.sh && ./configure --prefix=$PWD" \
     make="" pick="ctags" for \
