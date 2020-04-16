@@ -765,7 +765,8 @@ vnoremap <F1> <Esc>
 
     " Plugin: FZF (performs like CtrlP) <<<1
     if isdirectory(expand("~/.vim/bundle/fzf/"))
-        nnoremap <C-p> :Files<CR>
+        nnoremap <C-p>  :Files<CR>
+        nnoremap <Esc>p :Rg<CR>
         let g:fzf_layout={ 'window': 'bot'.float2nr(&lines * 0.4).'new'  }
     endif
     " 1>>>
