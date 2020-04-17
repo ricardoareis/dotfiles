@@ -45,6 +45,7 @@
     " General Programming {
     " Pick one of the checksyntax, jslint, or syntastic
     Plugin 'tpope/vim-fugitive'                 " Git cmds
+    Plugin 'junegunn/gv.vim'                    " Browser git log
     Plugin 'airblade/vim-gitgutter'             " Git integration                                    - TODO study
     Plugin 'rhysd/conflict-marker.vim'          " Handler of git conflict marker
     Plugin 'mattn/gist-vim'                     " Support a Gist
