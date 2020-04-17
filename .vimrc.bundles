@@ -95,7 +95,7 @@
     Plugin 'terryma/vim-expand-region'          " TODO document keycode
     Plugin 'junegunn/fzf'                       " Fuzzy Search w/ FZF
     Plugin 'junegunn/fzf.vim'                   " TODO customization
-    Plugin 'liuchengxu/vim-clap'                " TODO overlap fzf
+    "Plugin 'liuchengxu/vim-clap'                " TODO overlap fzf
     Plugin 'liuchengxu/vista.vim'               " TODO overlap nerdtree ctags-bar
     "Plugin 'thaerkh/vim-workspace'              " TODO removed after implement auto save!?
     Plugin 'chrisbra/csv.vim'                   " Support better csv support
