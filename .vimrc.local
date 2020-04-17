@@ -960,6 +960,12 @@ vnoremap <F1> <Esc>
         "
         nnoremap <silent> <Leader>gi :Git add -p %<CR>
         let g:which_key_leader_map.g.i = 'Gadd -p %'
+        "
+        nnoremap <silent> <Leader>gv :GV<CR>
+        let g:which_key_leader_map.g.v = 'GitBrowser'
+        "
+        nnoremap <silent> <Leader>gf :GV!<CR>
+        let g:which_key_leader_map.g.f = 'GitBrowserThisFile'
     endif
     " 1>>>
 
