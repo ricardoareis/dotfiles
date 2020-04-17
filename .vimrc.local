@@ -320,14 +320,15 @@
     " The default leader is '\', but many people prefer ',' as it's in a standard
     " Plugin: TODO <Leader><Leader> <<<1
     let g:which_key_leader_map[','] = {
-     \ 'name' : '+Quick'                                                                       ,
-     \ 'r' : [':source ~/.vimrc                             ', 'VimReload'                    ],
-     \ 'f' : [':ALEFix                                      ', 'ALEFix'                       ],
-     \ 'n' : [':ALENext                                     ', 'ALENext'                       ],
-     \ 'p' : [':ALEPreviows                                 ', 'ALEPreviows'                       ],
-     \ 'i' : [':ALEInfoToClipboard                          ', 'ALEInfoToClipboard'           ],
-     \ 'd' : [':YcmCompleter GoToDefinitionElseDeclaration  ', 'GoToDefinitionElseDeclaration'],
-     "\ 'a' : ['<Plug>NERDCommentAltDelims', 'AltDelims' ],
+     \ 'name' : '+Quick',
+     \ 'r' : [':source ~/.vimrc                             ', 'VimReload'                      ],
+     \ 'f' : [':ALEFix                                      ', 'ALEFix'                         ],
+     \ 'n' : [':ALENext                                     ', 'ALENext'                        ],
+     \ 'p' : [':ALEPreviows                                 ', 'ALEPreviows'                    ],
+     \ 'i' : [':ALEInfoToClipboard                          ', 'ALEInfoToClipboard'             ],
+     \ 'd' : [':YcmCompleter GoToDefinitionElseDeclaration  ', 'GoToDefinitionElseDeclaration'  ],
+     \ 'o' : [':OverCommandLine                             ', 'OverCommandLine'                ],
+     \ 's' : ['<Plug>(wildfire-quick-select)                ', 'QuickSelect'                    ],
      "\ 'b' : ['<Plug>NERDCommentAlignBoth', 'AlignBoth' ],
      "\ 'c' : ['<Plug>NERDCommentComment  ', 'Comment'   ],
      "\ 'i' : ['<Plug>NERDCommentInvert   ', 'Invert'    ],
