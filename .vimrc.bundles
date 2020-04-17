@@ -116,6 +116,7 @@
     "https://github.com/jaxbot/semantic-highlight.vim
     "Plugin '907th/vim-auto-save'
     Plugin 'voldikss/vim-floaterm'
+    Plugin 'MattesGroeger/vim-bookmarks'        " TODO: keycode e remover o outro plugin de mark
     "}
 
     " All of your Plugins must be added before the following line
