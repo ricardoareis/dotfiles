@@ -232,6 +232,7 @@
 " Misc <<<1
 
     " WhichKey - Map <<<1
+    " The default leader is '\', but many people prefer ',' as it's in a standard
     set timeoutlen=500
     let mapleader=","
     let maplocalleader=" "
@@ -317,8 +318,17 @@
 
 " Maps <<<1
 
-    " The default leader is '\', but many people prefer ',' as it's in a standard
-    " Plugin: TODO <Leader><Leader> <<<1
+    " Map for <Leader> <<<1
+    " Ignore which key popup
+    nnoremap <Leader>x *``cgn
+    nnoremap <Leader>o :OverCommandLine<CR>
+    nmap <Leader>v <Plug>(wildfire-quick-select)
+    let g:which_key_leader_map.x = 'which_key_ignore'
+    let g:which_key_leader_map.o = 'which_key_ignore'
+    let g:which_key_leader_map.v = 'which_key_ignore'
+    " 1>>>
+
+    " Plugin: Whichkey map for <Leader><Leader> <<<1
     let g:which_key_leader_map[','] = {
      \ 'name' : '+Quick',
      \ 'r' : [':source ~/.vimrc                             ', 'VimReload'                      ],
@@ -327,16 +337,6 @@
      \ 'p' : [':ALEPreviows                                 ', 'ALEPreviows'                    ],
      \ 'i' : [':ALEInfoToClipboard                          ', 'ALEInfoToClipboard'             ],
      \ 'd' : [':YcmCompleter GoToDefinitionElseDeclaration  ', 'GoToDefinitionElseDeclaration'  ],
-     \ 'o' : [':OverCommandLine                             ', 'OverCommandLine'                ],
-     \ 's' : ['<Plug>(wildfire-quick-select)                ', 'QuickSelect'                    ],
-     "\ 'b' : ['<Plug>NERDCommentAlignBoth', 'AlignBoth' ],
-     "\ 'c' : ['<Plug>NERDCommentComment  ', 'Comment'   ],
-     "\ 'i' : ['<Plug>NERDCommentInvert   ', 'Invert'    ],
-     "\ 'l' : ['<Plug>NERDCommentAlignLeft', 'AlignLeft' ],
-     "\ 'm' : ['<Plug>NERDCommentMinimal  ', 'Minimal'   ],
-     "\ 'n' : ['<Plug>NERDCommentNested   ', 'Nested'    ],
-     "\ 'u' : ['<Plug>NERDCommentUncomment', 'Uncomment' ],
-     "\ 'y' : ['<Plug>NERDCommentYank     ', 'Yank'      ],
      \ }
     " 1>>>
 
