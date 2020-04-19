@@ -377,34 +377,29 @@
     " 1>>>
 
     " Windows: Better split management, kept in sync with tmux' mappings <<<1
-    noremap <Leader>wh :sp<CR><C-w>j
-    noremap <Leader>wv :vsp<CR><C-w>l
-    let g:which_key_leader_map.w.h = 'Horizontal'
-    let g:which_key_leader_map.w.v = 'Vertical'
-    "
-    "map <Leader>w= <C-w>=
-    "map <Leader>w_ <C-w>_
-    "map <Leader>w+ <C-w>+
-    "
+    "noremap <Leader>wh :sp<CR><C-w>j
+    "noremap <Leader>wv :vsp<CR><C-w>l
+    "let g:which_key_leader_map.w.h = 'Horizontal'
+    "let g:which_key_leader_map.w.v = 'Vertical'
     let g:which_key_leader_map['w'] = {
       \ 'name' : '+Windows' ,
-      \ 'w' : ['<C-W>w'     , 'other-window']          ,
-      \ 'd' : ['<C-W>c'     , 'delete-window']         ,
-      \ '-' : ['<C-W>s'     , 'split-window-below']    ,
-      \ '|' : ['<C-W>v'     , 'split-window-right']    ,
-      \ '2' : ['<C-W>v'     , 'layout-double-columns'] ,
-      \ 'h' : ['<C-W>h'     , 'window-left']           ,
-      \ 'j' : ['<C-W>j'     , 'window-below']          ,
-      \ 'l' : ['<C-W>l'     , 'window-right']          ,
-      \ 'k' : ['<C-W>k'     , 'window-up']             ,
-      \ 'H' : ['<C-W>5<'    , 'expand-window-left']    ,
-      \ 'J' : ['resize +5'  , 'expand-window-below']   ,
-      \ 'L' : ['<C-W>5>'    , 'expand-window-right']   ,
-      \ 'K' : ['resize -5'  , 'expand-window-up']      ,
-      \ '=' : ['<C-W>='     , 'balance-window']        ,
-      \ 's' : ['<C-W>s'     , 'split-window-below']    ,
-      \ 'v' : ['<C-W>v'     , 'split-window-below']    ,
-      \ '?' : ['Windows'    , 'fzf-window']            ,
+      \ 'w' : ['<C-W>w'         , 'other-window']          ,
+      \ 'd' : ['<C-W>c'         , 'delete-window']         ,
+      \ '-' : ['<C-W>s'         , 'split-window-below']    ,
+      \ '|' : ['<C-W>v'         , 'split-window-right']    ,
+      \ '2' : ['<C-W>v'         , 'layout-double-columns'] ,
+      \ 'h' : ['<C-W>h'         , 'window-left']           ,
+      \ 'j' : ['<C-W>j'         , 'window-below']          ,
+      \ 'l' : ['<C-W>l'         , 'window-right']          ,
+      \ 'k' : ['<C-W>k'         , 'window-up']             ,
+      \ 'H' : ['<C-W>10<'       , 'expand-window-left']    ,
+      \ 'J' : [':resize +10'    , 'expand-window-below']   ,
+      \ 'L' : ['<C-W>10>'       , 'expand-window-right']   ,
+      \ 'K' : [':resize -10'    , 'expand-window-up']      ,
+      \ '=' : ['<C-W>='         , 'balance-window']        ,
+      \ 's' : ['<C-W>s'         , 'split-window-below']    ,
+      \ 'v' : ['<C-W>v'         , 'split-window-below']    ,
+      \ '?' : ['Windows'        , 'fzf-window']            ,
       \ }
     " 1>>>
 
@@ -428,8 +423,8 @@
     nnoremap <silent><S-Tab>  :bp<CR>
     "
     "TODO: probably it will be removed
-    nnoremap <C-Left>  :bn<CR>
-    nnoremap <C-Right> :bp<CR>
+    "nnoremap <C-Left>  :bn<CR>
+    "nnoremap <C-Right> :bp<CR>
     let g:which_key_leader_map.b = {
       \ 'name' : '+Buffers' ,
       \ '1' : ['b1'        , 'buffer 1']        ,
@@ -475,16 +470,6 @@
     " 1>>>
 
     " Go to tab by number <<<1
-    "noremap <Leader>t1 1gt
-    "noremap <Leader>t2 2gt
-    "noremap <Leader>t3 3gt
-    "noremap <Leader>t4 4gt
-    "noremap <Leader>t5 5gt
-    "noremap <Leader>t6 6gt
-    "noremap <Leader>t7 7gt
-    "noremap <Leader>t8 8gt
-    "noremap <Leader>t9 9gt
-    "noremap <Leader>t0 :tablast<CR>
     noremap <Esc>[1;3D :tabnext<CR>
     noremap <Esc>[1;3C :tabprevious<CR>
     " 1>>>
@@ -499,7 +484,7 @@
     nnoremap z<Left> zc
     nnoremap z<Right> zo
     "TODO: review the map bellow
-    noremap <C-x> :exec "normal zA"<CR>
+    "noremap <C-x> :exec "normal zA"<CR>
     nmap <Leader>f0 :set foldlevel=0<CR>
     let g:which_key_leader_map.f.0 = '0-fold-level'
     nmap <Leader>f1 :set foldlevel=1<CR>
@@ -616,7 +601,7 @@
     " 1>>>
 
     " Vim Terminal <<<1
-    nnoremap <Leader><Space> :terminal<CR>
+    "nnoremap <Leader><Space> :terminal<CR>
     " 1>>>
 
     " Repeat the last command (ex. :ls) <<<1
@@ -694,10 +679,7 @@ vnoremap <F1> <Esc>
     if isdirectory(expand("~/.vim/bundle/YouCompleteMe"))
         let g:ycm_use_clangd = 1
         let g:ycm_global_ycm_extra_conf = '~/repos/dotfiles/.ycm_extra_conf.py'
-        let g:ycm_autoclose_preview_window_after_completion=1
-        "
-        "map <Leader>ld  :YcmCompleter GoToDefinitionElseDeclaration<CR>
-        "let g:which_key_leader_map.l.d = 'GoToDefinitionElseDeclaration'
+        let g:ycm_autoclose_preview_window_after_completion = 1
         let g:ycm_key_detailed_diagnostics = ''
         "
         "TODO: Review YCM ommifunc
@@ -822,8 +804,6 @@ vnoremap <F1> <Esc>
         let g:ale_set_quickfix = 1
         nmap <silent> <C-k> <Plug>(ale_previous_wrap)
         nmap <silent> <C-j> <Plug>(ale_next_wrap)
-        "nnoremap <silent><Leader>lf :ALEFix<CR>
-        "let g:which_key_leader_map.l.f = 'ALEFix'
     endif
     " 1>>>
 
@@ -874,18 +854,6 @@ vnoremap <F1> <Esc>
         let g:undotree_DiffCommand = 'diff -pud --label earlier --label later'
         let g:undotree_HighlightChangedWithSign = 1
     endif
-    " 1>>>
-
-    " Plugin: Work space properties <<<1
-    "if isdirectory(expand("~/.vim/bundle/vim-workspace"))
-        "nnoremap <silent><F4> :ToggleWorkspace<CR>
-        "let g:workspace_session_directory = $HOME . '/.vim/sessions/'
-        "let g:workspace_autosave_always = 0
-        "let g:workspace_autosave_ignore = ['gitcommit', 'gitrebase', 'nerdtree']
-        "let g:workspace_persist_undo_history = 0        " enabled = 1 (default), disabled = 0
-    "endif
-    "let g:auto_save = 1
-    "let g:auto_save_events = ["InsertLeave", "TextChanged"]
     " 1>>>
 
     " Plugin: NerdTree properties <<<1
@@ -975,7 +943,6 @@ vnoremap <F1> <Esc>
 
     " Plugin: Better-WhiteSpace <<<1
     if isdirectory(expand("~/.vim/bundle/vim-better-whitespace/"))
-        " Navigate vim-better-whitespace
         nnoremap ]w :NextTrailingWhitespace<CR>
         nnoremap [w :PrevTrailingWhitespace<CR>
         let g:strip_whitespace_on_save = 1
@@ -1073,7 +1040,8 @@ vnoremap <F1> <Esc>
         let g:bookmark_no_default_key_mappings = 1
         let g:bookmark_auto_save = 1
         let g:bookmark_auto_save_file = $HOME .'/.vim/.vim-bookmarks'
-        "nmap <Leader><Leader> <Plug>BookmarkToggle
+        let g:which_key_leader_map.t.b = 'BookmarkToggle'
+        nnoremap <silent><Leader>tb :BookmarkToggle<CR>
         "nmap <Leader>i <Plug>BookmarkAnnotate
         "nmap <Leader>a <Plug>BookmarkShowAll
         "nmap <Leader>j <Plug>BookmarkNext
@@ -1085,15 +1053,6 @@ vnoremap <F1> <Esc>
         "nmap <Leader>g <Plug>BookmarkMoveToLine
     endif
     " 1>>>
-
-
-
-
-
-
-
-
-
 
 " 1>>>
 
