@@ -425,6 +425,8 @@
     endfunction
     "
     nnoremap mv :<C-u>execute MvLines()<CR>
+    "https://www.reddit.com/r/vim/comments/fzu6b7/cp_change_put/
+    nnoremap cp "_ciw<C-r>0<Esc>
     " 1>>>
 
     " Inconsistency: Fix <<<1
