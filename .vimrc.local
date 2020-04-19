@@ -132,13 +132,49 @@
     endif
     " 1>>>
 
+    " Initialize directories <<<1
+    " from spf13-vim :)
+    function! InitializeDirectories()
+        let parent = $HOME
+        let prefix = 'vim'
+        let dir_list = {
+                    \ 'backup': 'backupdir',
+                    \ 'views': 'viewdir',
+                    \ 'swap': 'directory' }
+        "
+        if has('persistent_undo')
+            set undolevels=10000                " Maximum number of changes that can be undone
+            set undoreload=10000                " Maximum number lines to save for undo on a buffer reload
+            let dir_list['undo'] = 'undodir'
+        endif
+        "
+        let common_dir = parent . '/.' . prefix . '/' . prefix
+        "
+        for [dirname, settingname] in items(dir_list)
+            let directory = common_dir . dirname . '/'
+            if exists("*mkdir")
+                if !isdirectory(directory)
+                    call mkdir(directory)
+                endif
+            endif
+            if !isdirectory(directory)
+                echo "Warning: Unable to create backup directory: " . directory
+                echo "Try: mkdir -p " . directory
+            else
+                let directory = substitute(directory, " ", "\\\\ ", "g")
+                " the exec will execute:
+                " set backup
+                " set views
+                " set swap
+                " set undo
+                exec "set " . settingname . "=" . directory
+            endif
+        endfor
+    endfunction
+    call InitializeDirectories()
+    " 1>>>
+
     set cursorcolumn
-    set backup                                  " Backups are nice ...
-    if has('persistent_undo')
-        set undofile                            " So is persistent undo ...
-        set undolevels=10000                    " Maximum number of changes that can be undone
-        set undoreload=10000                    " Maximum number lines to save for undo on a buffer reload
-    endif
 
     " tmux will send xterm-style keys when its xterm-keys option is on <<<1
     if &term =~ '^xterm' || &term =~ '^screen' || &term =~ "^tmux"
@@ -600,39 +636,6 @@ vnoremap <F1> <Esc>
 
 " Funtions <<<1
 
-    " Initialize directories <<<1
-    function! InitializeDirectories()
-        let parent = $HOME
-        let prefix = 'vim'
-        let dir_list = {
-                    \ 'backup': 'backupdir',
-                    \ 'views': 'viewdir',
-                    \ 'swap': 'directory' }
-        "
-        if has('persistent_undo')
-            let dir_list['undo'] = 'undodir'
-        endif
-        "
-        let common_dir = parent . '/.' . prefix
-        "
-        for [dirname, settingname] in items(dir_list)
-            let directory = common_dir . dirname . '/'
-            if exists("*mkdir")
-                if !isdirectory(directory)
-                    call mkdir(directory)
-                endif
-            endif
-            if !isdirectory(directory)
-                echo "Warning: Unable to create backup directory: " . directory
-                echo "Try: mkdir -p " . directory
-            else
-                let directory = substitute(directory, " ", "\\\\ ", "g")
-                exec "set " . settingname . "=" . directory
-            endif
-        endfor
-    endfunction
-    call InitializeDirectories()
-    " 1>>>
 
     " Initialize NERDTree as needed <<<1
     function! NERDTreeInitAsNeeded()
