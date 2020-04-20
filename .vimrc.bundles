@@ -23,10 +23,10 @@
 
     " General {
 
-    Plug 'scrooloose/nerdtree'                " Support of file tree bar
-    Plug 'mbbill/undotree'                    " Support of undo tree bar
+    Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }                  " Support of file tree bar
+    Plug 'mbbill/undotree'                                                  " Support of undo tree bar
     if executable('ctags')
-        Plug 'majutsushi/tagbar'              " Support of tagbar
+        Plug 'majutsushi/tagbar', { 'on': 'TagBarToggle' }                  " Support of tagbar
     endif
     Plug 'tpope/vim-repeat'                   " Support to repeat some cmds
     Plug 'tpope/vim-abolish'                  " Support an abbreviation                            - TODO study
@@ -57,7 +57,7 @@
     Plug 'dense-analysis/ale'                 " Engine for linters and fixers
     Plug 'ntpeters/vim-better-whitespace'     " Removed extra whitespaces
     Plug 'editorconfig/editorconfig'          " Support a editorconfig
-    Plug 'jmcantrell/vim-virtualenv'          " Support a Python VirtualEnv
+    Plug 'jmcantrell/vim-virtualenv', {'for': ['python', 'python3']}          " Support a Python VirtualEnv
     Plug 'nathanaelkane/vim-indent-guides'    " Support a indent guides
     Plug 'terryma/vim-multiple-cursors'       " Support a multiple cursors
     Plug 'sillybun/vim-repl'
