@@ -26,7 +26,7 @@
     Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }                  " Support of file tree bar
     Plug 'mbbill/undotree'                                                  " Support of undo tree bar
     if executable('ctags')
-        Plug 'majutsushi/tagbar', { 'on': 'TagBarToggle' }                  " Support of tagbar
+        Plug 'majutsushi/tagbar'              " Support of tagbar
     endif
     Plug 'tpope/vim-repeat'                   " Support to repeat some cmds
     Plug 'tpope/vim-abolish'                  " Support an abbreviation                            - TODO study
