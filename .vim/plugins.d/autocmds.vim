@@ -66,9 +66,9 @@ augroup vimhooks
     autocmd Filetype go nnoremap <LocalLeader>v :vsp <CR>:exe "GoDef" <CR>
     autocmd Filetype go nnoremap <LocalLeader>s :sp <CR>:exe "GoDef"<CR>
     autocmd Filetype go nnoremap <LocalLeader>t :tab split <CR>:exe "GoDef"<CR>
+    autocmd Filetype go nnoremap <LocalLeader>q :cclose<CR>
     autocmd Filetype go map <LocalLeader>n :cnext<CR>
     autocmd Filetype go map <LocalLeader>m :cprevious<CR>
-    autocmd Filetype go nnoremap <LocalLeader>q :cclose<CR>
     "
     autocmd Filetype go nmap <LocalLeader>gs <Plug>(go-implements)
     autocmd Filetype go let g:which_key_localleader_map.g.s = 'Go-Implements'
