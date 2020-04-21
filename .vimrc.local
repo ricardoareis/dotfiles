@@ -63,7 +63,9 @@
     set iskeyword-=#                            " '#' is an end of word
     set iskeyword-=-                            " '-' is an end of word
 
-    set synmaxcol=500                          " Don't try to highlight lines longer than 5000 characters"
+    set synmaxcol=500                           " Don't try to highlight lines longer than 5000 characters"
+    set autowrite                               " Allow vim autowrite everything
+    set autoread                                " Allow vim autoread everything
 
     set report=0                                " after yank/delete/... report number of lines affected
     set signcolumn=yes
@@ -761,11 +763,17 @@ vnoremap <F1> <Esc>
 
     " Plugin: Vim-Go properties <<<1
     if isdirectory(expand("~/.vim/bundle/vim-go/"))
-        let g:go_fmt_command="goimports" " format with goimports instead of gofmt
+        let g:go_fmt_command="goimports"        " format with goimports instead of gofmt
         let g:go_list_type = "quickfix"
         let g:go_version_warning = 0
         let g:go_fmt_fail_silently = 1
-        let g:go_fmt_autosave=1          " disable fmt on save
+        let g:go_fmt_autosave = 1               " disable fmt on save
+        let g:go_textobj_include_function_doc = 1
+        " Performance improve
+        let g:go_highlight_structs = 0
+        let g:go_highlight_interfaces = 0
+        let g:go_highlight_operators = 0
+        let g:go_gopls_enabled = 1              " YCM concurrency
     endif
     " 1>>>
 
