@@ -67,7 +67,7 @@
     " Snippets & AutoComplete {
     Plug 'SirVer/ultisnips'                   " Pack of snippets
     Plug 'honza/vim-snippets'                 " Support a snippets
-    Plug 'Valloric/YouCompleteMe'             " Engine for auto complete
+    Plug 'ycm-core/YouCompleteMe'             " Engine for auto complete
     "
     " Source support_function.vim to support vim-snippets.
     "
