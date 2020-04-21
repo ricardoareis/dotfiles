@@ -30,7 +30,7 @@
     endif
     Plug 'tpope/vim-repeat'                   " Support to repeat some cmds
     Plug 'tpope/vim-abolish'                  " Support an abbreviation                            - TODO study
-    "Plug 'matchit.zip'                       " Extend support of %
+    Plug 'benjifisher/matchit.zip'            " Extend support of %
     " }
 
     " Writing {
