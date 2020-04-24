@@ -33,6 +33,7 @@
     Plug 'reedes/vim-wordy'                   " Supporting of different dictionaries i,e; <F8>
     Plug 'tpope/vim-surround'                 " Improve surroundings in pairs                      - TODO study
     Plug 'jiangmiao/auto-pairs'               " Insert or delete brackets, parens, quotes in pair. - TODO study
+    Plug 'wellle/targets.vim'
     " }
 
     " General Programming {
@@ -52,6 +53,7 @@
     Plug 'nathanaelkane/vim-indent-guides'    " Support a indent guides
     Plug 'terryma/vim-multiple-cursors'       " Support a multiple cursors
     Plug 'sillybun/vim-repl', {'for': ['python', 'python3']}
+    Plug 'jeetsukumaran/vim-pythonsense'
     "
     " }
 
