@@ -4,30 +4,22 @@
 
 " Environment {
 "
-    set nocompatible              " be iMproved, required
-    filetype off                  " required
-
     " Setup Plug Support {
-        " The next three lines ensure that the ~/.vim/bundle/ system works
-        "set rtp+=~/.vim/bundle/Vundle.vim
-        "call vundle#begin()
         call plug#begin('~/.vim/bundle')
     " }
-
-    " let Vundle manage Vundle, required
-    "Plug 'VundleVim/Vundle.vim'
 
 " }
 
 " Bundles {
 
     " General {
-
     Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }                  " Support of file tree bar
     Plug 'mbbill/undotree'                                                  " Support of undo tree bar
+
     if executable('ctags')
         Plug 'majutsushi/tagbar'              " Support of tagbar
     endif
+
     Plug 'tpope/vim-repeat'                   " Support to repeat some cmds
     Plug 'tpope/vim-abolish'                  " Support an abbreviation                            - TODO study
     Plug 'benjifisher/matchit.zip'            " Extend support of %
@@ -44,7 +36,6 @@
     " }
 
     " General Programming {
-    " Pick one of the checksyntax, jslint, or syntastic
     Plug 'tpope/vim-fugitive'                 " Git cmds
     Plug 'junegunn/gv.vim'                    " Browser git log
     Plug 'airblade/vim-gitgutter'             " Git integration                                    - TODO study
@@ -97,8 +88,8 @@
     Plug 'terryma/vim-expand-region'          " TODO document keycode
     Plug 'junegunn/fzf'                       " Fuzzy Search w/ FZF
     Plug 'junegunn/fzf.vim'                   " TODO customization
-    "Plug 'liuchengxu/vim-clap'                " TODO overlap fzf
-    "Plug 'liuchengxu/vista.vim'               " TODO overlap nerdtree ctags-bar
+    "Plug 'liuchengxu/vim-clap'               " TODO overlap fzf
+    "Plug 'liuchengxu/vista.vim'              " TODO overlap nerdtree ctags-bar
     Plug 'chrisbra/csv.vim'                   " Support better csv support
     Plug 'mox-mox/vim-localsearch'            " Allow a register a local pattern, instead of only a global / search
     Plug 'sheerun/vim-polyglot'               " Syntax for many different type of files
@@ -118,7 +109,5 @@
     "}
 
     " All of your Plugs must be added before the following line
-    "call vundle#end()            " required
-    "filetype plugin indent on    " required
     call plug#end()
 " }
