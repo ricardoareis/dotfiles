@@ -108,6 +108,8 @@
     Plug 'flazz/vim-colorschemes'
     Plug 'voldikss/vim-floaterm'
     Plug 'MattesGroeger/vim-bookmarks'        " TODO: keycode e remover o outro plugin de mark
+    Plug 'junegunn/vim-peekaboo'
+    Plug 'wellle/visual-split.vim'
     "}
 
     " All of your Plugs must be added before the following line
