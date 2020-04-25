@@ -69,8 +69,9 @@
 
     set report=0                                " after yank/delete/... report number of lines affected
     set signcolumn=yes
-    " set notimeout ttimeout ttimeoutlen=10     " Quickly time out on keycodes, but never timeout on mappings
-    set ttimeoutlen=10
+    "TODO set notimeout ttimeout ttimeoutlen=10     " Quickly time out on keycodes, but never timeout on mappings
+    "set ttimeoutlen=200
+    set timeoutlen=1000 ttimeoutlen=0
     set completeopt=longest,menuone,preview
     set switchbuf=useopen,usetab                " Attempt to edit currently open files instead of opening multiple buf
     set hidden                                  " Hide buffers when they are abandoned
@@ -1043,7 +1044,7 @@ vnoremap <F1> <Esc>
     endif
     " 1>>>
 
-    " Plugin: TODO Vim-Bookmark <<<1
+    " Plugin: Vim-Bookmark <<<1
     if isdirectory(expand("~/.vim/bundle/vim-bookmarks/"))
         let g:bookmark_no_default_key_mappings = 1
         let g:bookmark_auto_save = 1
@@ -1077,6 +1078,14 @@ vnoremap <F1> <Esc>
     endif
     " 1>>>
 
+    " Plugin: Vim-VisualSplit <<<1
+    if isdirectory(expand("~/.vim/bundle/visual-split.vim/"))
+        xmap <C-W>r  <Plug>(Visual-Split-VSResize)
+        xmap <C-W>s <Plug>(Visual-Split-VSSplit)
+        xmap <C-W>a <Plug>(Visual-Split-VSSplitAbove)
+        xmap <C-W>b <Plug>(Visual-Split-VSSplitBelow)
+    endif
+    " 1>>>
 
 " 1>>>
 
