@@ -108,6 +108,7 @@
     Plug 'MattesGroeger/vim-bookmarks'        " Plugin to manage annotations on lines
     Plug 'junegunn/vim-peekaboo'
     Plug 'wellle/visual-split.vim'
+    Plug 'ryanoasis/vim-devicons'
     "}
 
     " All of your Plugs must be added before the following line
