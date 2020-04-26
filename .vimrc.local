@@ -1,24 +1,24 @@
 " Basic properties <<<1
 " vim: set expandtab sw=4 ts=4 sts=4 tw=78 ft=vim foldmarker=<<<1,1>>> foldlevel=0 foldmethod=marker spell:
 "
-" Note: Custom Maps
+"   Note: Custom Maps <<<1
+"     <F1>      Open NERDTree
+"     <F2>      Open UndoTree
+"     <F3>      Open Tagbar
+"     <F8>      Shift Spell dictionaries
+"     <S-Tab>   Shift between buffers
+"     <Alt-(Left|Right)> (Next|Previous) Tab
+"     <Alt-(Up|Down)>     Move view to see (bellow|above) the cursor
 "
-" <F1>      Open NERDTree
-" <F2>      Open UndoTree
-" <F3>      Open Tagbar
-" <F8>      Shift Spell dictionaries
-" <S-Tab>   Shift between buffers
-" <Alt-(Left|Right)> (Next|Previous) Tab
-" <Alt-(Up|Down)>     Move view to see (bellow|above) the cursor
+"     zfm                               Fold Method
+"     z<(Down|UP)>     (Next|Previous)  Fold
+"     z<(Right|Left)> (Close|Open)      Fold
+"     <C-x>    Toggle  (Open|Close)     Fold
 "
-" zfm                               Fold Method
-" z<(Down|UP)>     (Next|Previous)  Fold
-" z<(Right|Left)> (Close|Open)      Fold
-" <C-x>    Toggle  (Open|Close)     Fold
-"
-" <C-p>     Fuzzy Finder
-" <C-/>     Toggle   (On|Off)   Search Highlight
-" <Alt-.>   Execute last :cmd
+"     <C-p>     Fuzzy Finder
+"     <C-/>     Toggle   (On|Off)   Search Highlight
+"     <Alt-.>   Execute last :cmd
+    " 1>>>
 
     " Use bundles config <<<1
     if filereadable(expand("~/.vimrc.bundles"))
@@ -32,7 +32,7 @@
     let g:snips_author = 'Ricardo Reis <ricardo.areis@gmail.com>'
     " 1>>>
 
-    " Important Properties <<<1
+    " Important Properties I <<<1
     set nocompatible                            " be iMproved, required"
     let g:skip_defaults_vim = 1                 " disable defaults.vim
 
@@ -54,6 +54,7 @@
     endif
     " 1>>>
 
+    " Important Properties II <<<1
     syntax on
     filetype plugin indent on                   " Enable file type detection and do language dependent indenting
 
@@ -102,6 +103,7 @@
 
     "https://vi.stackexchange.com/questions/2162/why-doesnt-the-backspace-key-work-in-insert-mode
     set backspace=indent,eol,start              " Backspace for dummies (vim has a different approach)
+    " 1>>>
 
     " Searching <<<1
     set ignorecase                              " case insensitive searching
