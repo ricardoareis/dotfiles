@@ -33,14 +33,13 @@
     " 1>>>
 
     " Important Properties <<<1
-
     set nocompatible                            " be iMproved, required"
-    let g:skip_defaults_vim = 1                 " disable defaults.vim 
+    let g:skip_defaults_vim = 1                 " disable defaults.vim
+
     "TODO viminfo does not work
     "set viminfo='40,<50,s10,h
     "set viminfo+=n$HOME/.vim/viminfo
-    "let skip_defaults_vim=1
-    "set viminfo=""
+    "
     scriptencoding utf-8
     set encoding=utf-8
     set shell=$SHELL                            " Using default $SHELL
@@ -75,8 +74,10 @@
 
     set report=0                                " after yank/delete/... report number of lines affected
     set signcolumn=yes
+
     "TODO set notimeout ttimeout ttimeoutlen=10     " Quickly time out on keycodes, but never timeout on mappings
     "set ttimeoutlen=200
+
     set timeoutlen=1000 ttimeoutlen=0
     set completeopt=longest,menuone,preview
     set switchbuf=useopen,usetab                " Attempt to edit currently open files instead of opening multiple buf
@@ -102,7 +103,7 @@
     "https://vi.stackexchange.com/questions/2162/why-doesnt-the-backspace-key-work-in-insert-mode
     set backspace=indent,eol,start              " Backspace for dummies (vim has a different approach)
 
-    " Searching
+    " Searching <<<1
     set ignorecase                              " case insensitive searching
     set smartcase                               " case-sensitive if expresson contains a capital letter
     set hlsearch                                " highlight search match
@@ -113,9 +114,10 @@
     set re=1                                    " revert to regexp engine v1
     set ttyfast                                 " Improves screen redraw"
     set lazyredraw                              " Avoid redrawing the screen mid-command."
+    " 1>>>
 
-    " http://vim.wikia.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
     " Restore cursor to file position in previous editing session <<<1
+    " http://vim.wikia.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
     function! ResCur()
         if line("'\"") <= line("$")
             silent! normal! g`"
@@ -609,10 +611,6 @@
     " Use <expr> to increase or decrease
     nnoremap <expr><C-Up>   v:count > 0 ? '@_zt'.v:count.'<c-y>' : 'zt'
     nnoremap <expr><C-Down> v:count > 0 ? '@_zb'.v:count.'<c-e>' : 'zb'
-    " 1>>>
-
-    " Vim Terminal <<<1
-    "nnoremap <Leader><Space> :terminal<CR>
     " 1>>>
 
     " Repeat the last command (ex. :ls) <<<1
