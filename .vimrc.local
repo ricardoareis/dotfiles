@@ -154,11 +154,12 @@
                     \ 'swap': 'directory' }
         "
         if has('persistent_undo')
+            set undofile
             set undolevels=10000                " Maximum number of changes that can be undone
             set undoreload=10000                " Maximum number lines to save for undo on a buffer reload
             let dir_list['undo'] = 'undodir'
         endif
-        "
+        "$HOME/.vim/backupdir
         let common_dir = parent . '/.' . prefix . '/' . prefix
         "
         for [dirname, settingname] in items(dir_list)
