@@ -48,6 +48,7 @@ zsdoc/data
 .venv
 
 *.orig
+.vim/.viminfo
 
 # Zunit tests' output
 /tests/_output/*
