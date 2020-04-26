@@ -35,6 +35,12 @@
     " Important Properties <<<1
 
     set nocompatible                            " be iMproved, required"
+    let g:skip_defaults_vim = 1                 " disable defaults.vim 
+    "TODO viminfo does not work
+    "set viminfo='40,<50,s10,h
+    "set viminfo+=n$HOME/.vim/viminfo
+    "let skip_defaults_vim=1
+    "set viminfo=""
     scriptencoding utf-8
     set encoding=utf-8
     set shell=$SHELL                            " Using default $SHELL
@@ -175,9 +181,11 @@
         endfor
     endfunction
     call InitializeDirectories()
-    " 1>>>
 
+    set patchmode=.orig
+    set backupext=.bkp
     set cursorcolumn
+    " 1>>>
 
     " tmux will send xterm-style keys when its xterm-keys option is on <<<1
     if &term =~ '^xterm' || &term =~ '^screen' || &term =~ "^tmux"
