@@ -1,24 +1,24 @@
 " Basic properties <<<1
 " vim: set expandtab sw=4 ts=4 sts=4 tw=78 ft=vim foldmarker=<<<1,1>>> foldlevel=0 foldmethod=marker spell:
 "
-" Note: Custom Maps
+"   Note: Custom Maps <<<1
+"     <F1>      Open NERDTree
+"     <F2>      Open UndoTree
+"     <F3>      Open Tagbar
+"     <F8>      Shift Spell dictionaries
+"     <S-Tab>   Shift between buffers
+"     <Alt-(Left|Right)> (Next|Previous) Tab
+"     <Alt-(Up|Down)>     Move view to see (bellow|above) the cursor
 "
-" <F1>      Open NERDTree
-" <F2>      Open UndoTree
-" <F3>      Open Tagbar
-" <F8>      Shift Spell dictionaries
-" <S-Tab>   Shift between buffers
-" <Alt-(Left|Right)> (Next|Previous) Tab
-" <Alt-(Up|Down)>     Move view to see (bellow|above) the cursor
+"     zfm                               Fold Method
+"     z<(Down|UP)>     (Next|Previous)  Fold
+"     z<(Right|Left)> (Close|Open)      Fold
+"     <C-x>    Toggle  (Open|Close)     Fold
 "
-" zfm                               Fold Method
-" z<(Down|UP)>     (Next|Previous)  Fold
-" z<(Right|Left)> (Close|Open)      Fold
-" <C-x>    Toggle  (Open|Close)     Fold
-"
-" <C-p>     Fuzzy Finder
-" <C-/>     Toggle   (On|Off)   Search Highlight
-" <Alt-.>   Execute last :cmd
+"     <C-p>     Fuzzy Finder
+"     <C-/>     Toggle   (On|Off)   Search Highlight
+"     <Alt-.>   Execute last :cmd
+    " 1>>>
 
     " Use bundles config <<<1
     if filereadable(expand("~/.vimrc.bundles"))
@@ -32,9 +32,14 @@
     let g:snips_author = 'Ricardo Reis <ricardo.areis@gmail.com>'
     " 1>>>
 
-    " Important Properties <<<1
-
+    " Important Properties I <<<1
     set nocompatible                            " be iMproved, required"
+    let g:skip_defaults_vim = 1                 " disable defaults.vim
+
+    "TODO viminfo does not work
+    "set viminfo='40,<50,s10,h
+    "set viminfo+=n$HOME/.vim/viminfo
+    "
     scriptencoding utf-8
     set encoding=utf-8
     set shell=$SHELL                            " Using default $SHELL
@@ -49,6 +54,7 @@
     endif
     " 1>>>
 
+    " Important Properties II <<<1
     syntax on
     filetype plugin indent on                   " Enable file type detection and do language dependent indenting
 
@@ -64,13 +70,19 @@
     set iskeyword-=-                            " '-' is an end of word
 
     set synmaxcol=500                           " Don't try to highlight lines longer than 5000 characters"
-    set autowrite                               " Allow vim autowrite everything
+    set autowrite                               " Write the contents of the file, if it has been modified, on each
+                                                " :next, :rewind, :last, :first, :previous, :stop, :suspend, :tag, :!,
+                                                " :make, CTRL-] and CTRL-^ command; and when a :buffer, CTRL-O, CTRL-I,
+                                                " '{A-Z0-9}, or `{A-Z0-9} command takes one to another file.
     set autoread                                " Allow vim autoread everything
 
     set report=0                                " after yank/delete/... report number of lines affected
     set signcolumn=yes
-    " set notimeout ttimeout ttimeoutlen=10     " Quickly time out on keycodes, but never timeout on mappings
-    set ttimeoutlen=10
+
+    "TODO set notimeout ttimeout ttimeoutlen=10     " Quickly time out on keycodes, but never timeout on mappings
+    "set ttimeoutlen=200
+
+    set timeoutlen=1000 ttimeoutlen=0
     set completeopt=longest,menuone,preview
     set switchbuf=useopen,usetab                " Attempt to edit currently open files instead of opening multiple buf
     set hidden                                  " Hide buffers when they are abandoned
@@ -94,8 +106,9 @@
 
     "https://vi.stackexchange.com/questions/2162/why-doesnt-the-backspace-key-work-in-insert-mode
     set backspace=indent,eol,start              " Backspace for dummies (vim has a different approach)
+    " 1>>>
 
-    " Searching
+    " Searching <<<1
     set ignorecase                              " case insensitive searching
     set smartcase                               " case-sensitive if expresson contains a capital letter
     set hlsearch                                " highlight search match
@@ -106,9 +119,10 @@
     set re=1                                    " revert to regexp engine v1
     set ttyfast                                 " Improves screen redraw"
     set lazyredraw                              " Avoid redrawing the screen mid-command."
+    " 1>>>
 
-    " http://vim.wikia.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
     " Restore cursor to file position in previous editing session <<<1
+    " http://vim.wikia.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
     function! ResCur()
         if line("'\"") <= line("$")
             silent! normal! g`"
@@ -145,11 +159,12 @@
                     \ 'swap': 'directory' }
         "
         if has('persistent_undo')
+            set undofile
             set undolevels=10000                " Maximum number of changes that can be undone
             set undoreload=10000                " Maximum number lines to save for undo on a buffer reload
             let dir_list['undo'] = 'undodir'
         endif
-        "
+        "$HOME/.vim/backupdir
         let common_dir = parent . '/.' . prefix . '/' . prefix
         "
         for [dirname, settingname] in items(dir_list)
@@ -174,9 +189,11 @@
         endfor
     endfunction
     call InitializeDirectories()
-    " 1>>>
 
+    "set patchmode=.orig
+    set backupext=.bkp
     set cursorcolumn
+    " 1>>>
 
     " tmux will send xterm-style keys when its xterm-keys option is on <<<1
     if &term =~ '^xterm' || &term =~ '^screen' || &term =~ "^tmux"
@@ -292,7 +309,7 @@
     let g:which_key_leader_map.s = { 'name' : '+Session' }
     let g:which_key_leader_map.g = { 'name' : '+Git' }
     let g:which_key_leader_map.w = { 'name' : '+Windows' }
-    let g:which_key_leader_map.l = { 'name' : '+Linters' }
+    let g:which_key_leader_map.k = { 'name' : '+Bookmark' }
     " 1>>>
 
     " Show Invisible Chars <<<1
@@ -370,6 +387,7 @@
     let g:which_key_leader_map[','] = {
      \ 'name' : '+Quick',
      \ 'r' : [':source ~/.vimrc                             ', 'VimReload'                      ],
+     \ 'b' : [':browse oldfiles                             ', 'BrowserOldEditedFiles'          ],
      \ 'f' : [':ALEFix                                      ', 'ALEFix'                         ],
      \ 'n' : [':ALENext                                     ', 'ALENext'                        ],
      \ 'p' : [':ALEPreviows                                 ', 'ALEPreviows'                    ],
@@ -602,10 +620,6 @@
     nnoremap <expr><C-Down> v:count > 0 ? '@_zb'.v:count.'<c-e>' : 'zb'
     " 1>>>
 
-    " Vim Terminal <<<1
-    "nnoremap <Leader><Space> :terminal<CR>
-    " 1>>>
-
     " Repeat the last command (ex. :ls) <<<1
     " If your terminal print the same  for, both <Esc> and <Alt>
     " decide the best usability.
@@ -680,6 +694,13 @@ vnoremap <F1> <Esc>
     " Plugin: YCM properties <<<1
     if isdirectory(expand("~/.vim/bundle/YouCompleteMe"))
         let g:ycm_use_clangd = 1
+        " Virtualenv properties
+        let g:ycm_python_interpreter_path = ''
+        let g:ycm_python_sys_path = []
+        let g:ycm_extra_conf_vim_data = [
+          \  'g:ycm_python_interpreter_path',
+          \  'g:ycm_python_sys_path'
+          \]
         let g:ycm_global_ycm_extra_conf = '~/repos/dotfiles/.ycm_extra_conf.py'
         let g:ycm_autoclose_preview_window_after_completion = 1
         let g:ycm_key_detailed_diagnostics = ''
@@ -769,17 +790,25 @@ vnoremap <F1> <Esc>
 
     " Plugin: Vim-Go properties <<<1
     if isdirectory(expand("~/.vim/bundle/vim-go/"))
-        let g:go_fmt_command="goimports"        " format with goimports instead of gofmt
+        let g:go_fmt_command = "goimports"          " format with goimports instead of gofmt
         let g:go_list_type = "quickfix"
         let g:go_version_warning = 0
         let g:go_fmt_fail_silently = 1
-        let g:go_fmt_autosave = 1               " disable fmt on save
+        let g:go_fmt_autosave = 1                   " disable fmt on save
         let g:go_textobj_include_function_doc = 1
+
         " Performance improve
+        let g:go_highlight_methods = 0
+        let g:go_highlight_functions = 0
         let g:go_highlight_structs = 0
         let g:go_highlight_interfaces = 0
         let g:go_highlight_operators = 0
-        let g:go_gopls_enabled = 1              " YCM concurrency
+        "
+        let g:go_gopls_enabled = 1                  " YCM concurrency
+        let g:go_highlight_space_tab_error=0
+        let g:go_highlight_array_whitespace_error=0
+        let g:go_highlight_trailing_whitespace_error=0
+        let g:go_highlight_build_constraints = 1
     endif
     " 1>>>
 
@@ -839,21 +868,6 @@ vnoremap <F1> <Esc>
         "
         nnoremap <silent><Leader>sc :SessionClose<CR><CR>
         let g:which_key_leader_map.s.c = 'Close'
-    endif
-    " 1>>>
-
-    " Plugin: Vim-GO <<<1
-    " Disable some vim-go properties to better cursorline performance
-    if isdirectory(expand("~/.vim/bundle/vim-go/"))
-        let g:go_highlight_space_tab_error=0
-        let g:go_highlight_array_whitespace_error=0
-        let g:go_highlight_trailing_whitespace_error=0
-        let g:go_highlight_functions = 1
-        let g:go_highlight_methods = 1
-        let g:go_highlight_structs = 1
-        let g:go_highlight_operators = 1
-        let g:go_highlight_build_constraints = 1
-        let g:go_fmt_command = "goimports"
     endif
     " 1>>>
 
@@ -1050,22 +1064,46 @@ vnoremap <F1> <Esc>
     endif
     " 1>>>
 
-    " Plugin: TODO Vim-Bookmark <<<1
+    " Plugin: Vim-Bookmark <<<1
     if isdirectory(expand("~/.vim/bundle/vim-bookmarks/"))
         let g:bookmark_no_default_key_mappings = 1
         let g:bookmark_auto_save = 1
         let g:bookmark_auto_save_file = $HOME .'/.vim/.'. $USER .'-bookmarks'
         let g:which_key_leader_map.t.b = 'BookmarkToggle'
         nnoremap <silent><Leader>tb :BookmarkToggle<CR>
-        "nmap <Leader>i <Plug>BookmarkAnnotate
-        "nmap <Leader>a <Plug>BookmarkShowAll
-        "nmap <Leader>j <Plug>BookmarkNext
-        "nmap <Leader>k <Plug>BookmarkPrev
-        "nmap <Leader>c <Plug>BookmarkClear
-        "nmap <Leader>x <Plug>BookmarkClearAll
-        "nmap <Leader>kk <Plug>BookmarkMoveUp
-        "nmap <Leader>jj <Plug>BookmarkMoveDown
-        "nmap <Leader>g <Plug>BookmarkMoveToLine
+        nnoremap <Leader>ki :BookmarkAnnotate<CR>
+        nnoremap <Leader>ka :BookmarkShowAll<CR>
+        nnoremap <Leader>kj :BookmarkNext<CR>
+        nnoremap <Leader>kk :BookmarkPrev<CR>
+        nnoremap <Leader>kc :BookmarkClear<CR>
+        nnoremap <Leader>kx :BookmarkClearAll<CR>
+        nnoremap <Leader>ku :BookmarkMoveUp<CR>
+        nnoremap <Leader>kd :BookmarkMoveDown<CR>
+        nnoremap <Leader>kg :BookmarkMoveToLine<CR>
+        let g:which_key_leader_map.k.i = 'BookmarkAnnotate'
+        let g:which_key_leader_map.k.a = 'BookmarkShowAll'
+        let g:which_key_leader_map.k.j = 'BookmarkNext'
+        let g:which_key_leader_map.k.k = 'BookmarkPrev'
+        let g:which_key_leader_map.k.c = 'BookmarkClear'
+        let g:which_key_leader_map.k.x = 'BookmarkClearAll'
+        let g:which_key_leader_map.k.u = 'BookmarkMoveUp'
+        let g:which_key_leader_map.k.d = 'BookmarkMoveDown'
+        let g:which_key_leader_map.k.g = 'BookmarkMoveToLine'
+    endif
+    " 1>>>
+
+    " Plugin: TODO Vim-Pythonsense <<<1
+    if isdirectory(expand("~/.vim/bundle/vim-pythonsense/"))
+        let g:is_pythonsense_suppress_motion_keymaps = 1
+    endif
+    " 1>>>
+
+    " Plugin: Vim-VisualSplit <<<1
+    if isdirectory(expand("~/.vim/bundle/visual-split.vim/"))
+        xmap <C-W>r  <Plug>(Visual-Split-VSResize)
+        xmap <C-W>s <Plug>(Visual-Split-VSSplit)
+        xmap <C-W>a <Plug>(Visual-Split-VSSplitAbove)
+        xmap <C-W>b <Plug>(Visual-Split-VSSplitBelow)
     endif
     " 1>>>
 

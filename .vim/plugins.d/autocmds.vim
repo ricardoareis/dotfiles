@@ -62,13 +62,22 @@ augroup vimhooks
     " Golang Menu && Maps
     autocmd Filetype go let g:which_key_localleader_map.g = { 'name' : '+Golang' }
     "
+    " Golang Fold properties
+    autocmd Filetype go set foldmethod=syntax
+    autocmd Filetype go set foldlevel=9
+    "
+    " Golang Format
     autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
-    autocmd Filetype go nnoremap <LocalLeader>v :vsp <CR>:exe "GoDef" <CR>
-    autocmd Filetype go nnoremap <LocalLeader>s :sp <CR>:exe "GoDef"<CR>
-    autocmd Filetype go nnoremap <LocalLeader>t :tab split <CR>:exe "GoDef"<CR>
+    "
+    " ALE properties
     autocmd Filetype go nnoremap <LocalLeader>q :cclose<CR>
     autocmd Filetype go map <LocalLeader>n :cnext<CR>
     autocmd Filetype go map <LocalLeader>m :cprevious<CR>
+    "
+    " Vim-GO properties
+    autocmd Filetype go nnoremap <LocalLeader>v :vsp <CR>:exe "GoDef" <CR>
+    autocmd Filetype go nnoremap <LocalLeader>s :sp <CR>:exe "GoDef"<CR>
+    autocmd Filetype go nnoremap <LocalLeader>t :tab split <CR>:exe "GoDef"<CR>
     "
     autocmd Filetype go nmap <LocalLeader>gs <Plug>(go-implements)
     autocmd Filetype go let g:which_key_localleader_map.g.s = 'Go-Implements'
@@ -106,6 +115,9 @@ augroup vimhooks
     autocmd Filetype python nnoremap <F11> <Esc>:REPLPDBS<CR>
     autocmd Filetype python nnoremap <F12> <Esc>:REPLDebugStopAtCurrentLine<CR>
 
+    " Ptyhon Fold properties
+    autocmd Filetype python set foldmethod=indent
+    autocmd Filetype python set foldlevel=9
 augroup END
 
 augroup textobj_sentence

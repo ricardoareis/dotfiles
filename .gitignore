@@ -47,6 +47,9 @@ zsdoc/data
 # (for Zsh plugins using Python)
 .venv
 
+*.orig
+.vim/.viminfo
+
 # Zunit tests' output
 /tests/_output/*
 !/tests/_output/.gitkeep
