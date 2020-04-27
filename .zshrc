@@ -123,6 +123,7 @@ path=(
     "$HOME/.local/bin"
     "$PYENV_ROOT/bin"
     "$PYENV_ROOT/shims"
+    "$GOPATH/bin"
     /usr/local/bin
     /usr/bin
     /bin
