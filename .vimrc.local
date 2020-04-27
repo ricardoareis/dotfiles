@@ -1054,7 +1054,7 @@ vnoremap <F1> <Esc>
     if isdirectory(expand("~/.vim/bundle/vim-bookmarks/"))
         let g:bookmark_no_default_key_mappings = 1
         let g:bookmark_auto_save = 1
-        let g:bookmark_auto_save_file = $HOME .'/.vim/.vim-bookmarks'
+        let g:bookmark_auto_save_file = $HOME .'/.vim/.'. $USER .'-bookmarks'
         let g:which_key_leader_map.t.b = 'BookmarkToggle'
         nnoremap <silent><Leader>tb :BookmarkToggle<CR>
         "nmap <Leader>i <Plug>BookmarkAnnotate
