@@ -388,7 +388,7 @@
      \ 'name' : '+Quick',
      \ 'r' : [':source ~/.vimrc                             ', 'VimReload'                      ],
      \ 'b' : [':browse oldfiles                             ', 'BrowserOldEditedFiles'          ],
-     \ 'f' : [':ALEFix                                      ', 'ALEFix'                         ],
+     \ 'x' : [':ALEFix                                      ', 'ALEFix'                         ],
      \ 'n' : [':ALENext                                     ', 'ALENext'                        ],
      \ 'p' : [':ALEPreviows                                 ', 'ALEPreviows'                    ],
      \ 'i' : [':ALEInfoToClipboard                          ', 'ALEInfoToClipboard'             ],
@@ -1039,8 +1039,8 @@ vnoremap <F1> <Esc>
     " Plugin: Sneake <<<1
     if isdirectory(expand("~/.vim/bundle/vim-sneak/"))
         let g:sneak#label = 1
-        map f <Plug>Sneak_s
-        map F <Plug>Sneak_S
+        map <Leader><Leader>f <Plug>Sneak_s
+        map <Leader><Leader>F <Plug>Sneak_S
     endif
     " 1>>>
 
