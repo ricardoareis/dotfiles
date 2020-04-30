@@ -483,9 +483,13 @@
     " Inconsistency: Fix <<<1
     "
     " Yank from the cursor to the end of the line, to be consistent with C and D.
+    " (including the newline)
     nnoremap Y y$
+    " select since the first chars at the end of line, without newline
     nnoremap vv ^vg_
+    " select all chars after cursos, without newline
     nnoremap vV vg_
+    " allow the <tab> to indent a selected text, when in a virtual mode
     vnoremap <Tab> >gv
     " 1>>>
 
