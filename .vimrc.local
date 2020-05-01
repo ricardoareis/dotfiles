@@ -261,10 +261,6 @@
     set nojoinspaces      " Prevents inserting two spaces after punctuation on a join (J)
     set splitright        " Puts new vsplit windows to the right of the current
     set splitbelow        " Puts new split windows to the bottom of the current
-    "
-    " Make it so AutoCloseTag works for xml and xhtml files as well
-    au FileType xhtml,xml ru ftplugin/html/autoclosetag.vim
-    nmap <Leader>ac <Plug>ToggleAutoCloseMappings
     " 1>>>
 
     " The complete properties <<<1
@@ -348,7 +344,6 @@
     if has('conceal')
         set conceallevel=0
         nnoremap coe :set <C-R>=&conceallevel ? 'conceallevel=0' : 'conceallevel=1'<CR><CR>
-        "nmap <silent><unique> <Leader>tcoe :set <C-R>=&conceallevel ? 'conceallevel=0' : 'conceallevel=1'<CR><CR>
     endif
     " 1>>>
 
@@ -653,20 +648,6 @@ vnoremap <F1> <Esc>
             wincmd l
         endif
     endfunction
-    " 1>>>
-
-    " Strip whitespace <<<1
-    "function! StripTrailingWhitespace()
-        "" Preparation: save last search, and cursor position.
-        "let _s=@/
-        "let l = line(".")
-        "let c = col(".")
-        "" do the business:
-        "%s/\s\+$//e
-        "" clean up: restore previous search history, and cursor position
-        "let @/=_s
-        "call cursor(l, c)
-    "endfunction
     " 1>>>
 
     " Shell command <<<1
