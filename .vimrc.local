@@ -56,6 +56,10 @@
 
     " Important Properties II <<<1
     syntax on
+    syntax sync maxlines=512                    " tuning it for performance:
+                                                " the minimal and the maximal line to be
+    syntax sync minlines=256                    " parsed to improve syntax highlight
+
     filetype plugin indent on                   " Enable file type detection and do language dependent indenting
 
     set mouse=a                                 " Automatically enable mouse usage
@@ -495,7 +499,8 @@
 
     " Code folding options <<<1
     set foldenable
-    set foldnestmax=10                              " deepest fold is 10 levels
+    set foldminlines=5                              " minimal of lines
+    set foldnestmax=10                              " deepest fold levels
     "
     "Jump between folding
     nnoremap z<Up> zk
