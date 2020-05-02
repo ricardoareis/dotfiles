@@ -361,6 +361,11 @@
     let g:vim_json_syntax_conceal = 1
     " 1>>>
 
+    " Base64 <<<1
+    " TODO: Encode and autoformat
+    vnoremap <leader>64 c<c-r>=system('base64 --decode', @")<cr><esc>
+    " 1>>>
+
     " Wildfire <<<1
     let g:wildfire_objects = {
                 \ "*" : ["i'", 'i"', "i)", "i]", "i}", "ip"],
