@@ -504,7 +504,7 @@
 
     " Code folding options <<<1
     set foldenable
-    set foldminlines=5                              " minimal of lines
+    set foldminlines=2                              " minimal of lines
     set foldnestmax=10                              " deepest fold levels
     "
     "Jump between folding
@@ -1107,12 +1107,15 @@ vnoremap <F1> <Esc>
     endif
     " 1>>>
 
-    " Plugin: Vim-VisualSplit <<<1
-    if isdirectory(expand("~/.vim/bundle/visual-split.vim/"))
-        xmap <C-W>r  <Plug>(Visual-Split-VSResize)
-        xmap <C-W>s <Plug>(Visual-Split-VSSplit)
-        xmap <C-W>a <Plug>(Visual-Split-VSSplitAbove)
-        xmap <C-W>b <Plug>(Visual-Split-VSSplitBelow)
+    " Plugin: Vim-Move <<<1
+    if isdirectory(expand("~/.vim/bundle/vim-move/"))
+        let g:move_map_keys = 1
+        let g:move_past_end_of_line = 0
+        "TODO: MBR does not work
+        vmap j <Plug>MoveBlockDown
+        vmap k <Plug>MoveBlockUp
+        vmap h <Plug>MoveBlockLeft
+        vmap l <Plug>MoveBlockRight
     endif
     " 1>>>
 
