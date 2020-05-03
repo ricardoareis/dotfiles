@@ -22,7 +22,9 @@
 
     Plug 'tpope/vim-repeat'                   " Support to repeat some cmds
     Plug 'tpope/vim-abolish'                  " Support an abbreviation                            - TODO study
-    Plug 'benjifisher/matchit.zip'            " Extend support of %
+    "Plug 'benjifisher/matchit.zip'           " Extend support of %
+    "Plug 'chrisbra/matchit'                   " Extend support of %
+    Plug 'andymass/vim-matchup'
     " }
 
     " Writing {
