@@ -1118,6 +1118,14 @@ vnoremap <F1> <Esc>
     endif
     " 1>>>
 
+    " Plugin: Vim-Matchup <<<1
+    if isdirectory(expand("~/.vim/bundle/vim-matchup/"))
+        let g:loaded_matchit = 1
+        let g:matchup_matchparen_enabled = 0
+        let g:matchup_text_obj_enabled = 0
+    endif
+    " 1>>>
+
 " 1>>>
 
 " Loading others .vim <<<1
