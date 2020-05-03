@@ -1110,8 +1110,7 @@ vnoremap <F1> <Esc>
     " Plugin: Vim-Move <<<1
     if isdirectory(expand("~/.vim/bundle/vim-move/"))
         let g:move_map_keys = 1
-        let g:move_past_end_of_line = 0
-        "TODO: MBR does not work
+        let g:move_past_end_of_line = 1
         vmap j <Plug>MoveBlockDown
         vmap k <Plug>MoveBlockUp
         vmap h <Plug>MoveBlockLeft
