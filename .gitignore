@@ -53,3 +53,6 @@ zsdoc/data
 # Zunit tests' output
 /tests/_output/*
 !/tests/_output/.gitkeep
+
+.vim/spell/local.utf-8.add.spl
+
