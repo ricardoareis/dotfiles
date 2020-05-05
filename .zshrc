@@ -112,7 +112,7 @@ autoload -Uz run-help-sudo
 bindkey '^[h' run-help  # Esc+h
 #}
 
-# Workaround MacOSX / Linux / WSL properties {
+# PATH && MANPATH properties {
 
 export PYENV_ROOT="$HOME/.pyenv"
 export DOCKER_HOST=tcp://0.0.0.0:2375
