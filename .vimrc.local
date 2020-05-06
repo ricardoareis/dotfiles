@@ -697,9 +697,9 @@ vnoremap <F1> <Esc>
     nnoremap <silent> <Leader><Leader>S :<c-u>call SearchWord()
                 \ \| set hlsearch \| let v:searchforward = 1<CR>
 
-    " change cursor word and load search to quickly change occurrences
+    "TODO: change cursor word and load search to quickly change occurrences
     " dot can be used to repeat the search+change combo
-    nnoremap <Leader><Leader>c :call SearchWord() \| set hlsearch<cr>cgn
+    "nnoremap <Leader><Leader>x :call SearchWord() \| set hlsearch<cr>cgn
     " 1>>>
 
 " 1>>>
