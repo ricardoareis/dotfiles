@@ -696,6 +696,10 @@ vnoremap <F1> <Esc>
                 \ \| set hlsearch \| let v:searchforward = 0<CR>
     nnoremap <silent> <Leader><Leader>S :<c-u>call SearchWord()
                 \ \| set hlsearch \| let v:searchforward = 1<CR>
+
+    " change cursor word and load search to quickly change occurrences
+    " dot can be used to repeat the search+change combo
+    nnoremap <Leader><Leader>c :call SearchWord() \| set hlsearch<cr>cgn
     " 1>>>
 
 " 1>>>
