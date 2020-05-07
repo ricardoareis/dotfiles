@@ -622,7 +622,8 @@
     " 1>>>
 
     " Jump to the middle of the current written line as opposed to the window width <<<1
-    nnoremap <silent> gm :call cursor(0, virtcol('$')/2)<CR>|nnoremap gM gm
+    nnoremap <silent> gm :call cursor(0, virtcol('$')/2)<CR>
+    nnoremap <silent> gM gm
     " 1>>>
 
     " Scroll relative to cursor (@_ suppresses [count] for zt) <<<1
@@ -685,7 +686,7 @@ vnoremap <F1> <Esc>
     " e.g. Grep current file for <search_term>: Shell grep -Hn <search_term> %
     " 1>>>
 
-    " Searcher <<<1
+    " Searcher I - Search without move cursor <<<1
     " TODO: https://github.com/andymass/dotfiles/blob/master/vim/vimrc
     function! SearchWord()
         let l:word = escape(expand('<cword>'), &magic ? "/.*~[^$\\" : "/^$\\")
@@ -701,6 +702,56 @@ vnoremap <F1> <Esc>
     " dot can be used to repeat the search+change combo
     "nnoremap <Leader><Leader>x :call SearchWord() \| set hlsearch<cr>cgn
     " 1>>>
+
+    " Searcher II - Search for deleted <<<1
+    function! Text2Re(re, sp)
+        set hlsearch
+        let l:esc = escape(a:re, &magic ? a:sp.".*~\[^$\\" : a:sp."^$\\")
+        return substitute(l:esc, '\n', '\\n', 'g')
+    endfunction
+    " search forward or backward for last small delete text
+    function! KeepChanging(cmd)
+        if empty(@-) | return '' | endif
+        return a:cmd.Text2Re(@-, a:cmd)."\<cr>"
+    endfunction
+    nnoremap <expr> z[ KeepChanging('/')
+    nnoremap <expr> z] KeepChanging('?')
+    " 1>>>
+
+    " TextWidth <<<1
+    function! s:ToggleTextWidth()
+        if &l:textwidth > 0
+            let s:old_tw = &l:textwidth
+            let &l:textwidth = 0
+        else
+            if exists('s:old_tw')
+                let &l:textwidth = s:old_tw
+            else
+                let &l:textwidth = 75
+            endif
+        endif
+    endfunction
+
+    let s:default_tw = &g:textwidth ? &g:textwidth : 74
+    function! s:ExpandTextWidth()
+        let l:longest = max(map(getline(line('w0'), line('w$')),
+            \ 'strdisplaywidth(v:val)'))
+        let &l:textwidth = (&l:textwidth == l:longest)
+            \ ? s:default_tw
+            \ : max([ s:default_tw, l:longest ])
+        echo 'set textwidth='.&l:textwidth
+    endfunction
+
+    " toggle textwidth/column
+    nnoremap <leader>tw :<c-u>call <sid>ToggleTextWidth()<CR>
+
+    " set textwidth to longest line current screen, or default
+    nnoremap <leader><leader>w :<c-u>call <sid>ExpandTextWidth()<CR>
+    " 1>>>
+
+
+
+
 
 " 1>>>
 
