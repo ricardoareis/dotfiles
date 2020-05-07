@@ -749,10 +749,6 @@ vnoremap <F1> <Esc>
     nnoremap <leader><leader>w :<c-u>call <sid>ExpandTextWidth()<CR>
     " 1>>>
 
-
-
-
-
 " 1>>>
 
 "Plugins <<<1
