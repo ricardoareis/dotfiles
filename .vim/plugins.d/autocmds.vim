@@ -70,14 +70,14 @@ augroup vimhooks
     autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
     "
     " ALE properties
-    autocmd Filetype go nnoremap <LocalLeader>q :cclose<CR>
-    autocmd Filetype go map <LocalLeader>n :cnext<CR>
-    autocmd Filetype go map <LocalLeader>m :cprevious<CR>
+    autocmd Filetype go nnoremap <LocalLeader><LocalLeader>q :cclose<CR>
+    autocmd Filetype go map <LocalLeader><LocalLeader>n :cnext<CR>
+    autocmd Filetype go map <LocalLeader><LocalLeader>m :cprevious<CR>
     "
     " Vim-GO properties
-    autocmd Filetype go nnoremap <LocalLeader>v :vsp <CR>:exe "GoDef" <CR>
-    autocmd Filetype go nnoremap <LocalLeader>s :sp <CR>:exe "GoDef"<CR>
-    autocmd Filetype go nnoremap <LocalLeader>t :tab split <CR>:exe "GoDef"<CR>
+    autocmd Filetype go nnoremap <LocalLeader><LocalLeader>v :vsp <CR>:exe "GoDef" <CR>
+    autocmd Filetype go nnoremap <LocalLeader><LocalLeader>s :sp <CR>:exe "GoDef"<CR>
+    autocmd Filetype go nnoremap <LocalLeader><LocalLeader>t :tab split <CR>:exe "GoDef"<CR>
     "
     autocmd Filetype go nmap <LocalLeader>gs <Plug>(go-implements)
     autocmd Filetype go let g:which_key_localleader_map.g.s = 'Go-Implements'
