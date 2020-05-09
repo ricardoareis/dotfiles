@@ -60,6 +60,10 @@
                                                 " the minimal and the maximal line to be
     syntax sync minlines=256                    " parsed to improve syntax highlight
 
+    set synmaxcol=250                           " tuning it for performance:
+                                                " max number of column to be highlighted
+                                                " lines after may not be correctly highlighted
+
     filetype plugin indent on                   " Enable file type detection and do language dependent indenting
 
     set mouse=a                                 " Automatically enable mouse usage
@@ -85,8 +89,11 @@
 
     "TODO set notimeout ttimeout ttimeoutlen=10     " Quickly time out on keycodes, but never timeout on mappings
     "set ttimeoutlen=200
+    set timeout timeoutlen=1600                 " Allow more time between keystrokes for some key mappings.
 
-    set timeoutlen=1000 ttimeoutlen=0
+    set ttimeout ttimeoutlen=50                 " But not for for key codes. Use a very small value for them.
+
+    "set timeoutlen=1000 ttimeoutlen=0
     set completeopt=longest,menuone,preview
     set switchbuf=useopen,usetab                " Attempt to edit currently open files instead of opening multiple buf
     set hidden                                  " Hide buffers when they are abandoned
@@ -260,14 +267,16 @@
     " 1>>>
 
     " Format properties <<<1
-    set autoindent        " Indent at the same level of the previous line
-    set shiftwidth=4      " use indents of 4 spaces
-    set expandtab         " tabs are spaces, not tabs
-    set tabstop=4         " an indentation every four columns
-    set softtabstop=4     " let backspace delete indent
-    set nojoinspaces      " Prevents inserting two spaces after punctuation on a join (J)
-    set splitright        " Puts new vsplit windows to the right of the current
-    set splitbelow        " Puts new split windows to the bottom of the current
+    set autoindent          " Indent at the same level of the previous line
+    set shiftwidth=4        " use indents of 4 spaces
+    set shiftround          " rounding indent in a multiples of a shiftwidth
+    "set smarttab            " TODO: study
+    set expandtab           " tabs are spaces, not tabs
+    set tabstop=4           " each tab a four columns
+    set softtabstop=4       " let backspace delete indent
+    set nojoinspaces        " Prevents inserting two spaces after punctuation on a join (J)
+    set splitright          " Puts new vsplit windows to the right of the current
+    set splitbelow          " Puts new split windows to the bottom of the current
     " 1>>>
 
     " The complete properties <<<1
@@ -1190,6 +1199,20 @@ vnoremap <F1> <Esc>
         let g:loaded_matchit = 1
         let g:matchup_matchparen_enabled = 0
         let g:matchup_text_obj_enabled = 0
+    endif
+    " 1>>>
+
+    " Plugin: Vim-VisualSplit <<<1
+    if isdirectory(expand("~/.vim/bundle/visual-split.vim/"))
+        xmap <C-W>r <Plug>(Visual-Split-VSResize)
+        xmap <C-W>ss <Plug>(Visual-Split-VSSplit)
+        xmap <C-W>a <Plug>(Visual-Split-VSSplitAbove)
+        xmap <C-W>b <Plug>(Visual-Split-VSSplitBelow)
+
+        nmap <C-W>r  <Plug>(Visual-Split-Resize)
+        nmap <C-W>ss <Plug>(Visual-Split-Split)
+        nmap <C-W>a <Plug>(Visual-Split-SplitAbove)
+        nmap <C-W>b <Plug>(Visual-Split-SplitBelow)
     endif
     " 1>>>
 
