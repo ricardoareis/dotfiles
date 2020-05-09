@@ -110,9 +110,9 @@
     Plug 'MattesGroeger/vim-bookmarks'        " Plugin to manage annotations on lines
     Plug 'junegunn/vim-peekaboo'
     Plug 'wellle/visual-split.vim'
-    Plug 'embear/vim-foldsearch'
-    Plug 'matze/vim-move'
-
+    Plug 'embear/vim-foldsearch'              " search a pattern and close everything as a fold
+    Plug 'matze/vim-move'                     " move block easily (visual mode + CTRL+J)
+    Plug 'chrisbra/NrrwRgn'                   " TODO: Study
     "}
 
     " All of your Plugs must be added before the following line

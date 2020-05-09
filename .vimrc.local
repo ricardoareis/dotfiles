@@ -170,6 +170,8 @@
                     \ 'swap': 'directory' }
         "
         if has('persistent_undo')
+            "add an undo-break (see :help i_CTRL-G_u).
+            inoremap <C-u> <C-g>u<C-u>
             set undofile
             set undolevels=10000                " Maximum number of changes that can be undone
             set undoreload=10000                " Maximum number lines to save for undo on a buffer reload
@@ -334,7 +336,7 @@
     " Dealing with a long lines properties <<<1
     set wrap                                            " wrap long lines by default
     set whichwrap=b,s,h,l,<,>,[,]                       " Backspace and cursor keys wrap too
-    set colorcolumn=120
+    set colorcolumn=120                                 " TODO: use a colored column to mark textwidh
     set showbreak=...
     " 1>>>
 
@@ -391,6 +393,9 @@
 
     " Map for <Leader> <<<1
     " Ignore which key popup
+    "
+    " repeat the search/replace in the cursor line
+    nnoremap <Leader>. :&<CR>
     nnoremap <Leader>x *``cgn
     nnoremap <Leader>o :OverCommandLine<CR>
     nmap <Leader>v <Plug>(wildfire-quick-select)
@@ -518,6 +523,7 @@
     set foldenable
     set foldminlines=2                              " minimal of lines
     set foldnestmax=10                              " deepest fold levels
+    set foldopen-=search                            " do not open when searching for a match
     "
     "Jump between folding
     nnoremap z<Up> zk
@@ -547,7 +553,7 @@
     nmap <Leader>f9 :set foldlevel=9<CR>
     let g:which_key_leader_map.f.9 = '9-fold-level'
     "
-    set foldmethod=indent
+    set foldmethod=syntax
     nnoremap <silent>cof :let &foldmethod = tolower(matchstr(
           \',mmanual,kmarker,iindent,ssyntax,eexpr,ddiff',
           \','.nr2char(getchar()).'\zs\a*\C'))\|set foldmethod<CR>
