@@ -21,9 +21,8 @@
     endif
 
     Plug 'tpope/vim-repeat'                   " Support to repeat some cmds
-    Plug 'tpope/vim-abolish'                  " Support an abbreviation                            - TODO study
-    "Plug 'benjifisher/matchit.zip'           " Extend support of %
-    "Plug 'chrisbra/matchit'                   " Extend support of %
+    Plug 'tpope/vim-abolish'                  " Support an abbreviation    - TODO study
+    "Plug 'chrisbra/matchit'                  " Extend support of %
     Plug 'andymass/vim-matchup'
     " }
 
@@ -51,10 +50,10 @@
     Plug 'dense-analysis/ale'                 " Engine for linters and fixers
     Plug 'ntpeters/vim-better-whitespace'     " Removed extra whitespaces
     Plug 'editorconfig/editorconfig'          " Support a editorconfig
-    Plug 'jmcantrell/vim-virtualenv', {'for': ['python', 'python3']}          " Support a Python VirtualEnv
     Plug 'nathanaelkane/vim-indent-guides'    " Support a indent guides
     Plug 'terryma/vim-multiple-cursors'       " Support a multiple cursors
-    Plug 'sillybun/vim-repl', {'for': ['python', 'python3']}
+    Plug 'sillybun/vim-repl',                   {'for': ['python', 'python3']}
+    Plug 'jmcantrell/vim-virtualenv',           {'for': ['python', 'python3']}  " Support a Python VirtualEnv
     Plug 'jeetsukumaran/vim-pythonsense'
     "
     " }
@@ -72,8 +71,8 @@
     " }
 
     " Langs {
-    Plug 'fatih/vim-go', {'for': 'Go', 'do': ':GoInstallBinaries'}
-    Plug 'rust-lang/rust.vim', {'for': ['rust']}
+    Plug 'fatih/vim-go',            {'for': 'Go', 'do': ':GoInstallBinaries'}
+    Plug 'rust-lang/rust.vim',      {'for': ['rust']}
     Plug 'pangloss/vim-javascript', {'for': ['javascript']}
     " }
 
@@ -90,8 +89,6 @@
     Plug 'terryma/vim-expand-region'          " Plugin to expand visual selection  with CTRL plus + or -
     Plug 'junegunn/fzf'                       " Fuzzy Search w/ FZF
     Plug 'junegunn/fzf.vim'                   "
-    "Plug 'liuchengxu/vim-clap'               " Fuzzy search (similar FZF)
-    "Plug 'liuchengxu/vista.vim'              " Like Tabbar but slow
     Plug 'chrisbra/csv.vim'                   " Support better csv support
     Plug 'mox-mox/vim-localsearch'            " Allow a register a local pattern, instead of only a global / search
     Plug 'sheerun/vim-polyglot'               " Syntax for many different type of files
