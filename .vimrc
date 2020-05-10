@@ -819,14 +819,12 @@ vnoremap <F1> <Esc>
             let g:airline_extensions=['branch', 'localsearch', 'virtualenv', 'csv', 'bufferline',
                         \             'hunks', 'keymap', 'quickfix', 'ale', 'tagbar', 'term',
                         \             'undotree', 'whitespace', 'wordcount', 'ycm', 'tabline']
-
+            " tab properties
             let g:airline#extensions#tabline#show_buffers = 0
             let g:airline#extensions#tabline#show_splits = 0                " show splited windows on tabs
             let g:airline#extensions#tabline#show_tab_count = 0             " show tab cont
             let g:airline#extensions#tabline#tab_min_count = 2
             let g:airline#extensions#tabline#exclude_preview = 1
-
-            " Disable tabline close button
             let g:airline#extensions#tabline#show_close_button = 0
             let g:airline#extensions#tabline#show_tab_type = 0
             let g:airline#extensions#tabline#show_tab_nr = 0
