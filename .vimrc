@@ -16,8 +16,10 @@
 "     <C-x>    Toggle  (Open|Close)     Fold
 "
 "     <C-p>     Fuzzy Finder
+"     <C-l>     Fuzzy Grep
 "     <C-/>     Toggle   (On|Off)   Search Highlight
 "     <Alt-.>   Execute last :cmd
+"     <Leader>. Execute last search/replace
     " 1>>>
 
     " Use bundles config <<<1
@@ -36,10 +38,6 @@
     set nocompatible                            " be iMproved, required"
     let g:skip_defaults_vim = 1                 " disable defaults.vim
 
-    "TODO viminfo does not work
-    "set viminfo='40,<50,s10,h
-    "set viminfo+=n$HOME/.vim/viminfo
-    "
     scriptencoding utf-8
     set encoding=utf-8
     set shell=$SHELL                            " Using default $SHELL
@@ -87,13 +85,9 @@
     set report=0                                " after yank/delete/... report number of lines affected
     set signcolumn=yes
 
-    "TODO set notimeout ttimeout ttimeoutlen=10     " Quickly time out on keycodes, but never timeout on mappings
-    "set ttimeoutlen=200
     set timeout timeoutlen=1600                 " Allow more time between keystrokes for some key mappings.
-
     set ttimeout ttimeoutlen=50                 " But not for for key codes. Use a very small value for them.
 
-    "set timeoutlen=1000 ttimeoutlen=0
     set completeopt=longest,menuone,preview
     set switchbuf=useopen,usetab                " Attempt to edit currently open files instead of opening multiple buf
     set hidden                                  " Hide buffers when they are abandoned
@@ -445,7 +439,6 @@
     " 1>>>
 
     " toggle cursor line <<<1
-    "nnoremap <Leader>tc :set cursorline!<CR>
     nnoremap <silent><unique> <Leader>tc :set cursorline!<CR>
     let g:which_key_leader_map.t.c = 'CursorLine'
     " 1>>>
@@ -818,7 +811,7 @@ vnoremap <F1> <Esc>
     " Plugin: Airline properties <<<1
     if isdirectory(expand("~/.vim/bundle/vim-airline/"))
         " TODO: https://jnrowe-vim.readthedocs.io
-        let g:airline_powerline_fonts=1
+        let g:airline_powerline_fonts = 1
         let g:airline_skip_empty_sections = v:true
         let g:bufferline_echo = 0
         let g:airline_highlighting_cache = 1
@@ -827,8 +820,6 @@ vnoremap <F1> <Esc>
                         \             'hunks', 'keymap', 'quickfix', 'ale', 'tagbar', 'term',
                         \             'undotree', 'whitespace', 'wordcount', 'ycm', 'tabline']
 
-
-            "let g:airline#extensions#tabline#enabled = 1
             let g:airline#extensions#tabline#show_buffers = 0
             let g:airline#extensions#tabline#show_splits = 0                " show splited windows on tabs
             let g:airline#extensions#tabline#show_tab_count = 0             " show tab cont
@@ -837,7 +828,6 @@ vnoremap <F1> <Esc>
 
             " Disable tabline close button
             let g:airline#extensions#tabline#show_close_button = 0
-
             let g:airline#extensions#tabline#show_tab_type = 0
             let g:airline#extensions#tabline#show_tab_nr = 0
             let g:airline#extensions#tabline#fnamecollapse = 1
@@ -847,26 +837,22 @@ vnoremap <F1> <Esc>
             " Just show the file name
             let g:airline#extensions#tabline#fnamemod = ':t'
 
-            if !exists('g:gruvbox_material')
+            if exists('g:gruvbox_material')
                 let g:airline_theme='gruvbox_material'
             endif
-            if !exists('g:airline_powerline_fonts') && v:version >= 800 && has('signs')
-                " Use the default set of separators with a few customizations
-                let g:airline_left_sep='›'  " Slightly fancier than '>'
-                let g:airline_right_sep='‹' " Slightly fancier than '<'
-                let g:airline_symbols = {
-                    \ 'branch': '',
-                    \ 'crypt': '',
-                    \ 'linenr': '☰'',
-                    \ 'maxlinenr': '',
-                    \ 'modified': '+',
-                    \ 'notexists': 'Ɇ',
-                    \ 'paste': 'ρ',
-                    \ 'readonly': '',
-                    \ 'space': ' ',
-                    \ 'spell': '',
-                    \ 'whitespace': 'Ξ',
-                \ }
+            if exists('g:airline_powerline_fonts') && v:version >= 800 && has('signs')
+                let g:airline_symbols = {}
+                let g:airline_symbols.branch = ''
+                let g:airline_symbols.crypt =  ''
+                let g:airline_symbols.maxlinenr = ' '
+                let g:airline_symbols.linenr = '☰'
+                let g:airline_symbols.modified = '+'
+                let g:airline_symbols.notexists = 'Ɇ'
+                let g:airline_symbols.paste = 'ρ'
+                let g:airline_symbols.readonly = ''
+                let g:airline_symbols.space = ' '
+                let g:airline_symbols.spell = ''
+                let g:airline_symbols.whitespace = 'Ξ'
             endif
         endif
     endif
