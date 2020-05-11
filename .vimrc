@@ -695,7 +695,7 @@ vnoremap <F1> <Esc>
     " 1>>>
 
     " Searcher I - Search without move cursor <<<1
-    " TODO: https://github.com/andymass/dotfiles/blob/master/vim/vimrc
+    " https://github.com/andymass/dotfiles/blob/master/vim/vimrc
     function! SearchWord()
         let l:word = escape(expand('<cword>'), &magic ? "/.*~[^$\\" : "/^$\\")
         let @/ = '\<'.l:word.'\>'
@@ -705,10 +705,6 @@ vnoremap <F1> <Esc>
                 \ \| set hlsearch \| let v:searchforward = 0<CR>
     nnoremap <silent> <Leader><Leader>S :<c-u>call SearchWord()
                 \ \| set hlsearch \| let v:searchforward = 1<CR>
-
-    "TODO: change cursor word and load search to quickly change occurrences
-    " dot can be used to repeat the search+change combo
-    "nnoremap <Leader><Leader>x :call SearchWord() \| set hlsearch<cr>cgn
     " 1>>>
 
     " Searcher II - Search for deleted <<<1
@@ -1087,12 +1083,6 @@ vnoremap <F1> <Esc>
         let g:repl_ipython_version = '7.13.0'
         let g:sendtorepl_invoke_key = ""
         let g:repl_position = 3
-    endif
-    " 1>>>
-
-    " https://vimawesome.com/plugin/matchit-zip-the-story-of-us <<<1
-    if isdirectory(expand("~/.vim/bundle/matchit.zip"))
-        let b:match_ignorecase = 1
     endif
     " 1>>>
 
