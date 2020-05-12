@@ -1159,9 +1159,10 @@ vnoremap <F1> <Esc>
     endif
     " 1>>>
 
-    " Plugin: TODO Vim-Pythonsense <<<1
+    " Plugin: Vim-Pythonsense <<<1
     if isdirectory(expand("~/.vim/bundle/vim-pythonsense/"))
-        let g:is_pythonsense_suppress_motion_keymaps = 1
+        let g:is_pythonsense_alternate_motion_keymaps = 1
+        let g:is_pythonsense_suppress_location_keymaps = 1
     endif
     " 1>>>
 
