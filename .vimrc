@@ -13,7 +13,6 @@
 "     zfm                               Fold Method
 "     z<(Down|UP)>     (Next|Previous)  Fold
 "     z<(Right|Left)> (Close|Open)      Fold
-"     <C-x>    Toggle  (Open|Close)     Fold
 "
 "     <C-p>     Fuzzy Finder
 "     <C-l>     Fuzzy Grep
@@ -52,16 +51,17 @@
     endif
     " 1>>>
 
-    " Important Properties II <<<1
+    " Important Properties II - Performance <<<1
+    " tuning it for performance:
     syntax on
-    syntax sync maxlines=512                    " tuning it for performance:
-                                                " the minimal and the maximal line to be
+    syntax sync maxlines=512                    " the minimal and the maximal line to be
     syntax sync minlines=256                    " parsed to improve syntax highlight
 
-    set synmaxcol=250                           " tuning it for performance:
-                                                " max number of column to be highlighted
+    set synmaxcol=250                           " max number of column to be highlighted
                                                 " lines after may not be correctly highlighted
+    " 1>>>
 
+    " Important Properties III <<<1
     filetype plugin indent on                   " Enable file type detection and do language dependent indenting
 
     set mouse=a                                 " Automatically enable mouse usage
@@ -75,7 +75,6 @@
     set iskeyword-=#                            " '#' is an end of word
     set iskeyword-=-                            " '-' is an end of word
 
-    set synmaxcol=500                           " Don't try to highlight lines longer than 5000 characters"
     set autowrite                               " Write the contents of the file, if it has been modified, on each
                                                 " :next, :rewind, :last, :first, :previous, :stop, :suspend, :tag, :!,
                                                 " :make, CTRL-] and CTRL-^ command; and when a :buffer, CTRL-O, CTRL-I,
@@ -140,7 +139,7 @@
     augroup END
     " 1>>>
 
-    " changed the cursor behavior, in a edit, replace and append mode <<<1
+    " Cursor Behavior - changed behavior, in a edit, replace and append mode <<<1
     " see autocmds.vim
     if empty($TMUX)
       let &t_SI = "\<Esc>]50;CursorShape=1\x7"
@@ -202,7 +201,8 @@
     set cursorcolumn
     " 1>>>
 
-    " tmux will send xterm-style keys when its xterm-keys option is on <<<1
+    " Keyboard keys - TMUX <<<1
+    " tmux will send xterm-style keys when its xterm-keys option is on
     if &term =~ '^xterm' || &term =~ '^screen' || &term =~ "^tmux"
         execute "set <xUp>=\e[1;*A"
         execute "set <xDown>=\e[1;*B"
@@ -308,16 +308,16 @@
     call which_key#register(',',       "g:which_key_leader_map")
     call which_key#register('<Space>', "g:which_key_localleader_map")
 
-    let g:which_key_leader_map =  {}
-    let g:which_key_localleader_map =  {}
-    let g:which_key_leader_map.t = { 'name' : '+Toggle' }
-    let g:which_key_leader_map.f = { 'name' : '+Find/Files/Fold' }
-    let g:which_key_leader_map.e = { 'name' : '+Edit' }
-    let g:which_key_leader_map.y = { 'name' : '+Go' }
-    let g:which_key_leader_map.s = { 'name' : '+Session' }
-    let g:which_key_leader_map.g = { 'name' : '+Git' }
-    let g:which_key_leader_map.w = { 'name' : '+Windows' }
-    let g:which_key_leader_map.k = { 'name' : '+Bookmark' }
+    let g:which_key_leader_map = {}
+    let g:which_key_localleader_map = {}
+    let g:which_key_leader_map.t = {'name': '+Toggle'}
+    let g:which_key_leader_map.f = {'name': '+Find/Files/Fold'}
+    let g:which_key_leader_map.e = {'name': '+Edit'}
+    let g:which_key_leader_map.y = {'name': '+Go'}
+    let g:which_key_leader_map.s = {'name': '+Session'}
+    let g:which_key_leader_map.g = {'name': '+Git'}
+    let g:which_key_leader_map.w = {'name': '+Windows'}
+    let g:which_key_leader_map.k = {'name': '+Bookmark'}
     " 1>>>
 
     " Show Invisible Chars <<<1
@@ -335,7 +335,6 @@
     " 1>>>
 
     " Vimdiff - Properties <<<1
-    "set diffopt=internal,algorithm:patience,indent-heuristic,horizontal
     set diffopt+=iwhite
     if has('nvim-0.3.2') || has("patch-8.1.0360")
         set diffopt=internal,filler,algorithm:histogram,indent-heuristic,horizontal
@@ -412,10 +411,6 @@
     " 1>>>
 
     " Windows: Better split management, kept in sync with tmux' mappings <<<1
-    "noremap <Leader>wh :sp<CR><C-w>j
-    "noremap <Leader>wv :vsp<CR><C-w>l
-    "let g:which_key_leader_map.w.h = 'Horizontal'
-    "let g:which_key_leader_map.w.v = 'Vertical'
     let g:which_key_leader_map['w'] = {
       \ 'name' : '+Windows' ,
       \ 'w' : ['<C-W>w'         , 'other-window']          ,
@@ -438,17 +433,17 @@
       \ }
     " 1>>>
 
-    " toggle cursor line <<<1
+    " Toggle cursor line <<<1
     nnoremap <silent><unique> <Leader>tc :set cursorline!<CR>
     let g:which_key_leader_map.t.c = 'CursorLine'
     " 1>>>
 
-    " scroll the view port faster <<<1
+    " Scroll the view port faster <<<1
     nnoremap <C-e> 3<C-e>
     nnoremap <C-y> 3<C-y>
     " 1>>>
 
-    " buffer shortcuts <<<1
+    " Buffer shortcuts <<<1
     "TODO mv close then list properties, but it does not work
     nnoremap <silent><unique> <Leader>tl :set list!<CR>
     let g:which_key_leader_map.t.l = 'ListChars'
@@ -457,8 +452,6 @@
     nnoremap <silent><S-Tab>  :bp<CR>
     "
     "TODO: probably it will be removed
-    "nnoremap <C-Left>  :bn<CR>
-    "nnoremap <C-Right> :bp<CR>
     let g:which_key_leader_map.b = {
       \ 'name' : '+Buffers' ,
       \ '1' : ['b1'        , 'buffer 1']        ,
@@ -474,12 +467,18 @@
 
     " Map to move lines to bellow than current line <<<1
     "
-    "TODO: Refining this cmd, bellow to samples produced by me
-    "nnoremap cp mc3kY'cP :delmark c<CR>
-    "nnoremap <expr>cp 'mc'.nr2char(getchar())."kY'cP :delmark c"<CR>
-    "nnoremap cp :exec    ("normal mc" . nr2char(getchar()) . "kY'c")<CR>
+    "TODO: Refactoring to suporte more than
+    "2 chars, in a relative line number
+    "
+    "nnoremap mv mc3kY'cP :delmark c<CR>
+    "nnoremap <expr>mv 'mc'.nr2char(getchar())."kY'cP :delmark c"<CR>
+    "nnoremap mv :exec    ("normal mc" . nr2char(getchar()) . "kY'c")<CR>
     "
     function! MvLines()
+        " This function receave 2 chars
+        " that representing the relative line number
+        " Ex. command mv +9 will mv the line 9 to the
+        " current cursorline.
         let l:number = 2
         let l:string = ""
         while l:number > 0
@@ -503,8 +502,6 @@
     nnoremap vv ^vg_
     " select all chars after cursos, without newline
     nnoremap vV vg_
-    " allow the <tab> to indent a selected text, when in a virtual mode
-    vnoremap <Tab> >gv
     " 1>>>
 
     " Go to tab by number <<<1
@@ -523,8 +520,6 @@
     nnoremap z<Down> zj
     nnoremap z<Left> zc
     nnoremap z<Right> zo
-    "TODO: review the map bellow
-    "noremap <C-x> :exec "normal zA"<CR>
     nmap <Leader>f0 :set foldlevel=0<CR>
     let g:which_key_leader_map.f.0 = '0-fold-level'
     nmap <Leader>f1 :set foldlevel=1<CR>
@@ -601,6 +596,8 @@
     " Visual shifting (does not exit Visual mode) <<<1
     vnoremap < <gv
     vnoremap > >gv
+    " allow the <tab> to indent a selected text, when in a virtual mode
+    vnoremap <Tab> >gv
     " 1>>>
 
     " Allow using the repeat operator with a visual selection (!) <<<1
@@ -645,6 +642,10 @@
     " If your terminal print the same  for, both <Esc> and <Alt>
     " decide the best usability.
     nnoremap <Esc>. @:
+    " 1>>>
+
+    " Past Visual Select <<<1
+    vnoremap <silent><C-w>pt "+y \| :tabnew \| :normal p<CR>
     " 1>>>
 
 " 1>>>
