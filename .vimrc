@@ -324,13 +324,15 @@
     set nolist                                          " default disable
     if &encoding =~ 'utf-8'
         set listchars=eol:⏎,tab:␉·,trail:␠,nbsp:⎵       " default unicode
+        nnoremap <silent><unique> <Leader>tl :set list!<CR>
+        let g:which_key_leader_map.t.l = 'ListChars'
     endif
     " 1>>>
 
     " Dealing with a long lines properties <<<1
     set wrap                                            " wrap long lines by default
     set whichwrap=b,s,h,l,<,>,[,]                       " Backspace and cursor keys wrap too
-    set colorcolumn=120                                 " TODO: use a colored column to mark textwidh
+    set colorcolumn=120                                 " Use a colored column to mark textwidh
     set showbreak=...
     " 1>>>
 
@@ -444,14 +446,9 @@
     " 1>>>
 
     " Buffer shortcuts <<<1
-    "TODO mv close then list properties, but it does not work
-    nnoremap <silent><unique> <Leader>tl :set list!<CR>
-    let g:which_key_leader_map.t.l = 'ListChars'
     "
-    "Map <Alt-Tab>
     nnoremap <silent><S-Tab>  :bp<CR>
     "
-    "TODO: probably it will be removed
     let g:which_key_leader_map.b = {
       \ 'name' : '+Buffers' ,
       \ '1' : ['b1'        , 'buffer 1']        ,
@@ -732,7 +729,7 @@ vnoremap <F1> <Esc>
             if exists('s:old_tw')
                 let &l:textwidth = s:old_tw
             else
-                let &l:textwidth = 75
+                let &l:textwidth = &g:colorcolumn  " textwith == colorcolumn
             endif
         endif
     endfunction
