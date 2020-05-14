@@ -150,6 +150,25 @@ zinit wait"1f" lucid as=program \
     atinit' ln -sf $PWD/fpp $ZPFX/bin' pick="fpp" nocompile'!' for \
     facebook/pathpicker
 
+zinit wait"1e" lucid as=program pick="git-recall" for\
+    Fakerr/git-recall
+
+zinit wait"1e" lucid as=program pick="git-open" for\
+    paulirish/git-open
+
+zinit wait"1e" lucid as=program pick="git-recent" for\
+    paulirish/git-recent
+
+zinit wait"1e" lucid as=program pick="git-my" for\
+    davidosomething/git-my
+
+zinit wait"1e" lucid as=program pick="git-quick-stats" \
+    atload"export _MENU_THEME=legacy" for\
+    arzzen/git-quick-stats
+
+zinit wait"1e" lucid as=program pick="git-quick-stats" \
+    make"PREFIX=$ZPFX install" for \
+    tj/git-extras
 #}
 
 # Loading with a 2s delay {
