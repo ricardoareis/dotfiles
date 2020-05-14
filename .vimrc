@@ -804,7 +804,6 @@ vnoremap <F1> <Esc>
 
     " Plugin: Airline properties <<<1
     if isdirectory(expand("~/.vim/bundle/vim-airline/"))
-        " TODO: https://jnrowe-vim.readthedocs.io
         let g:airline_powerline_fonts = 1
         let g:airline_skip_empty_sections = v:true
         let g:bufferline_echo = 0
@@ -985,7 +984,6 @@ vnoremap <F1> <Esc>
         let g:tagbar_autofocus=1
         let g:tagbar_compact=1
         let g:tagbar_autoclose=1
-        "TODO: investigate git and tags
         set tags=./tags;/,~/.vimtags
         " Make tags placed in .git/tags file available in all levels of a repository
         let gitroot = substitute(system('git rev-parse --show-toplevel'), '[\n\r]', '', 'g')
