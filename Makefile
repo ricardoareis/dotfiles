@@ -1,3 +1,5 @@
+UNAME_S := $(shell uname -s)
+
 all: dotfiles
 
 dotfiles: tmux zsh vim
@@ -10,22 +12,30 @@ tmux.conf:
 	@echo "ln -sf $(CURDIR)/.tmux.conf $(HOME)/.tmux.conf"
 
 install_tmux:
+ifeq ($(UNAME_S),Darwin)
 	@echo "brew install tmux"
+else ifeq ($(UNAME_S),Linux)
+	@echo "Unsuported Operation System"
+endif
 #
 # Use zsh target to configure zsh
 #
-zsh: zshrc install_zsh zshdefault
+zsh: zshrc install_zsh zsh_default
 
 zshrc:
 	@echo "ln -sf $(CURDIR)/.zshrc $(HOME)/.zshrc"
 
 install_zsh:
+ifeq ($(UNAME_S),Darwin)
 	@echo "brew install zsh"
+else ifeq ($(UNAME_S),Linux)
+	@echo "Unsuported Operation System"
+endif
 
-zshdefault: check_default
-	@echo "chsh -s $(which zsh)"
+zsh_default: zsh_check_default
+	@echo "chsh -s $$(brew --prefix zsh)"
 
-check_default:
+zsh_check_default:
 	@echo "Would you like to make the zsh the default shell?"
 	@( read -p "Are you sure?!? [y/N]: " sure && case "$$sure" in [yY]) true;; *) false;; esac )
 #
