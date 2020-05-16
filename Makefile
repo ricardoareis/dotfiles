@@ -1,39 +1,77 @@
+REPOS   := $(HOME)/repos/dotfiles
 UNAME_S := $(shell uname -s)
+LINUX_D := $(shell cut -d\  -f1 < /etc/issue | grep .)
 
-all: dotfiles
+ifeq ($(UNAME_S),Darwin)
+	ZSH_PATH := $(shell brew --prefix zsh)
+else ifeq ($(UNAME_S),Linux)
+	ZSH_PATH := $(shell which zsh)
+endif
+
+all: install config
+
+install: dotfiles
+	@echo ""
+	@echo "NOTES:"
+	@echo ""
+	@echo "	1. Vim should be configured to has a python3 suport"
+	@echo "	2. ZSH use zinit as a plugin manager (verify if you have build-essential)"
+	@echo ""
+	@echo ""
+
+config: zsh_default
+	@echo "Configuring dotfiles"
 
 dotfiles: tmux zsh vim
 #
 # Use tmux target to configure tmux
 #
-tmux: tmux.conf install_tmux
-
-tmux.conf:
-	@echo "ln -sf $(CURDIR)/.tmux.conf $(HOME)/.tmux.conf"
+tmux: install_tmux tmux.conf
 
 install_tmux:
+	@echo "Installing TMUX"
 ifeq ($(UNAME_S),Darwin)
-	@echo "brew install tmux"
-else ifeq ($(UNAME_S),Linux)
+	brew install tmux
+endif
+
+ifeq ($(LINUX_D),Ubuntu)
+	apt-get update
+	apt-get install tmux
+else
 	@echo "Unsuported Operation System"
 endif
+
+tmux.conf:
+	@echo "Linking the $(HOME)/.tmux.conf"
+	ln -sf $(CURDIR)/.tmux.conf $(HOME)/.tmux.conf
 #
 # Use zsh target to configure zsh
 #
-zsh: zshrc install_zsh zsh_default
-
-zshrc:
-	@echo "ln -sf $(CURDIR)/.zshrc $(HOME)/.zshrc"
+zsh: install_zsh zshrc install_zsh_plugins
 
 install_zsh:
+	@echo "Installing ZSH"
 ifeq ($(UNAME_S),Darwin)
-	@echo "brew install zsh"
-else ifeq ($(UNAME_S),Linux)
+	brew install zsh
+endif
+
+ifeq ($(LINUX_D),Ubuntu)
+	apt-get install -y zsh
+else
 	@echo "Unsuported Operation System"
 endif
 
+zshrc:
+	@echo "Linking the $(HOME)/.zshrc"
+	ln -sf $(REPOS)/.zshrc $(HOME)/.zshrc
+
 zsh_default: zsh_check_default
-	@echo "chsh -s $$(brew --prefix zsh)"
+	@echo "Adopting ZSH as a default shell"
+	chsh -s $(ZSH_PATH)
+
+install_zsh_plugins:
+	@echo "Installing ZSH plugins with ZINIT"
+	sh -s $(ZSH_PATH)
 
 zsh_check_default:
 	@echo "Would you like to make the zsh the default shell?"
@@ -44,17 +82,16 @@ zsh_check_default:
 vim: vimdir vimrc vimrc.bundle vimBundleInstall
 
 vimdir:
-	@echo "ln -sf $(CURDIR)/.vim $(HOME)/.vim"
+	@echo "Linking $(HOME)/.vim"
+	ln -sf $(CURDIR)/.vim $(HOME)/.vim
 
 vimrc:
-	@echo "ln -sf $(CURDIR)/.vimrc $(HOME)/.vimrc"
+	@echo "Linking $(HOME)/.vimrc"
+	ln -sf $(CURDIR)/.vimrc $(HOME)/.vimrc
 
 vimrc.bundle:
-	@echo "ln -sf $(CURDIR)/.vimrc.bundle $(HOME)/.vimrc.bundle"
+	@echo "Linking $(HOME)/.vimrc.bundle"
+	ln -sf $(CURDIR)/.vimrc.bundle $(HOME)/.vimrc.bundle
 
-vimBundleInstall: check_default
-	@echo "vim +PlugInstall! +q"
-
-check_default:
-	@echo "Would you like to install vim bundles?"
-	@( read -p "Are you sure?!? [y/N]: " sure && case "$$sure" in [yY]) true;; *) false;; esac )
+vimBundleInstall:
+	vim +PlugInstall! +q

@@ -75,6 +75,9 @@ zinit snippet OMZ::plugins/jsontools
 zinit ice svn wait"1a" lucid
 zinit snippet OMZ::plugins/safe-paste
 
+zinit ice wait"1c" lucid as="program" pick="bin/fzf-tmux"
+zinit light junegunn/fzf
+
 zinit ice svn wait"1c" lucid
 zinit snippet OMZ::plugins/fzf
 
@@ -89,27 +92,6 @@ zinit wait"1c" lucid as=program \
     atclone"./fasd --init auto > zfasd.zsh"\
         src="zfasd.zsh" for clvv/fasd
 
-zinit wait"1b" lucid as=program \
-    atload='export FZF_DEFAULT_COMMAND="fd -H -E .git -t f"\
-            export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --inline-info \
-            --bind=\"alt-k:preview-up,alt-p:preview-up\"\
-            --bind=\"alt-j:preview-down,alt-n:preview-down\"\
-            --bind=\"ctrl-r:toggle-all\"\
-            --bind=\"ctrl-s:toggle-sort\"\
-            --bind=\"?:toggle-preview\"\
-            --bind=\"alt-w:toggle-preview-wrap\"\
-            --preview-window=\"right:60%\""\
-            export FZF_CTRL_T_COMMAND="fd -H -E .git -t f ."\
-            export FZF_CTRL_T_OPTS="--height 80% --preview=\"bat --style=numbers  --color=always {} | head -n50\""\
-            export FZF_ALT_C_COMMAND="fd -H -E .git -t d . "\
-            export FZF_ALT_C_OPTS="--height 80% --preview \"tree -C {} | head -50\"" \
-            export FZF_CTRL_R_OPTS="--preview \"echo {}\" --preview-window down:3:hidden:wrap --bind \"?:toggle-preview\""\
-            export FZF_BASE="${ZINIT[HOME_DIR]}/plugins/junegunn---fzf";\
-            bindkey "^P" fzf-file-widget; bindkey "p" fzf-cd-widget;\
-            ln -sf $PWD/bin/fzf $ZPFX/bin;ln -sf $PWD/bin/fzf-tmux $ZPFX/bin'\
-    make="install PREFIX=$ZPFX" pick="bin/fzf*" for \
-        junegunn/fzf
-
 zinit wait"1d" lucid as=program from"gh-r" for \
     mv"bat* -> bat" pick="bat/bat" @sharkdp/bat
 
@@ -121,6 +103,10 @@ zinit wait"1d" lucid as=program from"gh-r" for \
 
 zinit wait"1d" lucid as=program from"gh-r" for \
     mv"ripgrep* -> rg" pick="rg/rg" @BurntSushi/ripgrep
+
+zinit wait"1d" lucid as=program from"gh-r" for \
+    src="$ZSH_CUSTOM/fzf.cfg" mv"fzf* -> fzf" \
+    pick="fzf/fzf" @junegunn/fzf-bin
 
 zinit wait"1d" lucid as=program \
     atclone="./autogen.sh && ./configure --prefix=$PWD" \
