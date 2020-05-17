@@ -80,7 +80,7 @@ zsh_check_default:
 #
 # Use vim target to configure vim
 #
-vim: vimdir vimrc vimrc.bundle vimBundleInstall
+vim: vimdir vimrc vimrc.bundles vimBundlesInstall
 
 vimdir:
 	@echo "Linking $(HOME)/.vim"
@@ -90,9 +90,9 @@ vimrc:
 	@echo "Linking $(HOME)/.vimrc"
 	ln -sf $(CURDIR)/.vimrc $(HOME)/.vimrc
 
-vimrc.bundle:
+vimrc.bundles:
 	@echo "Linking $(HOME)/.vimrc.bundle"
 	ln -sf $(CURDIR)/.vimrc.bundles $(HOME)/.vimrc.bundles
 
-vimBundleInstall:
+vimBundlesInstall:
 	vim +PlugInstall! +q
