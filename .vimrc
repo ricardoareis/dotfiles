@@ -242,12 +242,14 @@
       set termguicolors
     endif
     set background=dark                             " Prefer Dark over Light
-    let g:gruvbox_material_background='hard'        " Contrast Level
-    colorscheme gruvbox-material                    " Using the same color scheme
-    let g:gruvbox_termcolors=256                    " Accepting the 256 colors
-    let g:gruvbox_material_enable_italic = 0        " Allow Italic fonts
-    let g:gruvbox_material_disable_italic_comment = 1
-    let g:gruvbox_material_enable_bold = 1
+    if isdirectory(expand(bundles_dir . "/gruvbox-material"))
+        let g:gruvbox_material_background='hard'        " Contrast Level
+        colorscheme gruvbox-material                    " Using the same color scheme
+        let g:gruvbox_termcolors=256                    " Accepting the 256 colors
+        let g:gruvbox_material_enable_italic = 0        " Allow Italic fonts
+        let g:gruvbox_material_disable_italic_comment = 1
+        let g:gruvbox_material_enable_bold = 1
+    endif
     " 1>>>
 
     " Alerts and feedback properties <<<1
@@ -299,14 +301,18 @@
     set timeoutlen=500
     let mapleader=","
     let maplocalleader=" "
-    nnoremap <silent> <Leader>      :<c-u>WhichKey       ','<CR>
-    vnoremap <silent> <leader>      :<c-u>WhichKeyVisual ','<CR>
-    nnoremap <silent> <LocalLeader> :<c-u>WhichKey        '<Space>'<CR>
-    vnoremap <silent> <LocalLeader> :<c-u>WhichKeyVisual  '<Space>'<CR>
 
-    " Define prefix dictionary
-    call which_key#register(',',       "g:which_key_leader_map")
-    call which_key#register('<Space>', "g:which_key_localleader_map")
+    if isdirectory(expand(bundles_dir . "/vim-which-key"))
+        nnoremap <silent> <Leader>      :<c-u>WhichKey       ','<CR>
+        vnoremap <silent> <leader>      :<c-u>WhichKeyVisual ','<CR>
+        nnoremap <silent> <LocalLeader> :<c-u>WhichKey        '<Space>'<CR>
+        vnoremap <silent> <LocalLeader> :<c-u>WhichKeyVisual  '<Space>'<CR>
+
+        " Define prefix dictionary
+        "
+        call which_key#register(',',       "g:which_key_leader_map")
+        call which_key#register('<Space>', "g:which_key_localleader_map")
+    endif
 
     let g:which_key_leader_map = {}
     let g:which_key_localleader_map = {}
@@ -756,7 +762,7 @@ vnoremap <F1> <Esc>
 "Plugins <<<1
 
     " Plugin: YCM properties <<<1
-    if isdirectory(expand("~/.vim/bundle/YouCompleteMe"))
+    if isdirectory(expand(bundles_dir . "/YouCompleteMe"))
         let g:ycm_use_clangd = 1
         " Virtualenv properties
         let g:ycm_python_interpreter_path = ''
@@ -791,7 +797,7 @@ vnoremap <F1> <Esc>
     " 1>>>
 
     " Plugin: Identlines properties (this plugin change conceal properties) <<<1
-    if isdirectory(expand("~/.vim/bundle/vim-indent-guides/"))
+    if isdirectory(expand(bundles_dir . "/vim-indent-guides/"))
         let g:indent_guides_default_mapping = 0
         let g:indent_guides_start_level = 2
         let g:indent_guides_guide_size = 1
@@ -803,12 +809,12 @@ vnoremap <F1> <Esc>
     " 1>>>
 
     " Plugin: Airline properties <<<1
-    if isdirectory(expand("~/.vim/bundle/vim-airline/"))
+    if isdirectory(expand(bundles_dir . "/vim-airline/"))
         let g:airline_powerline_fonts = 1
         let g:airline_skip_empty_sections = v:true
         let g:bufferline_echo = 0
         let g:airline_highlighting_cache = 1
-        if isdirectory(expand("~/.vim/bundle/vim-airline-themes/"))
+        if isdirectory(expand(bundles_dir . "/vim-airline-themes/"))
             let g:airline_extensions=['branch', 'localsearch', 'virtualenv', 'csv', 'bufferline',
                         \             'hunks', 'keymap', 'quickfix', 'ale', 'tagbar', 'term',
                         \             'undotree', 'whitespace', 'wordcount', 'ycm', 'tabline']
@@ -850,7 +856,7 @@ vnoremap <F1> <Esc>
     " 1>>>
 
     " Plugin: FZF (performs like CtrlP) <<<1
-    if isdirectory(expand("~/.vim/bundle/fzf/"))
+    if isdirectory(expand(bundles_dir . "/fzf/"))
         nnoremap <C-p> :Files<CR>
         nnoremap <C-l> :Rg<CR>
         nnoremap gl :BLines<CR>
@@ -859,7 +865,7 @@ vnoremap <F1> <Esc>
     " 1>>>
 
     " Plugin: Vim-Go properties <<<1
-    if isdirectory(expand("~/.vim/bundle/vim-go/"))
+    if isdirectory(expand(bundles_dir . "/vim-go/"))
         let g:go_fmt_command = "goimports"          " format with goimports instead of gofmt
         let g:go_list_type = "quickfix"
         let g:go_version_warning = 0
@@ -883,7 +889,7 @@ vnoremap <F1> <Esc>
     " 1>>>
 
     " Plugin: GitGutter properties <<<1
-    if isdirectory(expand("~/.vim/bundle/vim-gitgutter/"))
+    if isdirectory(expand(bundles_dir . "/vim-gitgutter/"))
         set updatetime=500
         let g:gitgutter_enabled=1
         let g:gitgutter_map_keys=0
@@ -906,7 +912,7 @@ vnoremap <F1> <Esc>
     " 1>>>
 
     " Plugin: Vim-Ale properties <<<1
-    if isdirectory(expand("~/.vim/bundle/ale/"))
+    if isdirectory(expand(bundles_dir . "/ale/"))
         let g:ale_lint_on_enter = 0
         let g:ale_lint_on_text_changed = 'never'
         let g:ale_lint_on_insert_leave = 0
@@ -922,14 +928,14 @@ vnoremap <F1> <Esc>
     " 1>>>
 
     " Plugin: EditorConfig properties <<<1
-    if isdirectory(expand("~/.vim/bundle/editorconfig/"))
+    if isdirectory(expand(bundles_dir . "/editorconfig/"))
         let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
     endif
     " 1>>>
 
     " Plugin: Session List <<<1
     set sessionoptions=blank,buffers,curdir,folds,tabpages,winsize
-    if isdirectory(expand("~/.vim/bundle/sessionman.vim/"))
+    if isdirectory(expand(bundles_dir . "/sessionman.vim/"))
         nnoremap <silent><Leader>sl :SessionList<CR><CR>
         let g:which_key_leader_map.s.l = 'List'
         "
@@ -942,7 +948,7 @@ vnoremap <F1> <Esc>
     " 1>>>
 
     " Plugin: UndoTree properties <<<1
-    if isdirectory(expand("~/.vim/bundle/undotree/"))
+    if isdirectory(expand(bundles_dir . "/undotree/"))
         nnoremap <silent><F2> :UndotreeToggle<CR>
         let g:undotree_SetFocusWhenToggle=1
         let g:undotree_WindowLayout = 4
@@ -956,7 +962,7 @@ vnoremap <F1> <Esc>
     " 1>>>
 
     " Plugin: NerdTree properties <<<1
-    if isdirectory(expand("~/.vim/bundle/nerdtree"))
+    if isdirectory(expand(bundles_dir . "/nerdtree"))
         nnoremap <silent><F1> :NERDTreeToggle<CR>
         let g:NERDShutUp=1
         let g:NERDTreeQuitOnOpen=1                      " close NERDTree after a file is opened
@@ -978,7 +984,7 @@ vnoremap <F1> <Esc>
     " 1>>>
 
     " Plugin: TagBar properties <<<1
-    if isdirectory(expand("~/.vim/bundle/tagbar/"))
+    if isdirectory(expand(bundles_dir . "/tagbar/"))
         nnoremap <silent> <F3> :TagbarToggle<CR>
         let g:tagbar_left=0
         let g:tagbar_autofocus=1
@@ -994,13 +1000,13 @@ vnoremap <F1> <Esc>
     " 1>>>
 
     " Plugin: Rainbow <<<1
-    if isdirectory(expand("~/.vim/bundle/rainbow/"))
+    if isdirectory(expand(bundles_dir . "/rainbow/"))
         let g:rainbow_active = 1                        " 0 if you want to enable it later via :RainbowToggle
     endif
     " 1>>>
 
     " Plugin: Fugitive <<<1
-    if isdirectory(expand("~/.vim/bundle/vim-fugitive/"))
+    if isdirectory(expand(bundles_dir . "/vim-fugitive/"))
         nnoremap <silent> <Leader>gs :Gstatus<CR>
         let g:which_key_leader_map.g.s = 'Gstatus'
         "
@@ -1040,7 +1046,7 @@ vnoremap <F1> <Esc>
     " 1>>>
 
     " Plugin: Better-WhiteSpace <<<1
-    if isdirectory(expand("~/.vim/bundle/vim-better-whitespace/"))
+    if isdirectory(expand(bundles_dir . "/vim-better-whitespace/"))
         nnoremap ]w :NextTrailingWhitespace<CR>
         nnoremap [w :PrevTrailingWhitespace<CR>
         let g:strip_whitespace_on_save = 1
@@ -1048,7 +1054,7 @@ vnoremap <F1> <Esc>
     " 1>>>
 
     " Plugin: LocalSearch <<<1
-    if isdirectory(expand("~/.vim/bundle/vim-localsearch/"))
+    if isdirectory(expand(bundles_dir . "/vim-localsearch/"))
         nmap <Leader>/ <Plug>localsearch_toggle
     endif
     " 1>>>
@@ -1062,7 +1068,7 @@ vnoremap <F1> <Esc>
     " 1>>>
 
     "Plugin: Vim-repl - Python <<<1
-    if isdirectory(expand("~/.vim/bundle/vim-repl/"))
+    if isdirectory(expand(bundles_dir . "/vim-repl/"))
         let g:repl_program = {
                     \   'python': 'ipython',
                     \   'default': 'zsh',
@@ -1087,7 +1093,7 @@ vnoremap <F1> <Esc>
     " 1>>>
 
     " Plugin: NERDCommenter <<<1
-    if isdirectory(expand("~/.vim/bundle/nerdcommenter/"))
+    if isdirectory(expand(bundles_dir . "/nerdcommenter/"))
         let g:which_key_leader_map['c'] = {
          \ 'name' : '+Commentes',
          \ ' ' : ['<Plug>NERDCommentToggle   ', 'Toggle'    ],
@@ -1108,7 +1114,7 @@ vnoremap <F1> <Esc>
     " 1>>>
 
     " Plugin: Sneake <<<1
-    if isdirectory(expand("~/.vim/bundle/vim-sneak/"))
+    if isdirectory(expand(bundles_dir . "/vim-sneak/"))
         let g:sneak#label = 1
         map <Leader><Leader>f <Plug>Sneak_s
         map <Leader><Leader>F <Plug>Sneak_S
@@ -1116,7 +1122,7 @@ vnoremap <F1> <Esc>
     " 1>>>
 
     " Plugin: Vim-FloatTerm <<<1
-    if isdirectory(expand("~/.vim/bundle/vim-floaterm/"))
+    if isdirectory(expand(bundles_dir . "/vim-floaterm/"))
         let g:floaterm_keymap_new    = '<F4>'
         let g:floaterm_keymap_prev   = '<F5>'
         let g:floaterm_keymap_next   = '<F6>'
@@ -1128,7 +1134,7 @@ vnoremap <F1> <Esc>
     " 1>>>
 
     " Plugin: Vim-Bookmark <<<1
-    if isdirectory(expand("~/.vim/bundle/vim-bookmarks/"))
+    if isdirectory(expand(bundles_dir . "/vim-bookmarks/"))
         let g:bookmark_no_default_key_mappings = 1
         let g:bookmark_auto_save = 1
         let g:bookmark_auto_save_file = $HOME .'/.vim/.'. $USER .'-bookmarks'
@@ -1156,14 +1162,14 @@ vnoremap <F1> <Esc>
     " 1>>>
 
     " Plugin: Vim-Pythonsense <<<1
-    if isdirectory(expand("~/.vim/bundle/vim-pythonsense/"))
+    if isdirectory(expand(bundles_dir . "/vim-pythonsense/"))
         let g:is_pythonsense_alternate_motion_keymaps = 1
         let g:is_pythonsense_suppress_location_keymaps = 1
     endif
     " 1>>>
 
     " Plugin: Vim-Move <<<1
-    if isdirectory(expand("~/.vim/bundle/vim-move/"))
+    if isdirectory(expand(bundles_dir . "/vim-move/"))
         let g:move_map_keys = 1
         let g:move_past_end_of_line = 1
         vmap j <Plug>MoveBlockDown
@@ -1174,7 +1180,7 @@ vnoremap <F1> <Esc>
     " 1>>>
 
     " Plugin: Vim-Matchup <<<1
-    if isdirectory(expand("~/.vim/bundle/vim-matchup/"))
+    if isdirectory(expand(bundles_dir . "/vim-matchup/"))
         let g:loaded_matchit = 1
         let g:matchup_matchparen_enabled = 0
         let g:matchup_text_obj_enabled = 0
@@ -1182,7 +1188,7 @@ vnoremap <F1> <Esc>
     " 1>>>
 
     " Plugin: Vim-VisualSplit <<<1
-    if isdirectory(expand("~/.vim/bundle/visual-split.vim/"))
+    if isdirectory(expand(bundles_dir . "/visual-split.vim/"))
         xmap <C-W>r <Plug>(Visual-Split-VSResize)
         xmap <C-W>ss <Plug>(Visual-Split-VSSplit)
         xmap <C-W>a <Plug>(Visual-Split-VSSplitAbove)
