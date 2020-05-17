@@ -180,9 +180,11 @@ ZINIT[HOME_DIR]="${HOME}/repos/dotfiles/.zinit"     # Where Zinit should create 
 ZINIT[BIN_DIR]="${ZINIT[HOME_DIR]}/bin"             # Where Zinit code resides, e.g.: "~/.zinit/bin"
 ZINIT[MODULES_DIR]="${ZINIT[BIN_DIR]}/zmodules/Src"
 ZINIT[ZCOMPDUMP_PATH]="${ZSH_COMPDUMP}/zcompdump"
+#
 #ZINIT[PLUGINS_DIR]="${HOME}/.zinit/plugins"
 #ZINIT[COMPLETIONS_DIR]="${HOME}/.zinit/completions"
 #ZINIT[SNIPPETS_DIR]="${HOME}/.zinit/snippets"
+#
 ZINIT[COMPINIT_OPTS]="-C"
 ZINIT[OPTIMIZE_OUT_DISK_ACCESSES]=1
 
@@ -192,9 +194,9 @@ source ${ZINIT[BIN_DIR]}/zinit.zsh
 autoload -Uz _zinit
 (( ${+_comps}  )) && _comps[zinit]=_zinit
 
-if [ ! -d ${ZINIT[MODULES_DIR]} ];then
-    zinit modules build
-fi
+#if [ ! -d ${ZINIT[MODULES_DIR]} ];then
+#    zinit module build
+#fi
 
 module_path+=( ${ZINIT[MODULES_DIR]} )   # When "zinit module build" was executed,
 zmodload zdharma/zplugin                 # these lines load this module, an execute zsh compilation

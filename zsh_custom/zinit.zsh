@@ -119,7 +119,8 @@ zinit wait"1d" lucid as=program atclone"./libexec/pyenv init - > zpyenv.zsh" \
         pyenv/pyenv
 
 zinit wait"1e" lucid as=program \
-    atclone"ln -sf $PWD/pyenv---pyenv-virtualenv $PYENV_ROOT/plugins/pyenv-virtualenv ;\
+    atclone"mkdir -p $PYENV_ROOT/plugins;\
+            ln -sf ${ZINIT[PLUGINS_DIR]}/pyenv---pyenv-virtualenv $PYENV_ROOT/plugins/pyenv-virtualenv ;\
             pyenv virtualenv-init - > zpvirt.zsh" \
     atinit'export PYENV_ROOT="$HOME/.pyenv"' atpull"%atclone" \
         src"zpvirt.zsh" nocompile'!' for\
