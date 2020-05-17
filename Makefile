@@ -2,6 +2,7 @@ REPOS   := $(HOME)/repos/dotfiles
 UNAME_S := $(shell uname -s)
 LINUX_D := $(shell cut -d\  -f1 < /etc/issue | grep .)
 
+# TODO: needed to be a funtion
 ifeq ($(UNAME_S),Darwin)
 	ZSH_PATH := $(shell brew --prefix zsh)
 else ifeq ($(UNAME_S),Linux)
@@ -71,7 +72,7 @@ zsh_default: zsh_check_default
 
 install_zsh_plugins:
 	@echo "Installing ZSH plugins with ZINIT"
-	sh -s $(ZSH_PATH)
+	sh -c "$(ZSH_PATH) -l"
 
 zsh_check_default:
 	@echo "Would you like to make the zsh the default shell?"
