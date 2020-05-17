@@ -5,7 +5,8 @@
 " Environment {
 "
     " Setup Plug Support {
-        call plug#begin('~/.vim/bundle')
+    let g:bundles_dir = '~/.vim/bundles'
+    call plug#begin(bundles_dir)
     " }
 
 " }
@@ -65,7 +66,7 @@
     "
     " Source support_function.vim to support vim-snippets.
     "
-    if filereadable(expand("~/.vim/bundle/vim-snippets/snippets/support_functions.vim"))
+    if filereadable(expand(bundles_dir . "/vim-snippets/snippets/support_functions.vim"))
         source ~/.vim/bundle/vim-snippets/snippets/support_functions.vim
     endif
     " }
