@@ -37,7 +37,7 @@ endif
 
 ifeq ($(LINUX_D),Ubuntu)
 	apt-get update
-	apt-get install tmux
+	apt-get install -y tmux
 else
 	@echo "Unsuported Operation System"
 endif
@@ -92,7 +92,7 @@ vimrc:
 
 vimrc.bundle:
 	@echo "Linking $(HOME)/.vimrc.bundle"
-	ln -sf $(CURDIR)/.vimrc.bundle $(HOME)/.vimrc.bundle
+	ln -sf $(CURDIR)/.vimrc.bundles $(HOME)/.vimrc.bundles
 
 vimBundleInstall:
 	vim +PlugInstall! +q
