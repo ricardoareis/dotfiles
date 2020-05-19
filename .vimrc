@@ -1127,8 +1127,9 @@ vnoremap <F1> <Esc>
         let g:floaterm_keymap_prev   = '<F5>'
         let g:floaterm_keymap_next   = '<F6>'
         let g:floaterm_keymap_toggle = '<F7>'
-        let g:floaterm_width    = 0.8
-        let g:floaterm_height   = 0.8
+        let g:floaterm_keymap_kill   = '<Leader><Leader>k'
+        let g:floaterm_width    = 0.9
+        let g:floaterm_height   = 0.9
         let g:floaterm_position = 'center'
     endif
     " 1>>>
