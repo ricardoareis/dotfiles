@@ -1,13 +1,19 @@
+SHELL	:= /bin/bash
+.ONESHELL:
+
 REPOS   := $(HOME)/repos/dotfiles
 UNAME_S := $(shell uname -s)
-LINUX_D := $(shell cut -d\  -f1 < /etc/issue | grep .)
+LINUX_D := $(shell test -f /etc/issue && cut -d" " -f1 /etc/issue | grep .)
+ZSH_LOGIN := --login
 
-# TODO: needed to be a funtion
-ifeq ($(UNAME_S),Darwin)
-	ZSH_PATH := $(shell brew --prefix zsh)
-else ifeq ($(UNAME_S),Linux)
-	ZSH_PATH := $(shell which zsh)
+define get-zsh-path
+ifeq ($(LINUX_D),Ubuntu)
+	$(1) := $(which zsh)
 endif
+ifeq ($(UNAME_S),Darwin)
+	$(1) := $(brew --prefix zsh)/bin/zsh
+endif
+endef
 
 all: install config
 
@@ -23,28 +29,7 @@ install: dotfiles
 config: zsh_default
 	@echo "Configuring dotfiles"
 
-dotfiles: tmux zsh vim
-#
-# Use tmux target to configure tmux
-#
-tmux: install_tmux tmux.conf
-
-install_tmux:
-	@echo "Installing TMUX"
-ifeq ($(UNAME_S),Darwin)
-	brew install tmux
-endif
-
-ifeq ($(LINUX_D),Ubuntu)
-	apt-get update
-	apt-get install -y tmux
-else
-	@echo "Unsuported Operation System"
-endif
-
-tmux.conf:
-	@echo "Linking the $(HOME)/.tmux.conf"
-	ln -sf $(CURDIR)/.tmux.conf $(HOME)/.tmux.conf
+dotfiles: zsh vim tmux
 #
 # Use zsh target to configure zsh
 #
@@ -68,15 +53,41 @@ zshrc:
 
 zsh_default: zsh_check_default
 	@echo "Adopting ZSH as a default shell"
+	$(eval $(call get-zsh-path),ZSH_PATH)
 	chsh -s $(ZSH_PATH)
+.ONESHEL:
 
+#@echo $(eval $(call get-zsh-path))
 install_zsh_plugins:
 	@echo "Installing ZSH plugins with ZINIT"
-	sh -c "$(ZSH_PATH) -l"
+	$(eval $(call get-zsh-path,ZSH_PATH))
+	bash -c "$(ZSH_PATH) $(ZSH_LOGIN)"
+.ONESHEL:
 
 zsh_check_default:
 	@echo "Would you like to make the zsh the default shell?"
 	@( read -p "Are you sure?!? [y/N]: " sure && case "$$sure" in [yY]) true;; *) false;; esac )
+#
+# Use tmux target to configure tmux
+#
+tmux: install_tmux tmux.conf
+
+install_tmux:
+	@echo "Installing TMUX"
+ifeq ($(UNAME_S),Darwin)
+	brew install tmux
+endif
+
+ifeq ($(LINUX_D),Ubuntu)
+	apt-get update
+	apt-get install -y tmux
+else
+	@echo "Unsuported Operation System"
+endif
+
+tmux.conf:
+	@echo "Linking the $(HOME)/.tmux.conf"
+	ln -sf $(CURDIR)/.tmux.conf $(HOME)/.tmux.conf
 #
 # Use vim target to configure vim
 #
