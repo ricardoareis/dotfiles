@@ -1,5 +1,4 @@
 "https://vi.stackexchange.com/questions/16906/how-to-format-json-file-in-vim
-"TODO: Refactoring
 function! FormatJson()
 python3 << EOF
 import vim
