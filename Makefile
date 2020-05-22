@@ -1,17 +1,17 @@
 SHELL	:= /bin/bash
 .ONESHELL:
 
-REPOS   := $(HOME)/repos/dotfiles
-UNAME_S := $(shell uname -s)
-LINUX_D := $(shell test -f /etc/issue && cut -d" " -f1 /etc/issue | grep .)
-ZSH_LOGIN := --login
+REPOS   	:= $(HOME)/repos/dotfiles
+UNAME_S 	:= $(shell uname -s)
+LINUX_D 	:= $(shell test -f /etc/issue && cut -d" " -f1 /etc/issue | grep .)
+ZSH_LOGIN 	:= --login
 
 define get-zsh-path
 ifeq ($(LINUX_D),Ubuntu)
-	$(1) := $(which zsh)
+	$(1) := $(shell which zsh)
 endif
 ifeq ($(UNAME_S),Darwin)
-	$(1) := $(brew --prefix zsh)/bin/zsh
+	$(1) := $(shell brew --prefix zsh 2>/dev/null)/bin/zsh
 endif
 endef
 
@@ -29,7 +29,7 @@ install: dotfiles
 config: zsh_default
 	@echo "Configuring dotfiles"
 
-dotfiles: zsh vim tmux
+dotfiles: vim zsh tmux
 #
 # Use zsh target to configure zsh
 #
@@ -44,7 +44,7 @@ endif
 ifeq ($(LINUX_D),Ubuntu)
 	apt-get install -y zsh
 else
-	@echo "Unsuported Operation System"
+	@echo "$(LINUX_D) Unsuported Operation System"
 endif
 
 zshrc:
@@ -54,15 +54,13 @@ zshrc:
 zsh_default: zsh_check_default
 	@echo "Adopting ZSH as a default shell"
 	$(eval $(call get-zsh-path),ZSH_PATH)
-	chsh -s $(ZSH_PATH)
-.ONESHEL:
+	bash -c "chsh -s $(ZSH_PATH)"
 
 #@echo $(eval $(call get-zsh-path))
 install_zsh_plugins:
 	@echo "Installing ZSH plugins with ZINIT"
 	$(eval $(call get-zsh-path,ZSH_PATH))
 	bash -c "$(ZSH_PATH) $(ZSH_LOGIN)"
-.ONESHEL:
 
 zsh_check_default:
 	@echo "Would you like to make the zsh the default shell?"
@@ -106,4 +104,4 @@ vimrc.bundles:
 	ln -sf $(CURDIR)/.vimrc.bundles $(HOME)/.vimrc.bundles
 
 vimBundlesInstall:
-	vim +PlugInstall! +q
+	echo -e "IF THE VIM DOES NOT QUIT TO CONTINUE:\nAfter the end of plugins installation, please exit vim with :q" | vim +PlugInstall! +q -
