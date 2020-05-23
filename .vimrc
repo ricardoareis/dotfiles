@@ -43,7 +43,7 @@
 
     " Config Clipboard
     if has('clipboard')
-        if has('unnamedplus')                   " When possible use + register for copy-paste
+        if has('unnamedplus')                   " Only-X11 - When possible use + register for copy-paste
             set clipboard=unnamed,unnamedplus
         else                                    " On mac and Windows, use * register for copy-paste
             set clipboard=unnamed
@@ -376,9 +376,12 @@
     let g:vim_json_syntax_conceal = 1
     " 1>>>
 
-    " Base64 <<<1
-    " TODO: Encode and autoformat
-    vnoremap <leader>64 c<c-r>=system('base64 --decode', @")<cr><esc>
+    " DecodeB64 <<<1
+    if has('python3')
+        vnoremap <leader>64 c<c-r>=DecodeB64()<CR><Esc>
+    else
+        vnoremap <leader>64 c<c-r>=system('base64 --decode', @")<CR><Esc>
+    endif
     " 1>>>
 
     " Wildfire <<<1
