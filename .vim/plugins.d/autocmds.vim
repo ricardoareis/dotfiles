@@ -1,6 +1,24 @@
 set nocompatible            " this may already be in your .vimrc
 filetype plugin indent on   " ...and this too
 
+" file is large from 5mb
+let g:LargeFile = 1024 * 1024 * 5
+
+function! LargeFile()
+    " no syntax highlight
+    setlocal syntax=OFF
+    " no syntax highlighting etc
+    "set eventignore+=FileType
+    " save memory when other file is viewed
+    setlocal bufhidden=unload
+    " is read-only (write with :w new_filename)
+    setlocal buftype=nowrite
+    " no undo possible
+    setlocal undolevels=-1
+    " display message
+    autocmd VimEnter *  echo "The file is larger than " . (g:LargeFile / 1024 / 1024) . " MB, so some options are changed (see autocmds.vim for details)."
+endfunction
+
 augroup vimhooks
     autocmd!
 
@@ -8,8 +26,9 @@ augroup vimhooks
     "autocmd BufWritePost .vimrc source ~/.vimrc
 
     " Disable Syntax Highlight when the file size is greater than 5MB
-    autocmd Filetype xml  if getfsize(@%) > 5000000 | setlocal syntax=OFF | endif
-    autocmd Filetype json if getfsize(@%) > 5000000 | setlocal syntax=OFF | endif
+    "autocmd Filetype xml  if getfsize(@%) > 5000000 | setlocal syntax=OFF | endif
+    "autocmd Filetype json if getfsize(@%) > 5000000 | setlocal syntax=OFF | endif
+    autocmd BufReadPre * let f=getfsize(expand("<afile>")) | if f > g:LargeFile || f == -2 | call LargeFile() | endif
 
     " Automatically rebuild custom dictionary binaries when saving the text versions
     autocmd BufWritePost .vim/spell/*.add silent! :mkspell! %
