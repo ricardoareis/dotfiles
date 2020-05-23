@@ -7,6 +7,10 @@ augroup vimhooks
     " Automatically reload vimrc when it's saved
     "autocmd BufWritePost .vimrc source ~/.vimrc
 
+    " Disable Syntax Highlight when the file size is greater than 5MB
+    autocmd Filetype xml  if getfsize(@%) > 5000000 | setlocal syntax=OFF | endif
+    autocmd Filetype json if getfsize(@%) > 5000000 | setlocal syntax=OFF | endif
+
     " Automatically rebuild custom dictionary binaries when saving the text versions
     autocmd BufWritePost .vim/spell/*.add silent! :mkspell! %
 
