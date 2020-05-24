@@ -111,6 +111,7 @@
     Plug 'embear/vim-foldsearch'              " search a pattern and close everything as a fold
     Plug 'matze/vim-move'                     " move block easily (visual mode + CTRL+J)
     Plug 'chrisbra/NrrwRgn'                   " TODO: Study
+    Plug 'machakann/vim-highlightedyank'
     "}
 
     " All of your Plugs must be added before the following line
