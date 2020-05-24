@@ -508,6 +508,15 @@
     nnoremap vv ^vg_
     " select all chars after cursos, without newline
     nnoremap vV vg_
+    " TODO: why i don't have this problem?
+    "set nostartofline
+    " 1>>>
+
+    " Solve an accidentally typing  <<<1
+    " remap the cmd history to be q;
+    nnoremap q; q:
+    " remap the cmd history keycode to cmd quit
+    nnoremap q: :q
     " 1>>>
 
     " Go to tab by number <<<1
@@ -859,10 +868,12 @@ vnoremap <F1> <Esc>
     " 1>>>
 
     " Plugin: FZF (performs like CtrlP) <<<1
+    " TODO: Document all maps
     if isdirectory(expand(bundles_dir . "/fzf/"))
         nnoremap <C-p> :Files<CR>
         nnoremap <C-l> :Rg<CR>
         nnoremap gl :BLines<CR>
+        nnoremap <leader>* :Rg <C-R><C-W><CR>
         let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'border': 'sharp'  }  }
     endif
     " 1>>>
