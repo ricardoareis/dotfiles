@@ -23,7 +23,6 @@
 
     Plug 'tpope/vim-repeat'                   " Support to repeat some cmds
     Plug 'tpope/vim-abolish'                  " Support an abbreviation    - TODO study
-    "Plug 'chrisbra/matchit'                  " Extend support of %
     Plug 'andymass/vim-matchup'
     " }
 
@@ -56,7 +55,6 @@
     Plug 'sillybun/vim-repl',                   {'for': ['python', 'python3']}
     Plug 'jmcantrell/vim-virtualenv',           {'for': ['python', 'python3']}  " Support a Python VirtualEnv
     Plug 'jeetsukumaran/vim-pythonsense'
-    "
     " }
 
     " Snippets & AutoComplete {

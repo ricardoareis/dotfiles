@@ -309,21 +309,23 @@
         vnoremap <silent> <LocalLeader> :<c-u>WhichKeyVisual  '<Space>'<CR>
 
         " Define prefix dictionary
+        let g:which_key_leader_map = {}
+        let g:which_key_localleader_map = {}
+        let g:which_key_leader_map.t = {'name': '+Toggle'}
+        let g:which_key_leader_map.f = {'name': '+Find/Files/Fold'}
+        let g:which_key_leader_map.e = {'name': '+Edit'}
+        let g:which_key_leader_map.y = {'name': '+Go'}
+        let g:which_key_leader_map.s = {'name': '+Session'}
+        let g:which_key_leader_map.g = {'name': '+Git'}
+        let g:which_key_leader_map.w = {'name': '+Windows'}
+        let g:which_key_leader_map.k = {'name': '+Bookmark'}
         "
-        call which_key#register(',',       "g:which_key_leader_map")
-        call which_key#register('<Space>', "g:which_key_localleader_map")
+        call which_key#register(',',       'g:which_key_leader_map')
+        call which_key#register('<Space>', 'g:which_key_localleader_map')
+        "autocmd! User vim-which-key call which_key#register(',',       'g:which_key_leader_map')
+        "autocmd! User vim-which-key call which_key#register('<Space>', 'g:which_key_localleader_map')
     endif
 
-    let g:which_key_leader_map = {}
-    let g:which_key_localleader_map = {}
-    let g:which_key_leader_map.t = {'name': '+Toggle'}
-    let g:which_key_leader_map.f = {'name': '+Find/Files/Fold'}
-    let g:which_key_leader_map.e = {'name': '+Edit'}
-    let g:which_key_leader_map.y = {'name': '+Go'}
-    let g:which_key_leader_map.s = {'name': '+Session'}
-    let g:which_key_leader_map.g = {'name': '+Git'}
-    let g:which_key_leader_map.w = {'name': '+Windows'}
-    let g:which_key_leader_map.k = {'name': '+Bookmark'}
     " 1>>>
 
     " Show Invisible Chars <<<1
