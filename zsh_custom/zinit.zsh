@@ -88,74 +88,81 @@ zinit wait"1c" lucid for \
 #}
 
 # Loading as a program with a 1s delay {
-zinit wait"1c" lucid as=program \
-    atclone"./fasd --init auto > zfasd.zsh"\
-        src="zfasd.zsh" for clvv/fasd
+zinit wait"1c" lucid as=program                 \
+    atclone"./fasd --init auto > zfasd.zsh"     \
+    src="zfasd.zsh" for                         \
+    clvv/fasd
 
-zinit wait"1d" lucid as=program from"gh-r" for \
-    mv"bat* -> bat" pick="bat/bat" @sharkdp/bat
+zinit wait"1d" lucid as=program from"gh-r"      \
+    atinit='ln -sf $PWD/bat/bat $ZPFX/bin'      \
+    mv"bat* -> bat" pick="bat/bat" for          \
+    @sharkdp/bat
 
-zinit wait"1d" lucid as=program from"gh-r" for \
-    mv"fd* -> fd" pick="fd/fd" @sharkdp/fd
+zinit wait"1d" lucid as=program from"gh-r"      \
+    atinit='ln -sf $PWD/fd/fd $ZPFX/bin'        \
+    mv"fd* -> fd" pick="fd/fd" for              \
+    @sharkdp/fd
 
-zinit wait"1d" lucid as=program from"gh-r" for \
-    mv"delta* -> delta" pick="delta/delta" @dandavison/delta
+zinit wait"1d" lucid as=program from"gh-r"      \
+    atinit='ln -sf $PWD/delta/delta $ZPFX/bin'  \
+    mv"delta* -> delta" pick="delta/delta" for  \
+    @dandavison/delta
 
-zinit wait"1d" lucid as=program from"gh-r" for \
-    mv"ripgrep* -> rg" pick="rg/rg" @BurntSushi/ripgrep
+zinit wait"1d" lucid as=program from"gh-r"      \
+    atinit='ln -sf $PWD/rg/rg $ZPFX/bin'        \
+    mv"ripgrep* -> rg" pick="rg/rg" for         \
+    @BurntSushi/ripgrep
 
-zinit wait"1d" lucid as=program from"gh-r" for \
-    src="$ZSH_CUSTOM/fzf.cfg" mv"fzf* -> fzf" \
-    pick="fzf/fzf" @junegunn/fzf-bin
+zinit wait"1d" lucid as=program from"gh-r"      \
+    atinit='ln -sf $PWD/fzf $ZPFX/bin'          \
+    mv"fzf* -> fzf" pick="fzf/fzf"              \
+    src="$ZSH_CUSTOM/fzf.cfg"  for              \
+    @junegunn/fzf-bin
 
-zinit wait"1d" lucid as=program \
-    atclone="./autogen.sh && ./configure --prefix=$PWD" \
-    make="" pick="ctags" for \
+zinit wait"1d" lucid as=program                                 \
+    atclone="./autogen.sh && ./configure --prefix=$PWD"         \
+    make="" pick="ctags" for                                    \
     universal-ctags/ctags
 
-zinit wait"1d" lucid as=program atclone"./libexec/pyenv init - > zpyenv.zsh" \
-    atinit'export PYENV_ROOT="$HOME/.pyenv"' atpull"%atclone" \
-    pick='bin/pyenv' src"zpyenv.zsh" nocompile'!' for\
-        pyenv/pyenv
+zinit wait"1d" lucid as=program                                 \
+    atclone"./libexec/pyenv init - > zpyenv.zsh"                \
+    atinit'export PYENV_ROOT="$HOME/.pyenv"'                    \
+    atpull"%atclone" pick='bin/pyenv'                           \
+    src"zpyenv.zsh" nocompile'!' for                            \
+    pyenv/pyenv
 
-zinit wait"1e" lucid as=program \
-    atclone"mkdir -p $PYENV_ROOT/plugins;\
+zinit wait"1e" lucid as=program                                                                         \
+    atclone"mkdir -p $PYENV_ROOT/plugins;                                                               \
             ln -sf ${ZINIT[PLUGINS_DIR]}/pyenv---pyenv-virtualenv $PYENV_ROOT/plugins/pyenv-virtualenv ;\
-            pyenv virtualenv-init - > zpvirt.zsh" \
-    atinit'export PYENV_ROOT="$HOME/.pyenv"' atpull"%atclone" \
-        src"zpvirt.zsh" nocompile'!' for\
-        pyenv/pyenv-virtualenv
+            pyenv virtualenv-init - > zpvirt.zsh"                                                       \
+    atinit'export PYENV_ROOT="$HOME/.pyenv"'                                                            \
+    atpull"%atclone" src"zpvirt.zsh" nocompile'!' for                                                   \
+    pyenv/pyenv-virtualenv
 
-zinit wait"1d" lucid as=program atclone"./libexec/goenv init - > zgoenv.zsh" \
+zinit wait"1d" lucid as=program atclone"./libexec/goenv init - > zgoenv.zsh"    \
     atinit'export GOENV_ROOT="$PWD"
            export PATH="$GOENV_ROOT/bin:$GOENV_ROOT/shims:$PATH"
-           export PATH="$GOPATH/bin:$GOROOT/bin:$PATH"' atpull"%atclone" \
-    pick='bin/goenv' src"zgoenv.zsh" nocompile'!' for\
-        syndbg/goenv
+           export PATH="$GOPATH/bin:$GOROOT/bin:$PATH"' atpull"%atclone"        \
+    pick='bin/goenv' src"zgoenv.zsh" nocompile'!' for                           \
+    syndbg/goenv
 
-zinit wait"1f" lucid as=program \
-    atinit' ln -sf $PWD/fpp $ZPFX/bin' pick="fpp" nocompile'!' for \
+zinit wait"1f" lucid as=program                             \
+    pick="fpp" nocompile'!'                                 \
+    atinit' ln -sf $PWD/fpp $ZPFX/bin' for                  \
     facebook/pathpicker
 
-zinit wait"1e" lucid as=program pick="git-recall" for\
-    Fakerr/git-recall
+zinit wait"1e" lucid as=program pick="git-recall"   for Fakerr/git-recall
+zinit wait"1e" lucid as=program pick="git-open"     for paulirish/git-open
+zinit wait"1e" lucid as=program pick="git-recent"   for paulirish/git-recent
+zinit wait"1e" lucid as=program pick="git-my"       for davidosomething/git-my
 
-zinit wait"1e" lucid as=program pick="git-open" for\
-    paulirish/git-open
+zinit wait"1e" lucid as=program pick="git-quick-stats"  \
+    atload"export _MENU_THEME=legacy"                   \
+    for arzzen/git-quick-stats
 
-zinit wait"1e" lucid as=program pick="git-recent" for\
-    paulirish/git-recent
-
-zinit wait"1e" lucid as=program pick="git-my" for\
-    davidosomething/git-my
-
-zinit wait"1e" lucid as=program pick="git-quick-stats" \
-    atload"export _MENU_THEME=legacy" for\
-    arzzen/git-quick-stats
-
-zinit wait"1e" lucid as=program pick="git-quick-stats" \
-    make"PREFIX=$ZPFX install" for \
-    tj/git-extras
+zinit wait"1e" lucid as=program pick="git-quick-stats"  \
+    make"PREFIX=$ZPFX install"                          \
+    for tj/git-extras
 #}
 
 # Loading with a 2s delay {
