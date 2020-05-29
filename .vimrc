@@ -319,6 +319,7 @@
         let g:which_key_leader_map.g = {'name': '+Git'}
         let g:which_key_leader_map.w = {'name': '+Windows'}
         let g:which_key_leader_map.k = {'name': '+Bookmark'}
+        let g:which_key_leader_map.n = {'name': '+Narrow'}
         "
         call which_key#register(',',       'g:which_key_leader_map')
         call which_key#register('<Space>', 'g:which_key_localleader_map')
@@ -1207,17 +1208,22 @@ vnoremap <F1> <Esc>
     " Plugin: Vim-VisualSplit <<<1
     if isdirectory(expand(bundles_dir . "/visual-split.vim/"))
         xmap <C-W>r <Plug>(Visual-Split-VSResize)
-        xmap <C-W>ss <Plug>(Visual-Split-VSSplit)
+        xmap <C-W>s <Plug>(Visual-Split-VSSplit)
         xmap <C-W>a <Plug>(Visual-Split-VSSplitAbove)
         xmap <C-W>b <Plug>(Visual-Split-VSSplitBelow)
 
         nmap <C-W>r  <Plug>(Visual-Split-Resize)
-        nmap <C-W>ss <Plug>(Visual-Split-Split)
+        nmap <C-W>s <Plug>(Visual-Split-Split)
         nmap <C-W>a <Plug>(Visual-Split-SplitAbove)
         nmap <C-W>b <Plug>(Visual-Split-SplitBelow)
     endif
     " 1>>>
 
+    " Plugin: Vim-NrrwRegn <<<1
+    if isdirectory(expand(bundles_dir . "/NrrwRgn/"))
+        let g:which_key_leader_map.n.r = 'OpenInNarrowedWindow'
+    endif
+    " 1>>>
 " 1>>>
 
 " Loading others .vim <<<1
