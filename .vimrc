@@ -266,15 +266,17 @@
 
     " Format properties <<<1
     set autoindent          " Indent at the same level of the previous line
-    set shiftwidth=4        " use indents of 4 spaces
-    set shiftround          " rounding indent in a multiples of a shiftwidth
-    "set smarttab            " TODO: study
-    set expandtab           " tabs are spaces, not tabs
+    set smartindent         " use smart indent if there is no indent file
     set tabstop=4           " each tab a four columns
     set softtabstop=4       " let backspace delete indent
+    set smarttab            " Handle tabs more intelligently
+    set expandtab           " tabs are spaces, not tabs
+    set shiftwidth=4        " use indents of 4 spaces
+    set shiftround          " rounding indent in a multiples of a shiftwidth
     set nojoinspaces        " Prevents inserting two spaces after punctuation on a join (J)
     set splitright          " Puts new vsplit windows to the right of the current
     set splitbelow          " Puts new split windows to the bottom of the current
+    set cindent             " Stricter rules for C program
     " 1>>>
 
     " The complete properties <<<1
@@ -478,10 +480,6 @@
     "
     "TODO: Refactoring to suporte more than
     "2 chars, in a relative line number
-    "
-    "nnoremap mv mc3kY'cP :delmark c<CR>
-    "nnoremap <expr>mv 'mc'.nr2char(getchar())."kY'cP :delmark c"<CR>
-    "nnoremap mv :exec    ("normal mc" . nr2char(getchar()) . "kY'c")<CR>
     "
     function! MvLines()
         " This function receave 2 chars
@@ -871,11 +869,14 @@ vnoremap <F1> <Esc>
     " 1>>>
 
     " Plugin: FZF (performs like CtrlP) <<<1
-    " TODO: Document all maps
     if isdirectory(expand(bundles_dir . "/fzf/"))
+        "Open a file fuzzy search
         nnoremap <C-p> :Files<CR>
+        "Open a content fuzzy search
         nnoremap <C-l> :Rg<CR>
+        "Open a line fuzzy search
         nnoremap gl :BLines<CR>
+        "Open a word fuzzy search
         nnoremap <leader>* :Rg <C-R><C-W><CR>
         let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'border': 'sharp'  }  }
     endif
@@ -928,7 +929,7 @@ vnoremap <F1> <Esc>
     endif
     " 1>>>
 
-    " Plugin: Vim-Ale properties <<<1
+    " Plugin: Vim-ALE properties <<<1
     if isdirectory(expand(bundles_dir . "/ale/"))
         let g:ale_lint_on_enter = 0
         let g:ale_lint_on_text_changed = 'never'
@@ -939,6 +940,12 @@ vnoremap <F1> <Esc>
         let g:ale_set_quickfix = 1
         let g:ale_keep_list_window_open = 1
         let g:ale_list_window_size = 5
+        let g:ale_fixers = {
+                    \   'python':   ['remove_trailing_lines', 'trim_whitespace'],
+                    \   'go':       ['remove_trailing_lines', 'trim_whitespace'],
+                    \   'sh':       ['remove_trailing_lines', 'trim_whitespace'],
+                    \   'zsh':      ['remove_trailing_lines', 'trim_whitespace']
+                    \}
         nmap <silent> <C-k> <Plug>(ale_previous_wrap)
         nmap <silent> <C-j> <Plug>(ale_next_wrap)
     endif

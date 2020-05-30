@@ -3,18 +3,21 @@
 #zmodload zsh/zprof
 
 umask 022
+
 # Configure the cache dir
 XDG_CACHE_HOME="${XDG_CACHE_HOME:-${HOME}/.cache}"
 ZSH_CACHE_DIR="${XDG_CACHE_HOME}/zsh"
 ZSH_COMPDUMP="${ZSH_COMPDUMP:-${ZSH_CACHE_DIR}}"
 
 # The instant prompt loaded a precompiled version of zsh
-# some times it does not work, breaking the load
-# the property below produce the config
+# some times it does not work, breaking the load.
+#
+# The property below toggle the file evaluated by if
 POWERLEVEL9K_INSTANT_PROMPT=off
 
 # this if, load the p10k instant prompt config
 # however, does not work.
+#
 #if [[ -r "${XDG_CACHE_HOME}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
 #    source "${XDG_CACHE_HOME}/p10k-instant-prompt-${(%):-%n}.zsh"
 #fi
@@ -113,9 +116,12 @@ bindkey '^[h' run-help  # Esc+h
 #}
 
 # PATH && MANPATH properties {
+#export PYENV_ROOT="$HOME/.pyenv"
 
-export PYENV_ROOT="$HOME/.pyenv"
-export DOCKER_HOST=tcp://0.0.0.0:2375
+# Workaround for WSL Windows
+if [[ ! -z "$(command -v explorer.exe)" ]];then
+    export DOCKER_HOST=tcp://0.0.0.0:2375
+fi
 
 typeset -U PATH path
 
@@ -166,7 +172,7 @@ if [[ ${+MANPATH} -eq 1 ]]; then
     export MANPATH
 fi
 
-if [[ "$(uname)" == "Darwin" ]] ; then
+if [[ "$(uname)" == "Darwin" ]];then
     export LDFLAGS=-L/usr/local/opt/openssl@1.1/lib
     export CPPFLAGS=-I/usr/local/opt/openssl@1.1/include
     export C_INCLUDE_PATH="/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include/libxml2:$C_INCLUDE_PATH"
@@ -223,8 +229,7 @@ for paths in "$fpath[@]"; do
 done
 unset paths
 
-# TODO: Set ZSH_CUSTOM to the path where your custom config files
-# and plugins exists, or else we will use the default custom/
+# ZSH_CUSTOM to the path where your custom config files
 ZSH_CUSTOM=${ZSH_CUSTOM:-${HOME}/repos/dotfiles/zsh_custom}
 for config_file ($ZSH_CUSTOM/*.zsh(N)); do
     source $config_file
