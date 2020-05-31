@@ -10,7 +10,7 @@ and reconfigured from scratch.
 # Disclaimer
 
 IT WAS NOT PRODUCED TO BE A DISTRIBUTION, use it if you would like to have
-a inspiration, fork it in your private, or public repo.
+an inspiration, fork it in your private, or public repo.
 
 Feel free, to send me suggestions, but not inquiry me if something does work
 as you like. Doubts are welcome, I will answer if a have time.
@@ -48,9 +48,33 @@ them - and with me, it would be no different.
 
 # Installation
 
+## Testing inside of a docker container
+
+If would you like to evaluate it, the most simple way is using a docker container.
+
+```sh
+docker run -ti ubuntu bash
+apt-get update && apt-get install -y file build-essential git subversion curl wget
+sudo autoconf pkg-config language-pack-en-base
+```
+
 ## Cloning the repo
+
+There is some limitations, and actually, the root must be ~/repos/dotfiles.
 
 ```sh
 mkdir ~/repos ; cd ~/repos
-git clone https://github.com/ricardoareis/dotfiles
+git clone --recurse-submodules https://github.com/ricardoareis/dotfiles
+```
+
+Execute the zsh target.     [About the Makefile](https://github.com/ricardoareis/dotfiles/blob/master/Makefile)
+
+```sh
+cd ~/repos/dotfiles; make zsh
+```
+
+Compile the ZINIT modules.  [About the Modules](https://github.com/zdharma/zinit/blob/master/README.md#zinit-module)
+
+```sh
+cd ~/repos/dotfiles; zinit module build
 ```
