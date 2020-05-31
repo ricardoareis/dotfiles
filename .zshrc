@@ -204,6 +204,12 @@ autoload -Uz _zinit
 #    zinit module build
 #fi
 
+# allowing python-build be reached
+path=(
+    "${path[@]}"
+    ${ZINIT[PLUGINS_DIR]}/pyenv---pyenv/plugins/python-build/bin
+)
+
 module_path+=( ${ZINIT[MODULES_DIR]} )   # When "zinit module build" was executed,
 zmodload zdharma/zplugin                 # these lines load this module, an execute zsh compilation
 #}
