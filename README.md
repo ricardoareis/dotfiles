@@ -55,7 +55,8 @@ If would you like to evaluate it, the most simple way is using a docker containe
 ```sh
 docker run -ti ubuntu bash
 apt-get update && apt-get install -y file build-essential git subversion curl wget
-sudo autoconf pkg-config language-pack-en-base
+sudo autoconf pkg-config language-pack-en-base ncurses-dev zlib1g-dev libreadline-dev
+libbz2-dev libssl-dev libsqlite3-dev
 ```
 
 ## Cloning the repo
@@ -67,14 +68,26 @@ mkdir ~/repos ; cd ~/repos
 git clone --recurse-submodules https://github.com/ricardoareis/dotfiles
 ```
 
-Execute the zsh target.     [About the Makefile](https://github.com/ricardoareis/dotfiles/blob/master/Makefile)
+Execute the zsh [target](https://github.com/ricardoareis/dotfiles/blob/master/Makefile#zsh)
 
 ```sh
 cd ~/repos/dotfiles; make zsh
 ```
 
-Compile the ZINIT modules.  [About the Modules](https://github.com/zdharma/zinit/blob/master/README.md#zinit-module)
+Compile the ZINIT [Module](https://github.com/zdharma/zinit/blob/master/README.md#zinit-module)
 
 ```sh
 cd ~/repos/dotfiles; zinit module build
+```
+
+Compiling Python, needed by [powerline-status (TMUX)](https://github.com/powerline/powerline)
+
+```sh
+pyenv install 3.8.0
+```
+
+Install powerline-status with PIP
+
+```sh
+pip install powerline-status
 ```
