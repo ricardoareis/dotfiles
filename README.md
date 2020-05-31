@@ -27,7 +27,7 @@ them - and with me, it would be no different.
 * TMUX
   - More details about and inspiration:
     * https://github.com/tmux/tmux/wiki
-  - Plugins with ZINIT:
+  - Plugins with TPM:
     - https://github.com/tmux-plugins/tpm
 
 * VIM, the classic editor
