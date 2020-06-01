@@ -84,7 +84,7 @@ Compiling Python, needed by [powerline-status (TMUX)](https://github.com/powerli
 
 Note: any different output:
   * If pyenv does not work https://github.com/pyenv/pyenv-doctor
-  * If pyenv cold not compile python https://github.com/pyenv/pyenv/wiki/common-build-problems
+  * If pyenv can't compile python https://github.com/pyenv/pyenv/wiki/common-build-problems
 
 ```sh
 pyenv install 3.8.0
