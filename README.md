@@ -56,7 +56,7 @@ If would you like to evaluate it, the most simple way is using a docker containe
 docker run -ti ubuntu bash
 apt-get update && apt-get install -y file build-essential git subversion curl wget
 sudo autoconf pkg-config language-pack-en-base ncurses-dev zlib1g-dev libreadline-dev
-libbz2-dev libssl-dev libsqlite3-dev
+libbz2-dev libssl-dev libsqlite3-dev libffi-dev
 ```
 
 ## Cloning the repo
@@ -82,11 +82,31 @@ cd ~/repos/dotfiles; zinit module build
 
 Compiling Python, needed by [powerline-status (TMUX)](https://github.com/powerline/powerline)
 
+Note: any different output, [start here](https://github.com/pyenv/pyenv/wiki/common-build-problems)
+
 ```sh
 pyenv install 3.8.0
+Downloading Python-3.8.0.tar.xz...
+-> https://www.python.org/ftp/python/3.8.0/Python-3.8.0.tar.xz
+Installing Python-3.8.0...
+Installed Python-3.8.0 to /root/.pyenv/versions/3.8.0
 ```
 
-Install powerline-status with PIP
+Defining python as a global version
+
+```sh
+pyenv global 3.8.0
+```
+
+Upgrade the pip version, and install wheel
+
+```sh
+pip install --upgrade pip
+pip install wheel
+
+```
+
+Install powerline-status with pip
 
 ```sh
 pip install powerline-status
