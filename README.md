@@ -82,7 +82,9 @@ cd ~/repos/dotfiles; zinit module build
 
 Compiling Python, needed by [powerline-status (TMUX)](https://github.com/powerline/powerline)
 
-Note: any different output, [start here](https://github.com/pyenv/pyenv/wiki/common-build-problems)
+Note: any different output:
+  * If pyenv does not work https://github.com/pyenv/pyenv-doctor
+  * If pyenv cold not compile python https://github.com/pyenv/pyenv/wiki/common-build-problems
 
 ```sh
 pyenv install 3.8.0
