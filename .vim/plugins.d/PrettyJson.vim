@@ -10,7 +10,7 @@ try:
 except ValueError as err:
     print('Invalid JSON file: {}'.format(err))
 else:
-    sorted_content = json.dumps(content, indent=4, sort_keys=True)
+    sorted_content = json.dumps(content, indent=4, ensure_ascii=False, sort_keys=True)
     buf[:] = sorted_content.split('\n')
 EOF
 endfunction
