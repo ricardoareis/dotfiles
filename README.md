@@ -105,11 +105,23 @@ Upgrade the pip version, and install wheel
 ```sh
 pip install --upgrade pip
 pip install wheel
-
 ```
 
 Install powerline-status with pip
 
 ```sh
 pip install powerline-status
+```
+
+Execute [powerline-daemon](https://github.com/erikw/tmux-powerline), if zero is returned everything is ok
+
+```sh
+$PYENV_ROOT/shims/powerline-daemon -q --replace && echo $?
+0
+```
+
+Install TMUX
+
+```sh
+cd ~/repos/dotfiles; make tmux
 ```
