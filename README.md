@@ -136,3 +136,15 @@ Are you sure?!? [y/N]: y
 Adopting ZSH as a default shell
 make[1]: Leaving directory '/root/repos/dotfiles'
 ```
+
+Install VIM
+
+```sh
+apt-get install -y vim
+```
+
+Install VIM Plugins
+
+```sh
+cd ~/repos/dotfiles; make vim
+```
