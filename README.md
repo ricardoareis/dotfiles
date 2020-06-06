@@ -125,3 +125,14 @@ Install TMUX
 ```sh
 cd ~/repos/dotfiles; make tmux
 ```
+
+Make the ZSH the default shell
+
+```sh
+cd ~/repos/dotfiles; make zsh_default
+make[1]: Entering directory '/root/repos/dotfiles'
+Would you like to make the zsh the default shell?
+Are you sure?!? [y/N]: y
+Adopting ZSH as a default shell
+make[1]: Leaving directory '/root/repos/dotfiles'
+```
