@@ -53,7 +53,7 @@ zshrc:
 
 zsh_default: zsh_check_default
 	@echo "Adopting ZSH as a default shell"
-	$(eval $(call get-zsh-path),ZSH_PATH)
+	$(eval $(call get-zsh-path,ZSH_PATH))
 	bash -c "chsh -s $(ZSH_PATH)"
 
 #@echo $(eval $(call get-zsh-path))
