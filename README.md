@@ -97,7 +97,7 @@ Installed Python-3.8.0 to /root/.pyenv/versions/3.8.0
 Defining python as a global version
 
 ```sh
-pyenv global 3.8.0
+pyenv global 3.8.3
 ```
 
 Upgrade the pip version, and install wheel
