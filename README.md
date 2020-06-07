@@ -72,19 +72,34 @@ $ mkdir ~/repos ; cd ~/repos
 $ git clone --recurse-submodules https://github.com/ricardoareis/dotfiles
 ```
 
-Install ZSH, with [zsh target](https://github.com/ricardoareis/dotfiles/blob/master/Makefile#L36)
+## ZSH
 
-```sh
-$ cd ~/repos/dotfiles; make zsh
-```
-
-Compile the ZINIT [Module](https://github.com/zdharma/zinit/blob/master/README.md#zinit-module)
+1. Compile the ZINIT [Module](https://github.com/zdharma/zinit/blob/master/README.md#zinit-module)
 
 ```sh
 $ cd ~/repos/dotfiles; zinit module build
 ```
 
-Compiling Python, needed by [powerline-status (TMUX)](https://github.com/powerline/powerline)
+2. Install ZSH, with [zsh target](https://github.com/ricardoareis/dotfiles/blob/master/Makefile#L36)
+
+```sh
+$ cd ~/repos/dotfiles; make zsh
+```
+
+3. Make the ZSH the default shell
+
+```sh
+$ cd ~/repos/dotfiles; make zsh_default
+make[1]: Entering directory '/root/repos/dotfiles'
+Would you like to make the zsh the default shell?
+Are you sure? [y/N]: y
+Adopting ZSH as a default shell
+make[1]: Leaving directory '/root/repos/dotfiles'
+```
+
+## Python
+
+1. Compiling Python, needed by [powerline-status (TMUX)](https://github.com/powerline/powerline)
 
 Note: any different output:
   * If pyenv does not work https://github.com/pyenv/pyenv-doctor
@@ -98,13 +113,13 @@ Installing Python-3.8.0...
 Installed Python-3.8.0 to /root/.pyenv/versions/3.8.0
 ```
 
-Defining python as a global version
+2. Defining python as a global version
 
 ```sh
 $ pyenv global 3.8.3
 ```
 
-Upgrade the pip version, and install wheel
+3. Upgrade the pip version, and install wheel
 
 ```sh
 $ pip install --upgrade pip
@@ -112,49 +127,42 @@ $ pip install --upgrade pip
 $ pip install wheel
 ```
 
-Install powerline-status with pip
+## TMUX
+
+1. Install powerline-status with pip
 
 ```sh
 $ pip install powerline-status
 ```
 
-Execute [powerline-daemon](https://github.com/erikw/tmux-powerline), if zero is returned everything is ok
+2. Execute [powerline-daemon](https://github.com/erikw/tmux-powerline), if zero is returned everything is ok
 
 ```sh
 $ $PYENV_ROOT/shims/powerline-daemon -q --replace && echo $?
 0
 ```
 
-Install TMUX, with [tmux target](https://github.com/ricardoareis/dotfiles/blob/master/Makefile#L71)
+3. Install TMUX, with [tmux target](https://github.com/ricardoareis/dotfiles/blob/master/Makefile#L71)
 
 ```sh
 $ cd ~/repos/dotfiles; make tmux
 ```
 
-Make the ZSH the default shell
+## Vim
 
-```sh
-$ cd ~/repos/dotfiles; make zsh_default
-make[1]: Entering directory '/root/repos/dotfiles'
-Would you like to make the zsh the default shell?
-Are you sure? [y/N]: y
-Adopting ZSH as a default shell
-make[1]: Leaving directory '/root/repos/dotfiles'
-```
-
-Build Vim with Python support, with [build.sh](https://github.com/ricardoareis/dotfiles/blob/master/bin/build.sh)
+1. Build Vim with Python support, with [build.sh](https://github.com/ricardoareis/dotfiles/blob/master/bin/build.sh)
 
 ```sh
 $ cd ~/repos/dotfiles; bin/build.sh vim
 ```
 
-Install Vim plugins, with [vim target](https://github.com/ricardoareis/dotfiles/blob/master/Makefile#L92)
+2. Install Vim plugins, with [vim target](https://github.com/ricardoareis/dotfiles/blob/master/Makefile#L92)
 
 ```sh
 $ cd ~/repos/dotfiles; make vim
 ```
 
-Install YCM (code-completion engine for Vim), with [build.sh](https://github.com/ricardoareis/dotfiles/blob/master/bin/build.sh)
+3. Install YCM (code-completion engine for Vim), with [build.sh](https://github.com/ricardoareis/dotfiles/blob/master/bin/build.sh)
 
 ```sh
 $ cd ~/repos/dotfiles; bin/build.sh ycm
