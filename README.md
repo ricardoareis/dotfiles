@@ -101,7 +101,6 @@ make[1]: Leaving directory '/root/repos/dotfiles'
 
 1. Compiling Python, needed by [powerline-status (TMUX)](https://github.com/powerline/powerline)
 
-Note: any different output:
   * If pyenv does not work https://github.com/pyenv/pyenv-doctor
   * If pyenv can't compile python https://github.com/pyenv/pyenv/wiki/common-build-problems
 
