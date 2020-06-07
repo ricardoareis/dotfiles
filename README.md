@@ -48,15 +48,18 @@ them - and with me, it would be no different.
 
 # Installation
 
-## Testing inside of a docker container
+## Testing inside of a [Docker](https://docs.docker.com/engine/install/) container
 
 If would you like to evaluate it, the most simple way is using a docker container.
 
 ```sh
-docker run -ti ubuntu bash
-apt-get update && apt-get install -y file build-essential git subversion curl wget
-sudo autoconf pkg-config language-pack-en-base ncurses-dev zlib1g-dev libreadline-dev
-libbz2-dev libssl-dev libsqlite3-dev libffi-dev
+$ docker run -ti ubuntu bash
+
+$ apt-get update
+
+$ apt-get install -y autoconf build-essential curl file git language-pack-en-base    \
+                     libbz2-dev libffi-dev libreadline-dev libsqlite3-dev libssl-dev \
+                     ncurses-dev pkg-config subversion sudo wget zlib1g-dev
 ```
 
 ## Cloning the repo
@@ -64,20 +67,21 @@ libbz2-dev libssl-dev libsqlite3-dev libffi-dev
 There is some limitations, and actually, the root must be ~/repos/dotfiles.
 
 ```sh
-mkdir ~/repos ; cd ~/repos
-git clone --recurse-submodules https://github.com/ricardoareis/dotfiles
+$ mkdir ~/repos ; cd ~/repos
+
+$ git clone --recurse-submodules https://github.com/ricardoareis/dotfiles
 ```
 
 Install ZSH, with [zsh target](https://github.com/ricardoareis/dotfiles/blob/master/Makefile#L36)
 
 ```sh
-cd ~/repos/dotfiles; make zsh
+$ cd ~/repos/dotfiles; make zsh
 ```
 
 Compile the ZINIT [Module](https://github.com/zdharma/zinit/blob/master/README.md#zinit-module)
 
 ```sh
-cd ~/repos/dotfiles; zinit module build
+$ cd ~/repos/dotfiles; zinit module build
 ```
 
 Compiling Python, needed by [powerline-status (TMUX)](https://github.com/powerline/powerline)
@@ -87,7 +91,7 @@ Note: any different output:
   * If pyenv can't compile python https://github.com/pyenv/pyenv/wiki/common-build-problems
 
 ```sh
-pyenv install 3.8.0
+$ pyenv install 3.8.0
 Downloading Python-3.8.0.tar.xz...
 -> https://www.python.org/ftp/python/3.8.0/Python-3.8.0.tar.xz
 Installing Python-3.8.0...
@@ -97,39 +101,40 @@ Installed Python-3.8.0 to /root/.pyenv/versions/3.8.0
 Defining python as a global version
 
 ```sh
-pyenv global 3.8.0
+$ pyenv global 3.8.3
 ```
 
 Upgrade the pip version, and install wheel
 
 ```sh
-pip install --upgrade pip
-pip install wheel
+$ pip install --upgrade pip
+
+$ pip install wheel
 ```
 
 Install powerline-status with pip
 
 ```sh
-pip install powerline-status
+$ pip install powerline-status
 ```
 
 Execute [powerline-daemon](https://github.com/erikw/tmux-powerline), if zero is returned everything is ok
 
 ```sh
-$PYENV_ROOT/shims/powerline-daemon -q --replace && echo $?
+$ $PYENV_ROOT/shims/powerline-daemon -q --replace && echo $?
 0
 ```
 
 Install TMUX, with [tmux target](https://github.com/ricardoareis/dotfiles/blob/master/Makefile#L71)
 
 ```sh
-cd ~/repos/dotfiles; make tmux
+$ cd ~/repos/dotfiles; make tmux
 ```
 
 Make the ZSH the default shell
 
 ```sh
-cd ~/repos/dotfiles; make zsh_default
+$ cd ~/repos/dotfiles; make zsh_default
 make[1]: Entering directory '/root/repos/dotfiles'
 Would you like to make the zsh the default shell?
 Are you sure? [y/N]: y
@@ -140,17 +145,17 @@ make[1]: Leaving directory '/root/repos/dotfiles'
 Build Vim with Python support, with [build.sh](https://github.com/ricardoareis/dotfiles/blob/master/bin/build.sh)
 
 ```sh
-cd ~/repos/dotfiles; bin/build.sh vim
+$ cd ~/repos/dotfiles; bin/build.sh vim
 ```
 
 Install Vim plugins, with [vim target](https://github.com/ricardoareis/dotfiles/blob/master/Makefile#L92)
 
 ```sh
-cd ~/repos/dotfiles; make vim
+$ cd ~/repos/dotfiles; make vim
 ```
 
 Install YCM (code-completion engine for Vim), with [build.sh](https://github.com/ricardoareis/dotfiles/blob/master/bin/build.sh)
 
 ```sh
-cd ~/repos/dotfiles; bin/build.sh ycm
+$ cd ~/repos/dotfiles; bin/build.sh ycm
 ```
