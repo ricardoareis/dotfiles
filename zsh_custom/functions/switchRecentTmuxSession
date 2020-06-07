@@ -8,5 +8,3 @@ function switchRecentTmuxSession() {
         fzf --query="$1" --select-1 --exit-0) &&
         tmux switch-client -t "$session"
 }
-
-zle -N switchRecentTmuxSession

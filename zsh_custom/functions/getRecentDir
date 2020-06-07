@@ -4,5 +4,3 @@ function getRecentDir() {
     local dir
     dir=$(fasd -Rdl | fzf --no-sort +m) && cd "$dir"
 }
-
-zle -N rdf
