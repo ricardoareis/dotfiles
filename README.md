@@ -137,7 +137,7 @@ Adopting ZSH as a default shell
 make[1]: Leaving directory '/root/repos/dotfiles'
 ```
 
-Build Vim, with [Python](https://github.com/ricardoareis/dotfiles/blob/master/bin/build.sh)
+Build Vim with Python support, with [build.sh](https://github.com/ricardoareis/dotfiles/blob/master/bin/build.sh)
 
 ```sh
 cd ~/repos/dotfiles; bin/build.sh vim
@@ -149,7 +149,7 @@ Install Vim plugins, with [vim target](https://github.com/ricardoareis/dotfiles/
 cd ~/repos/dotfiles; make vim
 ```
 
-Install YCM (code-completion engine for Vim), with [vim target](https://github.com/ricardoareis/dotfiles/blob/master/bin/build.sh)
+Install YCM (code-completion engine for Vim), with [build.sh](https://github.com/ricardoareis/dotfiles/blob/master/bin/build.sh)
 
 ```sh
 cd ~/repos/dotfiles; bin/build.sh ycm
