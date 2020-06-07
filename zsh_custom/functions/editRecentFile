@@ -7,5 +7,3 @@ editRecentFile() {
     zle reset-prompt
     file="$(fasd -Rfl "$1" | fzf -1 -0 --no-sort +m)" && $EDITOR "${file}"
 }
-
-zle -N editRecentFile

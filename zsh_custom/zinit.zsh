@@ -160,7 +160,7 @@ zinit wait"1e" lucid as=program pick="git-quick-stats"  \
     atload"export _MENU_THEME=legacy"                   \
     for arzzen/git-quick-stats
 
-zinit wait"1e" lucid as=program pick="git-quick-stats"  \
+zinit wait"1e" lucid as=program pick="git-quick-stats ; etc/git-extras-completion.zsh"  \
     make"PREFIX=$ZPFX install"                          \
     for tj/git-extras
 #}
