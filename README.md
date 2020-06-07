@@ -38,7 +38,7 @@ them - and with me, it would be no different.
   - Plugins with TPM:
     - https://github.com/tmux-plugins/tpm
 
-* VIM, the classic editor
+* Vim, the classic editor
   - More details about and inspiration:
     * https://www.vim.org
     * https://github.com/spf13/spf13-vim
@@ -68,7 +68,7 @@ mkdir ~/repos ; cd ~/repos
 git clone --recurse-submodules https://github.com/ricardoareis/dotfiles
 ```
 
-Execute the zsh [target](https://github.com/ricardoareis/dotfiles/blob/master/Makefile#zsh)
+Install ZSH, with [zsh target](https://github.com/ricardoareis/dotfiles/blob/master/Makefile#L36)
 
 ```sh
 cd ~/repos/dotfiles; make zsh
@@ -120,7 +120,7 @@ $PYENV_ROOT/shims/powerline-daemon -q --replace && echo $?
 0
 ```
 
-Install TMUX
+Install TMUX, with [tmux target](https://github.com/ricardoareis/dotfiles/blob/master/Makefile#L71)
 
 ```sh
 cd ~/repos/dotfiles; make tmux
@@ -132,19 +132,25 @@ Make the ZSH the default shell
 cd ~/repos/dotfiles; make zsh_default
 make[1]: Entering directory '/root/repos/dotfiles'
 Would you like to make the zsh the default shell?
-Are you sure?!? [y/N]: y
+Are you sure? [y/N]: y
 Adopting ZSH as a default shell
 make[1]: Leaving directory '/root/repos/dotfiles'
 ```
 
-Install VIM
+Build Vim, with [Python](https://github.com/ricardoareis/dotfiles/blob/master/bin/build.sh)
 
 ```sh
-apt-get install -y vim
+cd ~/repos/dotfiles; bin/build.sh vim
 ```
 
-Install VIM Plugins
+Install Vim plugins, with [vim target](https://github.com/ricardoareis/dotfiles/blob/master/Makefile#L92)
 
 ```sh
 cd ~/repos/dotfiles; make vim
+```
+
+Install YCM (code-completion engine for Vim), with [vim target](https://github.com/ricardoareis/dotfiles/blob/master/bin/build.sh)
+
+```sh
+cd ~/repos/dotfiles; bin/build.sh ycm
 ```
