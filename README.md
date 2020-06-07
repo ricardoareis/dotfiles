@@ -105,11 +105,11 @@ make[1]: Leaving directory '/root/repos/dotfiles'
   * If pyenv can't compile python https://github.com/pyenv/pyenv/wiki/common-build-problems
 
 ```sh
-$ pyenv install 3.8.0
-Downloading Python-3.8.0.tar.xz...
--> https://www.python.org/ftp/python/3.8.0/Python-3.8.0.tar.xz
-Installing Python-3.8.0...
-Installed Python-3.8.0 to /root/.pyenv/versions/3.8.0
+$ pyenv install 3.8.3
+Downloading Python-3.8.3.tar.xz...
+-> https://www.python.org/ftp/python/3.8.3/Python-3.8.3.tar.xz
+Installing Python-3.8.3...
+Installed Python-3.8.3 to /root/.pyenv/versions/3.8.3
 ```
 
 2. Defining python as a global version
