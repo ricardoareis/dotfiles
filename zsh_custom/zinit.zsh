@@ -190,8 +190,8 @@ zinit wait"2" lucid for \
 
 # Loading the completions mandatory at the end {
 
-zinit ice silent wait"2b" as"completion" atload"zicompinit; zicdreplay" lucid
-zinit snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
+#zinit ice silent wait"2b" as"completion" atload"zicompinit; zicdreplay" lucid
+#zinit snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
 
 zinit ice silent wait"2e" atinit"zpcompinit; zpcdreplay"
 zinit light scriptingosx/mac-zsh-completions
