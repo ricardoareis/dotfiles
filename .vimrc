@@ -314,7 +314,6 @@
         let g:which_key_leader_map = {}
         let g:which_key_localleader_map = {}
         let g:which_key_leader_map.t = {'name': '+Toggle'}
-        let g:which_key_leader_map.f = {'name': '+Find/Files/Fold'}
         let g:which_key_leader_map.e = {'name': '+Edit'}
         let g:which_key_leader_map.y = {'name': '+Go'}
         let g:which_key_leader_map.s = {'name': '+Session'}
@@ -325,8 +324,6 @@
         "
         call which_key#register(',',       'g:which_key_leader_map')
         call which_key#register('<Space>', 'g:which_key_localleader_map')
-        "autocmd! User vim-which-key call which_key#register(',',       'g:which_key_leader_map')
-        "autocmd! User vim-which-key call which_key#register('<Space>', 'g:which_key_localleader_map')
     endif
 
     " 1>>>
@@ -537,25 +534,30 @@
     nnoremap z<Left> zc
     nnoremap z<Right> zo
     nmap <Leader>f0 :set foldlevel=0<CR>
-    let g:which_key_leader_map.f.0 = '0-fold-level'
+
+    let g:which_key_leader_map.f = {
+      \ 'name': '+Find/Files/Fold',
+      \   '0' : '0-fold-level',
+      \   '1' : '1-fold-level',
+      \   '2' : '2-fold-level',
+      \   '3' : '3-fold-level',
+      \   '4' : '4-fold-level',
+      \   '5' : '5-fold-level',
+      \   '6' : '6-fold-level',
+      \   '7' : '7-fold-level',
+      \   '8' : '8-fold-level',
+      \   '9' : '9-fold-level',
+      \ }
+
     nmap <Leader>f1 :set foldlevel=1<CR>
-    let g:which_key_leader_map.f.1 = '1-fold-level'
     nmap <Leader>f2 :set foldlevel=2<CR>
-    let g:which_key_leader_map.f.2 = '2-fold-level'
     nmap <Leader>f3 :set foldlevel=3<CR>
-    let g:which_key_leader_map.f.3 = '3-fold-level'
     nmap <Leader>f4 :set foldlevel=4<CR>
-    let g:which_key_leader_map.f.4 = '4-fold-level'
     nmap <Leader>f5 :set foldlevel=5<CR>
-    let g:which_key_leader_map.f.5 = '5-fold-level'
     nmap <Leader>f6 :set foldlevel=6<CR>
-    let g:which_key_leader_map.f.6 = '6-fold-level'
     nmap <Leader>f7 :set foldlevel=7<CR>
-    let g:which_key_leader_map.f.7 = '7-fold-level'
     nmap <Leader>f8 :set foldlevel=8<CR>
-    let g:which_key_leader_map.f.8 = '8-fold-level'
     nmap <Leader>f9 :set foldlevel=9<CR>
-    let g:which_key_leader_map.f.9 = '9-fold-level'
     "
     set foldmethod=syntax
     nnoremap <silent>cof :let &foldmethod = tolower(matchstr(
