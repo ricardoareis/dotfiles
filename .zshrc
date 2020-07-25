@@ -116,7 +116,7 @@ bindkey '^[h' run-help  # Esc+h
 #}
 
 # PATH && MANPATH properties {
-#export PYENV_ROOT="$HOME/.pyenv"
+export PYENV_ROOT="$HOME/.pyenv"
 
 # Workaround for WSL Windows
 if [[ ! -z "$(command -v explorer.exe)" ]];then
