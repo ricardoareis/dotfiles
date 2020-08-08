@@ -21,6 +21,7 @@ function build_vim() {
     export MAKEFLAGS="-j4"                  # paralelized compilation
     export CFLAGS="-march=native -O3 -pipe -fstack-protector --param=ssp-buffer-size=4"
     export CXXFLAGS="${CFLAGS}"
+    export LDFLAGS="-rdynamic"
     export vi_cv_dll_name_python3="$PYTHON_PATH"
 
     test ! -d "$VIM_DIR"  && mkdir -p "$VIM_DIR"
