@@ -130,6 +130,7 @@ path=(
     "$PYENV_ROOT/bin"
     "$PYENV_ROOT/shims"
     "$GOPATH/bin"
+    "/home/mtzcpd1731/.pyenv/libexec/"
     /usr/local/bin
     /usr/bin
     /bin
