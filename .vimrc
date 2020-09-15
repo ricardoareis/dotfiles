@@ -1109,6 +1109,7 @@ vnoremap <F1> <Esc>
         let g:repl_cursor_down = 1
         let g:repl_python_automerge = 1
         let g:repl_ipython_version = '7.13.0'
+        let g:repl_output_copy_to_register = "t"
         let g:sendtorepl_invoke_key = ""
         let g:repl_position = 3
     endif
