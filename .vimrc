@@ -249,6 +249,7 @@
         let g:gruvbox_material_enable_italic = 0        " Allow Italic fonts
         let g:gruvbox_material_disable_italic_comment = 1
         let g:gruvbox_material_enable_bold = 1
+        let g:gruvbox_material_diagnostic_line_highlight = 1
     endif
     " 1>>>
 
@@ -321,11 +322,11 @@
         let g:which_key_leader_map.w = {'name': '+Windows'}
         let g:which_key_leader_map.k = {'name': '+Bookmark'}
         let g:which_key_leader_map.n = {'name': '+Narrow'}
+        let g:which_key_leader_map.a = {'name': '+Align'}
         "
         call which_key#register(',',       'g:which_key_leader_map')
         call which_key#register('<Space>', 'g:which_key_localleader_map')
     endif
-
     " 1>>>
 
     " Show Invisible Chars <<<1
@@ -345,12 +346,11 @@
     " 1>>>
 
     " Vimdiff - Properties <<<1
-    set diffopt+=iwhite
-    if has('nvim-0.3.2') || has("patch-8.1.0360")
-        set diffopt=internal,filler,algorithm:histogram,indent-heuristic,horizontal
-    endif
     if &diff
-        map gs :call IwhiteToggle()<CR>
+        set diffopt+=iwhite
+        if has('nvim-0.3.2') || has("patch-8.1.0360")
+            set diffopt=internal,filler,algorithm:histogram,indent-heuristic,vertical
+        endif
         function! IwhiteToggle()
             if &diffopt =~ 'iwhite'
                 set diffopt-=iwhite
@@ -358,6 +358,7 @@
                 set diffopt+=iwhite
             endif
         endfunction
+        map gs :call IwhiteToggle()<CR>
     endif
     " 1>>>
 
@@ -665,6 +666,7 @@
     " Past Visual Select <<<1
     vnoremap <silent><C-w>pt "+y \| :tabnew \| :normal p<CR>
     " 1>>>
+
 
 " 1>>>
 
@@ -1137,6 +1139,17 @@ vnoremap <F1> <Esc>
          \ 'u' : ['<Plug>NERDCommentUncomment', 'Uncomment' ],
          \ 'y' : ['<Plug>NERDCommentYank     ', 'Yank'      ],
          \ }
+        " Add spaces after comment delimiters by default
+        let g:NERDSpaceDelims = 1
+
+        " Use compact syntax for prettified multi-line comments
+        let g:NERDCompactSexyComs = 1
+
+        " Enable trimming of trailing whitespace when uncommenting
+        let g:NERDTrimTrailingWhitespace = 1
+
+        " Enable NERDCommenterToggle to check all selected lines is commented or not
+        let g:NERDToggleCheckAllLines = 1
     endif
     " 1>>>
 
@@ -1210,9 +1223,9 @@ vnoremap <F1> <Esc>
 
     " Plugin: Vim-Matchup <<<1
     if isdirectory(expand(bundles_dir . "/vim-matchup/"))
-        let g:loaded_matchit = 1
+        let g:loaded_matchit = 0
         let g:matchup_matchparen_enabled = 0
-        let g:matchup_text_obj_enabled = 0
+        let g:matchup_text_obj_enabled = 1
     endif
     " 1>>>
 
@@ -1223,7 +1236,7 @@ vnoremap <F1> <Esc>
         xmap <C-W>a <Plug>(Visual-Split-VSSplitAbove)
         xmap <C-W>b <Plug>(Visual-Split-VSSplitBelow)
 
-        nmap <C-W>r  <Plug>(Visual-Split-Resize)
+        nmap <C-W>r <Plug>(Visual-Split-Resize)
         nmap <C-W>s <Plug>(Visual-Split-Split)
         nmap <C-W>a <Plug>(Visual-Split-SplitAbove)
         nmap <C-W>b <Plug>(Visual-Split-SplitBelow)
@@ -1235,6 +1248,38 @@ vnoremap <F1> <Esc>
         let g:which_key_leader_map.n.r = 'OpenInNarrowedWindow'
     endif
     " 1>>>
+
+    " Plugin: Vim-autopair <<<1
+    if isdirectory(expand(bundles_dir . "/auto-pairs/"))
+        let g:AutoPairsShortcutToggle = '<Leader>tp'
+    endif
+    " 1>>>
+
+    " Plugin: Vim-tabularize <<<1
+    if isdirectory(expand(bundles_dir . "/tabular/"))
+        nmap <Leader>a= :Tabularize /=<CR>
+        vmap <Leader>a= :Tabularize /=<CR>
+        nmap <Leader>a: :Tabularize /:\zs<CR>
+        vmap <Leader>a: :Tabularize /:\zs<CR>
+    endif
+    " 1>>>
+
+    " Plugin: Vim-gutentags <<<1
+    if isdirectory(expand(bundles_dir . "/vim-gutentags/"))
+        " enable gtags module
+        let g:gutentags_modules = ['ctags']
+
+        " config project root markers.
+        let g:gutentags_project_root = ['.root']
+
+        " generate datebases in my cache directory, prevent gtags files polluting my project
+        let g:gutentags_cache_dir = expand('~/.cache/tags')
+
+        " change focus to quickfix window after search (optional).
+        let g:gutentags_plus_switch = 1
+    endif
+    " 1>>>
+
 " 1>>>
 
 " Loading others .vim <<<1
