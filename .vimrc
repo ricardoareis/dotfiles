@@ -781,6 +781,7 @@ vnoremap <F1> <Esc>
     " Plugin: YCM properties <<<1
     if isdirectory(expand(bundles_dir . "/YouCompleteMe"))
         let g:ycm_use_clangd = 1
+        let g:ycm_max_num_candidates = 30
         " Virtualenv properties
         let g:ycm_python_interpreter_path = ''
         let g:ycm_python_sys_path = []
@@ -805,6 +806,8 @@ vnoremap <F1> <Esc>
         let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
         " If you want :UltiSnipsEdit to split your window.
         let g:UltiSnipsEditSplit = "vertical"
+        let g:ycm_enable_diagnostic_signs = 0
+        let g:ycm_collect_identifiers_from_tags_files = 1
         "
         " Disable the neosnippet preview candidate window
         " When enabled, there can be too much visual noise
@@ -1282,6 +1285,9 @@ vnoremap <F1> <Esc>
 
         " change focus to quickfix window after search (optional).
         let g:gutentags_plus_switch = 1
+
+        " YCM compatibility
+        let g:gutentags_ctags_extra_args = ['--fields=+l']
     endif
     " 1>>>
 
