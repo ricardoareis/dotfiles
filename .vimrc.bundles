@@ -14,50 +14,50 @@
 " Bundles {
 
     " General {
-    Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }   " Support of file tree bar
-    Plug 'mbbill/undotree'                                   " Support of undo tree bar
+    Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } "  Support of file tree bar
+    Plug 'mbbill/undotree'                                 "  Support of undo tree bar
 
     if executable('ctags')
-        Plug 'majutsushi/tagbar'                             " Support of tagbar
+        Plug 'majutsushi/tagbar'                           "  Support of tagbar
     endif
 
-    Plug 'tpope/vim-repeat'                   " Support to repeat some cmds
-    Plug 'tpope/vim-abolish'                  " Support an abbreviation    - TODO study
+    Plug 'tpope/vim-repeat'                                "  Support to repeat some cmds
+    Plug 'tpope/vim-abolish'                               "  Support an abbreviation    - TODO study
     Plug 'andymass/vim-matchup'
     " }
 
     " Writing {
     Plug 'reedes/vim-textobj-quote'           " Extending Vim to better support typographic
-    Plug 'kana/vim-textobj-user'              " Create your own text objects                       - TODO study
-    Plug 'kana/vim-textobj-indent'            " Text objects for indented blocks of lines          - TODO study
-    Plug 'reedes/vim-textobj-sentence'        " Improve sentence object                            - TODO keycode
+    Plug 'kana/vim-textobj-user'              " Create your own text objects                       -  TODO study
+    Plug 'kana/vim-textobj-indent'            " Text objects for indented blocks of lines          -  TODO study
+    Plug 'reedes/vim-textobj-sentence'        " Improve sentence object                            -  TODO keycode
     Plug 'reedes/vim-wordy'                   " Supporting of different dictionaries i,e; <F8>
-    Plug 'tpope/vim-surround'                 " Improve surroundings in pairs                      - TODO study
-    Plug 'jiangmiao/auto-pairs'               " Insert or delete brackets, parens, quotes in pair. - TODO study
-    Plug 'wellle/targets.vim'
-    Plug 'godlygeek/tabular'
-    "Plug 'plasticboy/vim-markdown'
+    Plug 'tpope/vim-surround'                 " Improve surroundings in pairs                      -  TODO study
+    Plug 'jiangmiao/auto-pairs'               " Insert or delete brackets, parens, quotes in pair.
+    Plug 'godlygeek/tabular'                  " Formating with tab
+    Plug 'wellle/targets.vim'                 " Many text objects                                  -  TODO study
     Plug 'gabrielelana/vim-markdown'
     " }
 
     " General Programming {
-    Plug 'tpope/vim-fugitive'                 " Git cmds
-    Plug 'junegunn/gv.vim'                    " Browser git log
-    Plug 'airblade/vim-gitgutter'             " Git integration
-    Plug 'rhysd/conflict-marker.vim'          " Handler of git conflict marker
-    Plug 'mattn/gist-vim'                     " Support a Gist
-    Plug 'scrooloose/nerdcommenter'           " Intelligent commenter
-    Plug 'tpope/vim-commentary'               " Intelligent commenter                              - TODO study
-    Plug 'godlygeek/tabular'                  " Formating with tab                                 - TODO study
-    Plug 'luochen1990/rainbow'                " Different color for open, and close {([])}
-    Plug 'dense-analysis/ale'                 " Engine for linters and fixers
-    Plug 'ntpeters/vim-better-whitespace'     " Removed extra whitespaces
-    Plug 'editorconfig/editorconfig'          " Support a editorconfig
-    Plug 'nathanaelkane/vim-indent-guides'    " Support a indent guides
-    Plug 'terryma/vim-multiple-cursors'       " Support a multiple cursors
+    Plug 'tpope/vim-fugitive'                                                  "  Git cmds
+    Plug 'junegunn/gv.vim'                                                     "  Browser git log
+    Plug 'airblade/vim-gitgutter'                                              "  Git integration
+    Plug 'rhysd/conflict-marker.vim'                                           "  Handler of git conflict marker
+    Plug 'mattn/gist-vim'                                                      "  Support a Gist
+    Plug 'scrooloose/nerdcommenter'                                            "  Intelligent commenter
+    Plug 'luochen1990/rainbow'                                                 "  Different color for open, and close {([])}
+    Plug 'dense-analysis/ale'                                                  "  Engine for linters and fixers
+    Plug 'ntpeters/vim-better-whitespace'                                      "  Removed extra whitespaces
+    Plug 'editorconfig/editorconfig'                                           "  Support a editorconfig
+    Plug 'nathanaelkane/vim-indent-guides'                                     "  Support a indent guides
+    Plug 'terryma/vim-multiple-cursors'                                        "  Support a multiple cursors
     Plug 'sillybun/vim-repl',                   {'for': ['python', 'python3']}
-    Plug 'jmcantrell/vim-virtualenv',           {'for': ['python', 'python3']}  " Support a Python VirtualEnv
-    Plug 'jeetsukumaran/vim-pythonsense'
+    Plug 'jmcantrell/vim-virtualenv',           {'for': ['python', 'python3']} "  Support a Python VirtualEnv
+    Plug 'jeetsukumaran/vim-pythonsense'                                       "  Add some python text objects
+    Plug 'skywind3000/asyncrun.vim'                                            "  Execute cmds asynchronous
+    Plug 'ludovicchabant/vim-gutentags'
+    Plug 'skywind3000/gutentags_plus'
     " }
 
     " Snippets & AutoComplete {
@@ -79,39 +79,41 @@
     " }
 
     " Misc {
-    Plug 'elzr/vim-json'
-    Plug 'roxma/vim-tmux-clipboard'
-    Plug 'tmux-plugins/vim-tmux-focus-events'
-    Plug 'ConradIrwin/vim-bracketed-paste'
+    Plug 'elzr/vim-json'                        " Allow json error handling
+    Plug 'roxma/vim-tmux-clipboard'             " Yank/Paste tmux split/windows
+    Plug 'tmux-plugins/vim-tmux-focus-events'   " Restore vim autocmd events (FocusGained/FocusLost)
+                                                " there is a bug for terminal buffer, and
+                                                " it should be  accepted by vim in 2015, but.
+    Plug 'ConradIrwin/vim-bracketed-paste'      " Enable paste without `:set paste` (depends of terminal support)
     " }
 
     " Improve Vim Experience Plugs {
-    Plug 'sainnhe/gruvbox-material'           " Default color schema
-    Plug 'kshenoy/vim-signature'              " Plugin to integrate githunk
-    Plug 'terryma/vim-expand-region'          " Plugin to expand visual selection  with CTRL plus + or -
-    Plug 'junegunn/fzf'                       " Fuzzy Search w/ FZF
-    Plug 'junegunn/fzf.vim'                   "
-    Plug 'chrisbra/csv.vim'                   " Support better csv support
-    Plug 'mox-mox/vim-localsearch'            " Allow a register a local pattern, instead of only a global / search
-    Plug 'sheerun/vim-polyglot'               " Syntax for many different type of files
-    Plug 'liuchengxu/vim-which-key'           " Document keyscode (press <Leader>)
-    Plug 'vim-scripts/sessionman.vim'         " Support of open/save/delete sessions
-    Plug 'osyo-manga/vim-over'                " Plugin to implement replace preview
-    Plug 'gcmt/wildfire.vim'                  " Support of quick selection
+    Plug 'sainnhe/gruvbox-material'             " Default color schema
+    Plug 'kshenoy/vim-signature'                " Plugin to integrate githunk
+    Plug 'terryma/vim-expand-region'            " Plugin to expand visual selection  with CTRL plus + or -
+    Plug 'junegunn/fzf'                         " Fuzzy Search w/ FZF
+    Plug 'junegunn/fzf.vim'
+    Plug 'chrisbra/csv.vim'                     " Support better csv support
+    Plug 'mox-mox/vim-localsearch'              " Allow a register a local pattern, instead of only a global / search
+    Plug 'sheerun/vim-polyglot'                 " Syntax for many different type of files
+    Plug 'liuchengxu/vim-which-key'             " Document keyscode (press <Leader>)
+    Plug 'vim-scripts/sessionman.vim'           " Support of open/save/delete sessions
+    Plug 'osyo-manga/vim-over'                  " Plugin to implement replace preview
+    Plug 'gcmt/wildfire.vim'                    " Support of quick selection, enter select closest text object.
     Plug 'powerline/fonts'
-    Plug 'bling/vim-bufferline'
+    Plug 'bling/vim-bufferline'                 " buffer list on cmd bar
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
     "Plug 'easymotion/vim-easymotion'
-    Plug 'justinmk/vim-sneak'                 " testing over easymotion
+    Plug 'justinmk/vim-sneak'                   " testing over easymotion
     Plug 'flazz/vim-colorschemes'
-    Plug 'voldikss/vim-floaterm'
-    Plug 'MattesGroeger/vim-bookmarks'        " Plugin to manage annotations on lines
-    Plug 'junegunn/vim-peekaboo'
-    Plug 'wellle/visual-split.vim'
-    Plug 'embear/vim-foldsearch'              " search a pattern and close everything as a fold
-    Plug 'matze/vim-move'                     " move block easily (visual mode + CTRL+J)
-    Plug 'chrisbra/NrrwRgn'                   " TODO: Study
+    Plug 'voldikss/vim-floaterm'                " Float terminal
+    Plug 'MattesGroeger/vim-bookmarks'          " Plugin to manage annotations on lines
+    Plug 'junegunn/vim-peekaboo'                " Show registers contents visually
+    Plug 'wellle/visual-split.vim'              " Allow selected text object be viewed in another window
+    Plug 'embear/vim-foldsearch'                " Search a pattern and close everything as a fold
+    Plug 'matze/vim-move'                       " Move block easily (visual mode + CTRL+J)
+    Plug 'chrisbra/NrrwRgn'                     " Isolating a region to a safe operation (from emacs)
     Plug 'machakann/vim-highlightedyank'
     "}
 

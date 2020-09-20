@@ -7,3 +7,5 @@ alias tn="t new -t"
 alias tq="tmux kill-pane"
 [[ "$(uname)" == "Darwin"  ]] && \
     alias updatedb="sudo /usr/libexec/locate.updatedb"
+    alias vim="/opt/vim/bin/vim"
+    alias vimdiff="/opt/vim/bin/vimdiff"
