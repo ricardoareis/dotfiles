@@ -944,12 +944,17 @@ vnoremap <F1> <Esc>
         let g:ale_set_quickfix = 1
         let g:ale_keep_list_window_open = 1
         let g:ale_list_window_size = 5
+        let g:ale_completion_autoimport = 1
+        let g:ale_linters_explicit = 1
         let g:ale_fixers = {
                     \   'python':   ['remove_trailing_lines', 'trim_whitespace'],
                     \   'go':       ['remove_trailing_lines', 'trim_whitespace'],
                     \   'sh':       ['remove_trailing_lines', 'trim_whitespace'],
                     \   'zsh':      ['remove_trailing_lines', 'trim_whitespace']
                     \}
+        let g:ale_echo_msg_error_str = 'E'
+        let g:ale_echo_msg_warning_str = 'W'
+        let g:ale_echo_msg_format = '[%linter%:%code%:%severity%] %s'
         nmap <silent> <C-k> <Plug>(ale_previous_wrap)
         nmap <silent> <C-j> <Plug>(ale_next_wrap)
     endif
@@ -1295,7 +1300,7 @@ vnoremap <F1> <Esc>
     endif
     " 1>>>
 
-    " Plugin: Vim-docker <<<1
+    " Plugin: Vim-Compose <<<1
     if isdirectory(expand(bundles_dir . "/docker-compose.vim/"))
         " open terminal way
         let g:docker_compose_open_terminal_way = 'top'
