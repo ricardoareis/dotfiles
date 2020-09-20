@@ -50,7 +50,8 @@
     Plug 'dense-analysis/ale'                                                  "  Engine for linters and fixers
     Plug 'ntpeters/vim-better-whitespace'                                      "  Removed extra whitespaces
     Plug 'editorconfig/editorconfig'                                           "  Support a editorconfig
-    Plug 'nathanaelkane/vim-indent-guides'                                     "  Support a indent guides
+    "Plug 'nathanaelkane/vim-indent-guides'                                     "  Support a indent guides
+    Plug 'noscript/vim-indent-guides'                                          "  Fork with a redir bug solved
     Plug 'terryma/vim-multiple-cursors'                                        "  Support a multiple cursors
     Plug 'sillybun/vim-repl',                   {'for': ['python', 'python3']}
     Plug 'jmcantrell/vim-virtualenv',           {'for': ['python', 'python3']} "  Support a Python VirtualEnv
@@ -85,6 +86,8 @@
                                                 " there is a bug for terminal buffer, and
                                                 " it should be  accepted by vim in 2015, but.
     Plug 'ConradIrwin/vim-bracketed-paste'      " Enable paste without `:set paste` (depends of terminal support)
+    Plug 'skanehira/docker-compose.vim'
+    Plug 'skanehira/docker.vim'
     " }
 
     " Improve Vim Experience Plugs {

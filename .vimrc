@@ -1280,6 +1280,28 @@ vnoremap <F1> <Esc>
     endif
     " 1>>>
 
+    " Plugin: Vim-docker <<<1
+    if isdirectory(expand(bundles_dir . "/docker.vim/"))
+        " open browser command, default is 'open'
+        let g:docker_open_browser_cmd = 'open'
+
+        " split temrinal windows, can use vert or tab, etc...
+        let g:docker_terminal_open = 'vert'
+
+        let s:docker_auth_file = expand('~/.docker/docker.vim.json')
+        if filereadable(s:docker_auth_file)
+            let g:docker_registry_auth = json_decode(join(readfile(s:docker_auth_file), "\n"))
+        endif
+    endif
+    " 1>>>
+
+    " Plugin: Vim-docker <<<1
+    if isdirectory(expand(bundles_dir . "/docker-compose.vim/"))
+        " open terminal way
+        let g:docker_compose_open_terminal_way = 'top'
+    endif
+    " 1>>>
+
 " 1>>>
 
 " Loading others .vim <<<1
