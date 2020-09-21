@@ -1,3 +1,0 @@
-let l:bm_file_version = 1
-let l:bm_sessions = {'default': {'/Users/cabelo/repos/dotfiles/.vim/plugins.d/autocmds.vim': [{'sign_idx': 9501, 'line_nr': 93, 'content': '    autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4', 'annotation': 'Adjust the keycode'},],}}
-let l:bm_current_session = 'default'
