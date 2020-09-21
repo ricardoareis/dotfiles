@@ -1,5 +1,5 @@
-[credential]
-    helper = !aws codecommit credential-helper $@
+[credential "https://git-codecommit.us-east-1.amazonaws.com"]
+    helper = !aws codecommit --profile default credential-helper $@
     UseHttpPath = true
 [user]
     name = Ricardo Reis
