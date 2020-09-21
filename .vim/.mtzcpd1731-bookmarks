@@ -1,3 +1,0 @@
-let l:bm_file_version = 1
-let l:bm_sessions = {'default': {'/Users/cabelo/repos/dotfiles/.vimrc.local': [{'sign_idx': 9500, 'line_nr': 604, 'content': '    "nnoremap <Leader><Space> :terminal<CR>', 'annotation': 'TODO: define when to use this key combination'},],}}
-let l:bm_current_session = 'default'
