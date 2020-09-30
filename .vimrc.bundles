@@ -59,6 +59,7 @@
     Plug 'skywind3000/asyncrun.vim'                                            "  Execute cmds asynchronous
     Plug 'ludovicchabant/vim-gutentags'
     Plug 'skywind3000/gutentags_plus'
+    Plug 'vim-test/vim-test'
     " }
 
     " Snippets & AutoComplete {
