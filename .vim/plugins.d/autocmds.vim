@@ -22,9 +22,6 @@ endfunction
 augroup vimhooks
     autocmd!
 
-    " Automatically reload vimrc when it's saved
-    "autocmd BufWritePost .vimrc source ~/.vimrc
-
     " Disable Syntax Highlight when the file size is greater than 5MB
     "autocmd Filetype xml  if getfsize(@%) > 5000000 | setlocal syntax=OFF | endif
     "autocmd Filetype json if getfsize(@%) > 5000000 | setlocal syntax=OFF | endif
@@ -138,9 +135,14 @@ augroup vimhooks
     autocmd Filetype python nnoremap <F11> <Esc>:REPLPDBS<CR>
     autocmd Filetype python nnoremap <F12> <Esc>:REPLDebugStopAtCurrentLine<CR>
 
-    " Ptyhon Fold properties
+    " Python Fold properties
     autocmd Filetype python set foldmethod=indent
     autocmd Filetype python set foldlevel=9
+
+    " Quickfix preview
+    autocmd FileType qf nnoremap <silent><buffer> p :PreviewQuickfix<cr>
+    autocmd FileType qf nnoremap <silent><buffer> P :PreviewClose<cr>
+
 augroup END
 
 augroup textobj_sentence

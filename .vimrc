@@ -1287,7 +1287,7 @@ vnoremap <F1> <Esc>
         let g:gutentags_plus_switch = 1
 
         " YCM compatibility
-        let g:gutentags_ctags_extra_args = ['--fields=+l']
+        let g:gutentags_ctags_extra_args = ['--fields=+lnS']
 
         let g:gutentags_plus_nomap = 1
     endif
@@ -1315,6 +1315,21 @@ vnoremap <F1> <Esc>
     endif
     " 1>>>
 
+    " Plugin: Vim-Dispatch <<<1
+    if isdirectory(expand(bundles_dir . "/vim-dispatch/"))
+        let test#strategy = "dispatch"
+        let g:test#preserve_screen = 1
+        let test#python#runner = 'pytest'
+    endif
+    " 1>>>
+
+    " Plugin: Vim-Preview <<<1
+    if isdirectory(expand(bundles_dir . "/vim-preview/"))
+        noremap <LocalLeader><LocalLeader>d :PreviewTag<CR>
+        noremap <LocalLeader><LocalLeader>s :PreviewSignature!<CR>
+        inoremap <LocalLeader><LocalLeader>s <c-\><c-o>:PreviewSignature!<CR>
+    endif
+    " 1>>>
 " 1>>>
 
 " Loading others .vim <<<1
