@@ -56,10 +56,11 @@
     Plug 'sillybun/vim-repl',                   {'for': ['python', 'python3']}
     Plug 'jmcantrell/vim-virtualenv',           {'for': ['python', 'python3']} "  Support a Python VirtualEnv
     Plug 'jeetsukumaran/vim-pythonsense'                                       "  Add some python text objects
-    Plug 'skywind3000/asyncrun.vim'                                            "  Execute cmds asynchronous
     Plug 'ludovicchabant/vim-gutentags'
     Plug 'skywind3000/gutentags_plus'
     Plug 'vim-test/vim-test'
+    Plug 'tpope/vim-dispatch'                                                  "  Execute cmds asynchronous
+    Plug 'skywind3000/vim-preview'
     " }
 
     " Snippets & AutoComplete {
