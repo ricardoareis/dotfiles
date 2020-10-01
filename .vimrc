@@ -302,8 +302,8 @@
     " WhichKey - Map <<<1
     " The default leader is '\', but many people prefer ',' as it's in a standard
     set timeoutlen=500
-    let mapleader=","
-    let maplocalleader=" "
+    let g:mapleader=","
+    let g:maplocalleader=" "
 
     if isdirectory(expand(bundles_dir . "/vim-which-key"))
         nnoremap <silent> <Leader>      :<c-u>WhichKey       ','<CR>
