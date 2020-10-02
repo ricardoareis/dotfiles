@@ -50,7 +50,6 @@
     Plug 'dense-analysis/ale'                                                  "  Engine for linters and fixers
     Plug 'ntpeters/vim-better-whitespace'                                      "  Removed extra whitespaces
     Plug 'editorconfig/editorconfig'                                           "  Support a editorconfig
-    "Plug 'nathanaelkane/vim-indent-guides'                                     "  Support a indent guides
     Plug 'noscript/vim-indent-guides'                                          "  Fork with a redir bug solved
     Plug 'terryma/vim-multiple-cursors'                                        "  Support a multiple cursors
     Plug 'sillybun/vim-repl',                   {'for': ['python', 'python3']}
@@ -109,7 +108,6 @@
     Plug 'bling/vim-bufferline'                 " buffer list on cmd bar
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
-    "Plug 'easymotion/vim-easymotion'
     Plug 'justinmk/vim-sneak'                   " testing over easymotion
     Plug 'flazz/vim-colorschemes'
     Plug 'voldikss/vim-floaterm'                " Float terminal
