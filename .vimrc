@@ -316,16 +316,22 @@
         let g:which_key_localleader_map = {}
         let g:which_key_leader_map.t = {'name': '+Toggle'}
         let g:which_key_leader_map.e = {'name': '+Edit'}
-        let g:which_key_leader_map.y = {'name': '+Go'}
-        let g:which_key_leader_map.s = {'name': '+Session'}
+        let g:which_key_leader_map.s = {'name': '+System/Session'}
         let g:which_key_leader_map.g = {'name': '+Git'}
         let g:which_key_leader_map.w = {'name': '+Windows'}
         let g:which_key_leader_map.k = {'name': '+Bookmark'}
         let g:which_key_leader_map.n = {'name': '+Narrow'}
         let g:which_key_leader_map.a = {'name': '+Align'}
+        let g:which_key_leader_map.r = {'name': '+Replace'}
         "
         call which_key#register(',',       'g:which_key_leader_map')
         call which_key#register('<Space>', 'g:which_key_localleader_map')
+
+        nnoremap <silent><unique> <Leader>sr :source ~/.vimrc<CR>
+        nnoremap <silent><unique> <Leader>so :browse oldfiles<CR>
+        let g:which_key_leader_map.s.r = 'VimReload'
+        let g:which_key_leader_map.s.o = 'BrowserOldfiles'
+
     endif
     " 1>>>
 
@@ -403,20 +409,24 @@
     "
     " repeat the search/replace in the cursor line
     nnoremap <Leader>. :&<CR>
+    " replace one by one, the work in the cursor
     nnoremap <Leader>x *``cgn
-    nnoremap <Leader>o :OverCommandLine<CR>
+    " search/replace over
+    nnoremap <Leader>ro :OverCommandLine<CR>
+    " a quick way of select
     nmap <Leader>v <Plug>(wildfire-quick-select)
     let g:which_key_leader_map.x = 'which_key_ignore'
     let g:which_key_leader_map.o = 'which_key_ignore'
     let g:which_key_leader_map.v = 'which_key_ignore'
+    let g:which_key_leader_map['.'] = 'which_key_ignore'
+    let g:which_key_leader_map['*'] = 'which_key_ignore'
+    let g:which_key_leader_map['/'] = 'which_key_ignore'
     " 1>>>
 
     " Plugin: Whichkey map for <Leader><Leader> <<<1
     let g:which_key_leader_map[','] = {
      \ 'name' : '+Quick',
-     \ 'r' : [':source ~/.vimrc                             ', 'VimReload'                      ],
-     \ 'b' : [':browse oldfiles                             ', 'BrowserOldEditedFiles'          ],
-     \ 'x' : [':ALEFix                                      ', 'ALEFix'                         ],
+     \ 'x' : [':ALEFix                                     ', 'ALEFix'                         ],
      \ 'n' : [':ALENext                                     ', 'ALENext'                        ],
      \ 'p' : [':ALEPreviows                                 ', 'ALEPreviows'                    ],
      \ 'i' : [':ALEInfoToClipboard                          ', 'ALEInfoToClipboard'             ],
@@ -973,13 +983,13 @@ vnoremap <F1> <Esc>
     set sessionoptions=blank,buffers,curdir,folds,tabpages,winsize
     if isdirectory(expand(bundles_dir . "/sessionman.vim/"))
         nnoremap <silent><Leader>sl :SessionList<CR><CR>
-        let g:which_key_leader_map.s.l = 'List'
+        let g:which_key_leader_map.s.l = 'SessionList'
         "
         nnoremap <silent><Leader>ss :SessionSave<CR><CR>
-        let g:which_key_leader_map.s.s = 'Save'
+        let g:which_key_leader_map.s.s = 'SessionSave'
         "
         nnoremap <silent><Leader>sc :SessionClose<CR><CR>
-        let g:which_key_leader_map.s.c = 'Close'
+        let g:which_key_leader_map.s.c = 'SessionClose'
     endif
     " 1>>>
 
