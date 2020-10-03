@@ -22,14 +22,14 @@
     endif
 
     Plug 'tpope/vim-repeat'                                "  Support to repeat some cmds
-    Plug 'tpope/vim-abolish'                               "  Support an abbreviation    - TODO study
+    Plug 'tpope/vim-abolish'                               "  Support a better abbreviation
     Plug 'andymass/vim-matchup'
     " }
 
     " Writing {
-    Plug 'reedes/vim-textobj-quote'           " Extending Vim to better support typographic
-    Plug 'kana/vim-textobj-user'              " Create your own text objects                       -  TODO study
-    Plug 'kana/vim-textobj-indent'            " Text objects for indented blocks of lines          -  TODO study
+    Plug 'reedes/vim-textobj-quote'           " Extending Vim to better support typographic (‘curly’ quote characters)
+    Plug 'kana/vim-textobj-user'              " Create your own text objects (deps)
+    Plug 'michaeljsmith/vim-indent-object'    " Text objects for indented blocks of lines (vai,vii)
     Plug 'reedes/vim-textobj-sentence'        " Improve sentence object                            -  TODO keycode
     Plug 'reedes/vim-wordy'                   " Supporting of different dictionaries i,e; <F8>
     Plug 'tpope/vim-surround'                 " Improve surroundings in pairs                      -  TODO study
