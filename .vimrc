@@ -1320,7 +1320,7 @@ vnoremap <F1> <Esc>
         let g:gutentags_plus_switch = 1
 
         " YCM compatibility
-        let g:gutentags_ctags_extra_args = ['--fields=+lnS']
+        let g:gutentags_ctags_extra_args = ['--fields=+lnS --exclude=@.ctagsignore']
 
         let g:gutentags_plus_nomap = 1
     endif
