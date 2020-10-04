@@ -142,7 +142,7 @@ zinit wait"1e" lucid as=program                                                 
 zinit wait"1d" lucid as=program atclone"./libexec/goenv init - > zgoenv.zsh"    \
     atinit'export GOENV_ROOT="$PWD"
            export PATH="$GOENV_ROOT/bin:$GOENV_ROOT/shims:$PATH"
-           export PATH="$GOPATH/bin:$GOROOT/bin:$PATH"' atpull"%atclone"        \
+           export PATH="$GOROOT/bin:$PATH"' atpull"%atclone"                    \
     pick='bin/goenv' src"zgoenv.zsh" nocompile'!' for                           \
     syndbg/goenv
 

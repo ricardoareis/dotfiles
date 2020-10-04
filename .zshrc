@@ -125,11 +125,15 @@ fi
 
 typeset -U PATH path
 
+GOPATH_BIN="$(go env GOPATH)/bin"
+
+[[ -d $GOPATH_BIN ]] || mkdir -p $GOPATH_BIN
+
 path=(
     "$HOME/.local/bin"
     "$PYENV_ROOT/bin"
     "$PYENV_ROOT/shims"
-    "$GOPATH/bin"
+    "$GOPATH_BIN"
     "/home/mtzcpd1731/.pyenv/libexec/"
     "/usr/local/opt/llvm/bin"
     /usr/local/bin
