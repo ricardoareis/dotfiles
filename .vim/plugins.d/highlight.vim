@@ -18,15 +18,7 @@ hi clear SpellBad
 hi clear Search
 
 " Set up some simple non-intrusive colors
-if &background == "light"
-    "   hi String         term=underline  cterm=NONE ctermfg=DarkGreen
-    "   hi Comment        term=bold       cterm=NONE ctermfg=DarkBlue
-    "   hi SpecialComment                            ctermfg=DarkCyan
-    "   hi Error          term=reverse    cterm=NONE ctermfg=DarkRed
-    "   hi LineNr         term=bold       cterm=NONE ctermfg=DarkYellow
-    "   hi NonText        term=bold       cterm=NONE ctermfg=DarkYellow
-    "   hi SpecialKey     term=bold       cterm=NONE ctermfg=DarkYellow
-else
+if &background ==# 'dark'
     "   hi String         term=underline  cterm=bold,underline    "ctermfg=DarkGreen
     hi Comment        term=NONE         cterm=NONE      ctermfg=DarkGray
     hi SpecialComment                   cterm=NONE      ctermfg=DarkCyan
