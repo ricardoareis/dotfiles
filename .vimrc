@@ -22,7 +22,7 @@
     " 1>>>
 
     " Use bundles config <<<1
-    if filereadable(expand("~/.vimrc.bundles"))
+    if filereadable(expand('~/.vimrc.bundles'))
         source ~/.vimrc.bundles
     endif
     " 1>>>
@@ -34,11 +34,16 @@
     " 1>>>
 
     " Important Properties I <<<1
-    set nocompatible                            " be iMproved, required"
+    if &compatible
+        " Vim defaults to `compatible` when selecting a vimrc with the command-line
+        " `-u` argument. Override this.
+        " :h nocompatible
+        set nocompatible
+    endif
     let g:skip_defaults_vim = 1                 " disable defaults.vim
 
-    scriptencoding utf-8
     set encoding=utf-8
+    scriptencoding utf-8
     set shell=$SHELL                            " Using default $SHELL
 
     " Config Clipboard
@@ -120,7 +125,7 @@
     set magic                                   " Set magic on, for regex
 
     " Performance Improving
-    set re=1                                    " revert to regexp engine v1
+    set regexpengine=1                          " revert to regexp engine v1
     set ttyfast                                 " Improves screen redraw"
     set lazyredraw                              " Avoid redrawing the screen mid-command."
     " 1>>>
@@ -128,7 +133,7 @@
     " Restore cursor to file position in previous editing session <<<1
     " http://vim.wikia.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
     function! ResCur()
-        if line("'\"") <= line("$")
+        if line("'\"") <= line('$')
             silent! normal! g`"
             return 1
         endif
@@ -175,22 +180,22 @@
         "
         for [dirname, settingname] in items(dir_list)
             let directory = common_dir . dirname . '/'
-            if exists("*mkdir")
+            if exists('*mkdir')
                 if !isdirectory(directory)
                     call mkdir(directory)
                 endif
             endif
             if !isdirectory(directory)
-                echo "Warning: Unable to create backup directory: " . directory
-                echo "Try: mkdir -p " . directory
+                echo 'Warning: Unable to create backup directory: ' . directory
+                echo 'Try: mkdir -p ' . directory
             else
-                let directory = substitute(directory, " ", "\\\\ ", "g")
+                let directory = substitute(directory, ' ', '\\\\ ', 'g')
                 " the exec will execute:
                 " set backup
                 " set views
                 " set swap
                 " set undo
-                exec "set " . settingname . "=" . directory
+                exec 'set ' . settingname . '=' . directory
             endif
         endfor
     endfunction
@@ -203,7 +208,7 @@
 
     " Keyboard keys - TMUX <<<1
     " tmux will send xterm-style keys when its xterm-keys option is on
-    if &term =~ '^xterm' || &term =~ '^screen' || &term =~ "^tmux"
+    if &term =~# '^xterm' || &term =~# '^screen' || &term =~# '^tmux'
         execute "set <xUp>=\e[1;*A"
         execute "set <xDown>=\e[1;*B"
         execute "set <xRight>=\e[1;*C"
@@ -233,7 +238,7 @@
     " 1>>>
 
     " Color properties <<<1
-    if &term =~ '^xterm' || &term =~ '^screen' || &term =~ "^tmux"
+    if &term =~# '^xterm' || &term =~# '^screen' || &term =~# '^tmux'
         set t_Co=256                                " Enable 256 colors to stop the CSApprox warning and make xterm vim shine
     endif
     if exists('+termguicolors')                     " Only if compiled
@@ -242,7 +247,7 @@
       set termguicolors
     endif
     set background=dark                             " Prefer Dark over Light
-    if isdirectory(expand(bundles_dir . "/gruvbox-material"))
+    if isdirectory(expand(bundles_dir . '/gruvbox-material'))
         let g:gruvbox_material_background='hard'        " Contrast Level
         colorscheme gruvbox-material                    " Using the same color scheme
         let g:gruvbox_termcolors=256                    " Accepting the 256 colors
@@ -302,10 +307,10 @@
     " WhichKey - Map <<<1
     " The default leader is '\', but many people prefer ',' as it's in a standard
     set timeoutlen=500
-    let g:mapleader=","
-    let g:maplocalleader=" "
+    let g:mapleader=','
+    let g:maplocalleader=' '
 
-    if isdirectory(expand(bundles_dir . "/vim-which-key"))
+    if isdirectory(expand(bundles_dir . '/vim-which-key'))
         nnoremap <silent> <Leader>      :<c-u>WhichKey       ','<CR>
         vnoremap <silent> <leader>      :<c-u>WhichKeyVisual ','<CR>
         nnoremap <silent> <LocalLeader> :<c-u>WhichKey        '<Space>'<CR>
@@ -337,7 +342,7 @@
 
     " Show Invisible Chars <<<1
     set nolist                                          " default disable
-    if &encoding =~ 'utf-8'
+    if &encoding =~# 'utf-8'
         set listchars=eol:⏎,tab:␉·,trail:␠,nbsp:⎵       " default unicode
         nnoremap <silent><unique> <Leader>tl :set list!<CR>
         let g:which_key_leader_map.t.l = 'ListChars'
@@ -354,11 +359,11 @@
     " Vimdiff - Properties <<<1
     if &diff
         set diffopt+=iwhite
-        if has('nvim-0.3.2') || has("patch-8.1.0360")
+        if has('nvim-0.3.2') || has('patch-8.1.0360')
             set diffopt=internal,filler,algorithm:histogram,indent-heuristic,vertical
         endif
         function! IwhiteToggle()
-            if &diffopt =~ 'iwhite'
+            if &diffopt =~# 'iwhite'
                 set diffopt-=iwhite
             else
                 set diffopt+=iwhite
@@ -395,8 +400,8 @@
 
     " Wildfire <<<1
     let g:wildfire_objects = {
-                \ "*" : ["i'", 'i"', "i)", "i]", "i}", "ip"],
-                \ "html,xml" : ["at"],
+                \ '*' : ["i'", 'i"', 'i)', 'i]', 'i}', 'ip'],
+                \ 'html,xml' : ['at'],
                 \ }
     " 1>>>
 
@@ -423,10 +428,28 @@
     let g:which_key_leader_map['/'] = 'which_key_ignore'
     " 1>>>
 
+    " InsertMap <<<1
+    "
+    " Create new line
+    " ino <C-Return> <Esc>o -it already working
+    " Expands current file dir path
+    ino <C-d> <C-R>=expand('%:p:h') . '/' <CR>
+    " move right
+    ino <C-f> <Right>
+    " move left
+    ino <C-b> <Left>
+    " backspace one char
+    ino <C-h> <BS>
+    " go to the beginning of the line
+    ino <C-a> <ESC>^i
+    " go to the end of the line
+    ino <expr><C-e> pumvisible() ? "\<C-e>" : "\<End>"
+    " 1>>>
+
     " Plugin: Whichkey map for <Leader><Leader> <<<1
     let g:which_key_leader_map[','] = {
      \ 'name' : '+Quick',
-     \ 'x' : [':ALEFix                                     ', 'ALEFix'                         ],
+     \ 'x' : [':ALEFix                                      ', 'ALEFix'                         ],
      \ 'n' : [':ALENext                                     ', 'ALENext'                        ],
      \ 'p' : [':ALEPreviows                                 ', 'ALEPreviows'                    ],
      \ 'i' : [':ALEInfoToClipboard                          ', 'ALEInfoToClipboard'             ],
@@ -495,12 +518,12 @@
         " Ex. command mv +9 will mv the line 9 to the
         " current cursorline.
         let l:number = 2
-        let l:string = ""
+        let l:string = ''
         while l:number > 0
             let l:string .= nr2char(getchar())
             let l:number -= 1
         endwhile
-        return l:string . "m."
+        return l:string . 'm.'
     endfunction
     "
     nnoremap mv :<C-u>execute MvLines()<CR>
@@ -592,14 +615,14 @@
     " presence of `:set wrap`, and relative to line for `:set nowrap`.
     " Default vim behaviour is to act relative to text line in both cases
     function! WrapRelativeMotion(key, ...)
-        let vis_sel=""
+        let vis_sel=''
         if a:0
-            let vis_sel="gv"
+            let vis_sel='gv'
         endif
         if &wrap
-            execute "normal!" vis_sel . "g" . a:key
+            execute 'normal!' vis_sel . 'g' . a:key
         else
-            execute "normal!" vis_sel . a:key
+            execute 'normal!' vis_sel . a:key
         endif
     endfunction
 
@@ -694,7 +717,7 @@ vnoremap <F1> <Esc>
         redir => bufoutput
         buffers!
         redir END
-        let idx = stridx(bufoutput, "NERD_tree")
+        let idx = stridx(bufoutput, 'NERD_tree')
         if idx > -1
             NERDTreeMirror
             NERDTreeFind
@@ -789,7 +812,7 @@ vnoremap <F1> <Esc>
 "Plugins <<<1
 
     " Plugin: YCM properties <<<1
-    if isdirectory(expand(bundles_dir . "/YouCompleteMe"))
+    if isdirectory(expand(bundles_dir . '/YouCompleteMe'))
         let g:ycm_use_clangd = 1
         let g:ycm_max_num_candidates = 30
         " Virtualenv properties
@@ -815,7 +838,7 @@ vnoremap <F1> <Esc>
         let g:UltiSnipsJumpForwardTrigger = '<C-j>'
         let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
         " If you want :UltiSnipsEdit to split your window.
-        let g:UltiSnipsEditSplit = "vertical"
+        let g:UltiSnipsEditSplit = 'vertical'
         let g:ycm_enable_diagnostic_signs = 0
         let g:ycm_collect_identifiers_from_tags_files = 1
         "
@@ -827,7 +850,7 @@ vnoremap <F1> <Esc>
     " 1>>>
 
     " Plugin: Identlines properties (this plugin change conceal properties) <<<1
-    if isdirectory(expand(bundles_dir . "/vim-indent-guides/"))
+    if isdirectory(expand(bundles_dir . '/vim-indent-guides/'))
         let g:indent_guides_default_mapping = 0
         let g:indent_guides_start_level = 2
         let g:indent_guides_guide_size = 1
@@ -839,12 +862,12 @@ vnoremap <F1> <Esc>
     " 1>>>
 
     " Plugin: Airline properties <<<1
-    if isdirectory(expand(bundles_dir . "/vim-airline/"))
+    if isdirectory(expand(bundles_dir . '/vim-airline/'))
         let g:airline_powerline_fonts = 1
         let g:airline_skip_empty_sections = v:true
         let g:bufferline_echo = 0
         let g:airline_highlighting_cache = 1
-        if isdirectory(expand(bundles_dir . "/vim-airline-themes/"))
+        if isdirectory(expand(bundles_dir . '/vim-airline-themes/'))
             let g:airline_extensions=['branch', 'localsearch', 'virtualenv', 'csv', 'bufferline',
                         \             'hunks', 'keymap', 'quickfix', 'ale', 'tagbar', 'term',
                         \             'undotree', 'whitespace', 'wordcount', 'ycm', 'tabline']
@@ -886,7 +909,7 @@ vnoremap <F1> <Esc>
     " 1>>>
 
     " Plugin: FZF (performs like CtrlP) <<<1
-    if isdirectory(expand(bundles_dir . "/fzf/"))
+    if isdirectory(expand(bundles_dir . '/fzf/'))
         "Open a file fuzzy search
         nnoremap <C-p> :Files<CR>
         "Open a content fuzzy search
@@ -900,9 +923,9 @@ vnoremap <F1> <Esc>
     " 1>>>
 
     " Plugin: Vim-Go properties <<<1
-    if isdirectory(expand(bundles_dir . "/vim-go/"))
-        let g:go_fmt_command = "goimports"          " format with goimports instead of gofmt
-        let g:go_list_type = "quickfix"
+    if isdirectory(expand(bundles_dir . '/vim-go/'))
+        let g:go_fmt_command = 'goimports'          " format with goimports instead of gofmt
+        let g:go_list_type = 'quickfix'
         let g:go_version_warning = 0
         let g:go_fmt_fail_silently = 1
         let g:go_fmt_autosave = 1                   " disable fmt on save
@@ -924,7 +947,7 @@ vnoremap <F1> <Esc>
     " 1>>>
 
     " Plugin: GitGutter properties <<<1
-    if isdirectory(expand(bundles_dir . "/vim-gitgutter/"))
+    if isdirectory(expand(bundles_dir . '/vim-gitgutter/'))
         set updatetime=500
         let g:gitgutter_enabled=1
         let g:gitgutter_map_keys=0
@@ -947,7 +970,7 @@ vnoremap <F1> <Esc>
     " 1>>>
 
     " Plugin: Vim-ALE properties <<<1
-    if isdirectory(expand(bundles_dir . "/ale/"))
+    if isdirectory(expand(bundles_dir . '/ale/'))
         let g:ale_lint_on_enter = 0
         let g:ale_lint_on_text_changed = 'never'
         let g:ale_lint_on_insert_leave = 0
@@ -974,14 +997,14 @@ vnoremap <F1> <Esc>
     " 1>>>
 
     " Plugin: EditorConfig properties <<<1
-    if isdirectory(expand(bundles_dir . "/editorconfig/"))
+    if isdirectory(expand(bundles_dir . '/editorconfig/'))
         let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
     endif
     " 1>>>
 
     " Plugin: Session List <<<1
     set sessionoptions=blank,buffers,curdir,folds,tabpages,winsize
-    if isdirectory(expand(bundles_dir . "/sessionman.vim/"))
+    if isdirectory(expand(bundles_dir . '/sessionman.vim/'))
         nnoremap <silent><Leader>sl :SessionList<CR><CR>
         let g:which_key_leader_map.s.l = 'SessionList'
         "
@@ -994,7 +1017,7 @@ vnoremap <F1> <Esc>
     " 1>>>
 
     " Plugin: UndoTree properties <<<1
-    if isdirectory(expand(bundles_dir . "/undotree/"))
+    if isdirectory(expand(bundles_dir . '/undotree/'))
         nnoremap <silent><F2> :UndotreeToggle<CR>
         let g:undotree_SetFocusWhenToggle=1
         let g:undotree_WindowLayout = 4
@@ -1008,7 +1031,7 @@ vnoremap <F1> <Esc>
     " 1>>>
 
     " Plugin: NerdTree properties <<<1
-    if isdirectory(expand(bundles_dir . "/nerdtree"))
+    if isdirectory(expand(bundles_dir . '/nerdtree'))
         nnoremap <silent><F1> :NERDTreeToggle<CR>
         let g:NERDShutUp=1
         let g:NERDTreeQuitOnOpen=1                      " close NERDTree after a file is opened
@@ -1030,7 +1053,7 @@ vnoremap <F1> <Esc>
     " 1>>>
 
     " Plugin: TagBar properties <<<1
-    if isdirectory(expand(bundles_dir . "/tagbar/"))
+    if isdirectory(expand(bundles_dir . '/tagbar/'))
         nnoremap <silent> <F3> :TagbarToggle<CR>
         let g:tagbar_left=0
         let g:tagbar_autofocus=1
@@ -1039,20 +1062,20 @@ vnoremap <F1> <Esc>
         set tags=./tags;/,~/.vimtags
         " Make tags placed in .git/tags file available in all levels of a repository
         let gitroot = substitute(system('git rev-parse --show-toplevel'), '[\n\r]', '', 'g')
-        if gitroot != ''
+        if gitroot !=# ''
             let &tags = &tags . ',' . gitroot . '/.git/tags'
         endif
     endif
     " 1>>>
 
     " Plugin: Rainbow <<<1
-    if isdirectory(expand(bundles_dir . "/rainbow/"))
+    if isdirectory(expand(bundles_dir . '/rainbow/'))
         let g:rainbow_active = 1                        " 0 if you want to enable it later via :RainbowToggle
     endif
     " 1>>>
 
     " Plugin: Fugitive <<<1
-    if isdirectory(expand(bundles_dir . "/vim-fugitive/"))
+    if isdirectory(expand(bundles_dir . '/vim-fugitive/'))
         nnoremap <silent> <Leader>gs :Gstatus<CR>
         let g:which_key_leader_map.g.s = 'Gstatus'
         "
@@ -1092,7 +1115,7 @@ vnoremap <F1> <Esc>
     " 1>>>
 
     " Plugin: Better-WhiteSpace <<<1
-    if isdirectory(expand(bundles_dir . "/vim-better-whitespace/"))
+    if isdirectory(expand(bundles_dir . '/vim-better-whitespace/'))
         nnoremap ]w :NextTrailingWhitespace<CR>
         nnoremap [w :PrevTrailingWhitespace<CR>
         let g:strip_whitespace_on_save = 1
@@ -1100,7 +1123,7 @@ vnoremap <F1> <Esc>
     " 1>>>
 
     " Plugin: LocalSearch <<<1
-    if isdirectory(expand(bundles_dir . "/vim-localsearch/"))
+    if isdirectory(expand(bundles_dir . '/vim-localsearch/'))
         nmap <Leader>/ <Plug>localsearch_toggle
     endif
     " 1>>>
@@ -1114,7 +1137,7 @@ vnoremap <F1> <Esc>
     " 1>>>
 
     "Plugin: Vim-repl - Python <<<1
-    if isdirectory(expand(bundles_dir . "/vim-repl/"))
+    if isdirectory(expand(bundles_dir . '/vim-repl/'))
         let g:repl_program = {
                     \   'python': 'ipython',
                     \   'default': 'zsh',
@@ -1129,8 +1152,8 @@ vnoremap <F1> <Esc>
         let g:repl_cursor_down = 1
         let g:repl_python_automerge = 1
         let g:repl_ipython_version = '7.13.0'
-        let g:repl_output_copy_to_register = "t"
-        let g:sendtorepl_invoke_key = ""
+        let g:repl_output_copy_to_register = 't'
+        let g:sendtorepl_invoke_key = ''
         let g:repl_position = 3
     endif
     " 1>>>
@@ -1140,7 +1163,7 @@ vnoremap <F1> <Esc>
     " 1>>>
 
     " Plugin: NERDCommenter <<<1
-    if isdirectory(expand(bundles_dir . "/nerdcommenter/"))
+    if isdirectory(expand(bundles_dir . '/nerdcommenter/'))
         let g:which_key_leader_map['c'] = {
          \ 'name' : '+Commentes',
          \ ' ' : ['<Plug>NERDCommentToggle   ', 'Toggle'    ],
@@ -1172,7 +1195,7 @@ vnoremap <F1> <Esc>
     " 1>>>
 
     " Plugin: Sneake <<<1
-    if isdirectory(expand(bundles_dir . "/vim-sneak/"))
+    if isdirectory(expand(bundles_dir . '/vim-sneak/'))
         let g:sneak#label = 1
         map <Leader><Leader>f <Plug>Sneak_s
         map <Leader><Leader>F <Plug>Sneak_S
@@ -1180,7 +1203,7 @@ vnoremap <F1> <Esc>
     " 1>>>
 
     " Plugin: Vim-FloatTerm <<<1
-    if isdirectory(expand(bundles_dir . "/vim-floaterm/"))
+    if isdirectory(expand(bundles_dir . '/vim-floaterm/'))
         let g:floaterm_keymap_new    = '<F4>'
         let g:floaterm_keymap_prev   = '<F5>'
         let g:floaterm_keymap_next   = '<F6>'
@@ -1194,7 +1217,7 @@ vnoremap <F1> <Esc>
     " 1>>>
 
     " Plugin: Vim-Bookmark <<<1
-    if isdirectory(expand(bundles_dir . "/vim-bookmarks/"))
+    if isdirectory(expand(bundles_dir . '/vim-bookmarks/'))
         let g:bookmark_no_default_key_mappings = 1
         let g:bookmark_auto_save = 1
         let g:bookmark_auto_save_file = $HOME .'/.vim/.'. $USER .'-bookmarks'
@@ -1222,14 +1245,14 @@ vnoremap <F1> <Esc>
     " 1>>>
 
     " Plugin: Vim-Pythonsense <<<1
-    if isdirectory(expand(bundles_dir . "/vim-pythonsense/"))
+    if isdirectory(expand(bundles_dir . '/vim-pythonsense/'))
         let g:is_pythonsense_alternate_motion_keymaps = 1
         let g:is_pythonsense_suppress_location_keymaps = 1
     endif
     " 1>>>
 
     " Plugin: Vim-Move <<<1
-    if isdirectory(expand(bundles_dir . "/vim-move/"))
+    if isdirectory(expand(bundles_dir . '/vim-move/'))
         let g:move_map_keys = 1
         let g:move_past_end_of_line = 1
         vmap j <Plug>MoveBlockDown
@@ -1240,7 +1263,7 @@ vnoremap <F1> <Esc>
     " 1>>>
 
     " Plugin: Vim-Matchup <<<1
-    if isdirectory(expand(bundles_dir . "/vim-matchup/"))
+    if isdirectory(expand(bundles_dir . '/vim-matchup/'))
         let g:loaded_matchit = 0
         let g:matchup_matchparen_enabled = 0
         let g:matchup_text_obj_enabled = 1
@@ -1248,7 +1271,7 @@ vnoremap <F1> <Esc>
     " 1>>>
 
     " Plugin: Vim-VisualSplit <<<1
-    if isdirectory(expand(bundles_dir . "/visual-split.vim/"))
+    if isdirectory(expand(bundles_dir . '/visual-split.vim/'))
         xmap <C-W>r <Plug>(Visual-Split-VSResize)
         xmap <C-W>s <Plug>(Visual-Split-VSSplit)
         xmap <C-W>a <Plug>(Visual-Split-VSSplitAbove)
@@ -1262,19 +1285,19 @@ vnoremap <F1> <Esc>
     " 1>>>
 
     " Plugin: Vim-NrrwRegn <<<1
-    if isdirectory(expand(bundles_dir . "/NrrwRgn/"))
+    if isdirectory(expand(bundles_dir . '/NrrwRgn/'))
         let g:which_key_leader_map.n.r = 'OpenInNarrowedWindow'
     endif
     " 1>>>
 
     " Plugin: Vim-autopair <<<1
-    if isdirectory(expand(bundles_dir . "/auto-pairs/"))
+    if isdirectory(expand(bundles_dir . '/auto-pairs/'))
         let g:AutoPairsShortcutToggle = '<Leader>tp'
     endif
     " 1>>>
 
     " Plugin: Vim-tabularize <<<1
-    if isdirectory(expand(bundles_dir . "/tabular/"))
+    if isdirectory(expand(bundles_dir . '/tabular/'))
         nmap <Leader>a= :Tabularize /=<CR>
         vmap <Leader>a= :Tabularize /=<CR>
         nmap <Leader>a: :Tabularize /:\zs<CR>
@@ -1283,7 +1306,7 @@ vnoremap <F1> <Esc>
     " 1>>>
 
     " Plugin: Vim-gutentags <<<1
-    if isdirectory(expand(bundles_dir . "/vim-gutentags/"))
+    if isdirectory(expand(bundles_dir . '/vim-gutentags/'))
         " enable gtags module
         let g:gutentags_modules = ['ctags']
 
@@ -1304,7 +1327,7 @@ vnoremap <F1> <Esc>
     " 1>>>
 
     " Plugin: Vim-docker <<<1
-    if isdirectory(expand(bundles_dir . "/docker.vim/"))
+    if isdirectory(expand(bundles_dir . '/docker.vim/'))
         " open browser command, default is 'open'
         let g:docker_open_browser_cmd = 'open'
 
@@ -1319,22 +1342,22 @@ vnoremap <F1> <Esc>
     " 1>>>
 
     " Plugin: Vim-Compose <<<1
-    if isdirectory(expand(bundles_dir . "/docker-compose.vim/"))
+    if isdirectory(expand(bundles_dir . '/docker-compose.vim/'))
         " open terminal way
         let g:docker_compose_open_terminal_way = 'top'
     endif
     " 1>>>
 
     " Plugin: Vim-Dispatch <<<1
-    if isdirectory(expand(bundles_dir . "/vim-dispatch/"))
-        let test#strategy = "dispatch"
+    if isdirectory(expand(bundles_dir . '/vim-dispatch/'))
+        let test#strategy = 'dispatch'
         let g:test#preserve_screen = 1
         let test#python#runner = 'pytest'
     endif
     " 1>>>
 
     " Plugin: Vim-Preview <<<1
-    if isdirectory(expand(bundles_dir . "/vim-preview/"))
+    if isdirectory(expand(bundles_dir . '/vim-preview/'))
         noremap <LocalLeader><LocalLeader>d :PreviewTag<CR>
         noremap <LocalLeader><LocalLeader>s :PreviewSignature!<CR>
         inoremap <LocalLeader><LocalLeader>s <c-\><c-o>:PreviewSignature!<CR>

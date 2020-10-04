@@ -1,4 +1,3 @@
-set nocompatible            " this may already be in your .vimrc
 filetype plugin indent on   " ...and this too
 
 " file is large from 5mb
@@ -16,7 +15,9 @@ function! LargeFile()
     " no undo possible
     setlocal undolevels=-1
     " display message
-    autocmd VimEnter *  echo "The file is larger than " . (g:LargeFile / 1024 / 1024) . " MB, so some options are changed (see autocmds.vim for details)."
+    augroup LargeFile
+        autocmd VimEnter *  echo "The file is larger than " . (g:LargeFile / 1024 / 1024) . " MB, so some options are changed (see autocmds.vim for details)."
+    augroup END
 endfunction
 
 augroup vimhooks
