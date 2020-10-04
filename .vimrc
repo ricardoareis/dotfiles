@@ -849,7 +849,7 @@ vnoremap <F1> <Esc>
     endif
     " 1>>>
 
-    " Plugin: Identlines properties (this plugin change conceal properties) <<<1
+    " Plugin: Identlines properties <<<1
     if isdirectory(expand(bundles_dir . '/vim-indent-guides/'))
         let g:indent_guides_default_mapping = 0
         let g:indent_guides_start_level = 2
