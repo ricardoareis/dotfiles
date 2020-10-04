@@ -140,9 +140,14 @@ zinit wait"1e" lucid as=program                                                 
     pyenv/pyenv-virtualenv
 
 zinit wait"1d" lucid as=program atclone"./libexec/goenv init - > zgoenv.zsh"    \
-    atinit'export GOENV_ROOT="$PWD"
+    atinit'export GOENV_DISABLE_GOPATH=1
+           export GOENV_ROOT="$PWD"
+           export PATH="$GOENV_ROOT/bin:$GOENV_ROOT/shims:$PATH"' atpull"%atclone"       \
+    atload'export GOPATH="$HOME/go"
+           export GOPATH_BIN="$(go env GOPATH)/bin"
            export PATH="$GOENV_ROOT/bin:$GOENV_ROOT/shims:$PATH"
-           export PATH="$GOROOT/bin:$PATH"' atpull"%atclone"                    \
+           export PATH="$GOPATH_BIN:$GOROOT/bin:$PATH"
+           [[ -d $GOPATH_BIN ]] || mkdir -p $GOPATH_BIN' atpull"%atclone"       \
     pick='bin/goenv' src"zgoenv.zsh" nocompile'!' for                           \
     syndbg/goenv
 
