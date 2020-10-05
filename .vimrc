@@ -1319,8 +1319,14 @@ vnoremap <F1> <Esc>
         " change focus to quickfix window after search (optional).
         let g:gutentags_plus_switch = 1
 
-        " YCM compatibility
-        let g:gutentags_ctags_extra_args = ['--fields=+lnS --exclude=@.ctagsignore']
+        " Adding a ctags_ignore
+        let ctags_ignore_param = ''
+        let ctagsignore_file = '.ctagsignore'
+        if filereadable(expand(ctagsignore_file))
+            let ctags_ignore_param = '--exclude @.ctagsignore'
+        endif
+        " YCM compatibility and ignore
+        let g:gutentags_ctags_extra_args = ['--fields=+lnS' . ctags_ignore_param]
 
         let g:gutentags_plus_nomap = 1
     endif
