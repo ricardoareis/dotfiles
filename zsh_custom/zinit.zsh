@@ -36,8 +36,8 @@ zinit snippet OMZ::lib
 zinit ice svn wait"1a" atload"unalias grv" lucid
 zinit snippet OMZ::plugins/git
 
-#zinit ice svn wait"2b" lucid
-#zinit snippet OMZ::plugins/aws
+zinit ice svn wait"1a" lucid
+zinit snippet OMZ::plugins/aws
 
 zinit ice svn wait"1a" lucid
 zinit snippet OMZ::plugins/osx
