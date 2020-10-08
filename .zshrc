@@ -18,9 +18,9 @@ POWERLEVEL9K_INSTANT_PROMPT=off
 # this if, load the p10k instant prompt config
 # however, does not work.
 #
-#if [[ -r "${XDG_CACHE_HOME}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-#    source "${XDG_CACHE_HOME}/p10k-instant-prompt-${(%):-%n}.zsh"
-#fi
+if [[ -r "${XDG_CACHE_HOME}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+    source "${XDG_CACHE_HOME}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
 
 [[ -d "${ZSH_COMPDUMP}" ]] || mkdir -p "${ZSH_COMPDUMP}"
 
@@ -189,11 +189,6 @@ ZINIT[HOME_DIR]="${HOME}/repos/dotfiles/.zinit"     # Where Zinit should create 
 ZINIT[BIN_DIR]="${ZINIT[HOME_DIR]}/bin"             # Where Zinit code resides, e.g.: "~/.zinit/bin"
 ZINIT[MODULES_DIR]="${ZINIT[BIN_DIR]}/zmodules/Src"
 ZINIT[ZCOMPDUMP_PATH]="${ZSH_COMPDUMP}/zcompdump"
-#
-#ZINIT[PLUGINS_DIR]="${HOME}/.zinit/plugins"
-#ZINIT[COMPLETIONS_DIR]="${HOME}/.zinit/completions"
-#ZINIT[SNIPPETS_DIR]="${HOME}/.zinit/snippets"
-#
 ZINIT[COMPINIT_OPTS]="-C"
 ZINIT[OPTIMIZE_OUT_DISK_ACCESSES]=1
 

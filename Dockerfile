@@ -9,7 +9,8 @@ RUN apt-get update &&                                               \
         libsqlite3-dev libssl-dev ncurses-dev  ca-certificates      \
         pkg-config subversion zlib1g-dev zsh less automake #tmux
 
-ENV ZINIT_VERSION=v3.1
+ARG ZINIT_VERSION=v3.1
+ARG PYTHON_VERSION=3.8.3
 ENV TERM=xterm
 ENV REPO_DIR=repos/dotfiles
 
@@ -23,17 +24,18 @@ RUN adduser ${LUSER} sudo
 RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
 USER ${LUSER}
-WORKDIR /home/${LUSER}
 
-COPY --chown=666:666 ./ ${REPO_DIR}
+COPY --chown=666:666 ./ /home/${LUSER}/${REPO_DIR}
 
 WORKDIR /home/${LUSER}/${REPO_DIR}
 
-RUN git -C .zinit/bin checkout ${ZINIT_VERSION}
-
-RUN make zshrc && \
-    zsh -c "source .zinit/bin/zinit.zsh && zinit module build"
-
-RUN zsh -i -c "source .zinit/bin/zinit.zsh && @zinit-scheduler burst || true"
+RUN git -C .zinit/bin checkout ${ZINIT_VERSION} &&                            \
+    make zshrc &&                                                             \
+    zsh -c "source .zinit/bin/zinit.zsh && zinit module build" &&             \
+    zsh -i -c "source .zinit/bin/zinit.zsh && @zinit-scheduler burst"
 
 WORKDIR /home/${LUSER}
+
+RUN zsh -x -i -c "source .zshrc && source repos/dotfiles/.zinit/bin/zinit.zsh sleep 20 && command pyenv"
+# RUN zsh -i --login -c "source .zshrc && sleep 5 && echo $PATH && pyenv install ${PYTHON_VERSION} && pyenv global ${PYTHON_VERSION}"
+    # zsh -i -c "pip install --upgrade pip wheel" &&                                   \

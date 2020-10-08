@@ -1,0 +1,12 @@
+brew install bash
+brew install zsh
+brew install tmux
+brew install gawk
+brew install pkg-config
+brew install gnu-sed
+brew install ncurses
+brew install cargo
+brew install rust
+brew install unrar
+brew install llvm
+brew install pandoc
