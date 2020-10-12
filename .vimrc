@@ -1216,7 +1216,7 @@ vnoremap <F1> <Esc>
 
         let g:which_key_leader_map.t.n = 'TerminalNew'
         let g:which_key_leader_map.t.t = 'TerminalToggle'
-        let g:which_key_leader_map.t.t = 'TerminalKill'
+        let g:which_key_leader_map.t.k = 'TerminalKill'
     endif
     " 1>>>
 
