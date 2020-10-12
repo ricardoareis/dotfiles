@@ -108,7 +108,7 @@
     Plug 'gcmt/wildfire.vim'                    " Support of quick selection, enter select closest text object.
     Plug 'powerline/fonts'
     Plug 'bling/vim-bufferline'                 " buffer list on cmd bar
-    Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline', { 'tag': 'v0.11'}
     Plug 'vim-airline/vim-airline-themes'
     Plug 'justinmk/vim-sneak'                   " testing over easymotion
     Plug 'flazz/vim-colorschemes'
