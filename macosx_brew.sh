@@ -10,3 +10,9 @@ brew install rust
 brew install unrar
 brew install llvm
 brew install pandoc
+brew install subversion
+brew install npm
+brew install cmake
+brew install autoconf
+brew install automake
+brew install tree
