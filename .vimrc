@@ -123,6 +123,7 @@
     set hlsearch                                " highlight search match
     set incsearch                               " set incremental search, like modern browsers
     set magic                                   " Set magic on, for regex
+    set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
 
     " Performance Improving
     set regexpengine=1                          " revert to regexp engine v1
@@ -700,8 +701,20 @@
 
     " QuickFix <<<1
     " Navigate between quickfix occurrences
-    nnoremap <silent> q[ :cp<CR>
-    nnoremap <silent> q] :cn<CR>
+    nnoremap <Leader>qg :silent vimgrep<Space>
+    nnoremap <silent>qo :copen 5<CR>
+    nnoremap <silent>qc :cclose<CR>
+    nnoremap <silent>q[ :cp<CR>
+    nnoremap <silent>q] :cn<CR>
+    " 1>>>
+
+    " LocationList<<<1
+    " Navigate between location list occurrences
+    nnoremap <Leader>g  :silent lvimgrep<Space>
+    nnoremap <silent>fo :lopen 5<CR>
+    nnoremap <silent>fc :lclose<CR>
+    nnoremap <silent>f[ :lprevious<CR>
+    nnoremap <silent>f] :lnext<CR>
     " 1>>>
 
 " 1>>>
@@ -1377,7 +1390,7 @@ vnoremap <F1> <Esc>
     endif
     " 1>>>
 
-    " Plugin: Vim-Minimal<<<1
+    " Plugin: Vim-Minimap<<<1
     if isdirectory(expand(bundles_dir . '/minimap.vim/'))
         let g:minimap_width = '20'
         let g:minimap_highlight = 'MinimapCurrentLine'
