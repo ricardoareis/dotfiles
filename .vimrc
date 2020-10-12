@@ -450,8 +450,6 @@
     let g:which_key_leader_map[','] = {
      \ 'name' : '+Quick',
      \ 'x' : [':ALEFix                                      ', 'ALEFix'                         ],
-     \ 'n' : [':ALENext                                     ', 'ALENext'                        ],
-     \ 'p' : [':ALEPreviows                                 ', 'ALEPreviows'                    ],
      \ 'i' : [':ALEInfoToClipboard                          ', 'ALEInfoToClipboard'             ],
      \ 'd' : [':YcmCompleter GoToDefinitionElseDeclaration  ', 'GoToDefinitionElseDeclaration'  ],
      \ }
@@ -700,6 +698,11 @@
     vnoremap <silent><C-w>pt "+y \| :tabnew \| :normal p<CR>
     " 1>>>
 
+    " QuickFix <<<1
+    " Navigate between quickfix occurrences
+    nnoremap <silent> q[ :cp<CR>
+    nnoremap <silent> q] :cn<CR>
+    " 1>>>
 
 " 1>>>
 
