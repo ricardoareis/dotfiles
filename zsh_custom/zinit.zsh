@@ -135,7 +135,9 @@ zinit wait"1d" lucid as=program from"gh-r" for                             \
         @sharkdp/fd                                                        \
     mv"delta* -> delta" pick="delta/delta"                                 \
         @dandavison/delta                                                  \
-    pick="fzf/fzf" src="$ZSH_CUSTOM/fzf.cfg"               \
+    mv"code-minimap* -> code-minimap" pick="code-minimap/code-minimap"     \
+        @wfxr/code-minimap                                                 \
+    pick="fzf/fzf" src="$ZSH_CUSTOM/fzf.cfg"                               \
         @junegunn/fzf-bin
 
 zinit wait"1f" lucid as=program for                        \
