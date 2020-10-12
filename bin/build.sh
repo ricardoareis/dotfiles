@@ -17,12 +17,12 @@ function if_python() {
 }
 
 function build_vim() {
-    export CC=clang                       # clang over gcc
-    export CPPFLAGS="-D_FORTIFY_SOURCE=2" # security hardeling (buffer overflow)
-    export MAKEFLAGS="-j4"                # paralelized compilation
-    export CFLAGS="-march=native -O3 -pipe -fstack-protector --param=ssp-buffer-size=4"
-    export CXXFLAGS="${CFLAGS}"
-    export LDFLAGS="-rdynamic"
+    export CC=clang                                 # clang over gcc
+    export CPPFLAGS="$CPPFLAGS -D_FORTIFY_SOURCE=2" # security hardeling (buffer overflow)
+    export MAKEFLAGS="-j8"                          # paralelized compilation
+    export CFLAGS="$CFLAGS -march=native -O3 -pipe -fstack-protector --param=ssp-buffer-size=4"
+    export CXXFLAGS="$CXXFLAGS ${CFLAGS}"
+    export LDFLAGS="$LDFLAGS -rdynamic"
     export vi_cv_dll_name_python3="$PYTHON_PATH"
 
     test ! -d "$VIM_DIR" && mkdir -p "$VIM_DIR"
