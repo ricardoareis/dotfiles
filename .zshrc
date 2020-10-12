@@ -130,7 +130,6 @@ path=(
     "$PYENV_ROOT/bin"
     "$PYENV_ROOT/shims"
     "/home/mtzcpd1731/.pyenv/libexec/"
-    "/usr/local/opt/llvm/bin"
     /usr/local/bin
     /usr/bin
     /bin
@@ -174,11 +173,9 @@ if [[ ${+MANPATH} -eq 1 ]]; then
 fi
 
 if [[ "$(uname)" == "Darwin" ]];then
-    export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib"
-    export LDFLAGS="$LDFLAGS -L/usr/local/opt/llvm/lib"
-    export CPPFLAGS="-I/usr/local/opt/openssl@1.1/include"
-    export CPPFLAGS="$CPPFLAGS -I/usr/local/opt/llvm/include"
-    export C_INCLUDE_PATH="/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include/libxml2:$C_INCLUDE_PATH"
+    export CC="clang"
+    export LDFLAGS="$LDFLAGS -L/usr/local/opt/openssl@1.1/lib"
+    export CPPFLAGS="$CPPFLAGS -I/usr/local/opt/openssl@1.1/include"
 fi
 #}
 
