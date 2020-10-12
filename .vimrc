@@ -1369,6 +1369,16 @@ vnoremap <F1> <Esc>
         inoremap <LocalLeader><LocalLeader>s <c-\><c-o>:PreviewSignature!<CR>
     endif
     " 1>>>
+
+    " Plugin: Vim-Minimal<<<1
+    if isdirectory(expand(bundles_dir . '/minimap.vim/'))
+        let g:minimap_width = '20'
+        let g:minimap_highlight = 'MinimapCurrentLine'
+        hi MinimapCurrentLine ctermfg=Green guifg=#50FA7B guibg=#32302f
+        nnoremap <F4> :MinimapToggle<CR>
+    endif
+    " 1>>>
+
 " 1>>>
 
 " Loading others .vim <<<1
