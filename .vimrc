@@ -1204,15 +1204,19 @@ vnoremap <F1> <Esc>
 
     " Plugin: Vim-FloatTerm <<<1
     if isdirectory(expand(bundles_dir . '/vim-floaterm/'))
-        let g:floaterm_keymap_new    = '<F4>'
-        let g:floaterm_keymap_prev   = '<F5>'
-        let g:floaterm_keymap_next   = '<F6>'
-        let g:floaterm_keymap_toggle = '<F7>'
-        let g:floaterm_keymap_kill   = '<Leader><Leader>k'
+        let g:floaterm_keymap_new    = '<Leader>tn'
+        let g:floaterm_keymap_prev   = 't['
+        let g:floaterm_keymap_next   = 't]'
+        let g:floaterm_keymap_toggle = '<Leader>tt'
+        let g:floaterm_keymap_kill   = '<Leader>tk'
         let g:floaterm_width    = 0.9
         let g:floaterm_height   = 0.9
         let g:floaterm_position = 'center'
         let g:floaterm_autoclose = 2
+
+        let g:which_key_leader_map.t.n = 'TerminalNew'
+        let g:which_key_leader_map.t.t = 'TerminalToggle'
+        let g:which_key_leader_map.t.t = 'TerminalKill'
     endif
     " 1>>>
 
