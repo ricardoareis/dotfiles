@@ -77,8 +77,9 @@ augroup vimhooks
     autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 
     " Relative Numbers on/off when a different events occurred
-    autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-    autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+    let ignore_ft = ['minimap']
+    autocmd BufEnter,FocusGained,InsertLeave * if index(ignore_ft, &ft) < 0 | set relativenumber
+    autocmd BufLeave,FocusLost,InsertEnter   * if index(ignore_ft, &ft) < 0 | set norelativenumber
 
     " Golang Menu && Maps
     autocmd Filetype go let g:which_key_localleader_map.g = { 'name' : '+Golang' }
@@ -143,6 +144,9 @@ augroup vimhooks
     " Quickfix preview
     autocmd FileType qf nnoremap <silent><buffer> p :PreviewQuickfix<cr>
     autocmd FileType qf nnoremap <silent><buffer> P :PreviewClose<cr>
+
+    " Minimap
+    autocmd FileType minimap let g:better_whitespace_enabled=0
 
 augroup END
 
