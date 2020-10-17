@@ -702,20 +702,26 @@
 
     " QuickFix <<<1
     " Navigate between quickfix occurrences
-    nnoremap <Leader>qg :silent vimgrep<Space>
-    nnoremap <silent>qo :copen 5<CR>
-    nnoremap <silent>qc :cclose<CR>
+    nnoremap <LocalLeader>qg :silent vimgrep<Space>
+    nnoremap <LocalLeader>qo :copen 5<CR>
+    nnoremap <LocalLeader>qc :cclose<CR>
     nnoremap <silent>q[ :cp<CR>
     nnoremap <silent>q] :cn<CR>
+    let g:which_key_localleader_map.q.g = 'QuickFixVimGrep'
+    let g:which_key_localleader_map.q.o = 'QuickFixOpen'
+    let g:which_key_localleader_map.q.c = 'QuickFixClose'
     " 1>>>
 
     " LocationList<<<1
     " Navigate between location list occurrences
-    nnoremap <Leader>g  :silent lvimgrep<Space>
-    nnoremap <silent>fo :lopen 5<CR>
-    nnoremap <silent>fc :lclose<CR>
+    nnoremap <LocalLeader>lg :silent lvimgrep<Space>
+    nnoremap <LocalLeader>lo :lopen 5<CR>
+    nnoremap <LocalLeader>lc :lclose<CR>
     nnoremap <silent>f[ :lprevious<CR>
     nnoremap <silent>f] :lnext<CR>
+    let g:which_key_localleader_map.l.g = 'LocationVimGrep'
+    let g:which_key_localleader_map.l.o = 'LocationOpen'
+    let g:which_key_localleader_map.l.c = 'LocationClose'
     " 1>>>
 
 " 1>>>
