@@ -320,7 +320,6 @@
 
         " Define prefix dictionary
         let g:which_key_leader_map = {}
-        let g:which_key_localleader_map = {}
         let g:which_key_leader_map.t = {'name': '+Toggle'}
         let g:which_key_leader_map.e = {'name': '+Edit'}
         let g:which_key_leader_map.s = {'name': '+System/Session'}
@@ -330,15 +329,18 @@
         let g:which_key_leader_map.n = {'name': '+Narrow'}
         let g:which_key_leader_map.a = {'name': '+Align'}
         let g:which_key_leader_map.r = {'name': '+Replace'}
-        "
-        call which_key#register(',',       'g:which_key_leader_map')
-        call which_key#register('<Space>', 'g:which_key_localleader_map')
+
+        let g:which_key_localleader_map = {}
+        let g:which_key_localleader_map.q = {'name': 'QuickFix'}
+        let g:which_key_localleader_map.l = {'name': 'LocationList'}
 
         nnoremap <silent><unique> <Leader>sr :source ~/.vimrc<CR>
         nnoremap <silent><unique> <Leader>so :browse oldfiles<CR>
         let g:which_key_leader_map.s.r = 'VimReload'
         let g:which_key_leader_map.s.o = 'BrowserOldfiles'
 
+        call which_key#register(',',       'g:which_key_leader_map')
+        call which_key#register('<Space>', 'g:which_key_localleader_map')
     endif
     " 1>>>
 
