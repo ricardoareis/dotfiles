@@ -87,6 +87,7 @@
     " Misc {
     Plug 'mattn/gist-vim'                       " Support a Gist
     Plug 'elzr/vim-json'                        " Allow json error handling
+    Plug 'pedrohdz/vim-yaml-folds'              " Better folding
     Plug 'roxma/vim-tmux-clipboard'             " Yank/Paste tmux split/windows
     Plug 'tmux-plugins/vim-tmux-focus-events'   " Restore vim autocmd events (FocusGained/FocusLost)
                                                 " there is a bug for terminal buffer, and

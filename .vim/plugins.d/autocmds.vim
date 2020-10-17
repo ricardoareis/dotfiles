@@ -148,6 +148,10 @@ augroup vimhooks
     " Minimap
     autocmd FileType minimap let g:better_whitespace_enabled=0
 
+    " Yaml properties
+    autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+    autocmd Filetype yaml set foldlevel=9
+
 augroup END
 
 augroup textobj_quote
