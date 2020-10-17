@@ -331,6 +331,7 @@
         let g:which_key_leader_map.r = {'name': '+Replace'}
 
         let g:which_key_localleader_map = {}
+        let g:which_key_localleader_map[' '] = {'name': 'Quick'}
         let g:which_key_localleader_map.q = {'name': 'QuickFix'}
         let g:which_key_localleader_map.l = {'name': 'LocationList'}
 
@@ -1393,7 +1394,7 @@ vnoremap <F1> <Esc>
 
     " Plugin: Vim-Preview <<<1
     if isdirectory(expand(bundles_dir . '/vim-preview/'))
-        noremap <LocalLeader><LocalLeader>d :PreviewTag<CR>
+        noremap <LocalLeader><LocalLeader>t :PreviewTag<CR>
         noremap <LocalLeader><LocalLeader>s :PreviewSignature!<CR>
         inoremap <LocalLeader><LocalLeader>s <c-\><c-o>:PreviewSignature!<CR>
     endif
@@ -1415,7 +1416,7 @@ vnoremap <F1> <Esc>
         let g:doge_python_settings = {
                     \'single_quotes': 0
                     \}
-        nnoremap <LocalLeader>d :DogeGenerate<CR>
+        nnoremap <LocalLeader><LocalLeader>d :DogeGenerate<CR>
     endif
     " 1>>>
 
