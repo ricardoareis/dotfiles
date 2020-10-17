@@ -62,6 +62,8 @@
     Plug 'vim-test/vim-test'
     Plug 'tpope/vim-dispatch'                                                  "  Execute cmds asynchronous
     Plug 'skywind3000/vim-preview'
+    Plug 'kkoomen/vim-doge',                    {'do': { -> doge#install() } }
+
     " }
 
     " Snippets & AutoComplete {
