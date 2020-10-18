@@ -218,6 +218,12 @@
     endif
     " 1>>>
 
+    " Keyboard modifyOtherKeys <<<1
+    " nowadays iterm2 only support in the beta version
+        " let &t_TI = "\<Esc>[>4;2m"
+        " let &t_TE = "\<Esc>[>4;m"
+    " 1>>>
+
     " Disable unused builtin plugins <<<1
     let g:loaded_gzip              = 1
     let g:loaded_tar               = 1
