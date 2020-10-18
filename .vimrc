@@ -215,8 +215,6 @@
         execute "set <xDown>=\e[1;*B"
         execute "set <xRight>=\e[1;*C"
         execute "set <xLeft>=\e[1;*D"
-        "execute "set t_FI=\e[1;3D"
-        "execute "set t_FJ=\e[1;3C"
     endif
     " 1>>>
 
