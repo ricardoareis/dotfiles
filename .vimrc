@@ -608,8 +608,9 @@
     " 1>>>
 
     " Wrapped lines goes down/up to next row, rather than next line in file <<<1
-    noremap j gj
-    noremap k gk
+    " using m register to allow jumplist
+    nnoremap <expr> k (v:count > 1 ? "m'" . v:count : '') . 'gk'
+    nnoremap <expr> j (v:count > 1 ? "m'" . v:count : '') . 'gj'
     noremap <Down> g<Down>
     noremap <Up> g<Up>
     " 1>>>
