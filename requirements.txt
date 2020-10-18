@@ -24,3 +24,4 @@ pylint==2.5.3
 reorder-python-imports==2.3.1
 vim-vint==0.3.21
 docker-compose>=1.27.4
+yamllint>=1.25.0
