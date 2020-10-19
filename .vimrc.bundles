@@ -52,7 +52,7 @@
     Plug 'dense-analysis/ale'                                                  "  Engine for linters and fixers
     Plug 'ntpeters/vim-better-whitespace'                                      "  Removed extra whitespaces
     Plug 'editorconfig/editorconfig'                                           "  Support a editorconfig
-    Plug 'noscript/vim-indent-guides'                                          "  Fork with a redir bug solved
+    Plug 'ricardoareis/vim-indent-guides'                                      "  Fork with a redir bug solved
     Plug 'terryma/vim-multiple-cursors'                                        "  Support a multiple cursors
     Plug 'sillybun/vim-repl',                   {'for': ['python', 'python3']}
     Plug 'jmcantrell/vim-virtualenv',           {'for': ['python', 'python3']} "  Support a Python VirtualEnv
