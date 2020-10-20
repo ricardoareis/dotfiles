@@ -130,6 +130,7 @@ augroup vimhooks
 
     " Python Menu && Maps
     autocmd Filetype python let g:which_key_localleader_map.p = { 'name' : '+Python' }
+    autocmd Filetype python nnoremap <silent> <LocalLeader>ps  :REPLSendSession<CR>
     autocmd Filetype python nnoremap <silent> <LocalLeader>pw  :SendCurrentLine<CR>
     autocmd Filetype python vnoremap <silent> <LocalLeader>pw  :SendLineToREPL<CR>
     autocmd Filetype python nnoremap <silent> <LocalLeader>pr  :REPLToggle<CR>
