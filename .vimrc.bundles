@@ -124,6 +124,7 @@
     Plug 'chrisbra/NrrwRgn'                     " Isolating a region to a safe operation (from emacs)
     Plug 'machakann/vim-highlightedyank'
     Plug 'wfxr/minimap.vim'                     " Sublime minimap
+    Plug 'unblevable/quick-scope'
     "}
 
     " All of your Plugs must be added before the following line
