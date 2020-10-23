@@ -47,7 +47,7 @@ augroup vimhooks
     autocmd BufEnter * nohlsearch
 
     " Enable cursorline when insert mode is disable
-    autocmd InsertLeave,WinEnter * set cursorline
+    " autocmd InsertLeave,WinEnter * set cursorline
 
     " Disable cursorline when insert mode is enable
     autocmd InsertEnter,WinLeave * set nocursorline
