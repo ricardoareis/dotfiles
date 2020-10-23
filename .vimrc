@@ -790,6 +790,8 @@ vnoremap <F1> <Esc>
                 \ \| set hlsearch \| let v:searchforward = 0<CR>
     nnoremap <silent> <Leader><Leader>S :<c-u>call SearchWord()
                 \ \| set hlsearch \| let v:searchforward = 1<CR>
+    let g:which_key_leader_map[','].s = 'SearchWord'
+    let g:which_key_leader_map[','].S = 'SearchWordReverse'
     " 1>>>
 
     " Searcher II - Search for deleted <<<1
@@ -833,9 +835,11 @@ vnoremap <F1> <Esc>
 
     " toggle textwidth/column
     nnoremap <leader>tw :<c-u>call <sid>ToggleTextWidth()<CR>
+    let g:which_key_leader_map.t.w = 'TextWidthToggle'
 
     " set textwidth to longest line current screen, or default
     nnoremap <leader><leader>w :<c-u>call <sid>ExpandTextWidth()<CR>
+    let g:which_key_leader_map[','].w = 'ExpandTextWidth'
     " 1>>>
 
 " 1>>>
@@ -859,6 +863,7 @@ vnoremap <F1> <Esc>
         let g:ycm_show_diagnostics_ui = 0
         "
         nmap <Leader><Leader>h <plug>(YCMHover)
+        let g:which_key_leader_map[','].h = 'YCMHover'
         let g:ycm_auto_hover = 1
         let g:ycm_auto_trigger = 1
         let g:ycm_seed_identifiers_with_syntax = 1
@@ -1232,6 +1237,8 @@ vnoremap <F1> <Esc>
         let g:sneak#label = 1
         map <Leader><Leader>f <Plug>Sneak_s
         map <Leader><Leader>F <Plug>Sneak_S
+        let g:which_key_leader_map[','].f = 'Sneak_s'
+        let g:which_key_leader_map[','].F = 'Sneak_S'
     endif
     " 1>>>
 
@@ -1330,6 +1337,7 @@ vnoremap <F1> <Esc>
     " Plugin: Vim-autopair <<<1
     if isdirectory(expand(bundles_dir . '/auto-pairs/'))
         let g:AutoPairsShortcutToggle = '<Leader>tp'
+        let g:which_key_leader_map.t.p = 'AutoPairToggle'
     endif
     " 1>>>
 
