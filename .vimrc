@@ -1435,6 +1435,19 @@ vnoremap <F1> <Esc>
     endif
     " 1>>>
 
+    " Plugin: Vim-QuickScope<<<1
+    if isdirectory(expand(bundles_dir . '/quick-scope/'))
+        let g:qs_buftype_blacklist = ['terminal', 'nofile']
+        let g:qs_lazy_highlight = 1
+        let g:qs_second_highlight = 0
+        " Trigger a highlight in the appropriate direction when pressing these keys:
+        let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+        nmap <Leader>tq <plug>(QuickScopeToggle)
+        xmap <Leader>tq <plug>(QuickScopeToggle)
+        let g:which_key_leader_map.t.q = 'QuickScopeToggle'
+    endif
+    " 1>>>
+
 " 1>>>
 
 " Loading others .vim <<<1
