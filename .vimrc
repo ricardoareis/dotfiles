@@ -67,54 +67,54 @@
     " 1>>>
 
     " Important Properties III <<<1
-    filetype plugin indent on                   " Enable file type detection and do language dependent indenting
+    filetype plugin indent on                              "  Enable file type detection and do language dependent indenting
 
-    set mouse=a                                 " Automatically enable mouse usage
-    set mousehide                               " Hide the mouse cursor while typing
+    set mouse=a                                            "  Automatically enable mouse usage
+    set mousehide                                          "  Hide the mouse cursor while typing
 
-    set shortmess+=filmnrxoOtTI                 " Abbrev. of messages (avoids 'hit enter')
-    set viewoptions=folds,options,cursor,unix,slash " Better Unix / Windows compatibility
-    set virtualedit=onemore                     " Allow for cursor beyond last character
+    set shortmess+=filmnrxoOtTI                            "  Abbrev. of messages (avoids 'hit enter')
+    set viewoptions=folds,options,cursor,unix,slash        "  Better Unix / Windows compatibility
+    set virtualedit=onemore                                "  Allow for cursor beyond last character
 
-    set iskeyword-=.                            " '.' is an end of word
-    set iskeyword-=#                            " '#' is an end of word
-    set iskeyword-=-                            " '-' is an end of word
+    set iskeyword-=.                                       "  '.' is an end of word
+    set iskeyword-=#                                       "  '#' is an end of word
+    set iskeyword-=-                                       "  '-' is an end of word
 
-    set autowrite                               " Write the contents of the file, if it has been modified, on each
-                                                " :next, :rewind, :last, :first, :previous, :stop, :suspend, :tag, :!,
-                                                " :make, CTRL-] and CTRL-^ command; and when a :buffer, CTRL-O, CTRL-I,
-                                                " '{A-Z0-9}, or `{A-Z0-9} command takes one to another file.
-    set autoread                                " Allow vim autoread everything
+    set autowrite                                          "  Write the contents of the file, if it has been modified, on each
+                                                           "  :next, :rewind, :last, :first, :previous, :stop, :suspend, :tag, :!,
+                                                           "  :make, CTRL-] and CTRL-^ command; and when a :buffer, CTRL-O, CTRL-I,
+                                                           "  '{A-Z0-9}, or `{A-Z0-9} command takes one to another file.
+    set autoread                                           "  Allow vim autoread everything
 
-    set report=0                                " after yank/delete/... report number of lines affected
+    set report=0                                           "  after yank/delete/... report number of lines affected
     set signcolumn=yes
 
-    set timeout timeoutlen=1600                 " Allow more time between keystrokes for some key mappings.
-    set ttimeout ttimeoutlen=50                 " But not for for key codes. Use a very small value for them.
+    set timeout timeoutlen=1600                            "  Allow more time between keystrokes for some key mappings.
+    set ttimeout ttimeoutlen=50                            "  But not for for key codes. Use a very small value for them.
 
     set completeopt=longest,menuone,preview
-    set switchbuf=useopen,usetab                " Attempt to edit currently open files instead of opening multiple buf
-    set hidden                                  " Hide buffers when they are abandoned
+    set switchbuf=useopen,usetab                           "  Attempt to edit currently open files instead of opening multiple buf
+    set hidden                                             "  Hide buffers when they are abandoned
 
-    set wildmenu                                " enhanced command line completion
-    set wildmode=list:longest:full              " complete files like a shell
-    set scrolloff=10                            " lines of text around cursor
-    set scrolljump=5                            " Lines to scroll when cursor leaves screen
+    set wildmenu                                           "  enhanced command line completion
+    set wildmode=list:longest:full                         "  complete files like a shell
+    set scrolloff=10                                       "  lines of text around cursor
+    set scrolljump=5                                       "  Lines to scroll when cursor leaves screen
 
     if has('cmdline_info')
-        set ruler                               " Show the ruler
-        set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%) " A ruler on steroids
-        set showcmd                             " Show partial commands in status line and
-                                                " Selected characters/lines in visual mode
-        set cmdheight=1                         " command bar height
+        set ruler                                          "  Show the ruler
+        set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%) "  A ruler on steroids
+        set showcmd                                        "  Show partial commands in status line and
+                                                           "  Selected characters/lines in visual mode
+        set cmdheight=1                                    "  command bar height
     endif
 
-    set laststatus=2                            " Always show the status line
-    set noshowmode                              " Disabled default showmode
-    set number relativenumber                   " Default relative number
+    set laststatus=2                                       "  Always show the status line
+    set noshowmode                                         "  Disabled default showmode
+    set number relativenumber                              "  Default relative number
 
     "https://vi.stackexchange.com/questions/2162/why-doesnt-the-backspace-key-work-in-insert-mode
-    set backspace=indent,eol,start              " Backspace for dummies (vim has a different approach)
+    set backspace=indent,eol,start                         " Backspace for dummies (vim has a different approach)
     " 1>>>
 
     " Searching <<<1
@@ -245,19 +245,19 @@
 
     " Color properties <<<1
     if &term =~# '^xterm' || &term =~# '^screen' || &term =~# '^tmux'
-        set t_Co=256                                " Enable 256 colors to stop the CSApprox warning and make xterm vim shine
+        set t_Co=256                                          "  Enable 256 colors to stop the CSApprox warning and make xterm vim shine
     endif
-    if exists('+termguicolors')                     " Only if compiled
+    if exists('+termguicolors')                               "  Only if compiled
       let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
       let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
       set termguicolors
     endif
-    set background=dark                             " Prefer Dark over Light
+    set background=dark                                       "  Prefer Dark over Light
     if isdirectory(expand(bundles_dir . '/gruvbox-material'))
-        let g:gruvbox_material_background='hard'        " Contrast Level
-        colorscheme gruvbox-material                    " Using the same color scheme
-        let g:gruvbox_termcolors=256                    " Accepting the 256 colors
-        let g:gruvbox_material_enable_italic = 0        " Allow Italic fonts
+        colorscheme gruvbox-material                          "  Using the same color scheme
+        let g:gruvbox_material_background='hard'              "  Contrast Level
+        let g:gruvbox_termcolors=256                          "  Accepting the 256 colors
+        let g:gruvbox_material_enable_italic = 0              "  Allow Italic fonts
         let g:gruvbox_material_disable_italic_comment = 1
         let g:gruvbox_material_enable_bold = 1
         let g:gruvbox_material_diagnostic_line_highlight = 1
@@ -741,7 +741,7 @@ nnoremap <F1> <Esc>
 vnoremap <F1> <Esc>
 " 1>>>
 
-" Funtions <<<1
+" Functions <<<1
 
     " Initialize NERDTree as needed <<<1
     function! NERDTreeInitAsNeeded()
