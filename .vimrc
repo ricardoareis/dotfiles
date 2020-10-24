@@ -1,24 +1,24 @@
 " Basic properties <<<1
 " vim: set expandtab sw=4 ts=4 sts=4 tw=78 ft=vim foldmarker=<<<1,1>>> foldlevel=0 foldmethod=marker spell:
-"
-"   Note: Custom Maps <<<1
-"     <F1>      Open NERDTree
-"     <F2>      Open UndoTree
-"     <F3>      Open Tagbar
-"     <F8>      Shift Spell dictionaries
-"     <S-Tab>   Shift between buffers
-"     <Alt-(Left|Right)> (Next|Previous) Tab
-"     <Alt-(Up|Down)>     Move view to see (bellow|above) the cursor
-"
-"     zfm                               Fold Method
-"     z<(Down|UP)>     (Next|Previous)  Fold
-"     z<(Right|Left)> (Close|Open)      Fold
-"
-"     <C-p>     Fuzzy Finder
-"     <C-l>     Fuzzy Grep
-"     <C-/>     Toggle   (On|Off)   Search Highlight
-"     <Alt-.>   Execute last :cmd
-"     <Leader>. Execute last search/replace
+
+    " Note: Custom Maps <<<1
+    "     <F1>      Open NERDTree
+    "     <F2>      Open UndoTree
+    "     <F3>      Open Tagbar
+    "     <F8>      Shift Spell dictionaries
+    "     <S-Tab>   Shift between buffers
+    "     <Alt-(Left|Right)> (Next|Previous) Tab
+    "     <Alt-(Up|Down)>     Move view to see (bellow|above) the cursor
+    "
+    "     zfm                              Fold Method
+    "     z<(Down|UP)>    (Next|Previous)  Fold
+    "     z<(Right|Left)> (Close|Open)     Fold
+    "
+    "     <C-p>     Fuzzy Finder
+    "     <C-l>     Fuzzy Grep
+    "     <C-/>     Toggle  (On|Off)   Search Highlight
+    "     <Alt-.>   Execute last :cmd
+    "     <Leader>. Execute last search/replace
     " 1>>>
 
     " Use bundles config <<<1
@@ -29,7 +29,6 @@
 
     " SnipMate <<<1
     " Setting the author var
-    " If forking, please overwrite in your .vimrc.local file
     let g:snips_author = 'Ricardo Reis <ricardo.areis@gmail.com>'
     " 1>>>
 
