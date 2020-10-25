@@ -79,7 +79,7 @@
     " }
 
     " Langs {
-    Plug 'fatih/vim-go',            {'for': 'Go', 'do': ':GoInstallBinaries'}
+    Plug 'fatih/vim-go',            {'for': 'go', 'do': ':GoInstallBinaries'}
     Plug 'rust-lang/rust.vim',      {'for': ['rust']}
     Plug 'pangloss/vim-javascript', {'for': ['javascript']}
     " }
