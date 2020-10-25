@@ -961,14 +961,15 @@ vnoremap <F1> <Esc>
     if isdirectory(expand(bundles_dir . '/vim-go/'))
         let g:go_gopls_enabled = 1                  " force default engine
         let g:go_list_type = 'quickfix'
-        " Auto formatting and importing
         let g:go_fmt_fail_silently = 0
-        let g:go_fmt_command = 'gopls'              " format with goimports instead of gofmt
-        let g:go_fmt_autosave = 0                   " disable fmt on save
+        " Always use gopls
+        let g:go_fmt_command = 'gopls'
+        let g:go_imports_mode = 'gopls'
+        let g:go_rename_command = 'gopls'
+        " Auto formatting and importing
+        let g:go_fmt_autosave = 1
         let g:go_imports_autosave = 1
-        " Status line types/signatures
-        let g:go_auto_type_info = 1
-        "
+        let g:go_auto_type_info = 1                 " Status line types/signatures
         let g:go_version_warning = 0
         let g:go_textobj_include_function_doc = 1
         let g:go_diagnostics_enabled = 1
