@@ -959,32 +959,38 @@ vnoremap <F1> <Esc>
 
     " Plugin: Vim-Go properties <<<1
     if isdirectory(expand(bundles_dir . '/vim-go/'))
-        let g:go_fmt_command = 'gopls'          " format with goimports instead of gofmt
+        let g:go_gopls_enabled = 1                  " force default engine
         let g:go_list_type = 'quickfix'
-        let g:go_version_warning = 0
+        " Auto formatting and importing
         let g:go_fmt_fail_silently = 0
+        let g:go_fmt_command = 'gopls'              " format with goimports instead of gofmt
         let g:go_fmt_autosave = 0                   " disable fmt on save
-        let g:go_textobj_include_function_doc = 1
-        let g:go_auto_type_info = 1
         let g:go_imports_autosave = 1
+        " Status line types/signatures
+        let g:go_auto_type_info = 1
+        "
+        let g:go_version_warning = 0
+        let g:go_textobj_include_function_doc = 1
         let g:go_diagnostics_enabled = 1
         let g:go_snippet_engine = 'ultisnips'       " force engine to be ultisnips
         let g:go_code_completion_enabled = 0        " disable omnifunc
         let g:go_decls_mode = 'fzf'                 " force engine fzf
         let g:go_addtags_skip_unexported = 1
+        " Enable Terminal
         let g:go_term_enabled = 1
         let g:go_term_mode = "split"
         let g:go_term_reuse = 1
         let g:go_term_height= 10
 
-        " Performance improve
-        let g:go_highlight_methods = 0
-        let g:go_highlight_functions = 0
-        let g:go_highlight_structs = 0
-        let g:go_highlight_interfaces = 0
-        let g:go_highlight_operators = 0
-        "
-        let g:go_gopls_enabled = 1                  " YCM concurrency
+        " Go syntax highlighting
+        let g:go_highlight_fields = 1
+        let g:go_highlight_methods = 1
+        let g:go_highlight_functions = 1
+        let g:go_highlight_function_calls = 1
+        let g:go_highlight_extra_types = 1
+        let g:go_highlight_structs = 1
+        let g:go_highlight_interfaces = 1
+        let g:go_highlight_operators = 1
         let g:go_highlight_space_tab_error = 1
         let g:go_highlight_array_whitespace_error = 1
         let g:go_highlight_trailing_whitespace_error = 1
