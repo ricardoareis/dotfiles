@@ -144,7 +144,7 @@ augroup golang_cmds_group
     "
     autocmd FileType go nmap <LocalLeader>grv <Plug>(go-run-vertical)
     autocmd Filetype go let g:which_key_localleader_map.g.rv = 'Go-Run-Vertical'
-    "TODO: Fixit -> WhichKey for GoAddTags does not follow other implementations
+    "
     autocmd FileType go nmap <LocalLeader>gat :GoAddTags<CR>
     autocmd Filetype go let g:which_key_localleader_map.g.at = 'Go-Add-Tags'
     "
