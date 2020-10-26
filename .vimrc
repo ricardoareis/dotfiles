@@ -979,7 +979,7 @@ vnoremap <F1> <Esc>
         let g:go_addtags_skip_unexported = 1
         " Enable Terminal
         let g:go_term_enabled = 1
-        let g:go_term_mode = "split"
+        let g:go_term_mode = 'split'
         let g:go_term_reuse = 1
         let g:go_term_height= 10
 
