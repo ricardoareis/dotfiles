@@ -841,6 +841,51 @@ vnoremap <F1> <Esc>
     let g:which_key_leader_map[','].w = 'ExpandTextWidth'
     " 1>>>
 
+    " Profile<<<1
+    " from junegunn
+    function! s:profile(bang)
+    if a:bang
+        profile pause
+        noautocmd qall
+    else
+        profile start /tmp/profile.log
+        profile func *
+        profile file *
+    endif
+    endfunction
+    command! -bang Profile call s:profile(<bang>0)
+    " 1>>>
+
+    " Root <<<1
+    " from junegunn
+    function! s:root()
+    let root = systemlist('git rev-parse --show-toplevel')[0]
+    if v:shell_error
+        echo 'Not in git repo'
+    else
+        execute 'lcd' root
+        echo 'Changed directory to: '.root
+    endif
+    endfunction
+    command! Root call s:root()
+    " 1>>>
+
+    " Google it / Feeling lucky<<<1
+    " from junegunn
+    function! s:goog(pat, lucky)
+    let q = '"'.substitute(a:pat, '["\n]', ' ', 'g').'"'
+    let q = substitute(q, '[[:punct:] ]',
+        \ '\=printf("%%%02X", char2nr(submatch(0)))', 'g')
+    call system(printf('open "https://www.google.com/search?%sq=%s"',
+                    \ a:lucky ? 'btnI&' : '', q))
+    endfunction
+
+    nnoremap <leader>? :call <SID>goog(expand("<cWORD>"), 0)<cr>
+    nnoremap <leader>! :call <SID>goog(expand("<cWORD>"), 1)<cr>
+    xnoremap <leader>? "gy:call <SID>goog(@g, 0)<cr>gv
+    xnoremap <leader>! "gy:call <SID>goog(@g, 1)<cr>gv
+    " 1>>>
+
 " 1>>>
 
 "Plugins <<<1
