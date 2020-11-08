@@ -15,7 +15,8 @@ function! LargeFile()
     " no undo possible
     setlocal undolevels=-1
     " display message
-    augroup LargeFile
+    augroup _LargeFile
+        autocmd!
         autocmd VimEnter *  echo "The file is larger than " . (g:LargeFile / 1024 / 1024) . " MB, so some options are changed (see autocmds.vim for details)."
     augroup END
 endfunction
