@@ -712,8 +712,8 @@
     nnoremap <LocalLeader>qg :silent vimgrep<Space>
     nnoremap <LocalLeader>qo :copen 5<CR>
     nnoremap <LocalLeader>qc :cclose<CR>
-    nnoremap <silent>q[ :cp<CR>
-    nnoremap <silent>q] :cn<CR>
+    nnoremap <silent>[q :cp<CR>
+    nnoremap <silent>]q :cn<CR>
     let g:which_key_localleader_map.q.g = 'QuickFixVimGrep'
     let g:which_key_localleader_map.q.o = 'QuickFixOpen'
     let g:which_key_localleader_map.q.c = 'QuickFixClose'
@@ -724,8 +724,8 @@
     nnoremap <LocalLeader>lg :silent lvimgrep<Space>
     nnoremap <LocalLeader>lo :lopen 5<CR>
     nnoremap <LocalLeader>lc :lclose<CR>
-    nnoremap <silent>f[ :lprevious<CR>
-    nnoremap <silent>f] :lnext<CR>
+    nnoremap <silent>[l :lprevious<CR>
+    nnoremap <silent>]l :lnext<CR>
     let g:which_key_localleader_map.l.g = 'LocationVimGrep'
     let g:which_key_localleader_map.l.o = 'LocationOpen'
     let g:which_key_localleader_map.l.c = 'LocationClose'
