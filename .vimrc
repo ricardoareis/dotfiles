@@ -360,7 +360,7 @@
     " Dealing with a long lines properties <<<1
     set wrap                                            " wrap long lines by default
     set whichwrap=b,s,h,l,<,>,[,]                       " Backspace and cursor keys wrap too
-    set colorcolumn=120                                 " Use a colored column to mark textwidh
+    set colorcolumn=100                                 " Use a colored column to mark textwidh
     set showbreak=...
     " 1>>>
 
@@ -822,7 +822,7 @@ vnoremap <F1> <Esc>
         endif
     endfunction
 
-    let s:default_tw = &g:textwidth ? &g:textwidth : 74
+    let s:default_tw = &g:textwidth ? &g:textwidth : 100
     function! s:ExpandTextWidth()
         let l:longest = max(map(getline(line('w0'), line('w$')),
             \ 'strdisplaywidth(v:val)'))
