@@ -17,7 +17,7 @@
 
     " General {
     Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}   "  Support of file tree bar
-    Plug 'mbbill/undotree'                                 "  Support of undo tree bar
+    Plug 'mbbill/undotree',     {'on': 'UndotreeToggle'}   "  Support of undo tree bar
 
     if executable('ctags')
         Plug 'majutsushi/tagbar', {'on': 'TagbarToggle'}   "  Support of tagbar
