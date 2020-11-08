@@ -16,11 +16,11 @@
 " Bundles {
 
     " General {
-    Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } "  Support of file tree bar
+    Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}   "  Support of file tree bar
     Plug 'mbbill/undotree'                                 "  Support of undo tree bar
 
     if executable('ctags')
-        Plug 'majutsushi/tagbar'                           "  Support of tagbar
+        Plug 'majutsushi/tagbar', {'on': 'TagbarToggle'}   "  Support of tagbar
     endif
 
     Plug 'tpope/vim-repeat'                                "  Support to repeat some cmds
@@ -29,16 +29,16 @@
     " }
 
     " Writing {
-    Plug 'reedes/vim-textobj-quote'           " Extending Vim to better support typographic (‘curly’ quote characters)
-    Plug 'kana/vim-textobj-user'              " Create your own text objects (deps)
-    Plug 'michaeljsmith/vim-indent-object'    " Text objects for indented blocks of lines (vai,vii)
-    Plug 'reedes/vim-textobj-sentence'        " Improve sentence object                            -  TODO keycode
-    Plug 'reedes/vim-wordy'                   " Supporting of different dictionaries i,e; <F8>
-    Plug 'tpope/vim-surround'                 " Improve surroundings in pairs                      -  TODO study
-    Plug 'godlygeek/tabular'                  " Formating with tab
-    Plug 'wellle/targets.vim'                 " Many text objects                                  -  TODO study
-    Plug 'gabrielelana/vim-markdown'
-    Plug 'chrisbra/csv.vim'                   " Support better csv support
+    Plug 'reedes/vim-textobj-quote'                        " Extending Vim to better support typographic (‘curly’ quote characters)
+    Plug 'kana/vim-textobj-user'                           " Create your own text objects (deps)
+    Plug 'michaeljsmith/vim-indent-object'                 " Text objects for indented blocks of lines (vai,vii)
+    Plug 'reedes/vim-textobj-sentence'                     " Improve sentence object                            -  TODO keycode
+    Plug 'reedes/vim-wordy',            {'on': 'NextWordy'}" Supporting of different dictionaries i,e; <F8>
+    Plug 'tpope/vim-surround'                              " Improve surroundings in pairs                      -  TODO study
+    Plug 'godlygeek/tabular'                               " Formating with tab
+    Plug 'wellle/targets.vim'                              " Many text objects                                  -  TODO study
+    Plug 'gabrielelana/vim-markdown',   {'for': ['markdown']}
+    Plug 'chrisbra/csv.vim',            {'for': ['csv']}   " Support better csv support
     " }
 
     " General Programming {
@@ -57,8 +57,8 @@
     Plug 'sillybun/vim-repl',                   {'for': ['python', 'python3']}
     Plug 'jmcantrell/vim-virtualenv',           {'for': ['python', 'python3']} "  Support a Python VirtualEnv
     Plug 'jeetsukumaran/vim-pythonsense'                                       "  Add some python text objects
-    Plug 'ludovicchabant/vim-gutentags'
-    Plug 'skywind3000/gutentags_plus'
+    Plug 'ludovicchabant/vim-gutentags',        {'on': 'TagbarToggle'}
+    Plug 'skywind3000/gutentags_plus',          {'on': 'TagbarToggle'}
     Plug 'vim-test/vim-test'
     Plug 'tpope/vim-dispatch'                                                  "  Execute cmds asynchronous
     Plug 'skywind3000/vim-preview'
@@ -85,14 +85,14 @@
     " }
 
     " Misc {
-    Plug 'mattn/gist-vim'                       " Support a Gist
-    Plug 'elzr/vim-json'                        " Allow json error handling
-    Plug 'pedrohdz/vim-yaml-folds'              " Better folding
-    Plug 'roxma/vim-tmux-clipboard'             " Yank/Paste tmux split/windows
-    Plug 'tmux-plugins/vim-tmux-focus-events'   " Restore vim autocmd events (FocusGained/FocusLost)
-                                                " there is a bug for terminal buffer, and
-                                                " it should be  accepted by vim in 2015, but.
-    Plug 'ConradIrwin/vim-bracketed-paste'      " Enable paste without `:set paste` (depends of terminal support)
+    Plug 'mattn/gist-vim'                                       " Support a Gist
+    Plug 'elzr/vim-json',           {'for': ['json']}           " Allow json error handling
+    Plug 'pedrohdz/vim-yaml-folds', {'for': ['yml', 'yaml']}    " Better folding
+    Plug 'roxma/vim-tmux-clipboard'                             " Yank/Paste tmux split/windows
+    Plug 'tmux-plugins/vim-tmux-focus-events'                   " Restore vim autocmd events (FocusGained/FocusLost)
+                                                                " there is a bug for terminal buffer, and
+                                                                " it should be  accepted by vim in 2015, but.
+    Plug 'ConradIrwin/vim-bracketed-paste'                      " Enable paste without `:set paste` (depends of terminal support)
     Plug 'skanehira/docker-compose.vim'
     Plug 'skanehira/docker.vim'
     " }

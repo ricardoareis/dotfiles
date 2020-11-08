@@ -903,9 +903,14 @@ vnoremap <F1> <Esc>
         let g:bufferline_echo = 0
         let g:airline_highlighting_cache = 1
         if isdirectory(expand(bundles_dir . '/vim-airline-themes/'))
-            let g:airline_extensions=['branch', 'localsearch', 'virtualenv', 'csv', 'bufferline',
+            let g:airline_extensions=['branch', 'localsearch', 'virtualenv', 'bufferline',
                         \             'hunks', 'keymap', 'quickfix', 'ale', 'tagbar', 'term',
                         \             'undotree', 'whitespace', 'wordcount', 'ycm', 'tabline']
+
+            augroup AirlineExtensions
+                autocmd!
+                autocmd FileType csv if index(airline_extensions, &ft) < 0 | call add(airline_extensions, 'csv')
+            augroup END
             " tab properties
             let g:airline#extensions#tabline#show_buffers = 0
             let g:airline#extensions#tabline#show_splits = 0                " show splited windows on tabs
