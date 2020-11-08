@@ -995,8 +995,15 @@ vnoremap <F1> <Esc>
 
     " Plugin: FZF (performs like CtrlP) <<<1
     if isdirectory(expand(bundles_dir . '/fzf/'))
-        "Open a file fuzzy search
-        nnoremap <C-p> :Files<CR>
+        silent! !git rev-parse --is-inside-work-tree 2>&1 >/dev/null
+        if v:shell_error == 0
+            "Open a file fuzzy search for git repo
+            nnoremap <C-p> :GFiles --cached --others --exclude-standard<CR>
+        else
+            "Open a file fuzzy search
+            nnoremap <C-p> :Files<CR>
+        endif
+        " nnoremap <C-p> :Files<CR>
         "Open a content fuzzy search
         nnoremap <C-l> :Rg<CR>
         "Open a line fuzzy search
