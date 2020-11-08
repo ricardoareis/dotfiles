@@ -88,8 +88,8 @@
     set report=0                                           "  after yank/delete/... report number of lines affected
     set signcolumn=yes
 
-    set timeout timeoutlen=1600                            "  Allow more time between keystrokes for some key mappings.
-    set ttimeout ttimeoutlen=50                            "  But not for for key codes. Use a very small value for them.
+    set timeout timeoutlen=1000                            "  Allow more time between keystrokes for some key mappings.
+    set ttimeout ttimeoutlen=0                             "  But not for for key codes. Use a very small value for them.
 
     set completeopt=longest,menuone,preview
     set switchbuf=useopen,usetab                           "  Attempt to edit currently open files instead of opening multiple buf
@@ -1015,12 +1015,15 @@ vnoremap <F1> <Esc>
         let g:gitgutter_sign_removed_first_line='rf'
         let g:gitgutter_sign_modified_removed='mr'
         let g:gitgutter_max_signs=100
+        let g:gitgutter_grep = 'rg'
         set foldtext=gitgutter#fold#foldtext()
         map ghs :GitGutterStageHunk<CR>
         map ghu :GitGutterUndoHunk<CR>
         map ghf :GitGutterFold<CR>
+        nmap ghp <Plug>(GitGutterPreviewHunk)
         nmap ]h <Plug>(GitGutterNextHunk)
         nmap [h <Plug>(GitGutterPrevHunk)
+        let g:gitgutter_preview_win_floating = 1
     endif
     " 1>>>
 
