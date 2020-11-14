@@ -1457,7 +1457,7 @@ vnoremap <F1> <Esc>
         let ctagsignore_file = '.ctagsignore'
 
         if filereadable(expand(ctagsignore_file))
-            let ctags_ignore_param = '--exclude @.ctagsignore'
+            let ctags_ignore_param = '--exclude=@.ctagsignore'
         endif
 
         " YCM compatibility and ignore
