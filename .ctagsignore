@@ -1,3 +1,7 @@
-.vim
-.tmux
+.vim/bundles
+.vim/autoload
+.vim/vimundo
+.vim/swap
+.vim/spell
+.tmux/plugins
 .zinit
