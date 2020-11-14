@@ -78,6 +78,8 @@
     set iskeyword-=.                                       "  '.' is an end of word
     set iskeyword-=#                                       "  '#' is an end of word
     set iskeyword-=-                                       "  '-' is an end of word
+    set iskeyword+=@-@                                     "  @ which represent any characters that isalpha()
+                                                           "  help isf
 
     set autowrite                                          "  Write the contents of the file, if it has been modified, on each
                                                            "  :next, :rewind, :last, :first, :previous, :stop, :suspend, :tag, :!,
