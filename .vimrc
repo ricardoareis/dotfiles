@@ -1324,8 +1324,8 @@ vnoremap <F1> <Esc>
     " Plugin: Vim-FloatTerm <<<1
     if isdirectory(expand(bundles_dir . '/vim-floaterm/'))
         let g:floaterm_keymap_new    = '<Leader>tn'
-        let g:floaterm_keymap_prev   = 't['
-        let g:floaterm_keymap_next   = 't]'
+        " let g:floaterm_keymap_prev   = 't['
+        " let g:floaterm_keymap_next   = 't]'
         let g:floaterm_keymap_toggle = '<Leader>tt'
         let g:floaterm_keymap_kill   = '<Leader>tk'
         let g:floaterm_width    = 0.9
@@ -1435,24 +1435,86 @@ vnoremap <F1> <Esc>
         let g:gutentags_modules = ['ctags']
 
         " config project root markers.
-        let g:gutentags_project_root = ['.root']
+        let g:gutentags_project_root = ['.git']
 
-        " generate datebases in my cache directory, prevent gtags files polluting my project
-        let g:gutentags_cache_dir = expand('~/.cache/tags')
+        " Make tags placed in .git/tags file available in all levels of a repository
+        set tags^=.git/tags;
+        let g:gutentags_ctags_tagfile = '.git/tags'
 
         " change focus to quickfix window after search (optional).
         let g:gutentags_plus_switch = 1
 
+        " generating tags when
+        let g:gutentags_generate_on_new = 1
+        let g:gutentags_generate_on_missing = 1
+        let g:gutentags_generate_on_write = 1
+        let g:gutentags_generate_on_empty_buffer = 0
+
         " Adding a ctags_ignore
         let ctags_ignore_param = ''
         let ctagsignore_file = '.ctagsignore'
+
         if filereadable(expand(ctagsignore_file))
             let ctags_ignore_param = '--exclude @.ctagsignore'
         endif
-        " YCM compatibility and ignore
-        let g:gutentags_ctags_extra_args = ['--fields=+lnS' . ctags_ignore_param]
 
+        " YCM compatibility and ignore
+        let g:gutentags_ctags_extra_args = [
+                    \ '--tag-relative=yes',
+                    \ '--fields=+ailmnS',
+                    \ ctags_ignore_param,
+                    \ ]
+        " disable predefined map
         let g:gutentags_plus_nomap = 1
+
+        let g:gutentags_ctags_exclude = [
+              \ '*.git', '*.svg', '*.hg',
+              \ '*/tests/*',
+              \ 'build',
+              \ 'dist',
+              \ '*sites/*/files/*',
+              \ 'bin',
+              \ 'node_modules',
+              \ 'bower_components',
+              \ 'cache',
+              \ 'compiled',
+              \ 'docs',
+              \ 'example',
+              \ 'bundle',
+              \ 'vendor',
+              \ '*.md',
+              \ '*-lock.json',
+              \ '*.lock',
+              \ '*bundle*.js',
+              \ '*build*.js',
+              \ '.*rc*',
+              \ '*.json',
+              \ '*.min.*',
+              \ '*.map',
+              \ '*.bak',
+              \ '*.zip',
+              \ '*.pyc',
+              \ '*.class',
+              \ '*.sln',
+              \ '*.Master',
+              \ '*.csproj',
+              \ '*.tmp',
+              \ '*.csproj.user',
+              \ '*.cache',
+              \ '*.pdb',
+              \ 'tags*',
+              \ 'cscope.*',
+              \ '*.css',
+              \ '*.less',
+              \ '*.scss',
+              \ '*.exe', '*.dll',
+              \ '*.mp3', '*.ogg', '*.flac',
+              \ '*.swp', '*.swo',
+              \ '*.bmp', '*.gif', '*.ico', '*.jpg', '*.png',
+              \ '*.rar', '*.zip', '*.tar', '*.tar.gz', '*.tar.xz', '*.tar.bz2',
+              \ '*.pdf', '*.doc', '*.docx', '*.ppt', '*.pptx',
+              \ ]
+
     endif
     " 1>>>
 
