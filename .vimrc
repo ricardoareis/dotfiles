@@ -883,7 +883,9 @@ vnoremap <F1> <Esc>
     endfunction
 
     nnoremap <leader>? :call <SID>goog(expand("<cWORD>"), 0)<cr>
+    let g:which_key_leader_map['?'] = 'Google it'
     nnoremap <leader>! :call <SID>goog(expand("<cWORD>"), 1)<cr>
+    let g:which_key_leader_map['!'] = 'Google FL'
     xnoremap <leader>? "gy:call <SID>goog(@g, 0)<cr>gv
     xnoremap <leader>! "gy:call <SID>goog(@g, 1)<cr>gv
     " 1>>>
