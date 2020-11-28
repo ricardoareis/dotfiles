@@ -875,11 +875,11 @@ vnoremap <F1> <Esc>
     " Google it / Feeling lucky<<<1
     " from junegunn
     function! s:goog(pat, lucky)
-    let q = '"'.substitute(a:pat, '["\n]', ' ', 'g').'"'
-    let q = substitute(q, '[[:punct:] ]',
-        \ '\=printf("%%%02X", char2nr(submatch(0)))', 'g')
-    call system(printf('open "https://www.google.com/search?%sq=%s"',
-                    \ a:lucky ? 'btnI&' : '', q))
+        let q = '"'.substitute(a:pat, '["\n]', ' ', 'g').'"'
+        let q = substitute(q, '[[:punct:] ]',
+            \ '\=printf("%%%02X", char2nr(submatch(0)))', 'g')
+        call system(printf('open "https://www.google.com/search?%sq=%s"',
+                        \ a:lucky ? 'btnI&' : '', q))
     endfunction
 
     nnoremap <leader>? :call <SID>goog(expand("<cWORD>"), 0)<cr>
