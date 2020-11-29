@@ -1593,6 +1593,11 @@ vnoremap <F1> <Esc>
     endif
     " 1>>>
 
+    " Plugin: Vim-Visual-Multi<<<1
+    if isdirectory(expand(bundles_dir . '/vim-visual-multi/'))
+        let g:VM_default_mappings = 0
+    endif
+    " 1>>>
 " 1>>>
 
 " Loading others .vim <<<1
