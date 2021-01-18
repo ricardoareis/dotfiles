@@ -215,6 +215,7 @@ typeset -U fpath
 
 fpath=(
     ${ZSH_CUSTOM_FPATH}
+    /usr/local/share/zsh/functions
     "${fpath[@]}"
 )
 
