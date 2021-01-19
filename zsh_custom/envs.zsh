@@ -15,4 +15,5 @@ export CLICOLOR=YES
 export ZSH_DOTENV_PROMPT=false
 [[ "$(uname)" == "Darwin"  ]] && \
     export HOMEBREW_TEMP="/usr/local/tmp"
-    export SDKROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk
+    export SDKROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk
+    export LIBRARY_PATH="$LIBRARY_PATH:/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib"
