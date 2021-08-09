@@ -482,8 +482,9 @@
       \ 'L' : ['<C-W>10>'       , 'expand-window-right']   ,
       \ 'K' : [':resize -10'    , 'expand-window-up']      ,
       \ '=' : ['<C-W>='         , 'balance-window']        ,
-      \ 's' : ['<C-W>s'         , 'split-window-below']    ,
-      \ 'v' : ['<C-W>v'         , 'split-window-below']    ,
+      \ 'a' : ['<C-W>a'         , 'split-window-above']    ,
+      \ 'b' : ['<C-W>s'         , 'split-window-below']    ,
+      \ 'v' : ['<C-W>v'         , 'split-window-vertical'] ,
       \ '?' : ['Windows'        , 'fzf-window']            ,
       \ }
     " 1>>>
