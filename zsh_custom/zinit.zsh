@@ -112,7 +112,7 @@ zinit wait"1c" lucid as=program  for                                            
            export GOPATH_BIN="$(go env GOPATH)/bin"
            export PATH="$GOENV_ROOT/bin:$GOENV_ROOT/shims:$PATH"
            export PATH="$GOPATH_BIN:$GOROOT/bin:$PATH"
-           [[ -d $GOPATH_BIN ]] || mkdir -p $GOPATH_BIN' atpull="%atclone"                               \
+           [[ -d $GOPATH_BIN ]] || mkdir -p $GOPATH_BIN'                                                 \
     pick='bin/goenv' src="zgoenv.zsh" nocompile='!'                                                      \
         syndbg/goenv
 
