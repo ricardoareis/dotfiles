@@ -1277,6 +1277,7 @@ vnoremap <F1> <Esc>
         let g:repl_output_copy_to_register = 't'
         let g:sendtorepl_invoke_key = ''
         let g:repl_position = 3
+        let g:repl_python_auto_import = 0
     endif
     " 1>>>
 
