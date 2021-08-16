@@ -1573,7 +1573,7 @@ vnoremap <F1> <Esc>
 
     " Plugin: Vim-Doge<<<1
     if isdirectory(expand(bundles_dir . '/vim-doge/'))
-        let g:doge_doc_standard_python = 'numpy'
+        let g:doge_doc_standard_python = 'sphinx'
         let g:doge_enable_mappings = 0
         let g:doge_python_settings = {
                     \'single_quotes': 0
