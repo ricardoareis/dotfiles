@@ -18,9 +18,9 @@ POWERLEVEL9K_INSTANT_PROMPT=off
 # this if, load the p10k instant prompt config
 # however, does not work.
 #
-#if [[ -r "${XDG_CACHE_HOME}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-#    source "${XDG_CACHE_HOME}/p10k-instant-prompt-${(%):-%n}.zsh"
-#fi
+if [[ -r "${XDG_CACHE_HOME}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+    source "${XDG_CACHE_HOME}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
 
 [[ -d "${ZSH_COMPDUMP}" ]] || mkdir -p "${ZSH_COMPDUMP}"
 
@@ -129,7 +129,6 @@ path=(
     "$HOME/.local/bin"
     "$PYENV_ROOT/bin"
     "$PYENV_ROOT/shims"
-    "$GOPATH/bin"
     "/home/mtzcpd1731/.pyenv/libexec/"
     /usr/local/bin
     /usr/bin
@@ -174,9 +173,9 @@ if [[ ${+MANPATH} -eq 1 ]]; then
 fi
 
 if [[ "$(uname)" == "Darwin" ]];then
-    export LDFLAGS=-L/usr/local/opt/openssl@1.1/lib
-    export CPPFLAGS=-I/usr/local/opt/openssl@1.1/include
-    export C_INCLUDE_PATH="/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include/libxml2:$C_INCLUDE_PATH"
+    export CC="clang"
+    export LDFLAGS="$LDFLAGS -L/usr/local/opt/openssl@1.1/lib"
+    export CPPFLAGS="$CPPFLAGS -I/usr/local/opt/openssl@1.1/include"
 fi
 #}
 
@@ -187,11 +186,6 @@ ZINIT[HOME_DIR]="${HOME}/repos/dotfiles/.zinit"     # Where Zinit should create 
 ZINIT[BIN_DIR]="${ZINIT[HOME_DIR]}/bin"             # Where Zinit code resides, e.g.: "~/.zinit/bin"
 ZINIT[MODULES_DIR]="${ZINIT[BIN_DIR]}/zmodules/Src"
 ZINIT[ZCOMPDUMP_PATH]="${ZSH_COMPDUMP}/zcompdump"
-#
-#ZINIT[PLUGINS_DIR]="${HOME}/.zinit/plugins"
-#ZINIT[COMPLETIONS_DIR]="${HOME}/.zinit/completions"
-#ZINIT[SNIPPETS_DIR]="${HOME}/.zinit/snippets"
-#
 ZINIT[COMPINIT_OPTS]="-C"
 ZINIT[OPTIMIZE_OUT_DISK_ACCESSES]=1
 
@@ -221,6 +215,7 @@ typeset -U fpath
 
 fpath=(
     ${ZSH_CUSTOM_FPATH}
+    /usr/local/share/zsh/functions
     "${fpath[@]}"
 )
 
