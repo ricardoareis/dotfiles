@@ -1,38 +1,27 @@
 " vim: set expandtab sw=4 ts=4 sts=4 tw=78 ft=vim foldmarker={,} foldlevel=0 foldmethod=marker nospell:
 
-" Remove all hiing
-hi clear Constant
-"hi clear Number
-hi clear Statement
-"hi clear PreProc
-"hi clear Type
-hi clear Special
-"hi clear Identifier
-"hi clear String
-hi clear Comment
-hi clear Error
-hi clear LineNr
-"hi clear NonText
-hi clear SpecialKey
-hi clear SpellBad
-hi clear Search
+" " Remove all hiing
+" hi clear Constant
+" "hi clear Number
+" hi clear Statement
+" "hi clear PreProc
+" "hi clear Type
+" hi clear Special
+" "hi clear Identifier
+" "hi clear String
+" hi clear Comment
+" hi clear Error
+" hi clear LineNr
+" "hi clear NonText
+" hi clear SpecialKey
+" hi clear SpellBad
+" hi clear Search
 
 " Set up some simple non-intrusive colors
-if &background == "light"
-    "   hi String         term=underline  cterm=NONE ctermfg=DarkGreen
-    "   hi Comment        term=bold       cterm=NONE ctermfg=DarkBlue
-    "   hi SpecialComment                            ctermfg=DarkCyan
-    "   hi Error          term=reverse    cterm=NONE ctermfg=DarkRed
-    "   hi LineNr         term=bold       cterm=NONE ctermfg=DarkYellow
-    "   hi NonText        term=bold       cterm=NONE ctermfg=DarkYellow
-    "   hi SpecialKey     term=bold       cterm=NONE ctermfg=DarkYellow
-else
-    "   hi String         term=underline  cterm=bold,underline    "ctermfg=DarkGreen
+if &background ==# 'dark'
     hi Comment        term=NONE         cterm=NONE      ctermfg=DarkGray
-    hi SpecialComment                   cterm=NONE      ctermfg=DarkCyan
     hi Error          term=bold         cterm=underline ctermfg=Red
     hi LineNr         term=bold         cterm=NONE      ctermfg=DarkGray
-    "hi NonText       term=bold         cterm=NONE      ctermfg=Yellow
     hi SpecialKey     term=bold         cterm=NONE      ctermfg=Yellow
     hi SpellBad       term=NONE         cterm=underline ctermfg=NONE
 endif

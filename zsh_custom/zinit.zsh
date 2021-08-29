@@ -12,8 +12,6 @@ zinit light romkatv/powerlevel10k
 
 # Loading with a min delay (default) {
 #
-# zinit light zinit-zsh/z-a-as-monitor
-
 # OMZ things to source
 local _ZSHRC_OMZ_LIB_SRCS=(
   # Libs
@@ -36,8 +34,8 @@ zinit snippet OMZ::lib
 zinit ice svn wait"1a" atload"unalias grv" lucid
 zinit snippet OMZ::plugins/git
 
-#zinit ice svn wait"2b" lucid
-#zinit snippet OMZ::plugins/aws
+zinit ice svn wait"1a" lucid
+zinit snippet OMZ::plugins/aws
 
 zinit ice svn wait"1a" lucid
 zinit snippet OMZ::plugins/osx
@@ -75,130 +73,117 @@ zinit snippet OMZ::plugins/jsontools
 zinit ice svn wait"1a" lucid
 zinit snippet OMZ::plugins/safe-paste
 
-zinit ice wait"1c" lucid as="program" pick="bin/fzf-tmux"
+zinit ice wait"1b" lucid as="program" pick="bin/fzf-tmux"
 zinit light junegunn/fzf
 
-zinit ice svn wait"1c" lucid
+zinit ice svn wait"1b" lucid
 zinit snippet OMZ::plugins/fzf
 
-zinit wait"1c" lucid for \
+zinit wait"1b" lucid for \
     atload'source init.zsh'\
     atinit'export FZF_MARKS_JUMP="m"'\
         urbainvaes/fzf-marks
 #}
 
 # Loading as a program with a 1s delay {
-zinit wait"1c" lucid as=program                 \
-    atclone"./fasd --init auto > zfasd.zsh"     \
-    src="zfasd.zsh" for                         \
-    clvv/fasd
-
-zinit wait"1d" lucid as=program from"gh-r"      \
-    atinit='ln -sf $PWD/bat/bat $ZPFX/bin'      \
-    mv"bat* -> bat" pick="bat/bat" for          \
-    @sharkdp/bat
-
-zinit wait"1d" lucid as=program from"gh-r"      \
-    atinit='ln -sf $PWD/fd/fd $ZPFX/bin'        \
-    mv"fd* -> fd" pick="fd/fd" for              \
-    @sharkdp/fd
-
-zinit wait"1d" lucid as=program from"gh-r"      \
-    atinit='ln -sf $PWD/delta/delta $ZPFX/bin'  \
-    mv"delta* -> delta" pick="delta/delta" for  \
-    @dandavison/delta
-
-zinit wait"1d" lucid as=program from"gh-r"      \
-    atinit='ln -sf $PWD/rg/rg $ZPFX/bin'        \
-    mv"ripgrep* -> rg" pick="rg/rg" for         \
-    @BurntSushi/ripgrep
-
-zinit wait"1d" lucid as=program from"gh-r"      \
-    atinit='ln -sf $PWD/fzf $ZPFX/bin'          \
-    mv"fzf* -> fzf" pick="fzf/fzf"              \
-    src="$ZSH_CUSTOM/fzf.cfg"  for              \
-    @junegunn/fzf-bin
-
-zinit wait"1d" lucid as=program                                 \
-    atclone="./autogen.sh && ./configure --prefix=$PWD"         \
-    make="" pick="ctags" for                                    \
-    universal-ctags/ctags
-
-zinit wait"1d" lucid as=program                                 \
-    atclone"./libexec/pyenv init - > zpyenv.zsh"                \
-    atinit'export PYENV_ROOT="$HOME/.pyenv"'                    \
-    atpull"%atclone" pick='bin/pyenv'                           \
-    src"zpyenv.zsh" nocompile'!' for                            \
-    pyenv/pyenv
-
-zinit wait"1e" lucid as=program                                                                         \
-    atclone"mkdir -p $PYENV_ROOT/plugins;                                                               \
-            ln -sf ${ZINIT[PLUGINS_DIR]}/pyenv---pyenv-virtualenv $PYENV_ROOT/plugins/pyenv-virtualenv ;\
-            pyenv virtualenv-init - > zpvirt.zsh"                                                       \
-    atinit'export PYENV_ROOT="$HOME/.pyenv"'                                                            \
-    atpull"%atclone" src"zpvirt.zsh" nocompile'!' for                                                   \
-    pyenv/pyenv-virtualenv
-
-zinit wait"1d" lucid as=program atclone"./libexec/goenv init - > zgoenv.zsh"    \
-    atinit'export GOENV_ROOT="$PWD"
+zinit wait"1c" lucid as=program  for                                                                     \
+    atclone="./fasd --init auto > zfasd.zsh"                                                             \
+    src="zfasd.zsh"                                                                                      \
+        clvv/fasd                                                                                        \
+    atclone="./autogen.sh && ./configure --prefix=$PWD"                                                  \
+    make="" pick="ctags"                                                                                 \
+        universal-ctags/ctags                                                                            \
+    atclone="./libexec/pyenv init - > zpyenv.zsh"                                                        \
+    atinit='export PYENV_ROOT="$HOME/.pyenv"'                                                            \
+    atpull="%atclone" pick='bin/pyenv'                                                                   \
+    src="zpyenv.zsh" nocompile='!'                                                                       \
+        pyenv/pyenv                                                                                      \
+    atclone="mkdir -p $PYENV_ROOT/plugins;                                                               \
+            ln -sf ${ZINIT[PLUGINS_DIR]}/pyenv---pyenv-virtualenv $PYENV_ROOT/plugins/pyenv-virtualenv ; \
+            pyenv virtualenv-init - > zpvirt.zsh"                                                        \
+    atinit='export PYENV_ROOT="$HOME/.pyenv"'                                                            \
+    atpull="%atclone" src"zpvirt.zsh" nocompile='!'                                                      \
+        pyenv/pyenv-virtualenv                                                                           \
+    atclone="./libexec/goenv init - > zgoenv.zsh"                                                        \
+    atinit='export GOENV_DISABLE_GOPATH=1
+           export GOENV_ROOT="$PWD"
+           export PATH="$GOENV_ROOT/bin:$GOENV_ROOT/shims:$PATH"' atpull="%atclone"                      \
+    atload='export GOPATH="$HOME/go"
+           export GOPATH_BIN="$(go env GOPATH)/bin"
            export PATH="$GOENV_ROOT/bin:$GOENV_ROOT/shims:$PATH"
-           export PATH="$GOPATH/bin:$GOROOT/bin:$PATH"' atpull"%atclone"        \
-    pick='bin/goenv' src"zgoenv.zsh" nocompile'!' for                           \
-    syndbg/goenv
+           export PATH="$GOPATH_BIN:$GOROOT/bin:$PATH"
+           [[ -d $GOPATH_BIN ]] || mkdir -p $GOPATH_BIN'                                                 \
+    pick='bin/goenv' src="zgoenv.zsh" nocompile='!'                                                      \
+        syndbg/goenv
 
-zinit wait"1f" lucid as=program                             \
-    pick="fpp" nocompile'!'                                 \
-    atinit' ln -sf $PWD/fpp $ZPFX/bin' for                  \
-    facebook/pathpicker
+zinit wait"1d" lucid as=program from"gh-r" for                             \
+    mv"golangci-lint* -> golangci-list" pick="golangci-list/golangci-lint" \
+        @golangci/golangci-lint                                            \
+    mv"hadolint* -> hadolint" pick="hadolint/hadolint"                     \
+        @hadolint/hadolint                                                 \
+    mv"shellcheck* -> shellcheck" pick="shellcheck/shellcheck"             \
+        @koalaman/shellcheck                                               \
+    mv"shfmt* -> shfmt" pick="shfmt/shfmt"                                 \
+        @mvdan/sh                                                          \
+    mv"jq* -> jq" pick="jq/jq"                                             \
+        @stedolan/jq                                                       \
+    mv"bat* -> bat" pick="bat/bat"                                         \
+        @sharkdp/bat                                                       \
+    mv"ripgrep* -> rg" pick="rg/rg"                                        \
+        @BurntSushi/ripgrep                                                \
+    mv"fd* -> fd" pick="fd/fd"                                             \
+        @sharkdp/fd                                                        \
+    mv"delta* -> delta" pick="delta/delta"                                 \
+        @dandavison/delta                                                  \
+    mv"code-minimap* -> code-minimap" pick="code-minimap/code-minimap"     \
+        @wfxr/code-minimap                                                 \
+    pick="fzf/fzf" src="$ZSH_CUSTOM/fzf.cfg"                               \
+        @junegunn/fzf-bin
 
-zinit wait"1e" lucid as=program pick="git-recall"   for Fakerr/git-recall
-zinit wait"1e" lucid as=program pick="git-open"     for paulirish/git-open
-zinit wait"1e" lucid as=program pick="git-recent"   for paulirish/git-recent
-zinit wait"1e" lucid as=program pick="git-my"       for davidosomething/git-my
-
-zinit wait"1e" lucid as=program pick="git-quick-stats"  \
-    atload"export _MENU_THEME=legacy"                   \
-    for arzzen/git-quick-stats
-
-zinit wait"1e" lucid as=program pick="git-quick-stats ; etc/git-extras-completion.zsh"  \
-    make"PREFIX=$ZPFX install"                          \
-    for tj/git-extras
+zinit wait"1f" lucid as=program for                        \
+    pick="fpp" nocompile'!'                                \
+    atinit' ln -sf $PWD/fpp $ZPFX/bin'                     \
+        facebook/pathpicker                                \
+    pick="git-recall"                                      \
+        Fakerr/git-recall                                  \
+    pick="git-open"                                        \
+        paulirish/git-open                                 \
+    pick="git-recent"                                      \
+        paulirish/git-recent                               \
+    pick="git-my"                                          \
+        davidosomething/git-my                             \
+    pick="git-quick-stats"                                 \
+    atload"export _MENU_THEME=legacy"                      \
+        arzzen/git-quick-stats                             \
+    pick="git-quick-stats ; etc/git-extras-completion.zsh" \
+    make"PREFIX=$ZPFX install"                             \
+        tj/git-extras
 #}
 
 # Loading with a 2s delay {
 #
-zinit wait"2a" lucid for \
-    hlissner/zsh-autopair
-
-zinit ice silent wait"2e"\
-    atload"_zsh_autosuggest_start"\
-    atinit="export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=10"
-zinit light zsh-users/zsh-autosuggestions
-
-zinit wait"2" lucid for \
-    voronkovich/gitignore.plugin.zsh \
-    atinit='export forgit_log="gvlo"\
-            export forgit_diff="gvd"\
-            export forgit_add="gva"\
-            export forgit_reset_head="gvrh"\
-            export forgit_ignore="gvi"\
-            export forgit_restore="gvcf"\
-            export forgit_clean="gvclean"\
-            export forgit_stash_show="gvss"'\
-    wfxr/forgit
+zinit wait"2a" lucid for                     \
+    hlissner/zsh-autopair                    \
+    voronkovich/gitignore.plugin.zsh         \
+    atinit='export forgit_log="gvlo"         \
+            export forgit_diff="gvd"         \
+            export forgit_add="gva"          \
+            export forgit_reset_head="gvrh"  \
+            export forgit_ignore="gvi"       \
+            export forgit_restore="gvcf"     \
+            export forgit_clean="gvclean"    \
+            export forgit_stash_show="gvss"' \
+        wfxr/forgit
 #}
 
 # Loading the completions mandatory at the end {
-
-#zinit ice silent wait"2b" as"completion" atload"zicompinit; zicdreplay" lucid
-#zinit snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
-
-zinit ice silent wait"2e" atinit"zpcompinit; zpcdreplay"
-zinit light scriptingosx/mac-zsh-completions
-
-zinit ice silent wait"2e" atinit"zpcompinit; zpcdreplay"
-zinit light zdharma/fast-syntax-highlighting
-
-zinit ice silent wait"2e" atload"zicompinit; zicdreplay" blockf atpull'zinit creinstall -q .'
-zinit light zsh-users/zsh-completions
+#
+zinit ice silent wait"2b" atinit"zpcompinit; zpcdreplay" for \
+    light scriptingosx/mac-zsh-completions                   \
+    light zdharma/fast-syntax-highlighting                   \
+    blockf atpull'zinit creinstall -q .'                     \
+        light zsh-users/zsh-completions                      \
+    atload"_zsh_autosuggest_start"                           \
+    atinit="export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=10"       \
+        light zsh-users/zsh-autosuggestions
 #}
