@@ -586,16 +586,23 @@
 
     let g:which_key_leader_map.f = {
       \ 'name': '+Find/Files/Fold',
-      \   '0' : '0-fold-level',
-      \   '1' : '1-fold-level',
-      \   '2' : '2-fold-level',
-      \   '3' : '3-fold-level',
-      \   '4' : '4-fold-level',
-      \   '5' : '5-fold-level',
-      \   '6' : '6-fold-level',
-      \   '7' : '7-fold-level',
-      \   '8' : '8-fold-level',
-      \   '9' : '9-fold-level',
+      \   '0' : 'fold-level',
+      \   '1' : 'fold-level',
+      \   '2' : 'fold-level',
+      \   '3' : 'fold-level',
+      \   '4' : 'fold-level',
+      \   '5' : 'fold-level',
+      \   '6' : 'fold-level',
+      \   '7' : 'fold-level',
+      \   '8' : 'fold-level',
+      \   '9' : 'fold-level',
+      \   'd' : 'FoldContextDecrease',
+      \   'e' : 'FoldSearchEnd',
+      \   'i' : 'FoldContextIncrease',
+      \   'l' : 'FoldLast',
+      \   'w' : 'FoldWord',
+      \   's' : 'FoldSearch',
+      \   'S' : 'FoldSpell',
       \ }
 
     nmap <Leader>f1 :set foldlevel=1<CR>
