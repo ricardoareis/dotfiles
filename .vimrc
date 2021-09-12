@@ -470,8 +470,6 @@
       \ 'name' : '+Windows' ,
       \ 'w' : ['<C-W>w'         , 'other-window']          ,
       \ 'd' : ['<C-W>c'         , 'delete-window']         ,
-      \ '-' : ['<C-W>s'         , 'split-window-below']    ,
-      \ '|' : ['<C-W>v'         , 'split-window-right']    ,
       \ '2' : ['<C-W>v'         , 'layout-double-columns'] ,
       \ 'h' : ['<C-W>h'         , 'window-left']           ,
       \ 'j' : ['<C-W>j'         , 'window-below']          ,
@@ -482,9 +480,10 @@
       \ 'L' : ['<C-W>10>'       , 'expand-window-right']   ,
       \ 'K' : [':resize -10'    , 'expand-window-up']      ,
       \ '=' : ['<C-W>='         , 'balance-window']        ,
-      \ 'a' : ['<C-W>a'         , 'split-window-above']    ,
-      \ 'b' : ['<C-W>s'         , 'split-window-below']    ,
+      \ 'a' : ['<C-W>a'         , 'visual-selection-split-above']    ,
+      \ 'b' : ['<C-W>s'         , 'visual-selection-split-below']    ,
       \ 'v' : ['<C-W>v'         , 'split-window-vertical'] ,
+      \ 'V' : ['<C-W>s'         , 'split-window-horizontal'] ,
       \ '?' : ['Windows'        , 'fzf-window']            ,
       \ }
     " 1>>>
