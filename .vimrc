@@ -334,6 +334,7 @@
         let g:which_key_leader_map.n = {'name': '+Narrow'}
         let g:which_key_leader_map.a = {'name': '+Align'}
         let g:which_key_leader_map.r = {'name': '+Replace'}
+        let g:which_key_leader_map.h = {'name': '+History'}
 
         let g:which_key_localleader_map = {}
         let g:which_key_localleader_map[' '] = {'name': 'Quick'}
@@ -428,6 +429,8 @@
     nnoremap <Leader>x *``cgn
     " search/replace over
     nnoremap <Leader>ro :OverCommandLine<CR>
+    " history of edited files
+    nnoremap <silent><nowait><Leader>h :History<cr>
     " a quick way of select
     nmap <Leader>v <Plug>(wildfire-quick-select)
     let g:which_key_leader_map.x = 'which_key_ignore'
