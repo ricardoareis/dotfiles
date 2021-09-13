@@ -364,6 +364,8 @@
     set wrap                                            " wrap long lines by default
     set whichwrap=b,s,h,l,<,>,[,]                       " Backspace and cursor keys wrap too
     set colorcolumn=100                                 " Use a colored column to mark textwidh
+    set breakindent                                     " wrap with an indentation
+    set breakindentopt=shift:2
     set showbreak=...
     " 1>>>
 
