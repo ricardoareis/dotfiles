@@ -5,7 +5,6 @@
     name = Ricardo Reis
     email = ricardo.areis@gmail.com
 [core]
-    pager = less
     editor = vim
     excludesfile = ~/repos/dotfiles/.gitignore_global
     pager = delta --theme=ansi-dark
