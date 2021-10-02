@@ -52,7 +52,8 @@ function build_ycm() {
 
     (test -d "${YCM_DIR}/.git" && git pull) || exit
 
-    python install.py --clangd-completer --go-completer --rust-completer --ts-completer
+    python install.py --clangd-completer --go-completer --rust-completer --ts-completer \
+        --java-completer
 }
 
 function usage() {
