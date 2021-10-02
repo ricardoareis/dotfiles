@@ -17,3 +17,4 @@ export ZSH_DOTENV_PROMPT=false
     export HOMEBREW_TEMP="/usr/local/tmp"
     export SDKROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk
     export LIBRARY_PATH="$LIBRARY_PATH:/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib"
+    export JAVA_HOME=$(/usr/libexec/java_home -v 11.0.12)
