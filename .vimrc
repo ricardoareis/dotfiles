@@ -875,6 +875,8 @@ vnoremap <F1> <Esc>
         endif
     endfunction
     command! Root call s:root()
+    nnoremap <silent> <Leader>gt :Root<CR>
+    let g:which_key_leader_map.g.t = 'ChangeDir2GitTopLevel'
     " 1>>>
 
     " Google it / Feeling lucky<<<1
