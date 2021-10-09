@@ -880,11 +880,13 @@ vnoremap <F1> <Esc>
     " Google it / Feeling lucky<<<1
     " from junegunn
     function! s:goog(pat, lucky)
+        " I had to the hard-coded the browser cmd because macOS open command does not work
+        let browser = '/Applications/Firefox.app/Contents/MacOS/firefox -new-tab'
         let q = '"'.substitute(a:pat, '["\n]', ' ', 'g').'"'
         let q = substitute(q, '[[:punct:] ]',
             \ '\=printf("%%%02X", char2nr(submatch(0)))', 'g')
-        call system(printf('open "https://www.google.com/search?%sq=%s"',
-                        \ a:lucky ? 'btnI&' : '', q))
+        call system(printf('%s "https://www.google.com/search?%sq=%s"',
+                        \ browser, a:lucky ? 'btnI&' : '', q))
     endfunction
 
     nnoremap <leader>? :call <SID>goog(expand("<cWORD>"), 0)<cr>
