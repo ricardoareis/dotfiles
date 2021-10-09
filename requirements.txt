@@ -16,7 +16,6 @@ flake8-rst-docstrings==0.0.12
 flake8-string-format==0.2.3
 gitlint==0.13.1
 ipython==7.15.0
-isort==4.3.21
 jsonlint==0.1
 pep8-naming==0.9.1
 powerline-status==2.7
