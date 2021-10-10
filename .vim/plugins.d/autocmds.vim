@@ -33,8 +33,8 @@ augroup speel_cmds_group
     autocmd BufWritePost .vim/spell/*.add silent! :mkspell! %
     " Disable spell for some files
     autocmd FileType man,startify setlocal nospell
-    " Workaround broken colour highlighting in Haskell
-    autocmd FileType haskell,rust setlocal nospell
+    " Spell-check Markdown, Git files
+    autocmd FileType markdown,gitcommit setlocal spell
 augroup END
 
 augroup format_cmds_group
