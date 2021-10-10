@@ -434,8 +434,11 @@
     nnoremap <Leader>ro :OverCommandLine<CR>
     " history of edited files
     nnoremap <silent><nowait><Leader>h :History<cr>
+    " history of marks files
+    nnoremap <silent> <leader>m <cmd>Marks<cr>
     " a quick way of select
     nmap <Leader>v <Plug>(wildfire-quick-select)
+    let g:which_key_leader_map.m = 'which_key_ignore'
     let g:which_key_leader_map.x = 'which_key_ignore'
     let g:which_key_leader_map.o = 'which_key_ignore'
     let g:which_key_leader_map.v = 'which_key_ignore'
