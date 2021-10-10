@@ -275,6 +275,7 @@
     set spelllang=en_us,pt
     set spellsuggest=best,10
     set spellfile=~/.vim/spell/local.utf-8.add          " local dictionary
+    set complete+=kspell
     " 1>>>
 
     " Format properties <<<1
