@@ -556,6 +556,12 @@
     nnoremap vV vg_
     " TODO: why i don't have this problem?
     "set nostartofline
+    " mapping accent to allow use of vim marks
+    nnoremap á 'a
+    nnoremap à `a
+    nnoremap é 'e
+    nnoremap è `e
+    nnoremap ç 'c
     " 1>>>
 
     " Solve an accidentally typing  <<<1
