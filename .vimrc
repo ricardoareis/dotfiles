@@ -557,8 +557,6 @@
     nnoremap vv ^vg_
     " select all chars after cursos, without newline
     nnoremap vV vg_
-    " TODO: why i don't have this problem?
-    "set nostartofline
     " mapping accent to allow use of vim marks
     nnoremap á 'a
     nnoremap à `a
