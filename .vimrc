@@ -682,7 +682,7 @@
     cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<CR>
     " open in a new buffer
     map <Leader>ob :e %%
-    let g:which_key_leader_map.o.b = 'OpenNewBufferFile'
+    let g:which_key_leader_map.o.b = 'OpenNewBuffer'
     " open in a new horizontal window
     map <Leader>oh :sp %%
     let g:which_key_leader_map.o.h = 'OpenNewHorizontalWindow'
