@@ -28,12 +28,6 @@
     " 1>>>
 
     " Important Properties I <<<1
-    " if &compatible
-        " Vim defaults to `compatible` when selecting a vimrc with the command-line
-        " `-u` argument. Override this.
-        " :h nocompatible
-        " set nocompatible
-    " endif
     let g:skip_defaults_vim = 1                 " disable defaults.vim
 
     set encoding=utf-8
