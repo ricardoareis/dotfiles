@@ -342,16 +342,6 @@
         let g:which_key_localleader_map.q = {'name': 'QuickFix'}
         let g:which_key_localleader_map.l = {'name': 'LocationList'}
 
-        " reload vim
-        nnoremap <silent><unique><Leader>sr :source ~/.vimrc<CR>
-        let g:which_key_leader_map.s.r = 'VimReload'
-        " history of edited files
-        nnoremap <silent><nowait><Leader>sh :History<cr>
-        let g:which_key_leader_map.s.h = 'ShowHistoryList'
-        " history of marks files
-        nnoremap <silent><nowait><leader>sm <cmd>Marks<cr>
-        let g:which_key_leader_map.s.m = 'ShowMarksList'
-
         call which_key#register(',',       'g:which_key_leader_map')
         call which_key#register('<Space>', 'g:which_key_localleader_map')
     endif
@@ -445,6 +435,21 @@
     let g:which_key_leader_map['.'] = 'which_key_ignore'
     let g:which_key_leader_map['*'] = 'which_key_ignore'
     let g:which_key_leader_map['/'] = 'which_key_ignore'
+    " 1>>>
+
+    " System/Session/Show Menu<<<1
+    " reload vim
+    nnoremap <silent><unique><Leader>sr :source ~/.vimrc<CR>
+    let g:which_key_leader_map.s.r = 'VimReload'
+    " history of edited files
+    nnoremap <silent><nowait><Leader>sh :History<cr>
+    let g:which_key_leader_map.s.h = 'ShowHistoryList'
+    " history of marks files
+    nnoremap <silent><nowait><leader>sm <cmd>Marks<cr>
+    let g:which_key_leader_map.s.m = 'ShowMarksList'
+    " Show Maps files
+    nnoremap <silent><nowait><leader>sM <cmd>Maps<cr>
+    let g:which_key_leader_map.s.M = 'ShowMapsList'
     " 1>>>
 
     " InsertMap <<<1
