@@ -419,7 +419,6 @@
     " a quick way of select
     nmap <Leader>v <Plug>(wildfire-quick-select)
     let g:which_key_leader_map.x = 'which_key_ignore'
-    " let g:which_key_leader_map.o = 'which_key_ignore'
     let g:which_key_leader_map.v = 'which_key_ignore'
     let g:which_key_leader_map['.'] = 'which_key_ignore'
     let g:which_key_leader_map['*'] = 'which_key_ignore'
