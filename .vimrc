@@ -316,7 +316,7 @@
         " Define prefix dictionary
         let g:which_key_leader_map = {}
         let g:which_key_leader_map.t = {'name': '+Toggle'}
-        let g:which_key_leader_map.e = {'name': '+Edit'}
+        let g:which_key_leader_map.o = {'name': '+Open'}
         let g:which_key_leader_map.s = {'name': '+System/Session/Show'}
         let g:which_key_leader_map.g = {'name': '+Git'}
         let g:which_key_leader_map.w = {'name': '+Windows'}
@@ -419,7 +419,7 @@
     " a quick way of select
     nmap <Leader>v <Plug>(wildfire-quick-select)
     let g:which_key_leader_map.x = 'which_key_ignore'
-    let g:which_key_leader_map.o = 'which_key_ignore'
+    " let g:which_key_leader_map.o = 'which_key_ignore'
     let g:which_key_leader_map.v = 'which_key_ignore'
     let g:which_key_leader_map['.'] = 'which_key_ignore'
     let g:which_key_leader_map['*'] = 'which_key_ignore'
@@ -682,17 +682,17 @@
     " http://vimcasts.org/e/14
     cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<CR>
     " open in a new buffer
-    map <Leader>ew :e %%
-    let g:which_key_leader_map.e.w = 'NewFile'
+    map <Leader>ob :e %%
+    let g:which_key_leader_map.o.b = 'OpenNewBufferFile'
     " open in a new horizontal window
-    map <Leader>es :sp %%
-    let g:which_key_leader_map.e.s = 'NewHorizontalWindow'
+    map <Leader>oh :sp %%
+    let g:which_key_leader_map.o.h = 'OpenNewHorizontalWindow'
     " open in a new vertical window
-    map <Leader>ev :vsp %%
-    let g:which_key_leader_map.e.v = 'NewVerticalWindow'
+    map <Leader>ov :vsp %%
+    let g:which_key_leader_map.o.v = 'OpenNewVerticalWindow'
     " open in a new tab
-    map <Leader>et :tabe %%
-    let g:which_key_leader_map.e.t = 'NewTab'
+    map <Leader>ot :tabe %%
+    let g:which_key_leader_map.o.t = 'OpenNewTab'
     " 1>>>
 
     " Jump to the middle of the current written line as opposed to the window width <<<1
