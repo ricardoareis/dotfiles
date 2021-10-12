@@ -328,7 +328,7 @@
         let g:which_key_leader_map = {}
         let g:which_key_leader_map.t = {'name': '+Toggle'}
         let g:which_key_leader_map.e = {'name': '+Edit'}
-        let g:which_key_leader_map.s = {'name': '+System/Session'}
+        let g:which_key_leader_map.s = {'name': '+System/Session/Show'}
         let g:which_key_leader_map.g = {'name': '+Git'}
         let g:which_key_leader_map.w = {'name': '+Windows'}
         let g:which_key_leader_map.k = {'name': '+Bookmark'}
@@ -1149,7 +1149,7 @@ vnoremap <F1> <Esc>
     set sessionoptions=blank,buffers,curdir,folds,tabpages,winsize
     if isdirectory(expand(bundles_dir . '/sessionman.vim/'))
         nnoremap <silent><Leader>sl :SessionList<CR><CR>
-        let g:which_key_leader_map.s.l = 'SessionList'
+        let g:which_key_leader_map.s.l = 'ShowSessionList'
         "
         nnoremap <silent><Leader>ss :SessionSave<CR><CR>
         let g:which_key_leader_map.s.s = 'SessionSave'
