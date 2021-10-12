@@ -514,6 +514,7 @@
       \ 'l' : ['blast'     , 'last-buffer']     ,
       \ 'n' : ['bnext'     , 'next-buffer']     ,
       \ 'p' : ['bprevious' , 'previous-buffer'] ,
+      \ 'w' : ['bw'        , 'wipeout-buffer']   ,
       \ '?' : ['Buffers'   , 'fzf-buffer']      ,
       \ }
     " 1>>>
