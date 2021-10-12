@@ -27,11 +27,6 @@
     endif
     " 1>>>
 
-    " SnipMate <<<1
-    " Setting the author var
-    let g:snips_author = 'Ricardo Reis <ricardo.areis@gmail.com>'
-    " 1>>>
-
     " Important Properties I <<<1
     " if &compatible
         " Vim defaults to `compatible` when selecting a vimrc with the command-line
