@@ -342,8 +342,8 @@
         let g:which_key_localleader_map.q = {'name': 'QuickFix'}
         let g:which_key_localleader_map.l = {'name': 'LocationList'}
 
-        nnoremap <silent><unique> <Leader>sr :source ~/.vimrc<CR>
-        nnoremap <silent><unique> <Leader>so :browse oldfiles<CR>
+        " reload vim
+        nnoremap <silent><unique><Leader>sr :source ~/.vimrc<CR>
         let g:which_key_leader_map.s.r = 'VimReload'
         " history of edited files
         nnoremap <silent><nowait><Leader>sh :History<cr>
