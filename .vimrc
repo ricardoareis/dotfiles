@@ -345,7 +345,12 @@
         nnoremap <silent><unique> <Leader>sr :source ~/.vimrc<CR>
         nnoremap <silent><unique> <Leader>so :browse oldfiles<CR>
         let g:which_key_leader_map.s.r = 'VimReload'
-        let g:which_key_leader_map.s.o = 'BrowserOldfiles'
+        " history of edited files
+        nnoremap <silent><nowait><Leader>sh :History<cr>
+        let g:which_key_leader_map.s.h = 'ShowHistoryList'
+        " history of marks files
+        nnoremap <silent><nowait><leader>sm <cmd>Marks<cr>
+        let g:which_key_leader_map.s.m = 'ShowMarksList'
 
         call which_key#register(',',       'g:which_key_leader_map')
         call which_key#register('<Space>', 'g:which_key_localleader_map')
@@ -432,13 +437,8 @@
     nnoremap <Leader>x *``cgn
     " search/replace over
     nnoremap <Leader>ro :OverCommandLine<CR>
-    " history of edited files
-    nnoremap <silent><nowait><Leader>h :History<cr>
-    " history of marks files
-    nnoremap <silent> <leader>m <cmd>Marks<cr>
     " a quick way of select
     nmap <Leader>v <Plug>(wildfire-quick-select)
-    let g:which_key_leader_map.m = 'which_key_ignore'
     let g:which_key_leader_map.x = 'which_key_ignore'
     let g:which_key_leader_map.o = 'which_key_ignore'
     let g:which_key_leader_map.v = 'which_key_ignore'
