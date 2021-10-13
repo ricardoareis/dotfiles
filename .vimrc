@@ -679,7 +679,15 @@
 
     " Some helpers to edit mode <<<1
     " http://vimcasts.org/e/14
-    cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<CR>
+    let g:filename_path = fnameescape(expand('%:h'))
+
+    " verify if the path of the file currently edited exist
+    " otherwise overwrite it
+    if len(g:filename_path) == 0
+        let g:filename_path = '.'
+    endif
+
+    cnoremap %% <C-R>=g:filename_path.'/'<CR>
     " open in a new buffer
     map <Leader>ob :e %%
     let g:which_key_leader_map.o.b = 'OpenNewBuffer'
