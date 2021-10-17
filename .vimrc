@@ -1219,7 +1219,7 @@ vnoremap <F1> <Esc>
         nnoremap <silent><Leader>sl :SessionList<CR><CR>
         let g:which_key_leader_map.s.l = 'ShowSessionList'
         "
-        nnoremap <silent><Leader>ss :SessionSave<CR><CR>
+        nnoremap <silent><Leader>ss :SessionSave<CR>
         let g:which_key_leader_map.s.s = 'SessionSave'
         "
         nnoremap <silent><Leader>sc :SessionClose<CR><CR>
