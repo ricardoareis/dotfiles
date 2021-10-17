@@ -145,17 +145,17 @@ augroup golang_cmds_group
     autocmd FileType go nmap <Leader><Leader>x :GoFmt<CR>
     autocmd Filetype go let g:which_key_leader_map[','].x = 'Go-Fmt'
     "
-    autocmd FileType go nmap <LocalLeader>grt <Plug>(go-run-tab)
-    autocmd Filetype go let g:which_key_localleader_map.g.rt = 'Go-Run-Tab'
+    autocmd FileType go nmap <LocalLeader>gT <Plug>(go-run-tab)
+    autocmd Filetype go let g:which_key_localleader_map.g.T = 'Go-Run-Tab'
     "
-    autocmd FileType go nmap <LocalLeader>grv <Plug>(go-run-vertical)
-    autocmd Filetype go let g:which_key_localleader_map.g.rv = 'Go-Run-Vertical'
+    autocmd FileType go nmap <LocalLeader>gV <Plug>(go-run-vertical)
+    autocmd Filetype go let g:which_key_localleader_map.g.V = 'Go-Run-Vertical'
     "
-    autocmd FileType go nmap <LocalLeader>gat :GoAddTags<CR>
-    autocmd Filetype go let g:which_key_localleader_map.g.at = 'Go-Add-Tags'
+    autocmd FileType go nmap <LocalLeader>ga :GoAddTags<CR>
+    autocmd Filetype go let g:which_key_localleader_map.g.a = 'Go-Add-Tags'
     "
-    autocmd FileType go nmap <LocalLeader>gds :GoDecls<CR>
-    autocmd Filetype go let g:which_key_localleader_map.g.ds = 'Go-Decls'
+    autocmd FileType go nmap <LocalLeader>gd :GoDecls<CR>
+    autocmd Filetype go let g:which_key_localleader_map.g.d = 'Go-Decls'
     "
     autocmd FileType go nmap <LocalLeader>gdd :GoDeclsDir<CR>
     autocmd Filetype go let g:which_key_localleader_map.g.dd = 'Go-DeclsDir'
