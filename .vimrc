@@ -338,12 +338,35 @@
 
     " Startify <<<1
     if isdirectory(expand(bundles_dir . '/vim-startify'))
-        let g:startify_session_dir = '~/.vim/sessions'
-        let g:startify_session_number = 10
-        let g:startify_session_sort = 1
-        let g:startify_change_to_dir = 1
+        let g:startify_session_dir         = '~/.vim/sessions'
+        let g:startify_session_number      = 10
+        let g:startify_session_sort        = 1
+        let g:startify_relative_path       = 1
+        let g:startify_change_to_dir       = 1
         let g:startify_fortune_use_unicode = 1
+        let g:startify_files_number        = 8
+        let g:startify_update_oldfiles     = 1
 
+        let g:startify_skiplist = [
+                \ 'COMMIT_EDITMSG',
+                \ 'CONTRIBUTING.md',
+                \ '/opt/vim',
+                \ '^/tmp',
+                \ ]
+
+        let g:startify_bookmarks = [
+                    \{'v': '~/.vimrc'},
+                    \{'vb': '~/.vimrc.bundles'},
+                    \{'z': '~/.zshrc'},
+                    \{'t': '~/.tmux.conf'},
+                    \]
+
+        " unicode header to the fortune
+        let g:startify_custom_header =
+        \ startify#fortune#cowsay('', '═','║','╔','╗','╝','╚')
+
+        " start at 1 instead of 0
+        let g:startify_custom_indices = map(range(1,100), 'string(v:val)')
 
         " returns all modified files of the current git repo
         " `2>/dev/null` makes the command fail quietly, so that when we are not
