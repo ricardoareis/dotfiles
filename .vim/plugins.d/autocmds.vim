@@ -66,7 +66,7 @@ augroup END
 " Relative Numbers on/off when a different events occurred
 augroup numbers_cmds_group
     autocmd!
-    let ignore_ft = ['minimap']
+    let ignore_ft = ['minimap', 'startify']
     autocmd BufEnter,FocusGained,InsertLeave * if index(ignore_ft, &ft) < 0 | set relativenumber
     autocmd BufLeave,FocusLost,InsertEnter   * if index(ignore_ft, &ft) < 0 | set norelativenumber
 augroup END
