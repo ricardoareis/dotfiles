@@ -497,6 +497,9 @@
     " Show Maps files
     nnoremap <silent><nowait><leader>sM <cmd>Maps<cr>
     let g:which_key_leader_map.s.M = 'ShowMapsList'
+    " Show Startify Menu
+    nnoremap <silent><nowait><leader>st <cmd>Startify<cr>
+    let g:which_key_leader_map.s.M = 'ShowStartify'
     " 1>>>
 
     " InsertMap <<<1
