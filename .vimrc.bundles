@@ -95,6 +95,7 @@
     Plug 'ConradIrwin/vim-bracketed-paste'                      " Enable paste without `:set paste` (depends of terminal support)
     Plug 'skanehira/docker-compose.vim',    {'on': ['DockerCompose']}
     Plug 'skanehira/docker.vim',            {'on': ['Docker']}
+    Plug 'mhinz/vim-startify'
     " }
 
     " Improve Vim Experience Plugs {
