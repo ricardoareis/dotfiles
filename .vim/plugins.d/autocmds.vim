@@ -47,17 +47,12 @@ augroup format_cmds_group
                 \setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
     " Yaml properties
     autocmd Filetype yaml set foldlevel=9
-    " Golang Format
-    autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
 augroup END
 
 augroup filetype_cmds_group
     autocmd!
     " Discovery empty filetype
     autocmd BufWritePost * if empty(&filetype) | filetype detect | endif
-    " Force a filetype
-    autocmd BufNewFile,BufRead *.html.twig  set filetype=html.twig
-    autocmd BufNewFile,BufRead *.coffee     set filetype=coffee
 augroup END
 
 " Quickfix preview
