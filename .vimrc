@@ -566,15 +566,15 @@
     nnoremap <silent><S-Tab>  :bp<CR>
     "
     let g:which_key_leader_map.b = {
-      \ 'name' : '+Buffers' ,
-      \ '1' : ['b1'        , 'buffer 1']        ,
-      \ '2' : ['b2'        , 'buffer 2']        ,
+      \ 'name' : '+Buffers/Bookmark' ,
+      \ '1' : ['b1'        , 'buffer-number']   ,
+      \ '2' : ['b2'        , 'buffer-number']   ,
       \ 'd' : ['bd'        , 'delete-buffer']   ,
       \ 'f' : ['bfirst'    , 'first-buffer']    ,
       \ 'l' : ['blast'     , 'last-buffer']     ,
       \ 'n' : ['bnext'     , 'next-buffer']     ,
       \ 'p' : ['bprevious' , 'previous-buffer'] ,
-      \ 'w' : ['bw'        , 'wipeout-buffer']   ,
+      \ 'w' : ['bw'        , 'wipeout-buffer']  ,
       \ '?' : ['Buffers'   , 'fzf-buffer']      ,
       \ }
     " 1>>>
