@@ -71,6 +71,12 @@ augroup numbers_cmds_group
     autocmd BufLeave,FocusLost,InsertEnter   * if index(ignore_ft, &ft) < 0 | set norelativenumber
 augroup END
 
+" Disable IndentGuides by FileType
+augroup disable_indent_guides
+    autocmd!
+    autocmd FileType minimap,startify :IndentGuidesDisable
+augroup END
+
 " Enable omni completion.
 augroup omnifunc_cmds_group
     autocmd!
