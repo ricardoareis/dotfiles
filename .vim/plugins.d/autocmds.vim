@@ -157,8 +157,8 @@ augroup golang_cmds_group
     autocmd FileType go nmap <LocalLeader>gd :GoDecls<CR>
     autocmd Filetype go let g:which_key_localleader_map.g.d = 'Go-Decls'
     "
-    autocmd FileType go nmap <LocalLeader>gdd :GoDeclsDir<CR>
-    autocmd Filetype go let g:which_key_localleader_map.g.dd = 'Go-DeclsDir'
+    autocmd FileType go nmap <LocalLeader>gD :GoDeclsDir<CR>
+    autocmd Filetype go let g:which_key_localleader_map.g.D = 'Go-DeclsDir'
 augroup END
 
 augroup textobj_quote
