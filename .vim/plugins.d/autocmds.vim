@@ -17,14 +17,17 @@ function! LargeFile()
     " display message
     augroup _LargeFile
         autocmd!
-        autocmd VimEnter *  echo "The file is larger than " . (g:LargeFile / 1024 / 1024) . " MB, so some options are changed (see autocmds.vim for details)."
+        autocmd VimEnter *  echo "The file is larger than "
+                    \. (g:LargeFile / 1024 / 1024)
+                    \. " MB, so some options are changed (see autocmds.vim for details)."
     augroup END
 endfunction
 
 augroup perf_group
     autocmd!
     " Disable Syntax Highlight when the file size is greater than 5MB
-    autocmd BufReadPre * let f=getfsize(expand("<afile>")) | if f > g:LargeFile || f == -2 | call LargeFile() | endif
+    autocmd BufReadPre * let f=getfsize(expand("<afile>"))
+                \| if f > g:LargeFile || f == -2 | call LargeFile() | endif
 augroup END
 
 augroup speel_cmds_group
@@ -40,7 +43,8 @@ augroup END
 augroup format_cmds_group
     autocmd!
     " Formating base on FileType
-    autocmd FileType  haskell,puppet,ruby,yml setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
+    autocmd FileType haskell,puppet,ruby,yml
+                \setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
     " Yaml properties
     autocmd Filetype yaml set foldlevel=9
     " Golang Format
