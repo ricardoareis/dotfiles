@@ -324,7 +324,6 @@
         let g:which_key_leader_map.n = {'name': '+Narrow'}
         let g:which_key_leader_map.a = {'name': '+Align'}
         let g:which_key_leader_map.r = {'name': '+Replace'}
-        let g:which_key_leader_map.h = {'name': '+History'}
 
         let g:which_key_localleader_map = {}
         let g:which_key_localleader_map[' '] = {'name': 'Quick'}
