@@ -1445,23 +1445,24 @@ vnoremap <F1> <Esc>
         nnoremap <Leader>bt :BookmarkToggle<CR>
         nnoremap <Leader>ba :BookmarkAnnotate<CR>
         nnoremap <Leader>bs :BookmarkShowAll<CR>
-        nnoremap <Leader>bj :BookmarkNext<CR>
-        nnoremap <Leader>bk :BookmarkPrev<CR>
+        nnoremap <Leader>bN :BookmarkNext<CR>
+        nnoremap <Leader>bP :BookmarkPrev<CR>
         nnoremap <Leader>bc :BookmarkClear<CR>
         nnoremap <Leader>bx :BookmarkClearAll<CR>
         nnoremap <Leader>bu :BookmarkMoveUp<CR>
         nnoremap <Leader>bd :BookmarkMoveDown<CR>
         nnoremap <Leader>bg :BookmarkMoveToLine<CR>
-        let g:which_key_leader_map.b.t = 'BookmarkToggle'
-        let g:which_key_leader_map.b.i = 'BookmarkAnnotate'
-        let g:which_key_leader_map.b.s = 'BookmarkShowAll'
-        let g:which_key_leader_map.b.j = 'BookmarkNext'
-        let g:which_key_leader_map.b.k = 'BookmarkPrev'
-        let g:which_key_leader_map.b.c = 'BookmarkClear'
-        let g:which_key_leader_map.b.x = 'BookmarkClearAll'
-        let g:which_key_leader_map.b.u = 'BookmarkMoveUp'
-        let g:which_key_leader_map.b.d = 'BookmarkMoveDown'
-        let g:which_key_leader_map.b.g = 'BookmarkMoveToLine'
+
+        let g:which_key_leader_map.b.t = 'toggle-bookmark'
+        let g:which_key_leader_map.b.a = 'annotate-bookmark'
+        let g:which_key_leader_map.b.s = 'show-all-Bookmark'
+        let g:which_key_leader_map.b.N = 'next-bookmark'
+        let g:which_key_leader_map.b.P = 'prev-bookmark'
+        let g:which_key_leader_map.b.c = 'clear-bookmark'
+        let g:which_key_leader_map.b.x = 'clear-all-bookmark'
+        let g:which_key_leader_map.b.u = 'move-up-bookmark'
+        let g:which_key_leader_map.b.d = 'move-down-bookmark'
+        let g:which_key_leader_map.b.g = 'move-to-line-bookmark'
     endif
     " 1>>>
 
