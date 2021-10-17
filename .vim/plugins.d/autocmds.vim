@@ -115,17 +115,17 @@ augroup golang_cmds_group
     autocmd Filetype go nnoremap <LocalLeader><LocalLeader>s :sp <CR>:exe "GoDef"<CR>
     autocmd Filetype go nnoremap <LocalLeader><LocalLeader>t :tab split <CR>:exe "GoDef"<CR>
     "
-    autocmd Filetype go nmap <LocalLeader>gs <Plug>(go-implements)
-    autocmd Filetype go let g:which_key_localleader_map.g.s = 'Go-Implements'
+    autocmd Filetype go nmap <LocalLeader>gi <Plug>(go-implements)
+    autocmd Filetype go let g:which_key_localleader_map.g.i = 'Go-Implements'
     "
-    autocmd FileType go nmap <LocalLeader>gi <Plug>(go-info)
-    autocmd Filetype go let g:which_key_localleader_map.g.i = 'Go-Info'
+    autocmd FileType go nmap <LocalLeader>gI <Plug>(go-info)
+    autocmd Filetype go let g:which_key_localleader_map.g.I = 'Go-Info'
     "
-    autocmd FileType go nmap <LocalLeader>ge <Plug>(go-rename)
-    autocmd Filetype go let g:which_key_localleader_map.g.e = 'Go-Rename'
+    autocmd FileType go nmap <LocalLeader>gr <Plug>(go-rename)
+    autocmd Filetype go let g:which_key_localleader_map.g.r = 'Go-Rename'
     "
-    autocmd FileType go nmap <LocalLeader>gr <Plug>(go-run)
-    autocmd Filetype go let g:which_key_localleader_map.g.r = 'Go-Run'
+    autocmd FileType go nmap <LocalLeader>gR <Plug>(go-run)
+    autocmd Filetype go let g:which_key_localleader_map.g.R = 'Go-Run'
     "
     autocmd FileType go nmap <LocalLeader>gb <Plug>(go-build)
     autocmd Filetype go let g:which_key_localleader_map.g.b = 'Go-Build'
