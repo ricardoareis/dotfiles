@@ -1441,26 +1441,27 @@ vnoremap <F1> <Esc>
         let g:bookmark_no_default_key_mappings = 1
         let g:bookmark_auto_save = 1
         let g:bookmark_auto_save_file = $HOME .'/.vim/.'. $USER .'-bookmarks'
-        let g:which_key_leader_map.t.b = 'BookmarkToggle'
-        nnoremap <silent><Leader>tb :BookmarkToggle<CR>
-        nnoremap <Leader>ki :BookmarkAnnotate<CR>
-        nnoremap <Leader>ka :BookmarkShowAll<CR>
-        nnoremap <Leader>kj :BookmarkNext<CR>
-        nnoremap <Leader>kk :BookmarkPrev<CR>
-        nnoremap <Leader>kc :BookmarkClear<CR>
-        nnoremap <Leader>kx :BookmarkClearAll<CR>
-        nnoremap <Leader>ku :BookmarkMoveUp<CR>
-        nnoremap <Leader>kd :BookmarkMoveDown<CR>
-        nnoremap <Leader>kg :BookmarkMoveToLine<CR>
-        let g:which_key_leader_map.k.i = 'BookmarkAnnotate'
-        let g:which_key_leader_map.k.a = 'BookmarkShowAll'
-        let g:which_key_leader_map.k.j = 'BookmarkNext'
-        let g:which_key_leader_map.k.k = 'BookmarkPrev'
-        let g:which_key_leader_map.k.c = 'BookmarkClear'
-        let g:which_key_leader_map.k.x = 'BookmarkClearAll'
-        let g:which_key_leader_map.k.u = 'BookmarkMoveUp'
-        let g:which_key_leader_map.k.d = 'BookmarkMoveDown'
-        let g:which_key_leader_map.k.g = 'BookmarkMoveToLine'
+
+        nnoremap <Leader>bt :BookmarkToggle<CR>
+        nnoremap <Leader>ba :BookmarkAnnotate<CR>
+        nnoremap <Leader>bs :BookmarkShowAll<CR>
+        nnoremap <Leader>bj :BookmarkNext<CR>
+        nnoremap <Leader>bk :BookmarkPrev<CR>
+        nnoremap <Leader>bc :BookmarkClear<CR>
+        nnoremap <Leader>bx :BookmarkClearAll<CR>
+        nnoremap <Leader>bu :BookmarkMoveUp<CR>
+        nnoremap <Leader>bd :BookmarkMoveDown<CR>
+        nnoremap <Leader>bg :BookmarkMoveToLine<CR>
+        let g:which_key_leader_map.b.t = 'BookmarkToggle'
+        let g:which_key_leader_map.b.i = 'BookmarkAnnotate'
+        let g:which_key_leader_map.b.s = 'BookmarkShowAll'
+        let g:which_key_leader_map.b.j = 'BookmarkNext'
+        let g:which_key_leader_map.b.k = 'BookmarkPrev'
+        let g:which_key_leader_map.b.c = 'BookmarkClear'
+        let g:which_key_leader_map.b.x = 'BookmarkClearAll'
+        let g:which_key_leader_map.b.u = 'BookmarkMoveUp'
+        let g:which_key_leader_map.b.d = 'BookmarkMoveDown'
+        let g:which_key_leader_map.b.g = 'BookmarkMoveToLine'
     endif
     " 1>>>
 
