@@ -1326,8 +1326,8 @@ vnoremap <F1> <Esc>
         nnoremap <silent> <Leader>ge :Gedit<CR>
         let g:which_key_leader_map.g.e = 'Gedit'
         "
-        nnoremap <silent> <Leader>gi :Git add -p %<CR>
-        let g:which_key_leader_map.g.i = 'add -p %'
+        nnoremap <silent> <Leader>ga :Git add -p .<CR>
+        let g:which_key_leader_map.g.a = 'add -p .'
         "
         nnoremap <silent> <Leader>gv :GV<CR>
         let g:which_key_leader_map.g.v = 'GitBrowser'
