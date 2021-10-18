@@ -1305,14 +1305,20 @@ vnoremap <F1> <Esc>
         nnoremap <silent> <Leader>gl :Git log<CR>
         let g:which_key_leader_map.g.l = 'log'
         "
-        nnoremap <silent> <Leader>gp :Git push<CR>
-        let g:which_key_leader_map.g.p = 'push'
+        nnoremap <silent> <Leader>gP :Git push<CR>
+        let g:which_key_leader_map.g.P = 'push'
         "
-        nnoremap <silent> <Leader>gP :Git pull<CR>
-        let g:which_key_leader_map.g.P = 'pull'
+        nnoremap <silent> <Leader>gp :Git pull<CR>
+        let g:which_key_leader_map.g.p = 'pull'
         "
         nnoremap <silent> <Leader>gr :Gread<CR>
         let g:which_key_leader_map.g.r = 'Gread'
+        "
+        nnoremap <silent> <Leader>gR :Git pull-request<CR>
+        let g:which_key_leader_map.g.R = 'pull-request'
+        "
+        nnoremap <silent> <Leader>gF :Git fetch<CR>
+        let g:which_key_leader_map.g.F = 'fetch'
         "
         nnoremap <silent> <Leader>gw :Gwrite<CR>
         let g:which_key_leader_map.g.w = 'Gwrite'
