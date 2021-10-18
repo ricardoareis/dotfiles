@@ -1290,23 +1290,26 @@ vnoremap <F1> <Esc>
 
     " Plugin: Fugitive <<<1
     if isdirectory(expand(bundles_dir . '/vim-fugitive/'))
-        nnoremap <silent> <Leader>gs :Gstatus<CR>
-        let g:which_key_leader_map.g.s = 'Gstatus'
+        nnoremap <silent> <Leader>gs :Git status<CR>
+        let g:which_key_leader_map.g.s = 'status'
         "
-        nnoremap <silent> <Leader>gd :Gdiff<CR>
-        let g:which_key_leader_map.g.d = 'Gdiff'
+        nnoremap <silent> <Leader>gd :Git diff<CR>
+        let g:which_key_leader_map.g.d = 'diff'
         "
-        nnoremap <silent> <Leader>gc :Gcommit<CR>
-        let g:which_key_leader_map.g.c = 'Gcommit'
+        nnoremap <silent> <Leader>gc :Git commit<CR>
+        let g:which_key_leader_map.g.c = 'commit'
         "
-        nnoremap <silent> <Leader>gb :Gblame<CR>
-        let g:which_key_leader_map.g.b = 'Gblame'
+        nnoremap <silent> <Leader>gb :Git blame<CR>
+        let g:which_key_leader_map.g.b = 'blame'
         "
-        nnoremap <silent> <Leader>gl :Glog<CR>
-        let g:which_key_leader_map.g.l = 'Glog'
+        nnoremap <silent> <Leader>gl :Git log<CR>
+        let g:which_key_leader_map.g.l = 'log'
         "
         nnoremap <silent> <Leader>gp :Git push<CR>
-        let g:which_key_leader_map.g.p = 'Gpush'
+        let g:which_key_leader_map.g.p = 'push'
+        "
+        nnoremap <silent> <Leader>gP :Git pull<CR>
+        let g:which_key_leader_map.g.P = 'pull'
         "
         nnoremap <silent> <Leader>gr :Gread<CR>
         let g:which_key_leader_map.g.r = 'Gread'
@@ -1318,7 +1321,7 @@ vnoremap <F1> <Esc>
         let g:which_key_leader_map.g.e = 'Gedit'
         "
         nnoremap <silent> <Leader>gi :Git add -p %<CR>
-        let g:which_key_leader_map.g.i = 'Gadd -p %'
+        let g:which_key_leader_map.g.i = 'add -p %'
         "
         nnoremap <silent> <Leader>gv :GV<CR>
         let g:which_key_leader_map.g.v = 'GitBrowser'
