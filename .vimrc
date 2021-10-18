@@ -362,7 +362,7 @@
 
         " unicode header to the fortune
         let g:startify_custom_header =
-        \ startify#fortune#cowsay('', '═','║','╔','╗','╝','╚')
+                    \startify#fortune#cowsay('', '═','║','╔','╗','╝','╚')
 
         " start at 1 instead of 0
         let g:startify_custom_indices = map(range(1,100), 'string(v:val)')
