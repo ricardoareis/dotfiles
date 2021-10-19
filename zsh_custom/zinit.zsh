@@ -137,6 +137,8 @@ zinit wait"1d" lucid as=program from"gh-r" for                             \
         @dandavison/delta                                                  \
     mv"code-minimap* -> code-minimap" pick="code-minimap/code-minimap"     \
         @wfxr/code-minimap                                                 \
+    mv"vale* -> vale" pick="vale/vale"                                     \
+        @errata-ai/vale                                                    \
     pick="fzf/fzf" src="$ZSH_CUSTOM/fzf.cfg"                               \
         @junegunn/fzf-bin
 
