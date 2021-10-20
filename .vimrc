@@ -1189,6 +1189,10 @@ vnoremap <F1> <Esc>
         let g:ale_list_window_size = 5
         let g:ale_completion_autoimport = 1
         let g:ale_linters_explicit = 1
+        let g:ale_linters = {
+                    \   'markdown':  ['vale'],
+                    \   'text':      ['vale']
+                    \}
         let g:ale_fixers = {
                     \   'python':   ['remove_trailing_lines', 'trim_whitespace'],
                     \   'go':       ['remove_trailing_lines', 'trim_whitespace'],
