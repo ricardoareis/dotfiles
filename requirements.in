@@ -25,3 +25,5 @@ vim-vint>=0.3.21
 docker-compose>=1.27.4
 yamllint>=1.25.0
 bandit>=1.7.0
+autoflake>=1.4
+
