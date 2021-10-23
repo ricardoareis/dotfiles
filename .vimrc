@@ -320,7 +320,6 @@
         let g:which_key_leader_map.s = {'name': '+System/Session/Show'}
         let g:which_key_leader_map.g = {'name': '+Git'}
         let g:which_key_leader_map.w = {'name': '+Windows'}
-        let g:which_key_leader_map.n = {'name': '+Narrow'}
         let g:which_key_leader_map.a = {'name': '+Align'}
         let g:which_key_leader_map.r = {'name': '+Replace'}
 
@@ -1518,7 +1517,8 @@ vnoremap <F1> <Esc>
 
     " Plugin: Vim-NrrwRegn <<<1
     if isdirectory(expand(bundles_dir . '/NrrwRgn/'))
-        let g:which_key_leader_map.n.r = 'OpenInNarrowedWindow'
+        let g:which_key_leader_map.r.n = 'ReplaceInNarrowedWindow'
+        xmap <Leader>rn <Plug>NrrwrgnDo
     endif
     " 1>>>
 
