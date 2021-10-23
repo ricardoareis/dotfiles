@@ -32,7 +32,7 @@
     Plug 'reedes/vim-textobj-quote'                        " Extending Vim to better support typographic (‘curly’ quote characters)
     Plug 'kana/vim-textobj-user'                           " Create your own text objects (deps)
     Plug 'michaeljsmith/vim-indent-object'                 " Text objects for indented blocks of lines (vai,vii)
-    Plug 'reedes/vim-textobj-sentence'                     " Improve sentence object                            -  TODO keycode
+    Plug 'reedes/vim-textobj-sentence'                     " Improve sentence object
     Plug 'reedes/vim-wordy',            {'on': 'NextWordy'}" Supporting of different dictionaries i,e; <F8>
     Plug 'tpope/vim-surround'                              " Improve surroundings in pairs                      -  TODO study
     Plug 'godlygeek/tabular'                               " Formating with tab
