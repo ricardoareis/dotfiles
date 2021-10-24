@@ -57,7 +57,7 @@
     Plug 'mg979/vim-visual-multi',              {'branch': 'master'}           "  Support a multiple cursors
     Plug 'sillybun/vim-repl',                   {'for': ['python', 'python3']}
     Plug 'jmcantrell/vim-virtualenv',           {'for': ['python', 'python3']} "  Support a Python VirtualEnv
-    Plug 'jeetsukumaran/vim-pythonsense'                                       "  Add some python text objects
+    Plug 'jeetsukumaran/vim-pythonsense',       {'for': ['python', 'python3']} "  Add some python text objects
     Plug 'ludovicchabant/vim-gutentags',        {'on': 'TagbarToggle'}
     Plug 'skywind3000/gutentags_plus',          {'on': 'TagbarToggle'}
     Plug 'vim-test/vim-test'
