@@ -1718,7 +1718,7 @@ vnoremap <F1> <Esc>
         let g:which_key_leader_map[','].b = 'CamelCaseMotion_b'
         let g:which_key_leader_map[','].e = 'CamelCaseMotion_e'
         let g:which_key_leader_map[','].E = 'CamelCaseMotion_ge'
-        " let g:which_key_leader_map[','].g = 'which_key_ignore'
+        let g:which_key_leader_map[','].g = { 'name': 'which_key_ignore' }
     endif
     " 1>>>
 " 1>>>
