@@ -40,6 +40,7 @@
     Plug 'gabrielelana/vim-markdown',   {'for': ['markdown']}
     Plug 'chrisbra/csv.vim',            {'for': ['csv']}   " Support better csv support
     Plug 'christoomey/vim-sort-motion'                     " Text objects for sort motion (gsii)
+    Plug 'bkad/CamelCaseMotion'
     " }
 
     " General Programming {
