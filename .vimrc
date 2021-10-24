@@ -497,7 +497,7 @@
     let g:which_key_leader_map.s.M = 'ShowMapsList'
     " Show Startify Menu
     nnoremap <silent><nowait><leader>st <cmd>Startify<cr>
-    let g:which_key_leader_map.s.M = 'ShowStartify'
+    let g:which_key_leader_map.s.t = 'ShowStartify'
     " 1>>>
 
     " InsertMap <<<1
