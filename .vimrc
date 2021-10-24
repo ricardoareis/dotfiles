@@ -921,8 +921,8 @@ vnoremap <F1> <Esc>
     let g:which_key_leader_map.t.w = 'TextWidthToggle'
 
     " set textwidth to longest line current screen, or default
-    nnoremap <leader><leader>w :<c-u>call <sid>ExpandTextWidth()<CR>
-    let g:which_key_leader_map[','].w = 'ExpandTextWidth'
+    nnoremap <leader>sw :<c-u>call <sid>ExpandTextWidth()<CR>
+    let g:which_key_leader_map.s.w = 'ExpandTextWidth'
     " 1>>>
 
     " Profile<<<1
