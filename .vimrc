@@ -1713,7 +1713,7 @@ vnoremap <F1> <Esc>
     " Plugin: CamelCaseMotion<<<1
     if isdirectory(expand(bundles_dir . '/CamelCaseMotion/'))
         let g:camelcasemotion_key = '<Leader><Leader>'
-        nnoremap <Leader><Leader>E <Plug>CamelCaseMotion_ge
+        map <Leader><Leader>E <Plug>CamelCaseMotion_ge
         let g:which_key_leader_map[','].w = 'CamelCaseMotion_w'
         let g:which_key_leader_map[','].b = 'CamelCaseMotion_b'
         let g:which_key_leader_map[','].e = 'CamelCaseMotion_e'
