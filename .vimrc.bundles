@@ -114,7 +114,7 @@
     Plug 'gcmt/wildfire.vim'                    " Support of quick selection, enter select closest text object.
     Plug 'powerline/fonts'
     Plug 'bling/vim-bufferline'                 " buffer list on cmd bar
-    Plug 'vim-airline/vim-airline', { 'tag': 'v0.11'}
+    Plug 'vim-airline/vim-airline',         { 'tag': 'v0.11'}
     Plug 'vim-airline/vim-airline-themes'
     Plug 'justinmk/vim-sneak'                   " testing over easymotion
     Plug 'flazz/vim-colorschemes'
@@ -126,7 +126,7 @@
     Plug 'matze/vim-move'                       " Move block easily (visual mode + CTRL+J)
     Plug 'chrisbra/NrrwRgn'                     " Isolating a region to a safe operation (from emacs)
     Plug 'machakann/vim-highlightedyank'
-    Plug 'wfxr/minimap.vim', {'on': ['MinimapToggle']} " Sublime minimap
+    Plug 'wfxr/minimap.vim',                {'on': ['MinimapToggle']} " Sublime minimap
     Plug 'unblevable/quick-scope'
     "}
 
