@@ -61,3 +61,5 @@ zsdoc/data
 .zinit/plugins
 .zinit/polaris
 .zinit/snippets
+
+target/*
