@@ -10,7 +10,7 @@ let b:ale_fixers = [
 let b:ale_warn_about_trailing_whitespace = 0
 let b:ale_python_autoflake_options = '--remove-unused-variables --remove-all-unused-imports --ignore-init-module-imports'
 " Using black as a gq default vim formatter (:h formatprg)
-setlocal formatprg=black\ --quiet\ -
+setlocal formatprg=black\ --quiet\ -\ 2>/dev/null
 " augroup black-fmt
     " autocmd!
     " autocmd BufWritePre <buffer> keepjumps normal m'gggqG``
