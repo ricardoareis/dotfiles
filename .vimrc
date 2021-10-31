@@ -1725,6 +1725,23 @@ vnoremap <F1> <Esc>
         let g:which_key_leader_map[','].g = { 'name': 'which_key_ignore' }
     endif
     " 1>>>
+
+    " Plugin: TableMode<<<1
+    if isdirectory(expand(bundles_dir . '/vim-table-mode/'))
+        let g:table_mode_corner='|'
+        let g:which_key_leader_map.t.m = 'TableModeToggle'
+        let g:which_key_leader_map.t['?'] = 'TableModeEchoCell'
+        let g:which_key_leader_map.t.iC = 'TableModeInsertColumnBefore'
+        let g:which_key_leader_map.t.r = 'TableModeRealign'
+        let g:which_key_leader_map.t.s = 'TableModeSort'
+        let g:which_key_leader_map.t.d = {'name': 'TableModeDelete'}
+        let g:which_key_leader_map.t.d.c = 'TableModeDeleteColumn'
+        let g:which_key_leader_map.t.d.d = 'TableModeDeleteRow'
+        let g:which_key_leader_map.t.f = {'name': 'TableModeFormula'}
+        let g:which_key_leader_map.t.f.a = 'TableModeFormulaAdd'
+        let g:which_key_leader_map.t.f.d = 'TableModeFormulaEval'
+    endif
+    " 1>>>
 " 1>>>
 
 " Loading others .vim <<<1

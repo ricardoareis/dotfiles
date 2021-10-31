@@ -41,6 +41,7 @@
     Plug 'chrisbra/csv.vim',            {'for': ['csv']}   " Support better csv support
     Plug 'christoomey/vim-sort-motion'                     " Text objects for sort motion (gsii)
     Plug 'bkad/CamelCaseMotion'                            " Text objects for CamelCaseMotion (,,w)
+    Plug 'dhruvasagar/vim-table-mode'
     " }
 
     " General Programming {
