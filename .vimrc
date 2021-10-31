@@ -30,6 +30,7 @@
     " Important Properties I <<<1
     let g:skip_defaults_vim = 1                 " disable defaults.vim
 
+    set termencoding=utf-8
     set encoding=utf-8
     scriptencoding utf-8
     set shell=$SHELL                            " Using default $SHELL
