@@ -402,7 +402,7 @@
     if &encoding =~# 'utf-8'
         set listchars=eol:⏎,tab:␉·,trail:␠,nbsp:⎵       " default unicode
         nnoremap <silent><unique> <Leader>tl :set list!<CR>
-        let g:which_key_leader_map.t.l = 'ListChars'
+        let g:which_key_leader_map.t.l = 'ListCharsToggle'
     endif
     " 1>>>
 
@@ -556,7 +556,7 @@
 
     " Toggle cursor line <<<1
     nnoremap <silent><unique> <Leader>tc :set cursorline!<CR>
-    let g:which_key_leader_map.t.c = 'CursorLine'
+    let g:which_key_leader_map.t.c = 'CursorLineToggle'
     " 1>>>
 
     " Scroll the view port faster <<<1
