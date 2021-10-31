@@ -319,7 +319,7 @@
 
         " Define prefix dictionary
         let g:which_key_leader_map = {}
-        let g:which_key_leader_map.t = {'name': '+Toggle'}
+        let g:which_key_leader_map.t = {'name': '+Toggle/Terminal/Table'}
         let g:which_key_leader_map.o = {'name': '+Open'}
         let g:which_key_leader_map.s = {'name': '+System/Session/Show'}
         let g:which_key_leader_map.g = {'name': '+Git'}
