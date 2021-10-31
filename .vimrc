@@ -89,7 +89,7 @@
 
     set wildmenu                                           "  enhanced command line completion
     set wildmode=list:longest:full                         "  complete files like a shell
-    set scrolloff=10                                       "  lines of text around cursor
+    set scrolloff=5                                        "  lines of text around cursor
     set scrolljump=5                                       "  Lines to scroll when cursor leaves screen
 
     if has('cmdline_info')
