@@ -114,8 +114,11 @@
     set hlsearch                                " highlight search match
     set incsearch                               " set incremental search, like modern browsers
     set magic                                   " Set magic on, for regex
-    set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
-    set grepformat=%f:%l:%c:%m,%f:%l:%m
+
+    if executable('rg')
+        set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
+        set grepformat=%f:%l:%c:%m,%f:%l:%m
+    endif
 
     " Performance Improving
     set regexpengine=1                          " revert to regexp engine v1
