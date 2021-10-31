@@ -164,8 +164,12 @@
                     \ 'swap': 'directory' }
         "
         if has('persistent_undo')
+            " Allow <C-u> recovery from a wrong motion in
+            " the edit mode.
+            " https://vi.stackexchange.com/questions/16773/how-to-undo-the-deletion-of-characters-in-insert-mode-caused-by-ctrl-u
             "add an undo-break (see :help i_CTRL-G_u).
             inoremap <C-u> <C-g>u<C-u>
+
             set undofile
             set undolevels=10000                " Maximum number of changes that can be undone
             set undoreload=10000                " Maximum number lines to save for undo on a buffer reload
