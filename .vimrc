@@ -898,8 +898,8 @@ vnoremap <F1> <Esc>
         if empty(@-) | return '' | endif
         return a:cmd.Text2Re(@-, a:cmd)."\<cr>"
     endfunction
-    nnoremap <expr> z[ KeepChanging('/')
-    nnoremap <expr> z] KeepChanging('?')
+    nnoremap <expr> [d KeepChanging('/')
+    nnoremap <expr> ]d KeepChanging('?')
     " 1>>>
 
     " TextWidth <<<1
