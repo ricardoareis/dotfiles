@@ -590,7 +590,7 @@
     "
     "TODO: Refactoring to suporte more than
     "2 chars, in a relative line number
-    "
+    "by Reis
     function! MvLines()
         " This function receave 2 chars
         " that representing the relative line number
@@ -792,10 +792,12 @@
     " Repeat the last command (ex. :ls) <<<1
     " If your terminal print the same  for, both <Esc> and <Alt>
     " decide the best usability.
+    " by Reis
     nnoremap <Esc>. @:
     " 1>>>
 
     " Past Visual Select <<<1
+    " by Reis
     vnoremap <silent><C-w>pt "+y \| :tabnew \| :normal p<CR>
     " 1>>>
 
