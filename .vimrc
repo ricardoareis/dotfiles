@@ -1216,7 +1216,7 @@ vnoremap <F1> <Esc>
     " Plugin: EditorConfig properties <<<1
     if isdirectory(expand(bundles_dir . '/editorconfig-vim/'))
         let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
-        let g:EditorConfig_verbose = 1
+        let g:EditorConfig_verbose = 0
         augroup EditorConfig
         autocmd!
         autocmd FileType gitcommit let b:EditorConfig_disable = 1
