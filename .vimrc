@@ -1103,7 +1103,6 @@ vnoremap <F1> <Esc>
             "Open a file fuzzy search
             nnoremap <C-p> :Files<CR>
         endif
-        " nnoremap <C-p> :Files<CR>
         "Open a content fuzzy search
         nnoremap <C-l> :Rg<CR>
         "Open a line fuzzy search
