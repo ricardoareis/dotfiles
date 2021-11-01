@@ -265,7 +265,7 @@
     " Alerts and feedback properties <<<1
     set noerrorbells
     set novisualbell
-    set t_vb=                       "Never Flash de Screen"
+    set t_vb=                                           " Never Flash de Screen"
     " 1>>>
 
     " Spell properties <<<1
@@ -301,8 +301,8 @@
     "
     " see :set complet
     "
-    set complete-=i   " disable scanning included files
-    set complete-=t   " disable searching tags
+    set complete-=i         " disable scanning included files
+    set complete-=t         " disable searching tags
     " 1>>>
 
 " 1>>>
