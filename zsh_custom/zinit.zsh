@@ -181,12 +181,14 @@ zinit wait"2a" lucid for                     \
 
 # Loading the completions mandatory at the end {
 #
-zinit ice silent wait"2b" atinit"zpcompinit; zpcdreplay" for \
-    light scriptingosx/mac-zsh-completions                   \
-    light zdharma/fast-syntax-highlighting                   \
-    blockf atpull'zinit creinstall -q .'                     \
-        light zsh-users/zsh-completions                      \
-    atload"_zsh_autosuggest_start"                           \
-    atinit="export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=10"       \
-        light zsh-users/zsh-autosuggestions
+
+zinit wait"2b" atinit"zpcompinit; zpcdreplay" silent light-mode for     \
+    ricardoareis/fast-syntax-highlighting                               \
+    scriptingosx/mac-zsh-completions                                    \
+    blockf                                                              \
+        atpull'zinit creinstall -q .'                                   \
+            zsh-users/zsh-completions                                   \
+        atload"_zsh_autosuggest_start"                                  \
+        atinit="export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=10"              \
+            zsh-users/zsh-autosuggestions
 #}
