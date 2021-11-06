@@ -66,7 +66,7 @@
     Plug 'tpope/vim-dispatch'                                                  "  Execute cmds asynchronous
     Plug 'skywind3000/vim-preview'
     Plug 'kkoomen/vim-doge',                    {'do': { -> doge#install() }, 'tag': 'v3.11.0' }
-
+    Plug 'AndrewRadev/diffurcate.vim'                                          "  Separate diffs per file
     " }
 
     " Snippets & AutoComplete {
