@@ -38,7 +38,7 @@ zinit ice svn wait"1a" lucid
 zinit snippet OMZ::plugins/aws
 
 zinit ice svn wait"1a" lucid
-zinit snippet OMZ::plugins/osx
+zinit snippet OMZ::plugins/macos
 
 zinit ice svn wait"1a" lucid
 zinit snippet OMZ::plugins/colored-man-pages
