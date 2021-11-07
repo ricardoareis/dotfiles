@@ -15,64 +15,82 @@
 
 " Bundles {
 
-    " General {
-    Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}   "  Support of file tree bar
-    Plug 'mbbill/undotree',     {'on': 'UndotreeToggle'}   "  Support of undo tree bar
-
-    if executable('ctags')
-        Plug 'majutsushi/tagbar', {'on': 'TagbarToggle'}   "  Support of tagbar
-    endif
-
-    Plug 'tpope/vim-repeat'                                "  Support to repeat some cmds
-    Plug 'tpope/vim-abolish'                               "  Support a better abbreviation
-    Plug 'andymass/vim-matchup'
+    " Color Schema, Fonts & Syntax Plugins {
+    Plug 'sainnhe/gruvbox-material'                               " Default color schema
+    Plug 'flazz/vim-colorschemes'
+    Plug 'powerline/fonts'
+    Plug 'sheerun/vim-polyglot'                                   " Syntax for many different type of files
     " }
 
-    " Writing {
-    Plug 'reedes/vim-textobj-quote'                        " Extending Vim to better support typographic (‘curly’ quote characters)
-    Plug 'kana/vim-textobj-user'                           " Create your own text objects (deps)
-    Plug 'michaeljsmith/vim-indent-object'                 " Text objects for indented blocks of lines (vai,vii)
-    Plug 'reedes/vim-textobj-sentence'                     " Improve sentence object
-    Plug 'reedes/vim-wordy',            {'on': 'NextWordy'}" Supporting of different dictionaries i,e; <F8>
-    Plug 'tpope/vim-surround'                              " Improve surroundings in pairs                      -  TODO study
-    Plug 'godlygeek/tabular'                               " Formating with tab
-    Plug 'wellle/targets.vim'                              " Many text objects                                  -  TODO study
-    Plug 'gabrielelana/vim-markdown',   {'for': ['markdown']}
-    Plug 'chrisbra/csv.vim',            {'for': ['csv']}   " Support better csv support
-    Plug 'christoomey/vim-sort-motion'                     " Text objects for sort motion (gsii)
-    Plug 'bkad/CamelCaseMotion'                            " Text objects for CamelCaseMotion (,,w)
+    " IDE & Panels Plugins {
+    Plug 'mhinz/vim-startify'
+    Plug 'scrooloose/nerdtree',         {'on': 'NERDTreeToggle'}  " Support of file tree bar
+    Plug 'mbbill/undotree',             {'on': 'UndotreeToggle'}  " Support of undo tree bar
+    Plug 'wfxr/minimap.vim',            {'on': ['MinimapToggle']} " Sublime minimap
+    Plug 'junegunn/fzf'                                           " Fuzzy Search w/ FZF
+    Plug 'junegunn/fzf.vim'
+    Plug 'vim-airline/vim-airline',     { 'tag': 'v0.11'}
+    Plug 'vim-airline/vim-airline-themes'
+    Plug 'bling/vim-bufferline'                                   " Buffer list on cmd bar (integrate vim-airline)
+    Plug 'airblade/vim-gitgutter'                                 " Git integration
+    Plug 'kshenoy/vim-signature'                                  " Plugin to integrate githunk
+    Plug 'voldikss/vim-floaterm'                                  " Float terminal
+    Plug 'liuchengxu/vim-which-key'                               " Document keys code (press <Leader>)
+    Plug 'machakann/vim-highlightedyank'
+    Plug 'junegunn/vim-peekaboo'                                  " Show registers contents visually
+    Plug 'vim-scripts/sessionman.vim'                             " Support of open/save/delete sessions
+    Plug 'tpope/vim-fugitive'                                     " Git cmds
+    Plug 'junegunn/gv.vim'                                        " Browser git log
+    Plug 'rhysd/conflict-marker.vim'                              " Handler of git conflict marker
+    Plug 'dense-analysis/ale'                                     " Engine for linters and fixers
+    Plug 'ricardoareis/vim-indent-guides'                         " Fork with a redir bug solved
+    Plug 'kkoomen/vim-doge',            {'do': { -> doge#install() }, 'tag': 'v3.11.0'}
+    Plug 'ludovicchabant/vim-gutentags',{'on': 'TagbarToggle'}
+    Plug 'skywind3000/gutentags_plus',  {'on': 'TagbarToggle'}
+    Plug 'ycm-core/YouCompleteMe'                                 " Engine for auto complete
+
+    if executable('ctags')
+        Plug 'majutsushi/tagbar',       {'on': 'TagbarToggle'}    " Support of tagbar
+    endif
+    " }
+
+    " Writing & Textobjs Plugins{
+    Plug 'reedes/vim-textobj-quote'                                      " Extending Vim to better support typographic (‘curly’ quote characters)
+    Plug 'kana/vim-textobj-user'                                         " Create your own text objects (deps)
+    Plug 'michaeljsmith/vim-indent-object'                               " Text objects for indented blocks of lines (vai,vii)
+    Plug 'reedes/vim-textobj-sentence'                                   " Improve sentence object
+    Plug 'reedes/vim-wordy',              {'on': 'NextWordy'}            " Supporting of different dictionaries i,e; <F8>
+    Plug 'tpope/vim-surround'                                            " Improve surroundings in pairs
+    Plug 'godlygeek/tabular'                                             " Formating with tab
+    Plug 'wellle/targets.vim'                                            " Many text objects
+    Plug 'gabrielelana/vim-markdown',     {'for': ['markdown']}
+    Plug 'chrisbra/csv.vim',              {'for': ['csv']}               " Support better csv support
+    Plug 'christoomey/vim-sort-motion'                                   " Text objects for sort motion (gsii)
+    Plug 'bkad/CamelCaseMotion'                                          " Text objects for CamelCaseMotion (,,w)
     Plug 'dhruvasagar/vim-table-mode'
+    Plug 'terryma/vim-expand-region'                                     " Plugin to expand visual selection  with CTRL plus + or -
+    Plug 'andymass/vim-matchup'
+    Plug 'tpope/vim-abolish'                                             " Support a better abbreviation
+    Plug 'gcmt/wildfire.vim'                                             " Support of quick selection, enter select closest text object.
+    Plug 'jeetsukumaran/vim-pythonsense', {'for': ['python', 'python3']} " Add some python text objects
     " }
 
     " General Programming {
-    Plug 'jiangmiao/auto-pairs'                                                "  Insert or delete brackets, parens, quotes in pair.
-    Plug 'tpope/vim-fugitive'                                                  "  Git cmds
-    Plug 'junegunn/gv.vim'                                                     "  Browser git log
-    Plug 'airblade/vim-gitgutter'                                              "  Git integration
-    Plug 'rhysd/conflict-marker.vim'                                           "  Handler of git conflict marker
-    Plug 'scrooloose/nerdcommenter'                                            "  Intelligent commenter
-    Plug 'luochen1990/rainbow'                                                 "  Different color for open, and close {([])}
-    Plug 'dense-analysis/ale'                                                  "  Engine for linters and fixers
-    Plug 'ntpeters/vim-better-whitespace'                                      "  Removed extra whitespaces
+    Plug 'jiangmiao/auto-pairs'                                " Insert or delete brackets, parens, quotes in pair.
+    Plug 'scrooloose/nerdcommenter'                            " Intelligent commenter
+    Plug 'luochen1990/rainbow'                                 " Different color for open, and close {([])}
+    Plug 'ntpeters/vim-better-whitespace'                      " Removed extra whitespaces
     Plug 'editorconfig/editorconfig-vim'
-    Plug 'ricardoareis/vim-indent-guides'                                      "  Fork with a redir bug solved
-    Plug 'mg979/vim-visual-multi',              {'branch': 'master'}           "  Support a multiple cursors
-    Plug 'sillybun/vim-repl',                   {'for': ['python', 'python3']}
-    Plug 'jmcantrell/vim-virtualenv',           {'for': ['python', 'python3']} "  Support a Python VirtualEnv
-    Plug 'jeetsukumaran/vim-pythonsense',       {'for': ['python', 'python3']} "  Add some python text objects
-    Plug 'ludovicchabant/vim-gutentags',        {'on': 'TagbarToggle'}
-    Plug 'skywind3000/gutentags_plus',          {'on': 'TagbarToggle'}
+    Plug 'mg979/vim-visual-multi',        {'branch': 'master'} " Support a multiple cursors
     Plug 'vim-test/vim-test'
-    Plug 'tpope/vim-dispatch'                                                  "  Execute cmds asynchronous
+    Plug 'tpope/vim-dispatch'                                  " Execute cmds asynchronous
     Plug 'skywind3000/vim-preview'
-    Plug 'kkoomen/vim-doge',                    {'do': { -> doge#install() }, 'tag': 'v3.11.0' }
-    Plug 'AndrewRadev/diffurcate.vim'                                          "  Separate diffs per file
+    Plug 'AndrewRadev/diffurcate.vim'                          " Separate diffs per file
     " }
 
-    " Snippets & AutoComplete {
+    " Snippets {
     Plug 'SirVer/ultisnips'                   " Pack of snippets
     Plug 'honza/vim-snippets'                 " Support a snippets
-    Plug 'ycm-core/YouCompleteMe'             " Engine for auto complete
     "
     " Source support_function.vim to support vim-snippets.
     "
@@ -82,53 +100,37 @@
     " }
 
     " Langs {
-    Plug 'fatih/vim-go',            {'for': 'go', 'do': ':GoInstallBinaries'}
-    Plug 'rust-lang/rust.vim',      {'for': ['rust']}
-    Plug 'pangloss/vim-javascript', {'for': ['javascript']}
+    Plug 'fatih/vim-go',              { 'for': 'go', 'do': ':GoInstallBinaries'}
+    Plug 'rust-lang/rust.vim',        { 'for': ['rust']}
+    Plug 'pangloss/vim-javascript',   { 'for': ['javascript']}
+    Plug 'sillybun/vim-repl',         { 'for': ['python', 'python3']}
+    Plug 'jmcantrell/vim-virtualenv', { 'for': ['python', 'python3']} "  Support a Python VirtualEnv
     " }
 
     " Misc {
     Plug 'mattn/gist-vim'                                       " Support a Gist
-    Plug 'elzr/vim-json',                   {'for': ['json']}   " Allow json error handling
-    Plug 'pedrohdz/vim-yaml-folds',         {'for': ['yml', 'yaml']}" Better folding
     Plug 'roxma/vim-tmux-clipboard'                             " Yank/Paste tmux split/windows
     Plug 'tmux-plugins/vim-tmux-focus-events'                   " Restore vim autocmd events (FocusGained/FocusLost)
                                                                 " there is a bug for terminal buffer, and
                                                                 " it should be  accepted by vim in 2015, but.
-    Plug 'ConradIrwin/vim-bracketed-paste'                      " Enable paste without `:set paste` (depends of terminal support)
     Plug 'skanehira/docker-compose.vim',    {'on': ['DockerCompose']}
     Plug 'skanehira/docker.vim',            {'on': ['Docker']}
-    Plug 'mhinz/vim-startify'
     " }
 
     " Improve Vim Experience Plugs {
-    Plug 'sainnhe/gruvbox-material'             " Default color schema
-    Plug 'kshenoy/vim-signature'                " Plugin to integrate githunk
-    Plug 'terryma/vim-expand-region'            " Plugin to expand visual selection  with CTRL plus + or -
-    Plug 'junegunn/fzf'                         " Fuzzy Search w/ FZF
-    Plug 'junegunn/fzf.vim'
-    Plug 'mox-mox/vim-localsearch'              " Allow a register a local pattern, instead of only a global / search
-    Plug 'sheerun/vim-polyglot'                 " Syntax for many different type of files
-    Plug 'liuchengxu/vim-which-key'             " Document keyscode (press <Leader>)
-    Plug 'vim-scripts/sessionman.vim'           " Support of open/save/delete sessions
-    Plug 'osyo-manga/vim-over'                  " Plugin to implement replace preview
-    Plug 'gcmt/wildfire.vim'                    " Support of quick selection, enter select closest text object.
-    Plug 'powerline/fonts'
-    Plug 'bling/vim-bufferline'                 " buffer list on cmd bar
-    Plug 'vim-airline/vim-airline',         { 'tag': 'v0.11'}
-    Plug 'vim-airline/vim-airline-themes'
-    Plug 'justinmk/vim-sneak'                   " testing over easymotion
-    Plug 'flazz/vim-colorschemes'
-    Plug 'voldikss/vim-floaterm'                " Float terminal
-    Plug 'MattesGroeger/vim-bookmarks'          " Plugin to manage annotations on lines
-    Plug 'junegunn/vim-peekaboo'                " Show registers contents visually
-    Plug 'wellle/visual-split.vim'              " Allow selected text object be viewed in another window
-    Plug 'embear/vim-foldsearch'                " Search a pattern and close everything as a fold
-    Plug 'matze/vim-move'                       " Move block easily (visual mode + CTRL+J)
-    Plug 'chrisbra/NrrwRgn'                     " Isolating a region to a safe operation (from emacs)
-    Plug 'machakann/vim-highlightedyank'
-    Plug 'wfxr/minimap.vim',                {'on': ['MinimapToggle']} " Sublime minimap
+    Plug 'mox-mox/vim-localsearch'                                   " Allow a register a local pattern, instead of only a global / search
+    Plug 'osyo-manga/vim-over'                                       " Plugin to implement replace preview
+    Plug 'justinmk/vim-sneak'                                        " testing over easymotion
+    Plug 'MattesGroeger/vim-bookmarks'                               " Plugin to manage annotations on lines
+    Plug 'wellle/visual-split.vim'                                   " Allow selected text object be viewed in another window
+    Plug 'embear/vim-foldsearch'                                     " Search a pattern and close everything as a fold
+    Plug 'matze/vim-move'                                            " Move block easily (visual mode + CTRL+J)
+    Plug 'chrisbra/NrrwRgn'                                          " Isolating a region to a safe operation (from emacs)
     Plug 'unblevable/quick-scope'
+    Plug 'tpope/vim-repeat'                                          " Support to repeat some cmds
+    Plug 'ConradIrwin/vim-bracketed-paste'                           " Enable paste without `:set paste` (depends of terminal support)
+    Plug 'pedrohdz/vim-yaml-folds',         {'for': ['yml', 'yaml']} " Better folding
+    Plug 'elzr/vim-json',                   {'for': ['json']}        " Allow json error handling
     "}
 
     " All of your Plugs must be added before the following line
