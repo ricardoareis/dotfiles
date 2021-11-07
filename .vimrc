@@ -527,11 +527,16 @@
     " 1>>>
 
     " Plugin: Whichkey map for <Leader><Leader> <<<1
+
+    " Change to the directory of the edited file
+    nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
+
     let g:which_key_leader_map[','] = {
-     \ 'name' : '+Quick',
-     \ 'x' : [':ALEFix                                      ', 'ALEFix'                         ],
-     \ 'i' : [':ALEInfoToClipboard                          ', 'ALEInfoToClipboard'             ],
-     \ 'd' : [':YcmCompleter GoToDefinitionElseDeclaration  ', 'GoToDefinitionElseDeclaration'  ],
+     \ 'name': '+Quick',
+     \  'x'  :[':ALEFix'                                     , 'ALEFix'                         ],
+     \  'i'  :[':ALEInfoToClipboard'                         , 'ALEInfoToClipboard'             ],
+     \ 'cd'  :[':cd %:p:h<CR>:pwd<CR>'                       , 'ChangeToFileDirectory'          ],
+     \  'd'  :[':YcmCompleter GoToDefinitionElseDeclaration' , 'GoToDefinitionElseDeclaration'  ],
      \ }
     " 1>>>
 
