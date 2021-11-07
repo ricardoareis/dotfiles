@@ -1100,6 +1100,18 @@ vnoremap <F1> <Esc>
 
     " Plugin: FZF (performs like CtrlP) <<<1
     if isdirectory(expand(bundles_dir . '/fzf/'))
+        " https://github.com/junegunn/fzf.vim#example-advanced-ripgrep-integration
+        function! RipgrepFzf(query, fullscreen)
+            let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
+            let initial_command = printf(command_fmt, shellescape(a:query))
+            let reload_command = printf(command_fmt, '{q}')
+            let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
+            call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
+        endfunction
+
+        command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
+
+        " if work directory is a git repository
         silent! !git rev-parse --is-inside-work-tree >/dev/null 2>&1
         if v:shell_error == 0
             "Open a file fuzzy search for git repo
@@ -1109,11 +1121,11 @@ vnoremap <F1> <Esc>
             nnoremap <C-p> :Files<CR>
         endif
         "Open a content fuzzy search
-        nnoremap <C-l> :Rg<CR>
+        nnoremap <C-l> :RG<CR>
         "Open a line fuzzy search
         nnoremap gl :BLines<CR>
         "Open a word fuzzy search
-        nnoremap <leader>* :Rg <C-R><C-W><CR>
+        nnoremap <leader>* :RG <C-R><C-W><CR>
         let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'border': 'sharp'  }  }
     endif
     " 1>>>
