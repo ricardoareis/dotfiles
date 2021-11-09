@@ -1367,6 +1367,8 @@ vnoremap <F1> <Esc>
         nnoremap ]w :NextTrailingWhitespace<CR>
         nnoremap [w :PrevTrailingWhitespace<CR>
         let g:strip_whitespace_on_save = 1
+        let g:strip_whitespace_confirm = 1
+        let g:strip_whitelines_at_eof  = 1
     endif
     " 1>>>
 
