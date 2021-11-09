@@ -83,7 +83,8 @@
     Plug 'editorconfig/editorconfig-vim'
     Plug 'mg979/vim-visual-multi',        {'branch': 'master'} " Support a multiple cursors
     Plug 'vim-test/vim-test'
-    Plug 'tpope/vim-dispatch'                                  " Execute cmds asynchronous
+    Plug 'tpope/vim-dispatch'                                  " Execute cmds asynchronous (vim-test deps)
+    Plug 'skywind3000/asyncrun.vim'                            " Execute cmds asynchronous (vim-test strategy)
     Plug 'skywind3000/vim-preview'
     Plug 'AndrewRadev/diffurcate.vim'                          " Separate diffs per file
     " }
