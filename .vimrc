@@ -1771,6 +1771,20 @@ vnoremap <F1> <Esc>
         let g:which_key_leader_map.t.f.d = 'TableModeFormulaEval'
     endif
     " 1>>>
+
+    " Plugin: Vim-JsonPath<<<1
+    if isdirectory(expand(bundles_dir . '/vim-jsonpath/'))
+        " Optionally copy path to a named register (* in this case) when calling :JsonPath
+        let g:jsonpath_register = '*'
+
+        " Define mappings for json buffers
+        augroup vim_json_path
+            autocmd!
+            autocmd FileType json noremap <buffer> <silent> <leader><leader>g :call jsonpath#echo()<CR>
+            autocmd FileType json noremap <buffer> <silent> <leader><leader>d :call jsonpath#goto()<CR>
+        augroup END
+    endif
+    " 1>>>
 " 1>>>
 
 " Loading others .vim <<<1
