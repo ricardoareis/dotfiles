@@ -133,6 +133,7 @@
     Plug 'ConradIrwin/vim-bracketed-paste'                           " Enable paste without `:set paste` (depends of terminal support)
     Plug 'pedrohdz/vim-yaml-folds',         {'for': ['yml', 'yaml']} " Better folding
     Plug 'elzr/vim-json',                   {'for': ['json']}        " Allow json error handling
+    Plug 'mogelbrod/vim-jsonpath',          {'for': ['json']}        " A Vim plugin which provides ways of navigating JSON document buffers
     "}
 
     " All of your Plugs must be added before the following line
