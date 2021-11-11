@@ -109,8 +109,10 @@
     " }
 
     " Misc {
-    Plug 'roxma/vim-tmux-clipboard'                             " Yank/Paste tmux split/windows
-    Plug 'tmux-plugins/vim-tmux-focus-events'                   " Restore vim autocmd events (FocusGained/FocusLost)
+    if executable('tmux')
+        Plug 'roxma/vim-tmux-clipboard'                         " Yank/Paste tmux split/windows
+        Plug 'tmux-plugins/vim-tmux-focus-events'               " Restore vim autocmd events (FocusGained/FocusLost)
+    endif
                                                                 " there is a bug for terminal buffer, and
                                                                 " it should be  accepted by vim in 2015, but.
     Plug 'skanehira/docker-compose.vim',    {'on': ['DockerCompose']}
