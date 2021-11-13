@@ -1054,7 +1054,7 @@ vnoremap <F1> <Esc>
         let g:airline_highlighting_cache = 1
         if isdirectory(expand(bundles_dir . '/vim-airline-themes/'))
             let g:airline_extensions=['branch', 'localsearch', 'virtualenv', 'bufferline',
-                        \             'hunks', 'keymap', 'quickfix', 'ale', 'tagbar', 'term',
+                        \             'hunks', 'quickfix', 'ale', 'tagbar', 'term',
                         \             'undotree', 'whitespace', 'wordcount', 'ycm', 'tabline']
 
             augroup AirlineExtensions
