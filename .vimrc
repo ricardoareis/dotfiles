@@ -1095,7 +1095,16 @@ vnoremap <F1> <Esc>
                 let g:airline_symbols.space = ' '
                 let g:airline_symbols.spell = ''
                 let g:airline_symbols.whitespace = 'Ξ'
+                let g:airline_symbols.colnr = '℅'
             endif
+            let g:airline_section_z = airline#section#create(
+                        \[
+                        \'windowswap', 'obsession',
+                        \'%#__accent_bold#%3p%%'.g:airline_symbols.space,
+                        \'linenr', 'maxlinenr', g:airline_symbols.space,
+                        \g:airline_right_alt_sep.'%#__accent_bold#%3v/%03{col("$")-1}'
+                        \]
+                        \)
         endif
     endif
     " 1>>>
