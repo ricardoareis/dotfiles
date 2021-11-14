@@ -29,6 +29,8 @@
 
     " Important Properties I <<<1
     let g:skip_defaults_vim = 1                 " disable defaults.vim
+    " Used to identify a git repo
+    let g:gitroot = substitute(system('git rev-parse --show-toplevel 2>/dev/null'), '[\n\r]', '', 'g')
 
     set termencoding=utf-8
     set encoding=utf-8
@@ -959,12 +961,11 @@ vnoremap <F1> <Esc>
     " Root <<<1
     " from junegunn
     function! s:root()
-        let root = systemlist('git rev-parse --show-toplevel')[0]
-        if v:shell_error
-            echo 'Not in git repo'
+        if g:gitroot !=# ''
+            execute 'lcd' g:gitroot
+            echo 'Changed directory to: '.g:gitroot
         else
-            execute 'lcd' root
-            echo 'Changed directory to: '.root
+            echo 'Not in git repo'
         endif
     endfunction
     command! Root call s:root()
@@ -1123,15 +1124,14 @@ vnoremap <F1> <Esc>
 
         command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 
-        " if work directory is a git repository
-        silent! !git rev-parse --is-inside-work-tree >/dev/null 2>&1
-        if v:shell_error == 0
-            "Open a file fuzzy search for git repo
+        "Open a file fuzzy search for git repo
+        if g:gitroot !=# ''
             nnoremap <C-p> :GFiles --cached --others --exclude-standard<CR>
         else
             "Open a file fuzzy search
             nnoremap <C-p> :Files<CR>
         endif
+
         "Open a content fuzzy search
         nnoremap <C-l> :RG<CR>
         "Open a line fuzzy search
@@ -1311,10 +1311,10 @@ vnoremap <F1> <Esc>
         let g:tagbar_compact=1
         let g:tagbar_autoclose=1
         set tags=./tags;/,~/.vimtags
+
         " Make tags placed in .git/tags file available in all levels of a repository
-        let gitroot = substitute(system('git rev-parse --show-toplevel'), '[\n\r]', '', 'g')
-        if gitroot !=# ''
-            let &tags = &tags . ',' . gitroot . '/.git/tags'
+        if g:gitroot !=# ''
+            let &tags = &tags . ',' . g:gitroot . '/.git/tags'
         endif
     endif
     " 1>>>
