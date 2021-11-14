@@ -19,6 +19,11 @@
     Plug 'sainnhe/gruvbox-material'                               " Default color schema
     Plug 'flazz/vim-colorschemes'
     Plug 'powerline/fonts'
+
+    if isdirectory(expand(bundles_dir . '/vim-polyglot/'))
+        let g:polyglot_disabled = ['autoindent', 'sensible', 'ftdetect']
+    endif
+
     Plug 'sheerun/vim-polyglot'                                   " Syntax for many different type of files
     " }
 
