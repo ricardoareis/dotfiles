@@ -103,64 +103,6 @@ augroup python_cmds_group
     autocmd Filetype python set foldlevel=9
 augroup END
 
-augroup golang_cmds_group
-    autocmd!
-    " Golang Menu && Maps
-    autocmd Filetype go let g:which_key_localleader_map.g = { 'name' : '+Golang' }
-    " Golang Fold properties
-    autocmd Filetype go set foldmethod=syntax
-    autocmd Filetype go set foldlevel=9
-    " Vim-GO properties
-    autocmd Filetype go nnoremap <LocalLeader><LocalLeader>v :vsp <CR>:exe "GoDef" <CR>
-    autocmd Filetype go nnoremap <LocalLeader><LocalLeader>s :sp <CR>:exe "GoDef"<CR>
-    autocmd Filetype go nnoremap <LocalLeader><LocalLeader>t :tab split <CR>:exe "GoDef"<CR>
-    "
-    autocmd Filetype go nmap <LocalLeader>gi <Plug>(go-implements)
-    autocmd Filetype go let g:which_key_localleader_map.g.i = 'Go-Implements'
-    "
-    autocmd FileType go nmap <LocalLeader>gI <Plug>(go-info)
-    autocmd Filetype go let g:which_key_localleader_map.g.I = 'Go-Info'
-    "
-    autocmd FileType go nmap <LocalLeader>gr <Plug>(go-rename)
-    autocmd Filetype go let g:which_key_localleader_map.g.r = 'Go-Rename'
-    "
-    autocmd FileType go nmap <LocalLeader>gR <Plug>(go-run)
-    autocmd Filetype go let g:which_key_localleader_map.g.R = 'Go-Run'
-    "
-    autocmd FileType go nmap <LocalLeader>gb <Plug>(go-build)
-    autocmd Filetype go let g:which_key_localleader_map.g.b = 'Go-Build'
-    "
-    autocmd FileType go nmap <LocalLeader>gt <Plug>(go-test)
-    autocmd Filetype go let g:which_key_localleader_map.g.t = 'Go-Test'
-    "
-    autocmd FileType go nmap <LocalLeader>gd <Plug>(go-doc)
-    autocmd Filetype go let g:which_key_localleader_map.g.d = 'Go-Doc'
-    "
-    autocmd FileType go nmap <LocalLeader>gv <Plug>(go-doc-vertical)
-    autocmd Filetype go let g:which_key_localleader_map.g.v = 'Go-Doc-Vertical'
-    "
-    autocmd FileType go nmap <LocalLeader>gc <Plug>(go-coverage)
-    autocmd Filetype go let g:which_key_localleader_map.g.c = 'Go-Coverage'
-    "
-    autocmd FileType go nmap <Leader><Leader>x :GoFmt<CR>
-    autocmd Filetype go let g:which_key_leader_map[','].x = 'Go-Fmt'
-    "
-    autocmd FileType go nmap <LocalLeader>gT <Plug>(go-run-tab)
-    autocmd Filetype go let g:which_key_localleader_map.g.T = 'Go-Run-Tab'
-    "
-    autocmd FileType go nmap <LocalLeader>gV <Plug>(go-run-vertical)
-    autocmd Filetype go let g:which_key_localleader_map.g.V = 'Go-Run-Vertical'
-    "
-    autocmd FileType go nmap <LocalLeader>ga :GoAddTags<CR>
-    autocmd Filetype go let g:which_key_localleader_map.g.a = 'Go-Add-Tags'
-    "
-    autocmd FileType go nmap <LocalLeader>gd :GoDecls<CR>
-    autocmd Filetype go let g:which_key_localleader_map.g.d = 'Go-Decls'
-    "
-    autocmd FileType go nmap <LocalLeader>gD :GoDeclsDir<CR>
-    autocmd Filetype go let g:which_key_localleader_map.g.D = 'Go-DeclsDir'
-augroup END
-
 augroup textobj_quote
     autocmd!
     autocmd FileType textile,markdown call textobj#quote#init()
