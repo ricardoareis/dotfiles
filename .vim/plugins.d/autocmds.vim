@@ -1,21 +1,12 @@
 filetype plugin indent on
 
-" file is large from 5mb
-let g:LargeFile = 1024 * 1024 * 5
 
 function! LargeFile()
-    " no syntax highlight
-    setlocal syntax=OFF
-    " no syntax highlighting etc
-    " set eventignore+=FileType
-    " save memory when other file is viewed
-    setlocal bufhidden=unload
-    " is read-only (write with :w new_filename)
-    setlocal buftype=nowrite
-    " no undo possible
-    setlocal undolevels=-1
-    " display message
-    augroup _LargeFile
+    setlocal syntax=OFF       " no syntax highlight
+    setlocal bufhidden=unload " save memory when other file is viewed
+    setlocal buftype=nowrite  " is read-only (write with :w new_filename)
+    setlocal undolevels=-1    " no undo possible
+    augroup _LargeFile        " display message
         autocmd!
         autocmd VimEnter *  echo "The file is larger than "
                     \. (g:LargeFile / 1024 / 1024)
@@ -24,6 +15,8 @@ function! LargeFile()
 endfunction
 
 augroup perf_group
+    let g:LargeFile = 1024 * 1024 * 5 " file is large from 5mb
+
     autocmd!
     " Disable Syntax Highlight when the file size is greater than 5MB
     autocmd BufReadPre * let f=getfsize(expand("<afile>"))
@@ -99,20 +92,11 @@ augroup END
 
 augroup vimhooks
     autocmd!
-    " Orig files are readonly
-    autocmd BufRead *.orig set readonly
-    " Set execution permission for shell scripts
-    autocmd BufWritePost *.sh call system('chmod +x ' . expand('%:p'))
-    " Disable Highlighting when entering in a buffer
-    autocmd BufEnter * nohlsearch
-    " Enable cursorline when insert mode is disable
-    " autocmd InsertLeave,WinEnter * set cursorline
-    " Disable cursorline when insert mode is enable
-    autocmd InsertEnter,WinLeave * set nocursorline
-    " Workaround vim-commentary for Haskell
-    autocmd FileType haskell setlocal commentstring=--\ %s
-    " Wrap line
-    autocmd VimResized * | set columns=120
-    " Minimap
-    autocmd FileType minimap let g:better_whitespace_enabled=0
+    autocmd BufRead *.orig set readonly                                   " Orig files are readonly
+    autocmd BufWritePost *.sh call system('chmod +x ' . expand('%:p'))    " Set execution permission for shell scripts
+    autocmd BufEnter * nohlsearch                                         " Disable Highlighting when entering in a buffer
+    autocmd InsertEnter,WinLeave * set nocursorline                       " Disable cursorline when insert mode is enable
+    autocmd FileType haskell setlocal commentstring=--\ %s                " Workaround vim-commentary for Haskell
+    autocmd FileType minimap let g:better_whitespace_enabled=0            " Minimap
+    autocmd TerminalOpen * if &buftype == "terminal" | :DisableWhitespace " Terminal
 augroup END
