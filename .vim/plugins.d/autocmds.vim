@@ -1,5 +1,7 @@
 filetype plugin indent on
 
+" File is large from 5mb
+let g:LargeFile = 1024 * 1024 * 5
 
 function! LargeFile()
     setlocal syntax=OFF       " no syntax highlight
@@ -15,7 +17,6 @@ function! LargeFile()
 endfunction
 
 augroup perf_group
-    let g:LargeFile = 1024 * 1024 * 5 " file is large from 5mb
 
     autocmd!
     " Disable Syntax Highlight when the file size is greater than 5MB
