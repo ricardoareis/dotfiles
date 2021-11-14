@@ -99,5 +99,5 @@ augroup vimhooks
     autocmd InsertEnter,WinLeave * set nocursorline                       " Disable cursorline when insert mode is enable
     autocmd FileType haskell setlocal commentstring=--\ %s                " Workaround vim-commentary for Haskell
     autocmd FileType minimap let g:better_whitespace_enabled=0            " Minimap
-    autocmd TerminalOpen * if &buftype == "terminal" | :DisableWhitespace " Terminal
+    autocmd TerminalOpen * :DisableWhitespace                             " Disable Better Whitespakce on Terminal
 augroup END
