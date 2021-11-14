@@ -87,22 +87,6 @@ augroup omnifunc_cmds_group
     autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 augroup END
 
-augroup python_cmds_group
-    autocmd!
-    " Python Menu && Maps
-    autocmd Filetype python let g:which_key_localleader_map.p = { 'name' : '+Python' }
-    autocmd Filetype python nnoremap <silent> <LocalLeader>ps  :REPLSendSession<CR>
-    autocmd Filetype python nnoremap <silent> <LocalLeader>pw  :SendCurrentLine<CR>
-    autocmd Filetype python vnoremap <silent> <LocalLeader>pw  :SendLineToREPL<CR>
-    autocmd Filetype python nnoremap <silent> <LocalLeader>pr  :REPLToggle<CR>
-    autocmd Filetype python nnoremap <F10> <Esc>:REPLPDBN<CR>
-    autocmd Filetype python nnoremap <F11> <Esc>:REPLPDBS<CR>
-    autocmd Filetype python nnoremap <F12> <Esc>:REPLDebugStopAtCurrentLine<CR>
-    " Python Fold properties
-    autocmd Filetype python set foldmethod=indent
-    autocmd Filetype python set foldlevel=9
-augroup END
-
 augroup textobj_quote
     autocmd!
     autocmd FileType textile,markdown call textobj#quote#init()
