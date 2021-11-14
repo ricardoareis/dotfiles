@@ -1796,13 +1796,6 @@ vnoremap <F1> <Esc>
         augroup END
     endif
     " 1>>>
-
-    " Plugin: Vim-Polyglot<<<1
-    if isdirectory(expand(bundles_dir . '/vim-polyglot/'))
-        let g:polyglot_disabled = ['autoindent', 'sensible', 'ftdetect']
-    endif
-    " 1>>>
-
 " 1>>>
 
 " Loading others .vim <<<1
