@@ -247,12 +247,15 @@
     if &term =~# '^xterm' || &term =~# '^screen' || &term =~# '^tmux'
         set t_Co=256                                          "  Enable 256 colors to stop the CSApprox warning and make xterm vim shine
     endif
+
     if exists('+termguicolors')                               "  Only if compiled
       let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
       let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
       set termguicolors
     endif
+
     set background=dark                                       "  Prefer Dark over Light
+
     if isdirectory(expand(bundles_dir . '/gruvbox-material'))
         let g:gruvbox_material_disable_italic_comment = 1     "  Disable support to italic, must be located before colorscheme
         let g:gruvbox_material_enable_italic = 0              "  Allow Italic fonts
