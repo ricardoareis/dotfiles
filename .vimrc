@@ -1798,10 +1798,3 @@ vnoremap <F1> <Esc>
     endif
     " 1>>>
 " 1>>>
-
-" Loading others .vim <<<1
-" function to source in directory
-for fpath in split(globpath('~/.vim/plugins.d/', '*.vim'), '\n')
-    exe 'source' fpath
-endfor
-" 1>>>
