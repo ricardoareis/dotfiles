@@ -411,7 +411,7 @@
     set nolist                                          " default disable
     if &encoding =~# 'utf-8'
         set listchars=eol:⏎,tab:␉·,trail:␠,nbsp:⎵       " default unicode
-        nnoremap <silent><unique> <Leader>tl :set list!<CR>
+        nnoremap <silent><Leader>tl :set list!<CR>
         let g:which_key_leader_map.t.l = 'ListCharsToggle'
     endif
     " 1>>>
@@ -498,7 +498,7 @@
 
     " System/Session/Show Menu<<<1
     " reload vim
-    nnoremap <silent><unique><Leader>sr :source ~/.vimrc<CR>
+    nnoremap <silent><Leader>sr :source ~/.vimrc<CR>
     let g:which_key_leader_map.s.r = 'VimReload'
     " history of edited files
     nnoremap <silent><nowait><Leader>sh :History<cr>
@@ -570,7 +570,7 @@
     " 1>>>
 
     " Toggle cursor line <<<1
-    nnoremap <silent><unique> <Leader>tc :set cursorline!<CR>
+    nnoremap <silent><Leader>tc :set cursorline!<CR>
     let g:which_key_leader_map.t.c = 'CursorLineToggle'
     " 1>>>
 
@@ -1046,7 +1046,7 @@ vnoremap <F1> <Esc>
         let g:indent_guides_guide_size = 1
         let g:indent_guides_enable_on_vim_startup = 1
         "
-        nnoremap <silent><unique> <Leader>ti :IndentGuidesToggle<CR>
+        nnoremap <silent><Leader>ti :IndentGuidesToggle<CR>
         let g:which_key_leader_map.t.i = 'IndentGuidesToggle'
     endif
     " 1>>>
