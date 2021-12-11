@@ -1057,6 +1057,7 @@ vnoremap <F1> <Esc>
         let g:airline_skip_empty_sections = v:true
         let g:bufferline_echo = 0
         let g:airline_highlighting_cache = 1
+        let g:virtualenv_directory = $PYENV_ROOT . '/versions/'
         if isdirectory(expand(bundles_dir . '/vim-airline-themes/'))
             let g:airline_extensions=['branch', 'localsearch', 'virtualenv', 'bufferline',
                         \             'hunks', 'quickfix', 'ale', 'tagbar', 'term',
