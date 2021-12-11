@@ -722,7 +722,8 @@
     " 1>>>
 
     " Most prefer to toggle search highlighting rather than clear the current <<<1
-    noremap    :set hlsearch! hlsearch?<CR>
+    noremap ,hh  :set hlsearch! hlsearch?<CR>
+    let g:which_key_leader_map['h'] = { 'name': 'which_key_ignore' }
     " 1>>>
 
     " Wrapped lines goes down/up to next row, rather than next line in file <<<1
