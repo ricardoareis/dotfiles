@@ -208,37 +208,6 @@
     set cursorcolumn
     " 1>>>
 
-    " Keyboard keys - TMUX <<<1
-    " tmux will send xterm-style keys when its xterm-keys option is on
-    " if &term =~# '^xterm' || &term =~# '^screen' || &term =~# '^tmux'
-        " " execute "set <xUp>=\e[1;*A"
-        " " execute "set <xDown>=\e[1;*B"
-        " " execute "set <xRight>=\e[1;*C"
-        " " execute "set <xLeft>=\e[1;*D"
-
-        " " " Enable modified Home, End, and F1 to F4 function keys,
-        " " " see  :help xterm-function-keys
-        " " execute "set <xF1>=\<Esc>[1;*P"
-        " " execute "set <xF2>=\<Esc>[1;*Q"
-        " " execute "set <xF3>=\<Esc>[1;*R"
-        " " execute "set <xF4>=\<Esc>[1;*S"
-
-        " " " Enable modified PageUp, PageDown, and F5 to F12 function keys:
-        " " execute "set <F5>=\<Esc>[15;*~"
-        " " execute "set <F6>=\<Esc>[17;*~"
-        " " execute "set <F7>=\<Esc>[18;*~"
-        " " execute "set <F8>=\<Esc>[19;*~"
-        " " execute "set <F9>=\<Esc>[20;*~"
-        " " execute "set <F10>=\<Esc>[21;*~"
-        " " execute "set <F11>=\<Esc>[23;*~"
-        " " execute "set <F12>=\<Esc>[24;*~"
-        " " execute "set <xHome>=\<Esc>[1;*H"
-        " " execute "set <xEnd>=\<Esc>[1;*F"
-        " " execute "set <PageUp>=\<Esc>[5;*~"
-        " " execute "set <PageDown>=\<Esc>[6;*~"
-    " endif
-    " 1>>>
-
     " Keyboard modifyOtherKeys <<<1
         let &t_TI = "\<Esc>[>4;2m"
         let &t_TE = "\<Esc>[>4;m"
