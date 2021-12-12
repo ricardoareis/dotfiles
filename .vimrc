@@ -208,20 +208,9 @@
     set cursorcolumn
     " 1>>>
 
-    " Keyboard keys - TMUX <<<1
-    " tmux will send xterm-style keys when its xterm-keys option is on
-    if &term =~# '^xterm' || &term =~# '^screen' || &term =~# '^tmux'
-        execute "set <xUp>=\e[1;*A"
-        execute "set <xDown>=\e[1;*B"
-        execute "set <xRight>=\e[1;*C"
-        execute "set <xLeft>=\e[1;*D"
-    endif
-    " 1>>>
-
     " Keyboard modifyOtherKeys <<<1
-    " nowadays iterm2 only support in the beta version
-        " let &t_TI = "\<Esc>[>4;2m"
-        " let &t_TE = "\<Esc>[>4;m"
+        let &t_TI = "\<Esc>[>4;2m"
+        let &t_TE = "\<Esc>[>4;m"
     " 1>>>
 
     " Disable unused builtin plugins <<<1
@@ -702,7 +691,8 @@
     " 1>>>
 
     " Most prefer to toggle search highlighting rather than clear the current <<<1
-    noremap    :set hlsearch! hlsearch?<CR>
+    noremap ,hh  :set hlsearch! hlsearch?<CR>
+    let g:which_key_leader_map['h'] = { 'name': 'which_key_ignore' }
     " 1>>>
 
     " Wrapped lines goes down/up to next row, rather than next line in file <<<1
