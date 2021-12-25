@@ -1764,6 +1764,7 @@ vnoremap <F1> <Esc>
     " Plugin: TableMode<<<1
     if isdirectory(expand(bundles_dir . '/vim-table-mode/'))
         let g:table_mode_corner='|'
+        let g:table_mode_disable_tableize_mappings = 1
         let g:which_key_leader_map.t.m = 'TableModeToggle'
         let g:which_key_leader_map.t['?'] = 'TableModeEchoCell'
         let g:which_key_leader_map.t.iC = 'TableModeInsertColumnBefore'
