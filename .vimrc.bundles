@@ -141,6 +141,15 @@
     Plug 'mogelbrod/vim-jsonpath',          {'for': ['json']}        " A Vim plugin which provides ways of navigating JSON document buffers
     Plug 'drmikehenry/vim-fixkey'
     Plug 'antoyo/vim-licenses'
+
+    if isdirectory(expand(bundles_dir . '/vim-gh-line/'))
+        " these properties must be defined before plugin loaded
+        let g:gh_line_map_default = 0
+        let g:gh_line_blame_map_default = 0
+    endif
+
+    Plug 'ruanyl/vim-gh-line'
+
     "}
 
     " All of your Plugs must be added before the following line
