@@ -140,6 +140,7 @@
     Plug 'elzr/vim-json',                   {'for': ['json']}        " Allow json error handling
     Plug 'mogelbrod/vim-jsonpath',          {'for': ['json']}        " A Vim plugin which provides ways of navigating JSON document buffers
     Plug 'drmikehenry/vim-fixkey'
+    Plug 'antoyo/vim-licenses'
     "}
 
     " All of your Plugs must be added before the following line
