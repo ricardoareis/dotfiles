@@ -1368,6 +1368,17 @@ vnoremap <F1> <Esc>
     endif
     " 1>>>
 
+    " Plugin: Vim-Gh-Line <<<1
+    if isdirectory(expand(bundles_dir . '/vim-gh-line/'))
+        let g:gh_line_map = '<leader>gH'
+        let g:gh_line_blame_map = '<leader>gB'
+        let g:gh_use_canonical = 1
+        let g:which_key_leader_map.g.B = 'blame in the web'
+        let g:which_key_leader_map.g.H = 'blob in the web'
+        let g:which_key_leader_map.g.o = 'open in the web'
+    endif
+    " 1>>>
+
     " Plugin: Better-WhiteSpace <<<1
     if isdirectory(expand(bundles_dir . '/vim-better-whitespace/'))
         nnoremap ]w :NextTrailingWhitespace<CR>
