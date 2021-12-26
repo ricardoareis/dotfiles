@@ -1,4 +1,4 @@
-" Copyright (c) 2020, Reis, Ricardo <ricardo.areais@gmail.com>
+" Copyright (c) 2020, Reis, Ricardo <ricardo.areis@gmail.com>
 "
 " All rights reserved.
 "
