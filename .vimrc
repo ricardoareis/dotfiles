@@ -585,26 +585,7 @@
       \ }
     " 1>>>
 
-    " Map to move lines to bellow than current line <<<1
-    "
-    "TODO: Refactoring to suporte more than
-    "2 chars, in a relative line number
-    "by Reis
-    function! MvLines()
-        " This function receave 2 chars
-        " that representing the relative line number
-        " Ex. command mv +9 will mv the line 9 to the
-        " current cursorline.
-        let l:number = 2
-        let l:string = ''
-        while l:number > 0
-            let l:string .= nr2char(getchar())
-            let l:number -= 1
-        endwhile
-        return l:string . 'm.'
-    endfunction
-    "
-    nnoremap mv :<C-u>execute MvLines()<CR>
+    " Copy change and put <<<1
     "https://www.reddit.com/r/vim/comments/fzu6b7/cp_change_put/
     nnoremap cp "_ciw<C-r>0<Esc>
     " 1>>>
