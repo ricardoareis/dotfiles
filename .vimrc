@@ -1552,10 +1552,10 @@ vnoremap <F1> <Esc>
         xmap <C-W>a <Plug>(Visual-Split-VSSplitAbove)
         xmap <C-W>b <Plug>(Visual-Split-VSSplitBelow)
 
-        nmap <C-W>r <Plug>(Visual-Split-Resize)
-        nmap <C-W>s <Plug>(Visual-Split-Split)
-        nmap <C-W>a <Plug>(Visual-Split-SplitAbove)
-        nmap <C-W>b <Plug>(Visual-Split-SplitBelow)
+        " nmap <C-W>r <Plug>(Visual-Split-Resize)
+        " nmap <C-W>s <Plug>(Visual-Split-Split)
+        " nmap <C-W>a <Plug>(Visual-Split-SplitAbove)
+        " nmap <C-W>b <Plug>(Visual-Split-SplitBelow)
     endif
     " 1>>>
 
