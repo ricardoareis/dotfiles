@@ -203,7 +203,6 @@
     endfunction
     call InitializeDirectories()
 
-    "set patchmode=.orig
     set backupext=.bkp
     set cursorcolumn
     " 1>>>
