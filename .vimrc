@@ -817,20 +817,6 @@ vnoremap <F1> <Esc>
 
 " Functions <<<1
 
-    " Initialize NERDTree as needed <<<1
-    function! NERDTreeInitAsNeeded()
-        redir => bufoutput
-        buffers!
-        redir END
-        let idx = stridx(bufoutput, 'NERD_tree')
-        if idx > -1
-            NERDTreeMirror
-            NERDTreeFind
-            wincmd l
-        endif
-    endfunction
-    " 1>>>
-
     " Shell command <<<1
     function! s:RunShellCommand(cmdline)
         botright new
