@@ -1573,13 +1573,20 @@ vnoremap <F1> <Esc>
     if isdirectory(expand(bundles_dir . '/vim-gutentags/'))
         " enable gtags module
         let g:gutentags_modules = ['ctags']
+        " default ctags file will be created here
+        let ctags_root = '.'
+
+        " if a git repo change root to .git
+        if g:gitroot !=# ''
+            let ctags_root = '.git'
+            set tags^=.git/tags;
+        endif
 
         " config project root markers.
-        let g:gutentags_project_root = ['.git']
+        let g:gutentags_project_root = [ctags_root]
 
-        " Make tags placed in .git/tags file available in all levels of a repository
-        set tags^=.git/tags;
-        let g:gutentags_ctags_tagfile = '.git/tags'
+        " finally write tags in the root
+        let g:gutentags_ctags_tagfile = ctags_root . '/tags'
 
         " change focus to quickfix window after search (optional).
         let g:gutentags_plus_switch = 1
