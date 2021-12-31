@@ -933,13 +933,32 @@ vnoremap <F1> <Esc>
     " 1>>>
 
     " Google it / Feeling lucky<<<1
-    " from junegunn
+    " from junegunn, but adapted by Reis
     function! s:goog(pat, lucky)
-        " I had to the hard-coded the browser cmd because macOS open command does not work
-        let browser = '/Applications/Firefox.app/Contents/MacOS/firefox -new-tab'
+        " it allow the vim default browser diverge of macos
+        let default_browser = 'Firefox'
+
+        let browsers = {}
+        let browsers['Firefox'] = '/Applications/Firefox.app/Contents/MacOS/firefox'
+        let browsers['Google Chrome']  = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
+
+        if executable('open')
+            if executable(browsers[default_browser])
+                let browser = 'open -a ' . '"' . default_browser . '"'
+            endif
+        elseif executable(browsers['Firefox'])
+            " After the up to macos 12 (aka Monterrey), the open cmd simple
+            " does not work, and I had to the hard-coded.
+            "
+            " Now, with 12.1 the open work fine.  I decided to refactor it to
+            " allow both behaviors
+            let browser = default_browser . '-new-tab'
+        endif
+
         let q = '"'.substitute(a:pat, '["\n]', ' ', 'g').'"'
         let q = substitute(q, '[[:punct:] ]',
             \ '\=printf("%%%02X", char2nr(submatch(0)))', 'g')
+
         call system(printf('%s "https://www.google.com/search?%sq=%s"',
                         \ browser, a:lucky ? 'btnI&' : '', q))
     endfunction
