@@ -777,7 +777,7 @@
     nnoremap <Esc>. @:
     " 1>>>
 
-    " Past Visual Select <<<1
+    " Past Visual Select in a new tab<<<1
     " by Reis
     vnoremap <silent><C-w>pt "+y \| :tabnew \| :normal p<CR>
     " 1>>>
