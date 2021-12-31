@@ -779,7 +779,7 @@
 
     " Past Visual Select in a new tab<<<1
     " by Reis
-    vnoremap <silent><C-w>pt "+y \| :tabnew \| :normal p<CR>
+    vnoremap <silent><C-w>pt "+y \| :tabnew \| :normal P \| <Esc>:$d<CR>
     " 1>>>
 
     " QuickFix <<<1
