@@ -729,7 +729,7 @@
     vnoremap . :normal .<CR>
     " 1>>>
 
-    " For when you forget to sudo.. Really Write the file. <<<1
+    " A trick if you forgot to use the sudo, but should like to write <<<1
     cmap w!! w !sudo tee % >/dev/null
     " 1>>>
 
