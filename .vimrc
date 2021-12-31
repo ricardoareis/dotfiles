@@ -477,11 +477,11 @@
     nnoremap <Leader>ro :OverCommandLine<CR>
     " a quick way of select
     nmap <Leader>v <Plug>(wildfire-quick-select)
-    let g:which_key_leader_map.x = 'which_key_ignore'
-    let g:which_key_leader_map.v = 'which_key_ignore'
-    let g:which_key_leader_map['.'] = 'which_key_ignore'
-    let g:which_key_leader_map['*'] = 'which_key_ignore'
-    let g:which_key_leader_map['/'] = 'which_key_ignore'
+    let g:which_key_leader_map.x = 'Rename Element'
+    let g:which_key_leader_map.v = 'Quick Select'
+    let g:which_key_leader_map['.'] = 'Repeat Search/Replace'
+    let g:which_key_leader_map['*'] = 'Find Element Recursively'
+    let g:which_key_leader_map['/'] = 'LocalSearch'
     " 1>>>
 
     " System/Session/Show Menu<<<1
