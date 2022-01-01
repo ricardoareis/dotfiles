@@ -1576,9 +1576,7 @@ vnoremap <F1> <Esc>
 
     " Plugin: Vim-Matchup <<<1
     if isdirectory(expand(bundles_dir . '/vim-matchup/'))
-        let g:loaded_matchit = 0
         let g:matchup_matchparen_enabled = 0
-        let g:matchup_text_obj_enabled = 1
     endif
     " 1>>>
 
