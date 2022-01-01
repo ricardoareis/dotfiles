@@ -126,6 +126,7 @@ fi
 typeset -U PATH path
 
 path=(
+    "$HOME/repos/vim/src"
     "$HOME/.local/bin"
     "$PYENV_ROOT/bin"
     "$PYENV_ROOT/shims"
