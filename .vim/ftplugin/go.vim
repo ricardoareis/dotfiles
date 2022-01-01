@@ -41,3 +41,6 @@ nmap <LocalLeader>gd :GoDecls<CR>
 let g:which_key_localleader_map.g.d = 'Go-Decls'
 nmap <LocalLeader>gD :GoDeclsDir<CR>
 let g:which_key_localleader_map.g.D = 'Go-DeclsDir'
+
+let g:which_key_left_square_bracket_map['['] = 'PrevGoFunction'
+let g:which_key_right_square_bracket_map[']'] = 'NextGoFunction'
