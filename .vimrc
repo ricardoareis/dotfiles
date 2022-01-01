@@ -312,8 +312,12 @@
     if isdirectory(expand(bundles_dir . '/vim-which-key'))
         nnoremap <silent> <Leader>      :<c-u>WhichKey       ','<CR>
         vnoremap <silent> <leader>      :<c-u>WhichKeyVisual ','<CR>
-        nnoremap <silent> <LocalLeader> :<c-u>WhichKey        '<Space>'<CR>
-        vnoremap <silent> <LocalLeader> :<c-u>WhichKeyVisual  '<Space>'<CR>
+        nnoremap <silent> <LocalLeader> :<c-u>WhichKey       '<Space>'<CR>
+        vnoremap <silent> <LocalLeader> :<c-u>WhichKeyVisual '<Space>'<CR>
+        nnoremap <silent> [             :<c-u>WhichKey       '['<CR>
+        vnoremap <silent> [             :<c-u>WhichKeyVisual '['<CR>
+        nnoremap <silent> ]             :<c-u>WhichKey       ']'<CR>
+        vnoremap <silent> ]             :<c-u>WhichKeyVisual ']'<CR>
 
         " Define prefix dictionary
         let g:which_key_leader_map = {}
