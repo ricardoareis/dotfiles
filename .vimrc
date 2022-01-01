@@ -335,10 +335,6 @@
         let g:which_key_localleader_map.l = {'name': 'LocationList'}
 
         let g:which_key_left_square_bracket_map = {}
-        let g:which_key_left_square_bracket_map['['] = 'PrevPythonClass'
-        let g:which_key_left_square_bracket_map[']'] = 'PrevEndPythonClass'
-        let g:which_key_left_square_bracket_map['m'] = 'PrevPythonFunction'
-        let g:which_key_left_square_bracket_map['M'] = 'PrevEndPythonFunction'
         let g:which_key_left_square_bracket_map['h'] = 'PrevGitHunk'
         let g:which_key_left_square_bracket_map['l'] = 'PrevLocationList'
         let g:which_key_left_square_bracket_map['q'] = 'PrevQuickList'
@@ -349,10 +345,6 @@
         let g:which_key_left_square_bracket_map['%'] = 'PrevOuterOpenWord'
 
         let g:which_key_right_square_bracket_map = {}
-        let g:which_key_right_square_bracket_map['['] = 'NextEndPythonClass'
-        let g:which_key_right_square_bracket_map[']'] = 'NextPythonClass'
-        let g:which_key_right_square_bracket_map['m'] = 'NextPythonFunction'
-        let g:which_key_right_square_bracket_map['M'] = 'NextEndPythonFunction'
         let g:which_key_right_square_bracket_map['h'] = 'NextGitHunk'
         let g:which_key_right_square_bracket_map['l'] = 'NextLocationList'
         let g:which_key_right_square_bracket_map['q'] = 'NextQuickList'
