@@ -77,7 +77,6 @@
     Plug 'andymass/vim-matchup'
     Plug 'tpope/vim-abolish'                                             " Support a better abbreviation
     Plug 'gcmt/wildfire.vim'                                             " Support of quick selection, enter select closest text object.
-    Plug 'jeetsukumaran/vim-pythonsense', {'for': ['python', 'python3']} " Add some python text objects
     " }
 
     " General Programming {
@@ -106,11 +105,12 @@
     " }
 
     " Langs {
-    Plug 'fatih/vim-go',              { 'for': 'go', 'do': ':GoInstallBinaries'}
-    Plug 'rust-lang/rust.vim',        { 'for': ['rust']}
-    Plug 'pangloss/vim-javascript',   { 'for': ['javascript']}
-    Plug 'sillybun/vim-repl',         { 'for': ['python', 'python3']}
-    Plug 'jmcantrell/vim-virtualenv', { 'for': ['python', 'python3']} "  Support a Python VirtualEnv
+    Plug 'fatih/vim-go',                  { 'for': 'go', 'do': ':GoInstallBinaries'}
+    Plug 'rust-lang/rust.vim',            { 'for': ['rust']}
+    Plug 'pangloss/vim-javascript',       { 'for': ['javascript']}
+    Plug 'sillybun/vim-repl',             { 'for': ['python', 'python3']}
+    Plug 'jmcantrell/vim-virtualenv',     { 'for': ['python', 'python3']}            " Support a Python VirtualEnv
+    Plug 'jeetsukumaran/vim-pythonsense', { 'for': ['python', 'python3']}            " Add some python text objects
     " }
 
     " Misc {
