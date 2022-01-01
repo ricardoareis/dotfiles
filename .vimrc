@@ -334,8 +334,64 @@
         let g:which_key_localleader_map.q = {'name': 'QuickFix'}
         let g:which_key_localleader_map.l = {'name': 'LocationList'}
 
+        let g:which_key_left_square_bracket_map = {}
+        let g:which_key_left_square_bracket_map['['] = 'PrevPythonClass'
+        let g:which_key_left_square_bracket_map[']'] = 'PrevEndPythonClass'
+        let g:which_key_left_square_bracket_map['m'] = 'PrevPythonFunction'
+        let g:which_key_left_square_bracket_map['M'] = 'PrevEndPythonFunction'
+        let g:which_key_left_square_bracket_map['h'] = 'PrevGitHunk'
+        let g:which_key_left_square_bracket_map['l'] = 'PrevLocationList'
+        let g:which_key_left_square_bracket_map['q'] = 'PrevQuickList'
+        let g:which_key_left_square_bracket_map['t'] = 'PrevTerminal'
+        let g:which_key_left_square_bracket_map['e'] = 'MoveUpCurrentLine'
+        let g:which_key_left_square_bracket_map[' '] = 'AddNewLineAbove'
+        let g:which_key_left_square_bracket_map['d'] = 'SearchForward4Deleted'
+        let g:which_key_left_square_bracket_map['%'] = 'PrevOuterOpenWord'
+
+        let g:which_key_right_square_bracket_map = {}
+        let g:which_key_right_square_bracket_map['['] = 'NextEndPythonClass'
+        let g:which_key_right_square_bracket_map[']'] = 'NextPythonClass'
+        let g:which_key_right_square_bracket_map['m'] = 'NextPythonFunction'
+        let g:which_key_right_square_bracket_map['M'] = 'NextEndPythonFunction'
+        let g:which_key_right_square_bracket_map['h'] = 'NextGitHunk'
+        let g:which_key_right_square_bracket_map['l'] = 'NextLocationList'
+        let g:which_key_right_square_bracket_map['q'] = 'NextQuickList'
+        let g:which_key_right_square_bracket_map['t'] = 'NextTerminal'
+        let g:which_key_right_square_bracket_map['e'] = 'MoveDownCurrentLine'
+        let g:which_key_right_square_bracket_map[' '] = 'AddNewLineBellow'
+        let g:which_key_right_square_bracket_map['d'] = 'SearchBackward4Deleted'
+        let g:which_key_right_square_bracket_map['%'] = 'NextSurroundingCloseWord'
+
+        " Disabled with blank mapping some signature
+        " map, allowing the use of which key and square bracket
+        let g:SignatureMap = {
+        \ 'Leader'             :  'm',
+        \ 'PlaceNextMark'      :  'm,',
+        \ 'ToggleMarkAtLine'   :  'm.',
+        \ 'PurgeMarksAtLine'   :  'm-',
+        \ 'DeleteMark'         :  'dm',
+        \ 'PurgeMarks'         :  'm<Space>',
+        \ 'PurgeMarkers'       :  'm<BS>',
+        \ 'GotoNextLineAlpha'  :  "']",
+        \ 'GotoPrevLineAlpha'  :  "'[",
+        \ 'GotoNextSpotAlpha'  :  '`]',
+        \ 'GotoPrevSpotAlpha'  :  '`[',
+        \ 'GotoNextLineByPos'  :  '',
+        \ 'GotoPrevLineByPos'  :  '',
+        \ 'GotoNextSpotByPos'  :  '',
+        \ 'GotoPrevSpotByPos'  :  '',
+        \ 'GotoNextMarker'     :  '',
+        \ 'GotoPrevMarker'     :  '',
+        \ 'GotoNextMarkerAny'  :  '',
+        \ 'GotoPrevMarkerAny'  :  '',
+        \ 'ListBufferMarks'    :  'm/',
+        \ 'ListBufferMarkers'  :  ''
+        \ }
+
         call which_key#register(',',       'g:which_key_leader_map')
         call which_key#register('<Space>', 'g:which_key_localleader_map')
+        call which_key#register('[',       'g:which_key_left_square_bracket_map')
+        call which_key#register(']',       'g:which_key_right_square_bracket_map')
     endif
     " 1>>>
 
