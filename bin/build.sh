@@ -24,7 +24,10 @@ function build_vim() {
     export CXXFLAGS="$CXXFLAGS ${CFLAGS}"
     export LDFLAGS="$LDFLAGS -rdynamic"
     export vi_cv_dll_name_python3="$PYTHON_PATH"
-
+    export STRIP=true                                 # workaround to avoid strip the vim binary
+                                                      # in make install. Python in a striped vim binary
+                                                      # does not work.
+                                                      # https://github.com/vim/vim/issues/7551
     test ! -d "$VIM_DIR" && mkdir -p "$VIM_DIR"
 
     if_python "$VIM_DIR"
