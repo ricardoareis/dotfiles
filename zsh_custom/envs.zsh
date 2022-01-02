@@ -10,7 +10,7 @@ export DISABLE_UPDATE_PROMPT=true
 export EDITOR="vim"
 export VISUAL="vim"
 export KEYTIMEOUT=1
-export PYTHON_CONFIGURE_OPTS="--enable-shared"
+export PYTHON_CONFIGURE_OPTS="--enable-shared --enable-optimizations"
 export CLICOLOR=YES
 export ZSH_DOTENV_PROMPT=false
 [[ "$(uname)" == "Darwin"  ]] && \
