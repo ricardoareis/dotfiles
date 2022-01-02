@@ -17,10 +17,12 @@ function if_python() {
 }
 
 function build_vim() {
-    export CC=clang                                 # clang over gcc
-    export CPPFLAGS="$CPPFLAGS -D_FORTIFY_SOURCE=2" # security hardeling (buffer overflow)
-    export MAKEFLAGS="-j8"                          # paralelized compilation
-    export CFLAGS="$CFLAGS -march=native -O3 -pipe -fstack-protector --param=ssp-buffer-size=4"
+    export CC=clang                                   # clang over gcc
+    export CPPFLAGS="$CPPFLAGS -D_FORTIFY_SOURCE=2"   # security hardeling (buffer overflow)
+    export MAKEFLAGS="-j8"                            # paralelized compilation
+    export CFLAGS="$CFLAGS -march=native -O3 -pipe"
+    export CFLAGS="$CFLAGS -fstack-protector"
+    export CFLAGS="$CFLAGS --param=ssp-buffer-size=4"
     export CXXFLAGS="$CXXFLAGS ${CFLAGS}"
     export LDFLAGS="$LDFLAGS -rdynamic"
     export vi_cv_dll_name_python3="$PYTHON_PATH"
@@ -36,14 +38,14 @@ function build_vim() {
 
     (test -d "${VIM_DIR}/.git" && git pull) || git clone https://github.com/vim/vim
 
-    make distclean && ./configure --prefix=/opt/vim \
-        --enable-gui=no \
-        --with-features=huge \
-        --enable-multibyte \
-        --enable-python3interp=yes \
-        --enable-rubyinterp=dynamic \
-        --enable-perlinterp=dynamic \
-        --enable-luainterp=dynamic \
+    make clean distclean && ./configure --prefix=/opt/vim                                                        \
+        --enable-gui=no                                                                                          \
+        --with-features=huge                                                                                     \
+        --enable-multibyte                                                                                       \
+        --enable-python3interp=yes                                                                               \
+        --enable-rubyinterp=dynamic                                                                              \
+        --enable-perlinterp=dynamic                                                                              \
+        --enable-luainterp=dynamic                                                                               \
         --enable-cscope
     make && sudo make install
 }
