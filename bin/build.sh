@@ -20,9 +20,9 @@ function build_vim() {
     export CC=clang                                   # clang over gcc
     export CPPFLAGS="$CPPFLAGS -D_FORTIFY_SOURCE=2"   # security hardeling (buffer overflow)
     export MAKEFLAGS="-j8"                            # paralelized compilation
-    export CFLAGS="$CFLAGS -march=native -O3 -pipe"
-    export CFLAGS="$CFLAGS -fstack-protector"
-    export CFLAGS="$CFLAGS --param=ssp-buffer-size=4"
+    export CFLAGS="$CFLAGS -march=native -O3 -pipe"   # aggressive optimization
+    export CFLAGS="$CFLAGS -fstack-protector"         # security hardeling (buffer overflow)
+    export CFLAGS="$CFLAGS --param=ssp-buffer-size=4" # for every function with buffer large than 4 bytes
     export CXXFLAGS="$CXXFLAGS ${CFLAGS}"
     export LDFLAGS="$LDFLAGS -rdynamic"
     export vi_cv_dll_name_python3="$PYTHON_PATH"
