@@ -657,6 +657,21 @@
     nnoremap é 'e
     nnoremap è `e
     nnoremap ç 'c
+    " Allow <C-u> recovery from a wrong motion in the edit mode.
+    " https://vi.stackexchange.com/questions/16773/how-to-undo-the-deletion-of-characters-in-insert-mode-caused-by-ctrl-u
+    "
+    " add an undo-break (see :help i_CTRL-G_u).
+    inoremap <C-u> <C-g>u<C-u>
+
+    " Allow to undo Insert mode's <C-W> with u in Normal mode.
+    inoremap <C-w> <C-g>u<C-w>
+
+    " Allow line-by-line insert undo.
+    " inoremap <C-j> <C-g>u<C-j>
+    " inoremap <nl> <C-g>u<nl>
+    " inoremap <C-m> <C-g>u<C-m>
+    " inoremap <cr> <C-g>u<cr>
+
     " 1>>>
 
     " Solve an accidentally typing  <<<1
