@@ -666,12 +666,6 @@
     " Allow to undo Insert mode's <C-W> with u in Normal mode.
     inoremap <C-w> <C-g>u<C-w>
 
-    " Allow line-by-line insert undo.
-    " inoremap <C-j> <C-g>u<C-j>
-    " inoremap <nl> <C-g>u<nl>
-    " inoremap <C-m> <C-g>u<C-m>
-    " inoremap <cr> <C-g>u<cr>
-
     " 1>>>
 
     " Solve an accidentally typing  <<<1
