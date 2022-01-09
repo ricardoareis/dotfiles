@@ -1228,7 +1228,7 @@ vnoremap <F1> <Esc>
 
     " Plugin: GitGutter properties <<<1
     if isdirectory(expand(bundles_dir . '/vim-gitgutter/'))
-        set updatetime=500
+        set updatetime=100
         let g:gitgutter_enabled=1
         let g:gitgutter_map_keys=0
         let g:gitgutter_sign_allow_clobber=1
