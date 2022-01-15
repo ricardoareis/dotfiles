@@ -245,14 +245,18 @@
     set background=dark                                       "  Prefer Dark over Light
 
     if isdirectory(expand(bundles_dir . '/gruvbox-material'))
-        let g:gruvbox_material_disable_italic_comment = 1     "  Disable support to italic, must be located before colorscheme
-        let g:gruvbox_material_enable_italic = 0              "  Allow Italic fonts
-        let g:gruvbox_material_background = 'hard'            "  Contrast Level
-        colorscheme gruvbox-material                          "  Using the same color scheme
-        let g:gruvbox_termcolors = 256                        "  Accepting the 256 colors
+        let g:gruvbox_material_disable_italic_comment = 1    " Disable support to italic, must be located before colorscheme
+        let g:gruvbox_material_enable_italic = 0             " Allow Italic fonts
+        let g:gruvbox_material_background = 'hard'           " Contrast Level
+        colorscheme gruvbox-material                         " Using the same color scheme
+        let g:gruvbox_termcolors = 256                       " Accepting the 256 colors
         let g:gruvbox_material_enable_bold = 1
         let g:gruvbox_material_diagnostic_line_highlight = 1
         let g:gruvbox_material_better_performance = 1
+        highlight clear LineNR                               " Cleared orignal gruvbox LineNr group
+        highlight LineNr cterm=bold ctermfg=DarkGray         " Added more contrast
+        highlight LineNrAbove ctermfg=Brown                  " Colored LineNr Above when relative number is active
+        highlight LineNrBelow ctermfg=DarkMagenta            " Colored LineNr below when relative number is active
     endif
     " 1>>>
 
