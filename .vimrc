@@ -1008,16 +1008,25 @@ vnoremap <F1> <Esc>
         let browsers['Google Chrome']  = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
 
         if executable('open')
-            if executable(browsers[default_browser])
-                let browser = 'open -a ' . '"' . default_browser . '"'
+            let cmd = 'open -a '
+        endif
+
+        " After the up to macos 12 (aka Monterrey), the open cmd simple
+        " does not work, and I had to the hard-coded.
+        "
+        " Now, with 12.1 the open work fine.  I decided to refactor it to
+        " allow both behaviors
+
+        if executable(browsers[default_browser])
+            let browser = browsers[default_browser]
+
+            if default_browser =~# 'Firefox'
+                let browser = browser . ' -new-tab'
             endif
-        elseif executable(browsers['Firefox'])
-            " After the up to macos 12 (aka Monterrey), the open cmd simple
-            " does not work, and I had to the hard-coded.
-            "
-            " Now, with 12.1 the open work fine.  I decided to refactor it to
-            " allow both behaviors
-            let browser = default_browser . '-new-tab'
+
+            if cmd !=# ''
+                let browser = cmd . '"' . default_browser . '"'
+            endif
         endif
 
         let q = '"'.substitute(a:pat, '["\n]', ' ', 'g').'"'
