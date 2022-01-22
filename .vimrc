@@ -499,7 +499,7 @@
     else
         command! JSONPretty %!python -m json.tool
     endif
-    nnoremap jp <Esc>:JSONPretty<CR><Esc>:set filetype=json<CR>
+    nnoremap jp <Esc>:JSONPretty<CR>
     let g:vim_json_syntax_conceal = 1
     " 1>>>
 
