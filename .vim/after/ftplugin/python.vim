@@ -18,6 +18,13 @@ let b:ale_python_autoflake_options = '--remove-unused-variables --remove-all-unu
 " Using black as a gq default vim formatter (:h formatprg)
 setlocal formatprg=black\ -S\ --quiet\ -\ 2>/dev/null
 
+" Using a pythonhelper cmd for keywordprg
+" reference https://www.reddit.com/r/vim/comments/s4s3f7/some_keywordprg_snippets/
+setl keywordprg=:PythonHelper
+
+command! -narg=+ PythonHelper term ++close ++shell
+  \ python -m pydoc <q-args>
+
 " Python Menu && Maps
 let g:which_key_localleader_map.p = { 'name' : '+Python' }
 nnoremap <silent> <LocalLeader>ps  :REPLSendSession<CR>
