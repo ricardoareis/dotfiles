@@ -429,13 +429,13 @@
         " returns all modified files of the current git repo
         " `2>/dev/null` makes the command fail quietly, so that when we are not
         " in a git repo, the list will be empty
-        function! s:gitModified()
+        function! GitModified()
             let files = systemlist('git ls-files -m 2>/dev/null')
             return map(files, "{'line': v:val, 'path': v:val}")
         endfunction
 
         " same as above, but show untracked files, honouring .gitignore
-        function! s:gitUntracked()
+        function! GitUntracked()
             let files = systemlist('git ls-files -o --exclude-standard 2>/dev/null')
             return map(files, "{'line': v:val, 'path': v:val}")
         endfunction
@@ -445,8 +445,8 @@
                 \ { 'type': 'dir',       'header': ['   MRU '. getcwd()] },
                 \ { 'type': 'sessions',  'header': ['   Sessions']       },
                 \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
-                \ { 'type': function('s:gitModified'),  'header': ['   git modified']},
-                \ { 'type': function('s:gitUntracked'), 'header': ['   git untracked']},
+                \ { 'type': function('GitModified'),  'header': ['   git modified']},
+                \ { 'type': function('GitUntracked'), 'header': ['   git untracked']},
                 \ { 'type': 'commands',  'header': ['   Commands']       },
                 \ ]
 
@@ -885,7 +885,7 @@ vnoremap <F1> <Esc>
 " Functions <<<1
 
     " Shell command <<<1
-    function! s:RunShellCommand(cmdline)
+    function! RunShellCommand(cmdline)
         botright new
         setlocal buftype=nofile
         setlocal bufhidden=delete
@@ -902,7 +902,7 @@ vnoremap <F1> <Esc>
         1
     endfunction
     "
-    command! -complete=file -nargs=+ Shell call s:RunShellCommand(<q-args>)
+    command! -complete=file -nargs=+ Shell call RunShellCommand(<q-args>)
     " e.g. Grep current file for <search_term>: Shell grep -Hn <search_term> %
     " 1>>>
 
@@ -937,7 +937,7 @@ vnoremap <F1> <Esc>
     " 1>>>
 
     " TextWidth <<<1
-    function! s:ToggleTextWidth()
+    function! ToggleTextWidth()
         if &l:textwidth > 0
             let s:old_tw = &l:textwidth
             let &l:textwidth = 0
@@ -951,7 +951,7 @@ vnoremap <F1> <Esc>
     endfunction
 
     let s:default_tw = &g:textwidth ? &g:textwidth : 100
-    function! s:ExpandTextWidth()
+    function! ExpandTextWidth()
         let l:longest = max(map(getline(line('w0'), line('w$')),
             \ 'strdisplaywidth(v:val)'))
         let &l:textwidth = (&l:textwidth == l:longest)
@@ -961,17 +961,17 @@ vnoremap <F1> <Esc>
     endfunction
 
     " toggle textwidth/column
-    nnoremap <leader>tw :<c-u>call <sid>ToggleTextWidth()<CR>
+    nnoremap <leader>tw :<c-u>call ToggleTextWidth()<CR>
     let g:which_key_leader_map.t.w = 'TextWidthToggle'
 
     " set textwidth to longest line current screen, or default
-    nnoremap <leader>sw :<c-u>call <sid>ExpandTextWidth()<CR>
+    nnoremap <leader>sw :<c-u>call ExpandTextWidth()<CR>
     let g:which_key_leader_map.s.w = 'ExpandTextWidth'
     " 1>>>
 
     " Profile<<<1
     " from junegunn
-    function! s:profile(bang)
+    function! Profile(bang)
     if a:bang
         profile pause
         noautocmd qall
@@ -981,12 +981,12 @@ vnoremap <F1> <Esc>
         profile file *
     endif
     endfunction
-    command! -bang Profile call s:profile(<bang>0)
+    command! -bang Profile call Profile(<bang>0)
     " 1>>>
 
     " Root <<<1
     " from junegunn
-    function! s:root()
+    function! GitRoot()
         if g:gitroot !=# ''
             execute 'lcd' g:gitroot
             echo 'Changed directory to: '.g:gitroot
@@ -994,14 +994,14 @@ vnoremap <F1> <Esc>
             echo 'Not in git repo'
         endif
     endfunction
-    command! Root call s:root()
+    command! Root call GitRoot()
     nnoremap <silent> <Leader>gt :Root<CR>
     let g:which_key_leader_map.g.t = 'ChangeDir2GitTopLevel'
     " 1>>>
 
     " Google it / Feeling lucky<<<1
     " from junegunn, but adapted by Reis
-    function! s:goog(pat, lucky)
+    function! Goog(pat, lucky)
         " it allow the vim default browser diverge of macos
         let default_browser = 'Firefox'
 
@@ -1039,12 +1039,12 @@ vnoremap <F1> <Esc>
                         \ browser, a:lucky ? 'btnI&' : '', q))
     endfunction
 
-    nnoremap <leader>? :call <SID>goog(expand("<cWORD>"), 0)<cr>
+    nnoremap <leader>? :call Goog(expand("<cWORD>"), 0)<cr>
     let g:which_key_leader_map['?'] = 'Google it'
-    nnoremap <leader>! :call <SID>goog(expand("<cWORD>"), 1)<cr>
+    nnoremap <leader>! :call Goog(expand("<cWORD>"), 1)<cr>
     let g:which_key_leader_map['!'] = 'Google FL'
-    xnoremap <leader>? "gy:call <SID>goog(@g, 0)<cr>gv
-    xnoremap <leader>! "gy:call <SID>goog(@g, 1)<cr>gv
+    xnoremap <leader>? "gy:call Goog(@g, 0)<cr>gv
+    xnoremap <leader>! "gy:call Goog(@g, 1)<cr>gv
     " 1>>>
 
 " 1>>>
