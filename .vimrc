@@ -92,6 +92,7 @@
     set wildmenu                                           "  enhanced command line completion
     " set wildmode=list:longest:full                         "  complete files like a shell
     set wildoptions=pum                                    " open wildmenu in a vim popup
+    set wildignore=*.obj,*.bak,*.pyc,*.exe,*.pdf,*.png,*.jpg,*.o,*.docx,*.xlsx
     set scrolloff=5                                        "  lines of text around cursor
     set scrolljump=5                                       "  Lines to scroll when cursor leaves screen
 
