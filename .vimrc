@@ -1658,6 +1658,7 @@ vnoremap <F1> <Esc>
         if g:gitroot !=# ''
             let ctags_root = '.git'
             set tags^=.git/tags;
+            set tagcase=smart
         endif
 
         " config project root markers.
