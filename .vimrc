@@ -1688,6 +1688,7 @@ vnoremap <F1> <Esc>
                     \ '--tag-relative=yes',
                     \ '--fields=+ailmnS',
                     \ ctags_ignore_param,
+                    \'.',
                     \ ]
         " disable predefined map
         let g:gutentags_plus_nomap = 1
