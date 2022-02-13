@@ -90,7 +90,8 @@
     set hidden                                             "  Hide buffers when they are abandoned
 
     set wildmenu                                           "  enhanced command line completion
-    set wildmode=list:longest:full                         "  complete files like a shell
+    " set wildmode=list:longest:full                         "  complete files like a shell
+    set wildoptions=pum                                    " open wildmenu in a vim popup
     set scrolloff=5                                        "  lines of text around cursor
     set scrolljump=5                                       "  Lines to scroll when cursor leaves screen
 
