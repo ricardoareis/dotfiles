@@ -63,3 +63,4 @@ zsdoc/data
 .zinit/snippets
 
 target/*
+.zinit/module/
