@@ -7,7 +7,7 @@
 [core]
     editor = vim
     excludesfile = ~/repos/dotfiles/.gitignore_global
-    pager = delta --theme=ansi-dark
+    pager = delta
 [alias]
     st = status
     ci = commit
