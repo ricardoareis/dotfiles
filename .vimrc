@@ -627,7 +627,8 @@
 
     " Buffer shortcuts <<<1
     "
-    nnoremap <silent><S-Tab>  :bp<CR>
+    nnoremap <Tab> :bnext<CR>
+    nnoremap <S-Tab> :bprevious<CR>
     "
     let g:which_key_leader_map.b = {
       \ 'name' : '+Buffers/Bookmark' ,
