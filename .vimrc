@@ -1019,9 +1019,9 @@ vnoremap <F1> <Esc>
         "
         " Now, with 12.1 the open work fine.  I decided to refactor it to
         " allow both behaviors
+        let browser = browsers[default_browser]
 
-        if executable(browsers[default_browser])
-            let browser = browsers[default_browser]
+        if executable(browser)
 
             if default_browser =~# 'Firefox'
                 let browser = browser . ' -new-tab'
