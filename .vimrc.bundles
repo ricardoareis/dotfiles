@@ -90,8 +90,7 @@
     Plug 'tpope/vim-dispatch'                                  " Execute cmds asynchronous (vim-test deps)
     Plug 'skywind3000/asyncrun.vim'                            " Execute cmds asynchronous (vim-test strategy)
     Plug 'skywind3000/vim-preview'
-    Plug 'kkoomen/vim-doge',                    {'do': { -> doge#install() }, 'tag': 'v3.9.1' }
-
+    Plug 'AndrewRadev/diffurcate.vim'                          " Separate diffs per file
     " }
 
     " Snippets {
