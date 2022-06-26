@@ -30,7 +30,7 @@ them - and with me, it would be no different.
     * https://github.com/zsh-users/zsh
     * https://github.com/ohmyzsh/ohmyzsh
   - Plugins with ZINIT:
-    - https://github.com/zdharma/zinit 
+    - https://github.com/zdharma/zinit
 
 * TMUX
   - More details about and inspiration:
