@@ -28,12 +28,6 @@
     " 1>>>
 
     " Important Properties I <<<1
-    " if &compatible
-        " Vim defaults to `compatible` when selecting a vimrc with the command-line
-        " `-u` argument. Override this.
-        " :h nocompatible
-        " set nocompatible
-    " endif
     let g:skip_defaults_vim = 1                 " disable defaults.vim
     " Used to identify a git repo
     let g:gitroot = substitute(system('git rev-parse --show-toplevel 2>/dev/null'), '[\n\r]', '', 'g')
@@ -340,7 +334,6 @@
         let g:which_key_leader_map.w = {'name': '+Windows'}
         let g:which_key_leader_map.a = {'name': '+Align'}
         let g:which_key_leader_map.r = {'name': '+Replace'}
-        let g:which_key_leader_map.h = {'name': '+History'}
 
         let g:which_key_localleader_map = {}
         let g:which_key_localleader_map[' '] = {'name': 'Quick'}
@@ -540,8 +533,6 @@
     nnoremap <Leader>x *``cgn
     " search/replace over
     nnoremap <Leader>ro :OverCommandLine<CR>
-    " history of edited files
-    nnoremap <silent><nowait><Leader>h :History<cr>
     " a quick way of select
     nmap <Leader>v <Plug>(wildfire-quick-select)
     let g:which_key_leader_map.x = 'Rename Element'
@@ -1880,4 +1871,4 @@ vnoremap <F1> <Esc>
         augroup END
     endif
     " 1>>>
-    " 1>>>
+" 1>>>
