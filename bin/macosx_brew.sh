@@ -16,3 +16,5 @@ brew install cmake
 brew install autoconf
 brew install automake
 brew install tree
+brew install java11
+brew install urlview

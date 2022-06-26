@@ -1,19 +1,38 @@
+# top-most EditorConfig file
 root = true
 
+# Unix-style newlines with a newline ending every file
 [*]
-end_of_line = lf
 charset = utf-8
-max_line_length = 88
-
-[*.{vim,sh}]
-indent_style = space
-indent_size = 4
+end_of_line = lf
 insert_final_newline = true
 trim_trailing_whitespace = true
+
+# 4 space indentation
+[*.{py,rst,ini,vim,sh}]
+indent_style = space
+indent_size = 4
 
 [*.py]
 multi_line_output = 3
 include_trailing_comma = True
+max_line_length = 100
 force_grid_wrap = 0
 use_parentheses = True
 ensure_newline_before_comments = True
+skip = build,.tox,venv
+
+[*.md]
+trim_trailing_whitespace = false
+
+# Tab indentation (no size specified)
+[Makefile]
+indent_style = tab
+
+[LICENSE]
+insert_final_newline = false
+
+# 2 space indentation
+[*.yml]
+indent_style = space
+indent_size = 2

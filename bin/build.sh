@@ -1,6 +1,6 @@
 #!/bin/bash
 # use python constant to be consistent
-PYTHON_VERSION="3.8.6"
+PYTHON_VERSION="3.9.7"
 
 function if_python() {
     local dir=$1
@@ -17,14 +17,19 @@ function if_python() {
 }
 
 function build_vim() {
-    export CC=clang                                 # clang over gcc
-    export CPPFLAGS="$CPPFLAGS -D_FORTIFY_SOURCE=2" # security hardeling (buffer overflow)
-    export MAKEFLAGS="-j8"                          # paralelized compilation
-    export CFLAGS="$CFLAGS -march=native -O3 -pipe -fstack-protector --param=ssp-buffer-size=4"
+    export CC=clang                                   # clang over gcc
+    export CPPFLAGS="$CPPFLAGS -D_FORTIFY_SOURCE=2"   # security hardeling (buffer overflow)
+    export MAKEFLAGS="-j8"                            # paralelized compilation
+    export CFLAGS="$CFLAGS -march=native -O3 -pipe"   # aggressive optimization
+    export CFLAGS="$CFLAGS -fstack-protector"         # security hardeling (buffer overflow)
+    export CFLAGS="$CFLAGS --param=ssp-buffer-size=4" # for every function with buffer large than 4 bytes
     export CXXFLAGS="$CXXFLAGS ${CFLAGS}"
     export LDFLAGS="$LDFLAGS -rdynamic"
     export vi_cv_dll_name_python3="$PYTHON_PATH"
-
+    export STRIP=true                                 # workaround to avoid strip the vim binary
+                                                      # in make install. Python in a striped vim binary
+                                                      # does not work.
+                                                      # https://github.com/vim/vim/issues/7551
     test ! -d "$VIM_DIR" && mkdir -p "$VIM_DIR"
 
     if_python "$VIM_DIR"
@@ -33,14 +38,14 @@ function build_vim() {
 
     (test -d "${VIM_DIR}/.git" && git pull) || git clone https://github.com/vim/vim
 
-    make distclean && ./configure --prefix=/opt/vim \
-        --enable-gui=no \
-        --with-features=huge \
-        --enable-multibyte \
-        --enable-python3interp=yes \
-        --enable-rubyinterp=dynamic \
-        --enable-perlinterp=dynamic \
-        --enable-luainterp=dynamic \
+    make clean distclean && ./configure --prefix=/opt/vim                                                        \
+        --enable-gui=no                                                                                          \
+        --with-features=huge                                                                                     \
+        --enable-multibyte                                                                                       \
+        --enable-python3interp=yes                                                                               \
+        --enable-rubyinterp=dynamic                                                                              \
+        --enable-perlinterp=dynamic                                                                              \
+        --enable-luainterp=dynamic                                                                               \
         --enable-cscope
     make && sudo make install
 }
@@ -52,7 +57,8 @@ function build_ycm() {
 
     (test -d "${YCM_DIR}/.git" && git pull) || exit
 
-    python install.py --clangd-completer --go-completer --rust-completer --ts-completer
+    python install.py --clangd-completer --go-completer --rust-completer --ts-completer \
+        --java-completer --verbose
 }
 
 function usage() {

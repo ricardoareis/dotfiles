@@ -126,10 +126,10 @@ fi
 typeset -U PATH path
 
 path=(
+    /opt/vim/bin
     "$HOME/.local/bin"
     "$PYENV_ROOT/bin"
     "$PYENV_ROOT/shims"
-    "/home/mtzcpd1731/.pyenv/libexec/"
     /usr/local/bin
     /usr/bin
     /bin

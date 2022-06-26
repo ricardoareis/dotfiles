@@ -38,7 +38,10 @@ zinit ice svn wait"1a" lucid
 zinit snippet OMZ::plugins/aws
 
 zinit ice svn wait"1a" lucid
-zinit snippet OMZ::plugins/osx
+zinit snippet OMZ::plugins/macos
+
+zinit ice svn wait"1a" lucid
+zinit snippet OMZ::plugins/encode64
 
 zinit ice svn wait"1a" lucid
 zinit snippet OMZ::plugins/colored-man-pages
@@ -137,6 +140,9 @@ zinit wait"1d" lucid as=program from"gh-r" for                             \
         @dandavison/delta                                                  \
     mv"code-minimap* -> code-minimap" pick="code-minimap/code-minimap"     \
         @wfxr/code-minimap                                                 \
+    mv"vale* -> vale" pick="vale/vale"                                     \
+        @errata-ai/vale                                                    \
+        @errata-ai/Microsoft                                               \
     pick="fzf/fzf" src="$ZSH_CUSTOM/fzf.cfg"                               \
         @junegunn/fzf-bin
 
@@ -178,12 +184,14 @@ zinit wait"2a" lucid for                     \
 
 # Loading the completions mandatory at the end {
 #
-zinit ice silent wait"2b" atinit"zpcompinit; zpcdreplay" for \
-    light scriptingosx/mac-zsh-completions                   \
-    light zdharma/fast-syntax-highlighting                   \
-    blockf atpull'zinit creinstall -q .'                     \
-        light zsh-users/zsh-completions                      \
-    atload"_zsh_autosuggest_start"                           \
-    atinit="export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=10"       \
-        light zsh-users/zsh-autosuggestions
+
+zinit wait"2b" atinit"zpcompinit; zpcdreplay" silent light-mode for     \
+    ricardoareis/fast-syntax-highlighting                               \
+    scriptingosx/mac-zsh-completions                                    \
+    blockf                                                              \
+        atpull'zinit creinstall -q .'                                   \
+            zsh-users/zsh-completions                                   \
+        atload"_zsh_autosuggest_start"                                  \
+        atinit="export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=10"              \
+            zsh-users/zsh-autosuggestions
 #}
