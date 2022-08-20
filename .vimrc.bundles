@@ -49,7 +49,7 @@
     Plug 'rhysd/conflict-marker.vim'                              " Handler of git conflict marker
     Plug 'dense-analysis/ale'                                     " Engine for linters and fixers
     Plug 'ricardoareis/vim-indent-guides'                         " Fork with a redir bug solved
-    Plug 'kkoomen/vim-doge',            {'do': { -> doge#install() }, 'tag': 'v3.11.0'}
+    Plug 'kkoomen/vim-doge',            {'do': { -> doge#install() }, 'tag': 'v3.18.0'}
     Plug 'ludovicchabant/vim-gutentags',{'on': 'TagbarToggle'}
     Plug 'skywind3000/gutentags_plus',  {'on': 'TagbarToggle'}
     Plug 'ycm-core/YouCompleteMe'                                 " Engine for auto complete
