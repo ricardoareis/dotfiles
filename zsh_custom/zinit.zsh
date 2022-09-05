@@ -76,8 +76,11 @@ zinit snippet OMZ::plugins/jsontools
 zinit ice svn wait"1a" lucid
 zinit snippet OMZ::plugins/safe-paste
 
-zinit ice wait"1b" lucid as="program" pick="bin/fzf-tmux"
-zinit light junegunn/fzf
+zinit wait"1b" lucid as=program for   \
+    atclone="./install --bin"         \
+    pick="bin/fzf-tmux"               \
+    src="$ZSH_CUSTOM/fzf.cfg"         \
+        junegunn/fzf
 
 zinit ice svn wait"1b" lucid
 zinit snippet OMZ::plugins/fzf
@@ -142,9 +145,7 @@ zinit wait"1d" lucid as=program from"gh-r" for                             \
         @wfxr/code-minimap                                                 \
     mv"vale* -> vale" pick="vale/vale"                                     \
         @errata-ai/vale                                                    \
-        @errata-ai/Microsoft                                               \
-    pick="fzf/fzf" src="$ZSH_CUSTOM/fzf.cfg"                               \
-        @junegunn/fzf-bin
+        @errata-ai/Microsoft
 
 zinit wait"1f" lucid as=program for                        \
     pick="fpp" nocompile'!'                                \
