@@ -126,6 +126,8 @@ fi
 typeset -U PATH path
 
 path=(
+    /opt/homebrew/bin
+    /opt/homebrew/sbin
     /opt/vim/bin
     "$HOME/.local/bin"
     "$PYENV_ROOT/bin"
