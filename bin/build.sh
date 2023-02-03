@@ -1,6 +1,6 @@
 #!/bin/bash
 # use python constant to be consistent
-PYTHON_VERSION="3.11.0"
+PYTHON_VERSION="3.11.1"
 
 function if_python() {
     local dir=$1
