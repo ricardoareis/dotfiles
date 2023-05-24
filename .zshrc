@@ -13,7 +13,7 @@ ZSH_COMPDUMP="${ZSH_COMPDUMP:-${ZSH_CACHE_DIR}}"
 # some times it does not work, breaking the load.
 #
 # The property below toggle the file evaluated by if
-POWERLEVEL9K_INSTANT_PROMPT=off
+POWERLEVEL9K_INSTANT_PROMPT=on
 
 # this if, load the p10k instant prompt config
 # however, does not work.
