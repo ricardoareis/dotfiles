@@ -208,7 +208,7 @@ path=(
 )
 
 module_path+=( ${ZINIT[MODULES_DIR]} )   # When "zinit module build" was executed,
-zmodload zdharma/zplugin                 # these lines load this module, an execute zsh compilation
+#zmodload zdharma/zplugin                 # these lines load this module, an execute zsh compilation
 #}
 
 # Load all of your custom configurations {
