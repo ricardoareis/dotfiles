@@ -1,6 +1,7 @@
 #!/bin/bash
 # use python constant to be consistent
 PYTHON_VERSION="3.11.1"
+export MACOSX_DEPLOYMENT_TARGET=13.4.1
 
 function if_python() {
     local dir=$1
