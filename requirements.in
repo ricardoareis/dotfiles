@@ -1,5 +1,6 @@
 autoflake>=1.4
-awscli>=1.18.84
+awscli>=1.29.22
+botocore==1.31.22
 bandit>=1.7.4
 black>=22.10b0
 docker-compose>=1.29.2
@@ -26,4 +27,5 @@ pylint>=2.5.3
 reorder-python-imports>=2.3.1
 vim-vint>=0.3.21
 yamllint>=1.25.0
-pip>=22.1.2
+pip>=23.2.1
+pyyaml==5.3.1
