@@ -16,7 +16,7 @@
 " Bundles {
 
     " Color Schema, Fonts & Syntax Plugins {
-    Plug 'sainnhe/gruvbox-material'                               " Default color schema
+    Plug 'sainnhe/gruvbox-material',    {'tag': 'v1.2.5'}         " Default color schema
     Plug 'flazz/vim-colorschemes'
     Plug 'powerline/fonts'
 
@@ -32,7 +32,7 @@
     Plug 'preservim/nerdtree',          {'on': 'NERDTreeToggle'}  " Support of file tree bar
     Plug 'mbbill/undotree',             {'on': 'UndotreeToggle'}  " Support of undo tree bar
     Plug 'wfxr/minimap.vim',            {'on': ['MinimapToggle']} " Sublime minimap
-    Plug 'junegunn/fzf'                                           " Fuzzy Search w/ FZF
+    Plug 'junegunn/fzf',                {'tag': '0.42.0'}         " Fuzzy Search w/ FZF
     Plug 'junegunn/fzf.vim'
     Plug 'vim-airline/vim-airline' ",     { 'tag': 'v0.11'}
     Plug 'vim-airline/vim-airline-themes'
@@ -88,7 +88,7 @@
     Plug 'mg979/vim-visual-multi',        {'branch': 'master'} " Support a multiple cursors
     Plug 'vim-test/vim-test'
     Plug 'tpope/vim-dispatch'                                  " Execute cmds asynchronous (vim-test deps)
-    Plug 'skywind3000/asyncrun.vim'                            " Execute cmds asynchronous (vim-test strategy)
+    Plug 'skywind3000/asyncrun.vim',      {'tag': '2.11.19'}   " Execute cmds asynchronous (vim-test strategy)
     Plug 'skywind3000/vim-preview'
     Plug 'AndrewRadev/diffurcate.vim'                          " Separate diffs per file
     " }
@@ -133,7 +133,7 @@
     Plug 'embear/vim-foldsearch'                                     " Search a pattern and close everything as a fold
     Plug 'matze/vim-move'                                            " Move block easily (visual mode + CTRL+J)
     Plug 'chrisbra/NrrwRgn'                                          " Isolating a region to a safe operation (from emacs)
-    Plug 'unblevable/quick-scope'
+    Plug 'unblevable/quick-scope',          {'tag': 'v2.6.1'}
     Plug 'tpope/vim-repeat'                                          " Support to repeat some cmds
     Plug 'ConradIrwin/vim-bracketed-paste'                           " Enable paste without `:set paste` (depends of terminal support)
     Plug 'pedrohdz/vim-yaml-folds',         {'for': ['yml', 'yaml']} " Better folding
