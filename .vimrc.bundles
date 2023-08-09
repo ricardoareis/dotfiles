@@ -29,7 +29,7 @@
 
     " IDE & Panels Plugins {
     Plug 'mhinz/vim-startify'
-    Plug 'scrooloose/nerdtree',         {'on': 'NERDTreeToggle'}  " Support of file tree bar
+    Plug 'preservim/nerdtree',          {'on': 'NERDTreeToggle'}  " Support of file tree bar
     Plug 'mbbill/undotree',             {'on': 'UndotreeToggle'}  " Support of undo tree bar
     Plug 'wfxr/minimap.vim',            {'on': ['MinimapToggle']} " Sublime minimap
     Plug 'junegunn/fzf'                                           " Fuzzy Search w/ FZF
@@ -40,7 +40,7 @@
     Plug 'airblade/vim-gitgutter'                                 " Git integration
     Plug 'kshenoy/vim-signature'                                  " Plugin to integrate githunk
     Plug 'voldikss/vim-floaterm'                                  " Float terminal
-    Plug 'liuchengxu/vim-which-key'                               " Document keys code (press <Leader>)
+    Plug 'ricardoareis/vim-which-key'                             " Document keys code (press <Leader>)
     Plug 'machakann/vim-highlightedyank'
     Plug 'junegunn/vim-peekaboo'                                  " Show registers contents visually
     Plug 'vim-scripts/sessionman.vim'                             " Support of open/save/delete sessions
