@@ -1803,8 +1803,10 @@ vnoremap <F1> <Esc>
         let g:doge_doc_standard_python = 'sphinx'
         let g:doge_enable_mappings = 0
         let g:doge_python_settings = {
-                    \'single_quotes': 0
+                    \'omit_redundant_param_types': 1,
+                    \'single_quotes': 0,
                     \}
+
         nnoremap <LocalLeader><LocalLeader>d :DogeGenerate<CR>
     endif
     " 1>>>
