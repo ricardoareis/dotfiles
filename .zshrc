@@ -176,8 +176,8 @@ fi
 
 if [[ "$(uname)" == "Darwin" ]];then
     export CC="clang"
-    export LDFLAGS="$LDFLAGS -L/opt/homebrew/opt/openssl@1.1/lib"
-    export CPPFLAGS="$CPPFLAGS -I/opt/homebrew/opt/openssl@1.1/include"
+    export LDFLAGS="$LDFLAGS -L/opt/homebrew/opt/openssl/lib"
+    export CPPFLAGS="$CPPFLAGS -I/opt/homebrew/opt/openssl/include"
 fi
 #}
 
