@@ -120,7 +120,7 @@
     set magic                                   " Set magic on, for regex
 
     if executable('rg')
-        set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
+        set grepprg=rg\ --vimgrep\ --hidden\ --no-follow\ --max-columns=255\ --no-heading\ --column\ -F\ --glob=\'\!.git\'
         set grepformat=%f:%l:%c:%m,%f:%l:%m
     endif
 
@@ -1171,7 +1171,7 @@ vnoremap <F1> <Esc>
     if isdirectory(expand(bundles_dir . '/fzf/'))
         " https://github.com/junegunn/fzf.vim#example-advanced-ripgrep-integration
         function! RipgrepFzf(query, fullscreen)
-            let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
+            let command_fmt = 'rg --hidden --column --max-columns=255 --line-number --no-follow --no-heading --color=always --smart-case --glob=!.git -- %s || true'
             let initial_command = printf(command_fmt, shellescape(a:query))
             let reload_command = printf(command_fmt, '{q}')
             let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
@@ -1189,9 +1189,9 @@ vnoremap <F1> <Esc>
         endif
 
         "Open a content fuzzy search
-        nnoremap <C-l> :RG<CR>
+        nnoremap <C-S-p> :RG<CR>
         "Open a line fuzzy search
-        nnoremap gl :BLines<CR>
+        nnoremap <C-S-l> :BLines<CR>
         "Open a word fuzzy search
         nnoremap <leader>* :RG <C-R><C-W><CR>
         let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'border': 'sharp'  }  }
