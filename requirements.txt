@@ -328,7 +328,9 @@ distro==1.9.0 \
 docker[ssh]==7.0.0 \
     --hash=sha256:12ba681f2777a0ad28ffbcc846a69c31b4dfd9752b47eb425a274ee269c5e14b \
     --hash=sha256:323736fb92cd9418fc5e7133bc953e11a9da04f4483f828b527db553f1e7e5a3
-    # via docker-compose
+    # via
+    #   docker
+    #   docker-compose
 docker-compose==1.29.2 \
     --hash=sha256:4c8cd9d21d237412793d18bd33110049ee9af8dab3fe2c213bbd0733959b09b7 \
     --hash=sha256:8d5589373b35c8d3b1c8c1182c6e4a4ff14bffa3dd0b605fcd08f73c94cef809
@@ -434,7 +436,9 @@ gitlint==0.19.1 \
 gitlint-core[trusted-deps]==0.19.1 \
     --hash=sha256:7bf977b03ff581624a9e03f65ebb8502cc12dfaa3e92d23e8b2b54bbdaa29992 \
     --hash=sha256:f41effd1dcbc06ffbfc56b6888cce72241796f517b46bd9fd4ab1b145056988c
-    # via gitlint
+    # via
+    #   gitlint
+    #   gitlint-core
 gitpython==3.1.41 \
     --hash=sha256:c36b6634d069b3f719610175020a9aed919421c87552185b085e04fbbdb10b7c \
     --hash=sha256:ed66e624884f76df22c8e16066d567aaa5a37d5b5fa19db2c6df6f7156db9048
