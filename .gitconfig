@@ -22,5 +22,6 @@
     status = auto
 [push]
     default = simple
+	autoSetupRemote = true
 [diff]
     tool = vimdiff

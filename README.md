@@ -57,14 +57,14 @@ $ docker run -ti ubuntu bash
 
 $ apt-get update
 
-$ apt-get install -y autoconf build-essential curl file git language-pack-en-base    \
-                     libbz2-dev libffi-dev libreadline-dev libsqlite3-dev libssl-dev \
+$ apt-get install -y autoconf build-essential curl file git language-pack-en-base\
+                     libbz2-dev libffi-dev libreadline-dev libsqlite3-dev libssl-dev\
                      ncurses-dev pkg-config subversion sudo wget zlib1g-dev
 ```
 
 ## Cloning the repo
 
-There is some limitations, and actually, the root must be ~/repos/dotfiles.
+There are some limitations, and actually, the root must be ~/repos/dotfiles.
 
 ```sh
 $ mkdir ~/repos ; cd ~/repos

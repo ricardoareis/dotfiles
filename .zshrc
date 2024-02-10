@@ -13,7 +13,7 @@ ZSH_COMPDUMP="${ZSH_COMPDUMP:-${ZSH_CACHE_DIR}}"
 # some times it does not work, breaking the load.
 #
 # The property below toggle the file evaluated by if
-POWERLEVEL9K_INSTANT_PROMPT=off
+POWERLEVEL9K_INSTANT_PROMPT=on
 
 # this if, load the p10k instant prompt config
 # however, does not work.
@@ -126,6 +126,8 @@ fi
 typeset -U PATH path
 
 path=(
+    /opt/homebrew/bin
+    /opt/homebrew/sbin
     /opt/vim/bin
     "$HOME/.local/bin"
     "$PYENV_ROOT/bin"
@@ -174,8 +176,8 @@ fi
 
 if [[ "$(uname)" == "Darwin" ]];then
     export CC="clang"
-    export LDFLAGS="$LDFLAGS -L/usr/local/opt/openssl@1.1/lib"
-    export CPPFLAGS="$CPPFLAGS -I/usr/local/opt/openssl@1.1/include"
+    export LDFLAGS="$LDFLAGS -L/opt/homebrew/opt/openssl/lib"
+    export CPPFLAGS="$CPPFLAGS -I/opt/homebrew/opt/openssl/include"
 fi
 #}
 
@@ -184,7 +186,7 @@ declare -A ZINIT
 
 ZINIT[HOME_DIR]="${HOME}/repos/dotfiles/.zinit"     # Where Zinit should create all working directories, e.g.: "~/.zinit"
 ZINIT[BIN_DIR]="${ZINIT[HOME_DIR]}/bin"             # Where Zinit code resides, e.g.: "~/.zinit/bin"
-ZINIT[MODULES_DIR]="${ZINIT[BIN_DIR]}/zmodules/Src"
+ZINIT[MODULES_DIR]="${ZINIT[HOME_DIR]}/module/Src"
 ZINIT[ZCOMPDUMP_PATH]="${ZSH_COMPDUMP}/zcompdump"
 ZINIT[COMPINIT_OPTS]="-C"
 ZINIT[OPTIMIZE_OUT_DISK_ACCESSES]=1
@@ -206,7 +208,7 @@ path=(
 )
 
 module_path+=( ${ZINIT[MODULES_DIR]} )   # When "zinit module build" was executed,
-zmodload zdharma/zplugin                 # these lines load this module, an execute zsh compilation
+#zmodload zdharma/zplugin                 # these lines load this module, an execute zsh compilation
 #}
 
 # Load all of your custom configurations {
