@@ -2,6 +2,7 @@ brew install autoconf
 brew install automake
 brew install bash
 brew install cmake
+brew tap homebrew/cask-fonts
 brew install font-hack-nerd-font
 brew install gawk
 brew install gnu-sed

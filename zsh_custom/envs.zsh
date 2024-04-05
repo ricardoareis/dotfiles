@@ -13,8 +13,11 @@ export KEYTIMEOUT=1
 export PYTHON_CONFIGURE_OPTS="--enable-shared --enable-optimizations"
 export CLICOLOR=YES
 export ZSH_DOTENV_PROMPT=false
+export CERT_PATH=$(python -m certifi)
 [[ "$(uname)" == "Darwin"  ]] && \
-    export HOMEBREW_TEMP="/usr/local/tmp"
     export SDKROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk
     export LIBRARY_PATH="$LIBRARY_PATH:/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib"
     export JAVA_HOME=/Library/Java/JavaVirtualMachines/openjdk.jdk/Contents/Home
+    export SSL_CERT_FILE=${CERT_PATH}
+    export REQUESTS_CA_BUNDLE=${CERT_PATH}
+    export NODE_EXTRA_CA_CERTS=${CERT_PATH}

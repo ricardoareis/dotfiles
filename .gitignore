@@ -64,3 +64,4 @@ zsdoc/data
 
 target/*
 .zinit/module/
+.DS_Store

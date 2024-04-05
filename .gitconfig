@@ -2,8 +2,8 @@
     helper = !aws codecommit --profile default credential-helper $@
     UseHttpPath = true
 [user]
-    name = Ricardo Reis
-    email = ricardo.areis@gmail.com
+	name = Ricardo Reis
+	email = ricardo.areis@gmail.com
 [core]
     editor = vim
     excludesfile = ~/repos/dotfiles/.gitignore_global
@@ -25,3 +25,7 @@
 	autoSetupRemote = true
 [diff]
     tool = vimdiff
+[http]
+	sslVerify = false
+[credential]
+	helper = store
