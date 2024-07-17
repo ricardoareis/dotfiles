@@ -21,3 +21,5 @@ export CERT_PATH=$(python -m certifi)
     export SSL_CERT_FILE=${CERT_PATH}
     export REQUESTS_CA_BUNDLE=${CERT_PATH}
     export NODE_EXTRA_CA_CERTS=${CERT_PATH}
+    #(security find-certificate -a -p ls /System/Library/Keychains/SystemRootCertificates.keychain && security find-certificate -a -p ls /Library/Keychains/System.keychain) > $HOME/cacert.pem
+    export REQUESTS_CA_BUNDLE="$HOME/.mac-ca-roots"

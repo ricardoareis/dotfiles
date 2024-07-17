@@ -1,80 +1,119 @@
 # Loading without delay {
 # vim: set expandtab sw=4 ts=4 sts=4 et tw=78 ft=zsh foldmarker={,} foldlevel=0 foldmethod=marker spell:
-zinit ice svn atinit'ZSH_TMUX_AUTOSTART=true\
-                     ZSH_TMUX_AUTOSTART_ONCE=true\
-                     ZSH_TMUX_AUTOCONNECT=false' lucid compile
-zinit snippet OMZ::plugins/tmux
+# zinit ice blockf                                        \
+    # atinit'ZSH_TMUX_AUTOSTART=true                      \
+        # ZSH_TMUX_AUTOSTART_ONCE=true                    \
+        # ZSH_TMUX_AUTOCONNECT=false' lucid compile      \
+    # atclone'git clone -q --depth=1 https://github.com/ohmyzsh/ohmyzsh.git external'
+
+zinit snippet OMZL::bzr.zsh
+zinit snippet OMZL::cli.zsh
+zinit snippet OMZL::clipboard.zsh
+zinit snippet OMZL::compfix.zsh
+zinit snippet OMZL::completion.zsh
+zinit snippet OMZL::correction.zsh
+zinit snippet OMZL::diagnostics.zsh
+zinit snippet OMZL::directories.zsh
+zinit snippet OMZL::functions.zsh
+zinit snippet OMZL::git.zsh
+zinit snippet OMZL::grep.zsh
+zinit snippet OMZL::history.zsh
+zinit snippet OMZL::key-bindings.zsh
+zinit snippet OMZL::misc.zsh
+zinit snippet OMZL::nvm.zsh
+zinit snippet OMZL::prompt_info_functions.zsh
+zinit snippet OMZL::spectrum.zsh
+zinit snippet OMZL::termsupport.zsh
+zinit snippet OMZL::theme-and-appearance.zsh
+zinit snippet OMZL::vcs_info.zsh
+
+zinit ice atinit'ZSH_TMUX_AUTOSTART=true    \
+        ZSH_TMUX_AUTOSTART_ONCE=true        \
+        ZSH_TMUX_AUTOCONNECT=false'         \
+        lucid nocd compile
+zinit snippet OMZP::tmux
 
 # Load within zshrc – for the instant prompt
 zinit ice depth=1 atload'!source $ZSH_CUSTOM/powerlevel.cfg' lucid nocd compile
 zinit light romkatv/powerlevel10k
 #}
 
-# Loading with a min delay (default) {
-#
-# OMZ things to source
-local _ZSHRC_OMZ_LIB_SRCS=(
-  # Libs
-  git.zsh
-  completion.zsh
-  functions.zsh
-  grep.zsh
-  key-bindings.zsh
-  spectrum.zsh
-  directories.zsh
-  theme-and-appearance.zsh
-)
-
-zinit ice svn depth"0" wait multisrc"${_ZSHRC_OMZ_LIB_SRCS}" pick"/dev/null" blockf lucid
-zinit snippet OMZ::lib
-#}
-
 # Loading with a 1s delay {
 #
-zinit ice svn wait"1a" atload"unalias grv" lucid
-zinit snippet OMZ::plugins/git
+zinit ice wait"1a" atload"unalias grv" lucid
+# zinit snippet OMZ::plugins/git
+# zinit snippet OMZ::plugins/git
+zinit snippet OMZP::git
 
-zinit ice svn wait"1a" lucid
-zinit snippet OMZ::plugins/aws
+# zinit ice svn wait"1a" lucid
+# zinit snippet OMZ::plugins/aws
+# zinit snippet OMZ::plugins/aws
+zinit snippet OMZP::aws
 
-zinit ice svn wait"1a" lucid
-zinit snippet OMZ::plugins/macos
+# zinit ice wait"1a" lucid
+# # zinit snippet OMZ::plugins/macos
+# zinit snippet OMZ::plugins/macos
 
-zinit ice svn wait"1a" lucid
-zinit snippet OMZ::plugins/encode64
+zinit snippet OMZP::aws
+zinit ice wait"1a" lucid
+# zinit snippet OMZ::plugins/encode64
+# zinit snippet OMZ::plugins/encode64
+zinit snippet OMZP::encode64
 
-zinit ice svn wait"1a" lucid
-zinit snippet OMZ::plugins/colored-man-pages
+zinit ice wait"1a" lucid
+# zinit snippet OMZ::plugins/colored-man-pages
+# zinit snippet OMZ::plugins/colored-man-pages
+zinit snippet OMZP::colored-man-pages
 
-zinit ice svn wait"1a" lucid
-zinit snippet OMZ::plugins/docker-compose
+zinit ice wait"1a" lucid
+# zinit snippet OMZ::plugins/docker-compose
+# zinit snippet OMZ::plugins/docker-compose
+zinit snippet OMZP::docker-compose
 
-zinit ice svn wait"1a" lucid
-zinit snippet OMZ::plugins/docker-machine
+zinit ice wait"1a" lucid
+# zinit snippet OMZ::plugins/docker-machine
+# zinit snippet OMZ::plugins/docker-machine
+zinit snippet OMZP::docker-machine
 
-zinit ice svn wait"1a" lucid
-zinit snippet OMZ::plugins/dotenv
+zinit ice wait"1a" lucid
+# zinit snippet OMZ::plugins/dotenv
+# zinit snippet OMZ::plugins/dotenv
+zinit snippet OMZP::dotenv
 
-zinit ice svn wait"1a" lucid
-zinit snippet OMZ::plugins/git-auto-fetch
+zinit ice wait"1a" lucid
+# zinit snippet OMZ::plugins/git-auto-fetch
+# zinit snippet OMZ::plugins/git-auto-fetch
+zinit snippet OMZP::git-auto-fetch
 
-zinit ice svn wait"1a" lucid
-zinit snippet OMZ::plugins/golang
+zinit ice wait"1a" lucid
+# zinit snippet OMZ::plugins/golang
+# zinit snippet OMZ::plugins/golang
+zinit snippet OMZP::golang
 
-zinit ice svn wait"1a" lucid
-zinit snippet OMZ::plugins/npm
+zinit ice wait"1a" lucid
+# zinit snippet OMZ::plugins/npm
+# zinit snippet OMZ::plugins/npm
+zinit snippet OMZP::npm
 
-zinit ice svn wait"1a" lucid
-zinit snippet OMZ::plugins/pip
+zinit ice wait"1a" lucid
+# zinit snippet OMZ::plugins/pip
+# zinit snippet OMZ::plugins/pip
+zinit snippet OMZP::pip
 
-zinit ice svn wait"1a" lucid
-zinit snippet OMZ::plugins/sudo
+zinit ice wait"1a" lucid
+# zinit snippet OMZ::plugins/sudo
+# zinit snippet OMZ::plugins/sudo
+zinit snippet OMZP::sudo
 
-zinit ice svn wait"1a" lucid
-zinit snippet OMZ::plugins/jsontools
+zinit ice wait"1a" lucid
+# zinit snippet OMZ::plugins/jsontools
+# zinit snippet OMZ::plugins/jsontools
+zinit snippet OMZP::jsontools
 
-zinit ice svn wait"1a" lucid
-zinit snippet OMZ::plugins/safe-paste
+zinit ice wait"1a" lucid
+# zinit snippet OMZ::plugins/safe-paste
+# zinit snippet OMZ::plugins/safe-paste
+zinit snippet OMZP::safe-paste
 
 zinit wait"1b" lucid as=program for   \
     atclone="./install --bin"         \
@@ -82,8 +121,8 @@ zinit wait"1b" lucid as=program for   \
     src="$ZSH_CUSTOM/fzf.cfg"         \
         junegunn/fzf
 
-zinit ice svn wait"1b" lucid
-zinit snippet OMZ::plugins/fzf
+zinit ice wait"1b" lucid
+zinit snippet OMZP::fzf
 
 zinit wait"1b" lucid for \
     atload'source init.zsh'\
@@ -132,7 +171,7 @@ zinit wait"1d" lucid as=program from"gh-r" for                             \
     mv"shfmt* -> shfmt" pick="shfmt/shfmt"                                 \
         @mvdan/sh                                                          \
     mv"jq* -> jq" pick="jq/jq"                                             \
-        @stedolan/jq                                                       \
+        @jqlang/jq                                                       \
     mv"bat* -> bat" pick="bat/bat"                                         \
         @sharkdp/bat                                                       \
     mv"ripgrep* -> rg" pick="rg/rg"                                        \

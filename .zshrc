@@ -3,6 +3,7 @@
 #zmodload zsh/zprof
 
 umask 022
+bindkey -e
 
 # Configure the cache dir
 XDG_CACHE_HOME="${XDG_CACHE_HOME:-${HOME}/.cache}"
@@ -126,12 +127,12 @@ fi
 typeset -U PATH path
 
 path=(
-    /opt/homebrew/bin
-    /opt/homebrew/sbin
-    /opt/vim/bin
+    "$PYENV_ROOT/shims"
+    /$HOME/program/vim/bin
     "$HOME/.local/bin"
     "$PYENV_ROOT/bin"
-    "$PYENV_ROOT/shims"
+    /opt/homebrew/bin
+    /opt/homebrew/sbin
     /usr/local/bin
     /usr/bin
     /bin
@@ -176,8 +177,8 @@ fi
 
 if [[ "$(uname)" == "Darwin" ]];then
     export CC="clang"
-    export LDFLAGS="$LDFLAGS -L/opt/homebrew/opt/openssl/lib"
-    export CPPFLAGS="$CPPFLAGS -I/opt/homebrew/opt/openssl/include"
+    # export LDFLAGS="$LDFLAGS -L/opt/homebrew/opt/openssl/lib"
+    # export CPPFLAGS="$CPPFLAGS -I/opt/homebrew/opt/openssl/include"
 fi
 #}
 

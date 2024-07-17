@@ -1,7 +1,7 @@
 #!/bin/bash
 # use python constant to be consistent
 PYTHON_VERSION="3.11.1"
-export MACOSX_DEPLOYMENT_TARGET=13.4.1
+export MACOSX_DEPLOYMENT_TARGET=14.4.1
 
 function if_python() {
     local dir=$1
@@ -39,7 +39,7 @@ function build_vim() {
 
     (test -d "${VIM_DIR}/.git" && git pull) || git clone https://github.com/vim/vim
 
-    make clean distclean && ./configure --prefix=/opt/vim                                                        \
+    make clean distclean && ./configure --prefix=/Users/ricardo.reis/program/vim                                 \
         --enable-gui=no                                                                                          \
         --with-features=huge                                                                                     \
         --enable-multibyte                                                                                       \
@@ -48,7 +48,7 @@ function build_vim() {
         --enable-perlinterp=dynamic                                                                              \
         --enable-luainterp=dynamic                                                                               \
         --enable-cscope
-    make && sudo make install
+    make && make install
 }
 
 function build_ycm() {
