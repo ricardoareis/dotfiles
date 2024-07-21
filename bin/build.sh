@@ -39,7 +39,7 @@ function build_vim() {
 
     (test -d "${VIM_DIR}/.git" && git pull) || git clone https://github.com/vim/vim
 
-    make clean distclean && ./configure --prefix=/Users/ricardo.reis/program/vim                                 \
+    make clean distclean && ./configure --prefix=$HOME/program/vim                                 \
         --enable-gui=no                                                                                          \
         --with-features=huge                                                                                     \
         --enable-multibyte                                                                                       \
