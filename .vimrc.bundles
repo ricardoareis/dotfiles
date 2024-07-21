@@ -32,7 +32,7 @@
     Plug 'preservim/nerdtree',          {'on': 'NERDTreeToggle'}  " Support of file tree bar
     Plug 'mbbill/undotree',             {'on': 'UndotreeToggle'}  " Support of undo tree bar
     Plug 'wfxr/minimap.vim',            {'on': ['MinimapToggle']} " Sublime minimap
-    Plug 'junegunn/fzf',                {'tag': '0.45.0'}         " Fuzzy Search w/ FZF
+    Plug 'junegunn/fzf',                {'tag': '0.53.0'}         " Fuzzy Search w/ FZF
     Plug 'junegunn/fzf.vim'
     Plug 'vim-airline/vim-airline' ",     { 'tag': 'v0.11'}
     Plug 'vim-airline/vim-airline-themes'
@@ -49,7 +49,7 @@
     Plug 'rhysd/conflict-marker.vim'                              " Handler of git conflict marker
     Plug 'dense-analysis/ale'                                     " Engine for linters and fixers
     Plug 'ricardoareis/vim-indent-guides'                         " Fork with a redir bug solved
-    Plug 'kkoomen/vim-doge',            {'do': { -> doge#install() }, 'tag': 'v4.5.0'}
+    Plug 'kkoomen/vim-doge',            {'do': { -> doge#install() }, 'tag': 'v4.7.0'}
     Plug 'ludovicchabant/vim-gutentags',{'on': 'TagbarToggle'}
     Plug 'skywind3000/gutentags_plus',  {'on': 'TagbarToggle'}
     Plug 'ycm-core/YouCompleteMe'                                 " Engine for auto complete
@@ -88,7 +88,7 @@
     Plug 'mg979/vim-visual-multi',        {'branch': 'master'} " Support a multiple cursors
     Plug 'vim-test/vim-test'
     Plug 'tpope/vim-dispatch'                                  " Execute cmds asynchronous (vim-test deps)
-    Plug 'skywind3000/asyncrun.vim',      {'tag': '2.11.23'}   " Execute cmds asynchronous (vim-test strategy)
+    Plug 'skywind3000/asyncrun.vim',      {'tag': '2.13.0'}   " Execute cmds asynchronous (vim-test strategy)
     Plug 'skywind3000/vim-preview'
     Plug 'AndrewRadev/diffurcate.vim'                          " Separate diffs per file
     " }
@@ -133,7 +133,7 @@
     Plug 'embear/vim-foldsearch'                                     " Search a pattern and close everything as a fold
     Plug 'matze/vim-move'                                            " Move block easily (visual mode + CTRL+J)
     Plug 'chrisbra/NrrwRgn'                                          " Isolating a region to a safe operation (from emacs)
-    Plug 'unblevable/quick-scope',          {'tag': 'v2.6.1'}
+    Plug 'unblevable/quick-scope',          {'tag': 'v2.6.2'}
     Plug 'tpope/vim-repeat'                                          " Support to repeat some cmds
     Plug 'ConradIrwin/vim-bracketed-paste'                           " Enable paste without `:set paste` (depends of terminal support)
     Plug 'pedrohdz/vim-yaml-folds',         {'for': ['yml', 'yaml']} " Better folding
