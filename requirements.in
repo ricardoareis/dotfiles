@@ -1,9 +1,9 @@
 autoflake==2.2.0
-awscli==1.29.22
-botocore==1.31.22
+awscli>=1.44.8
+botocore>=1.42.18
 bandit==1.7.5
 black==23.7.0
-docker-compose==1.29.2
+# docker-compose>=1.29.2
 flake8-bandit==4.1.1
 flake8-broken-line>=1.0.0
 flake8-bugbear>=23.7.10
@@ -29,5 +29,5 @@ vim-vint==0.3.21
 yamllint==1.32.0
 pip>=24.1.2
 pyyaml>=5.3.1
-certifi==2024.2.2
+certifi>=2024.7.4
 setuptools>=70.0.0
