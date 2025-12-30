@@ -1256,7 +1256,6 @@ vnoremap <F1> <Esc>
         let g:gitgutter_sign_removed_first_line='rf'
         let g:gitgutter_sign_modified_removed='mr'
         let g:gitgutter_max_signs=100
-        let g:gitgutter_grep = 'rg'
         set foldtext=gitgutter#fold#foldtext()
         map ghs :GitGutterStageHunk<CR>
         map ghu :GitGutterUndoHunk<CR>
